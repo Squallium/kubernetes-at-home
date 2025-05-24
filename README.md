@@ -135,15 +135,15 @@ Use the following token to login:
 
 Use the external IP address to access the dashboard in your browser with that port and paste the token to login.
 
-## Configure kubectl in a different computer and access the microk8s cluster
+## Configure kubectl in a different computer for accessing the microk8s cluster
 
-Save the microk8s configuration to your local kubeconfig file:
+Install kubectl and kubens, then save the microk8s configuration to your local kubeconfig file:
 
 ```bash
 microk8s config > ~/.kube/config
 ```
 
-## check ingress controller with nginx
+## Check ingress controller with nginx
 
 Create a nginx deployment and expose it:
 
