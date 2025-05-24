@@ -1,0 +1,27 @@
+server:
+  ingress:
+    enabled: true
+    ingressClassName: public
+    hostname: argocd.local.lan
+    service:
+
+  service:
+    type: ClusterIP
+    servicePortHttp: 8080
+    servicePortHttps: 8443
+
+  extraArgs:
+    - --insecure
+
+configs:
+  params:
+    server.insecure: true  # Allow HTTP access without TLS (We'll enable HTTPS later)
+
+  cm:
+    admin.enabled: true
+    url: http://argocd.local.lan
+
+dex:
+  enabled: false  # Deactivate SSO/OAuth (we'll enable it later)
+
+

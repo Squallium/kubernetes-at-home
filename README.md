@@ -17,5 +17,7 @@ setup process, because at least we need:
 ## Steps
 
 1. [setup lima and microk8s in macOS](apps/lima/README.md)
-
+2. [setup Hashicorp Vault](apps/vault/README.md)
+3. [setup External Secrets](addons/external-secrets/README.md)
+4. [setup ArgoCD](apps/argocd/README.md)
 
