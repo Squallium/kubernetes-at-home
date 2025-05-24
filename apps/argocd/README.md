@@ -8,7 +8,7 @@ kubectl create namespace argocd
 kubens argocd
 ```
 
-Installing the helm chart in the cluster
+Add the ArgoCD Helm repository and update it:
 
 ```shell
 helm repo add argo https://argoproj.github.io/argo-helm

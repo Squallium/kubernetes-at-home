@@ -9,6 +9,13 @@ First you need to go to the microk8s shell and enable the hostpath-storage addon
 sudo microk8s enable hostpath-storage
 ```
 
+Add the Hashicorp Vault Helm repository and update it:
+
+```bash
+helm repo add hashicorp https://helm.releases.hashicorp.com
+helm repo update
+```
+
 Then, you can install Vault using Helm. Make sure you have Helm installed and configured in your microk8s environment.
 
 ```bash
