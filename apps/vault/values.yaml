@@ -1,0 +1,26 @@
+global:
+  tlsDisable: true
+
+ui:
+  enabled: true
+  serviceType: LoadBalancer
+
+server:
+  enabled: true
+  ha:
+    enabled: false
+  dataStorage:
+    enabled: true
+    size: 2Gi
+    storageClass: microk8s-hostpath
+  standalone:
+    enabled: true
+  ingress:
+    enabled: true
+    annotations:
+      nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    hosts:
+      - host: vault.local.lan
+        paths:
+          - /
+
