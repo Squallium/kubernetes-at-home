@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paperless-ngx
+  labels:
+    app: paperless-ngx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: paperless-ngx
+  template:
+    metadata:
+      labels:
+        app: paperless-ngx
+    spec:
+      containers:
+        - name: paperless-ngx
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          env:
+            - name: PAPERLESS_REDIS
+              value: redis://paperless-redis:6379
+            - name: PAPERLESS_DBHOST
+              value: paperless-postgresql
+            - name: PAPERLESS_DBNAME
+              value: {{ .Values.postgresql.database }}
+            - name: PAPERLESS_DBUSER
+              value: {{ .Values.postgresql.username }}
+            - name: PAPERLESS_DBPASS
+              value: {{ .Values.postgresql.password }}
+          ports:
+            - containerPort: 8000
+          volumeMounts:
+            - name: data
+              mountPath: /usr/src/paperless/data
+      volumes:
+        - name: data
+          hostPath:
+            path: {{ .Values.storage.path }}
+            type: DirectoryOrCreate
