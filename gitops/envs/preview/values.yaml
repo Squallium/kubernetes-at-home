@@ -1,7 +1,42 @@
 # -- Deploy Argo CD Applications within this helm release
 # @default -- `{}` (See [values.yaml])
 ## Ref: https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/
-applications: {}
+applications:
+  homebox:
+    namespace: argocd
+    additionalLabels: {}
+    additionalAnnotations: {}
+    finalizers:
+    - resources-finalizer.argocd.argoproj.io
+    project: guestbook
+    sources:
+    - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+      targetRevision: main
+      ref: values
+    - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+      path: charts/homebox
+      targetRevision: main
+      helm:
+        valueFiles:
+          - $values/apps/homebox/preview/values.yaml
+    destination:
+      server: https://kubernetes.default.svc
+      namespace: homebox
+    syncPolicy:
+#      automated:
+#        prune: false
+#        selfHeal: false
+      syncOptions:
+      - CreateNamespace=true
+    revisionHistoryLimit: null
+    ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+      - /spec/replicas
+    info:
+    - name: url
+      value: https://argoproj.github.io/
 #  guestbook:
 #    namespace: argocd
 #    additionalLabels: {}
