@@ -9,6 +9,9 @@ disk: "40GiB"
 mounts:
   - location: "~"
     writable: true
+  - location: "/Users/kuber/shared/paperless/data"
+    mountPoint: "/mnt/paperless-data"
+    writable: true
 
 networks:
   - lima: bridged

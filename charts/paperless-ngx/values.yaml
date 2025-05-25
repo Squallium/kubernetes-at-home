@@ -1,0 +1,20 @@
+image:
+  repository: paperlessngx/paperless-ngx
+  tag: 2.16.2
+
+ingress:
+  enabled: true
+  className: public
+  hostname: paperless.local.lan
+
+storage:
+  path: /mnt/paperless-data
+
+redis:
+  image: redis:7-alpine
+
+postgresql:
+  image: postgres:15-alpine
+  username: paperless
+  password: paperlesspass
+  database: paperlessdb
