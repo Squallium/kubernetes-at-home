@@ -1,20 +1,29 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
-  name: home-gitops
+  name: home-environments
   namespace: argocd
 spec:
-  project: default
-  source:
-    repoURL: https://github.com/Squallium/kubernetes-at-home.git
-    targetRevision: main
-    path: gitops
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
+  generators:
+    - list:
+        elements:
+          - env: preview
+          - env: production
+  template:
+    metadata:
+      name: home-{{"{{"}}env}}
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/Squallium/kubernetes-at-home.git
+        targetRevision: main
+        path: gitops/envs/{{"{{"}}env}}
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: default
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
