@@ -1,16 +1,2 @@
-env:
-  TZ: Europe/Madrid
-
-ingress:
-  enabled: true
-  className: public
-  hosts:
-    - host: homebox.local.lan
-      paths:
-        - path: /
-          pathType: Prefix
-
-persistence:
-  enabled: true
-  storageClass: hostpath-storage
-  size: 2Gi
+image:
+  tag: v0.19.0
