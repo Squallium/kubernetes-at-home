@@ -159,10 +159,10 @@ kubectl apply -f apps/nginx/ingress.yaml
 Now you can access the nginx deployment via the ingress controller. You can modify you local `/etc/hosts` file to point the domain `demo.local` to the IP address of your microk8s instance. For example:
 
 ```bash
-192.168.1.1 demo.local.lan
+192.168.1.1 demo.local
 ```
 
-And access it in your browser http://demo.local.lan If you can see the nginx welcome page, everything is working fine. Now you can delete the deployment and ingress:
+And access it in your browser http://demo.local If you can see the nginx welcome page, everything is working fine. Now you can delete the deployment and ingress:
 
 ```bash
 kubectl delete ingress demo-ingress

@@ -5,7 +5,7 @@ image:
 ingress:
   enabled: true
   className: public
-  hostname: paperless.local.lan
+  hostname: paperless.local
 
 storage:
   path: /mnt/paperless-data

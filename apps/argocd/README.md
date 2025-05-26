@@ -43,8 +43,8 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 (You should delete the initial secret afterwards as suggested by the Getting Started Guide: https://argo-cd.readthedocs.io/en/stable/getting_started/#4-login-using-the-cli)
 ```
 
-Now if you have your /etc/hosts file configured to point the domain `argocd.local.lan` to the IP address of your
-microk8s instance, you can access the ArgoCD UI at https://argocd.local.lan
+Now if you have your /etc/hosts file configured to point the domain `argocd.local` to the IP address of your
+microk8s instance, you can access the ArgoCD UI at https://argocd.local
 
 We can get the initial admin password with the following command:
 
