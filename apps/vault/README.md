@@ -37,7 +37,7 @@ kubectl exec -it vault-0 -n vault -- vault operator init
 ```
 
 Now you can unseal the Vault by using the following command three times or by going directy into your browser and
-accessing the Vault UI http://vault.local.lan:
+accessing the Vault UI http://vault.local:
 
 ```bash
 kubectl exec -it vault-0 -n vault -- /bin/sh
