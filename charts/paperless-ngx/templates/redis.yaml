@@ -16,6 +16,14 @@ spec:
           image: {{ .Values.redis.image }}
           ports:
             - containerPort: 6379
+          volumeMounts:
+            - name: redisdata
+              mountPath: /data
+      volumes:
+        - name: redisdata
+          hostPath:
+            path: {{ .Values.redis.storagePath }}
+            type: Directory
 ---
 apiVersion: v1
 kind: Service

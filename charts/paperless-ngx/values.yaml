@@ -8,13 +8,15 @@ ingress:
   hostname: paperless.local
 
 storage:
-  path: /mnt/paperless-data
+  path: /mnt/paperless/data
 
 redis:
   image: redis:7-alpine
+  storagePath: /mnt/paperless/redis
 
 postgresql:
   image: postgres:15-alpine
   username: paperless
   password: paperlesspass
   database: paperlessdb
+  storagePath: /mnt/paperless/postgres
