@@ -33,8 +33,14 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /usr/src/paperless/data
+            - name: media
+              mountPath: /usr/src/paperless/media
       volumes:
         - name: data
           hostPath:
-            path: {{ .Values.storage.path }}
+            path: {{ .Values.storagePath.data }}
+            type: Directory
+        - name: media
+          hostPath:
+            path: {{ .Values.storagePath.media }}
             type: Directory

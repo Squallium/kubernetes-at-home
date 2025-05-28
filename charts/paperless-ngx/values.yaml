@@ -7,8 +7,9 @@ ingress:
   className: public
   hostname: paperless.local
 
-storage:
-  path: /mnt/paperless/data
+storagePath:
+  data: /mnt/paperless/data
+  media: /mnt/paperless/media
 
 redis:
   image: redis:7-alpine
