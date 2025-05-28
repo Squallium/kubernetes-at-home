@@ -6,6 +6,7 @@ ingress:
   enabled: true
   className: public
   hostname: paperless.local
+  proxyBodySize: "100m"
 
 storagePath:
   data: /mnt/paperless/data

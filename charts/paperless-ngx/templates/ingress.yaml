@@ -3,7 +3,9 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: paperless-ngx
-  annotations: {}
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: {{ .Values.ingress.proxyBodySize }}
+
 spec:
   ingressClassName: {{ .Values.ingress.className }}
   rules:
