@@ -85,7 +85,7 @@ argocd-apps:
         targetRevision: main
         ref: values
       - repoURL: https://charts.min.io/
-        chart: minio/minio
+        chart: minio
         targetRevision: 5.4.0
         helm:
           valueFiles:
