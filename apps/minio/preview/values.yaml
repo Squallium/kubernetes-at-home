@@ -22,4 +22,4 @@ ingress:
   enabled: true
   ingressClassName: public
   hosts:
-    - minio.local.lan
+    - minio.local
