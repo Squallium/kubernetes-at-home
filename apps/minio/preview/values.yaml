@@ -1,0 +1,25 @@
+mode: standalone
+
+persistence:
+  enabled: true
+  existingClaim: ""
+  storageClass: ""
+  accessMode: ReadWriteOnce
+  size: 10Gi
+  mountPath: /data
+  type: hostPath
+  hostPath: /mnt/minio/data
+
+resources:
+  requests:
+    memory: 512Mi
+    cpu: 250m
+
+accessKey: minioadmin
+secretKey: minioadmin
+
+ingress:
+  enabled: true
+  ingressClassName: public
+  hosts:
+    - minio.local.lan

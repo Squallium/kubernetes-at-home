@@ -9,8 +9,14 @@ disk: "40GiB"
 mounts:
   - location: "~"
     writable: true
-  - location: "/Users/kuber/shared/paperless/data"
-    mountPoint: "/mnt/paperless-data"
+  - location: "/Users/kuber/shared/paperless"
+    mountPoint: "/mnt/paperless"
+    writable: true
+  - location: "/Users/kuber/shared/velero"
+    mountPoint: "/mnt/velero"
+    writable: true
+  - location: "/Users/kuber/shared/minio"
+    mountPoint: "/mnt/minio"
     writable: true
 
 networks:
