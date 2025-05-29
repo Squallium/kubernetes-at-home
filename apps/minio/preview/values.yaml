@@ -24,7 +24,6 @@ ingress:
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
     nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.allow-http: "true"
   hosts:
     - minio.local
-  paths:
-    - /
