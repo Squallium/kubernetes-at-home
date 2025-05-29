@@ -21,5 +21,10 @@ secretKey: minioadmin
 ingress:
   enabled: true
   ingressClassName: public
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    nginx.ingress.kubernetes.io/rewrite-target: /
   hosts:
     - minio.local
+  paths:
+    - /
