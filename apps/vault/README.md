@@ -37,7 +37,7 @@ kubectl exec -it vault-0 -n vault -- vault operator init
 ```
 
 Now you can unseal the Vault by using the following command three times or by going directy into your browser and
-accessing the Vault UI http://vault.local:
+accessing the Vault UI http://vault.internal:
 
 ```bash
 kubectl exec -it vault-0 -n vault -- /bin/sh
@@ -46,7 +46,11 @@ vault operator unseal
 
 Then you can finally log in using the root token you saved before:
 
-Now let's create an engine and a test secret for testing ArgoCD and the external secrets which will be the only addon not
+Now let's create an engine and a test secret for testing ArgoCD and the external secrets which will be the only addon
+not
 manage by ArgoCD because in ArgoCD configurations like clusters or repo are manage by kubernetes secrets.
 
-Go to "Secrets Engines" and enable the "KV" engine. In path you can put "secret" in maximun number of versions at lesat 2. Then create a new secret
+Go to "Secrets Engines" and enable the "KV" engine. 
+1. In path you can put "secret" in maximun number of versions at lesat
+2. Then create a new secret "myapp/api-key" and add "api_key" as "abcd1234" and "username" as "admin"
+3. 

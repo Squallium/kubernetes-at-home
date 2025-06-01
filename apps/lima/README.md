@@ -60,10 +60,12 @@ provision:
       echo 'export PATH=$PATH:/snap/bin' >> /etc/profile
 ```
 
-Run your microk8s instance with lima:
+Run three microk8s instance with lima:
 
 ```bash
-limactl start --name=microk8s ./microk8s-bridged.yaml
+limactl start --name=microk8s-core ./microk8s-bridged.yaml
+limactl start --name=microk8s-dev ./microk8s-bridged.yaml
+limactl start --name=microk8s-pro ./microk8s-bridged.yaml
 ```
 
 If something fails related to the network, you can try to fix it by editing the network configuration file:
@@ -73,7 +75,8 @@ nano .lima/_config/networks.yaml
 limactl sudoers > etc_sudoers.d_lima && sudo install -o root etc_sudoers.d_lima "/private/etc/sudoers.d/lima"
 ```
 
-Check the network configuration and make sure the `bridged` network is set up correctly. You can also check the lima logs for any errors:
+Check the network configuration and make sure the `bridged` network is set up correctly. You can also check the lima
+logs for any errors:
 
 ```bash
 limactl shell microk8s ip -br a
@@ -135,10 +138,18 @@ Use the external IP address to access the dashboard in your browser with that po
 
 ## Configure kubectl in a different computer for accessing the microk8s cluster
 
-Install kubectl and kubens, then save the microk8s configuration to your local kubeconfig file:
+Install kubectl, kubectx and kubens, then save the microk8s configuration to your local kubeconfig file:
 
 ```bash
 microk8s config > ~/.kube/config
+```
+
+If you have multiple microk8s instances, you need to combine the kubeconfig files with the following command. Remember
+to replace the identifiers before combine them.
+
+```bash
+$env:KUBECONFIG = "$HOME\.kube\core-config;$HOME\.kube\dev-config"
+kubectl config view --flatten > $HOME\.kube\config
 ```
 
 ## Check ingress controller with nginx
@@ -156,13 +167,15 @@ Then apply the ingress configuration in the `apps/nginx` directory:
 kubectl apply -f apps/nginx/ingress.yaml
 ```
 
-Now you can access the nginx deployment via the ingress controller. You can modify you local `/etc/hosts` file to point the domain `demo.local` to the IP address of your microk8s instance. For example:
+Now you can access the nginx deployment via the ingress controller. You can modify you local `/etc/hosts` file to point
+the domain `demo.local` to the IP address of your microk8s instance. For example:
 
 ```bash
 192.168.1.1 demo.local
 ```
 
-And access it in your browser http://demo.local If you can see the nginx welcome page, everything is working fine. Now you can delete the deployment and ingress:
+And access it in your browser http://demo.local If you can see the nginx welcome page, everything is working fine. Now
+you can delete the deployment and ingress:
 
 ```bash
 kubectl delete ingress demo-ingress

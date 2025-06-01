@@ -2,7 +2,7 @@ server:
   ingress:
     enabled: true
     ingressClassName: public
-    hostname: argocd.local
+    hostname: argocd.internal
     service:
 
   service:
@@ -19,7 +19,7 @@ configs:
 
   cm:
     admin.enabled: true
-    url: http://argocd.local
+    url: http://argocd.internal
 
 dex:
   enabled: false  # Deactivate SSO/OAuth (we'll enable it later)
