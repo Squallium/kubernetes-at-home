@@ -51,3 +51,38 @@ We can get the initial admin password with the following command:
 ```shell
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
+
+Now we ready to apply the argocd-config chart which will setup the deafult root project based on environment names
+pointed to this repository in the gitops/envs/<environment> folder.
+
+```shell
+helm install argocd-config .\apps\argocd\charts\argocd-config\ --namespace argocd --values .\apps\argocd\charts\argocd-config\values.yaml
+```
+
+Then you have to restart argocd-server and argocd-controller to make the clsuters available in the ArgoCD UI:
+
+```shell
+kubectl rollout restart deployment argocd-repo-server -n argocd
+kubectl rollout restart statefulset argocd-application-controller -n argocd
+kubectl rollout restart deployment argocd-server -n argocd
+```
+
+### Troubleshooting:
+
+Export the config data to a file:
+
+```shell
+kubectl get secret argocd-cluster-dev-secret -n argocd -o json | jq -r '.data.config' | base64 --decode > output.json
+```
+
+And decode the content of the file:
+
+```shell
+cat .\output.json | base64 -d
+```
+
+Finally check the logs of the argocd-application-controller to see if there are any errors:
+
+```shell
+stern argocd-application-controller -n argocd
+```
