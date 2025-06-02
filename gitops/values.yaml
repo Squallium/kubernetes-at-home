@@ -213,7 +213,7 @@ argocd-apps:
               - clusters: {}
               - git:
                   repoURL: https://github.com/Squallium/kubernetes-at-home.git
-                  revision: main
+                  revision: feature/multicluster-approach
                   files:
                     - path: 'apps/homebox/{{metadata.labels.environment}}/values.yaml'
       # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
