@@ -198,84 +198,83 @@ argocd-apps:
   # -- Deploy Argo CD ApplicationSets within this helm release
   # @default -- `{}` (See [values.yaml])
   ## Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/
-  applicationsets:
-    homebox:
-      namespace: argocd
-      additionalLabels: {}
-      additionalAnnotations: {}
-      finalizers:
-      - resources-finalizer.argocd.argoproj.io
-      # See PR #10026 (ArgoCD v2.5 or later)
-      # goTemplate: false
-      generators:
-        - matrix:
-            generators:
-              - clusters: {}
-              - git:
-                  repoURL: https://github.com/Squallium/kubernetes-at-home.git
-                  revision: feature/multicluster-approach
-                  files:
-                    - path: 'apps/homebox/{{metadata.labels.environment}}/values.yaml'
-      # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
-      ignoreApplicationDifferences:
-      - jsonPointers:
-        - /spec/syncPolicy
-      # Progressive Syncs is an experimental feature and it must be explicitly enabled
-      # Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Progressive-Syncs/#enabling-progressive-syncs
-#      strategy:
-#        type: RollingSync
-#        rollingSync:
-#          steps:
-#          - matchExpressions:
-#            - key: project
-#              operator: In
-#              values:
-#              - guestbook
-#          - matchExpressions:
-#            - key: project
-#              operator: In
-#              values:
-#              - kustomize-foo
-#              - kustomize-bar
-      template:
-        metadata:
-          name: 'homebox-{{metadata.labels.environment}}'
-          labels:
-            type: 'service'
-          annotations: {}
-        spec:
-          project: default
-          sources:
-          - repoURL: https://github.com/Squallium/kubernetes-at-home.git
-            targetRevision: feature/multicluster-approach
-            ref: values
-          - repoURL: https://github.com/Squallium/kubernetes-at-home.git
-            path: charts/homebox
-            targetRevision: feature/multicluster-approach
-            helm:
-              valueFiles:
-                - $values/apps/homebox/{{metadata.labels.environment}}/values.yaml
-          destination:
-            server: '{{server}}'
-            namespace: homebox
-          syncPolicy:
-            automated:
-              prune: false
-              selfHeal: false
-            syncOptions:
-              - CreateNamespace=true
-              - PruneLast=true
-          ignoreDifferences:
-          - group: apps
-            kind: Deployment
-            jsonPointers:
-            - /spec/replicas
-          info:
-          - name: url
-            value: https://argoproj.github.io/
-      syncPolicy:
-        # Set Application finalizer
-        preserveResourcesOnDeletion: false
+  applicationsets: {}
+#    homebox:
+#      namespace: argocd
+#      additionalLabels: {}
+#      additionalAnnotations: {}
+#      finalizers:
+#      - resources-finalizer.argocd.argoproj.io
+#      # See PR #10026 (ArgoCD v2.5 or later)
+#      # goTemplate: false
+#      generators:
+#        - matrix:
+#            generators:
+#              - clusters: {}
+#              - git:
+#                  repoURL: https://github.com/Squallium/kubernetes-at-home.git
+#                  revision: feature/multicluster-approach
+#                  files:
+#                    - path: 'apps/homebox/{{metadata.labels.environment}}/values.yaml'
+#      # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
+#      ignoreApplicationDifferences:
+#      - jsonPointers:
+#        - /spec/syncPolicy
+#      # Progressive Syncs is an experimental feature and it must be explicitly enabled
+#      # Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Progressive-Syncs/#enabling-progressive-syncs
+##      strategy:
+##        type: RollingSync
+##        rollingSync:
+##          steps:
+##          - matchExpressions:
+##            - key: project
+##              operator: In
+##              values:
+##              - guestbook
+##          - matchExpressions:
+##            - key: project
+##              operator: In
+##              values:
+##              - kustomize-foo
+##              - kustomize-bar
+#      template:
+#        metadata:
+#          name: 'homebox-{{metadata.labels.environment}}'
+#          labels:
+#            type: 'service'
+#          annotations: {}
+#        spec:
+#          project: default
+#          sources:
+#          - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+#            targetRevision: feature/multicluster-approach
+#            ref: values
+#          - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+#            path: charts/homebox
+#            targetRevision: feature/multicluster-approach
+#            helm:
+#              valueFiles:
+#                - $values/apps/homebox/{{metadata.labels.environment}}/values.yaml
+#          destination:
+#            server: '{{server}}'
+#            namespace: homebox
+#          syncPolicy:
+#            automated:
+#              prune: false
+#              selfHeal: false
+#            syncOptions:
+#              - CreateNamespace=true
+#          ignoreDifferences:
+#          - group: apps
+#            kind: Deployment
+#            jsonPointers:
+#            - /spec/replicas
+#          info:
+#          - name: url
+#            value: https://argoproj.github.io/
+#      syncPolicy:
+#        # Set Application finalizer
+#        preserveResourcesOnDeletion: false
       # Templating is only available on string type
 #      templatePatch: |
 #        spec:
