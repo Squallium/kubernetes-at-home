@@ -264,6 +264,7 @@ argocd-apps:
               selfHeal: false
             syncOptions:
               - CreateNamespace=true
+              - PruneLast=true
           ignoreDifferences:
           - group: apps
             kind: Deployment
