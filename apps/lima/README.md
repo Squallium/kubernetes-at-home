@@ -148,7 +148,7 @@ If you have multiple microk8s instances, you need to combine the kubeconfig file
 to replace the identifiers before combine them.
 
 ```bash
-$env:KUBECONFIG = "$HOME\.kube\core-config;$HOME\.kube\dev-config"
+$env:KUBECONFIG = "$HOME\.kube\core-config;$HOME\.kube\dev-config;$HOME\.kube\pro-config"
 kubectl config view --flatten > $HOME\.kube\config
 ```
 
