@@ -256,7 +256,7 @@ argocd-apps:
               valueFiles:
                 - $values/apps/homebox/{{metadata.labels.environment}}/values.yaml
           destination:
-            server: '{{ .Values.server}}'
+            server: '{{server}}'
             namespace: homebox
           syncPolicy:
             automated:
