@@ -198,7 +198,7 @@ argocd-apps:
   # -- Deploy Argo CD ApplicationSets within this helm release
   # @default -- `{}` (See [values.yaml])
   ## Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/
-  applicationsets: {}
+  applicationsets:
     homebox:
       namespace: argocd
       additionalLabels: {}
