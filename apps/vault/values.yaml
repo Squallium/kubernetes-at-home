@@ -20,7 +20,7 @@ server:
     annotations:
       nginx.ingress.kubernetes.io/ssl-redirect: "false"
     hosts:
-      - host: vault.local
+      - host: vault.internal
         paths:
           - /
 

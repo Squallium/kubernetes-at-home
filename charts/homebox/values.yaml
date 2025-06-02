@@ -13,6 +13,6 @@ persistence:
 ingress:
   enabled: true
   className: public
-  host: homebox.local
+  host: placeholder.example.com
 
 resources: {}

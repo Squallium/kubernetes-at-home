@@ -1,0 +1,5 @@
+clusters:
+  - name: dev
+    environment: development
+  - name: pro
+    environment: production

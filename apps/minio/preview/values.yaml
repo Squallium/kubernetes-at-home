@@ -15,9 +15,6 @@ resources:
     memory: 512Mi
     cpu: 250m
 
-accessKey: minioadmin
-secretKey: minioadmin
-
 ingress:
   enabled: true
   ingressClassName: public
