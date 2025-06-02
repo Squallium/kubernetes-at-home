@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/Squallium/kubernetes-at-home.git
-    targetRevision: feature/multicluster-approach
+    targetRevision: main
     path: gitops
   destination:
     server: https://kubernetes.default.svc
