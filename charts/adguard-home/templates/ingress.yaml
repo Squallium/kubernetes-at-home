@@ -4,6 +4,7 @@ kind: Ingress
 metadata:
   name: {{ include "adguard-home.fullname" . }}
   annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
     {{- range $key, $value := .Values.ingress.annotations }}
     {{ $key }}: {{ $value | quote }}
     {{- end }}
@@ -14,12 +15,12 @@ spec:
       http:
         paths:
           - path: /
-            pathType: ImplementationSpecific
+            pathType: Prefix
             backend:
               service:
                 name: adguard-home
                 port:
-                  number: 3000
+                  number: 80
   {{- if .Values.ingress.tls }}
   tls:
     {{- range .Values.ingress.tls }}
