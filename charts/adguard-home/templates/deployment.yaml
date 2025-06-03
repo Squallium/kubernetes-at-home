@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "adguard-home.fullname" . }}
+  labels:
+    app: {{ include "adguard-home.name" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "adguard-home.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "adguard-home.name" . }}
+    spec:
+      containers:
+        - name: adguard-home
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 3000
+          volumeMounts:
+            - name: data
+              mountPath: {{ .Values.persistence.mountPath }}
+      volumes:
+        - name: data
+          hostPath:
+            path: {{ .Values.persistence.path }}
+            type: DirectoryOrCreate

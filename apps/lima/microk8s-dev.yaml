@@ -12,6 +12,9 @@ mounts:
   - location: "/Users/kuber/shared/dev/paperless-ngx"
     mountPoint: "/mnt/paperless-ngx"
     writable: true
+  - location: "/Users/kuber/shared/dev/adguard-home"
+    mountPoint: "/mnt/adguard-home"
+    writable: true
   - location: "/Users/kuber/shared/dev/velero"
     mountPoint: "/mnt/velero"
     writable: true

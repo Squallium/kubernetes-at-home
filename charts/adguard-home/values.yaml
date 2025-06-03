@@ -1,0 +1,24 @@
+replicaCount: 1
+
+image:
+  repository: adguard/adguardhome
+  tag: v0.107.62
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 3000
+
+ingress:
+  enabled: true
+  className: ""
+  annotations: {}
+  hostname: placeholder.example.com
+  tls: []
+
+persistence:
+  enabled: true
+  path: /data/adguard-home
+  mountPath: /opt/adguardhome/work
+
+resources: {}
