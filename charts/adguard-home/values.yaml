@@ -5,6 +5,8 @@ image:
   tag: v0.107.62
   pullPolicy: IfNotPresent
 
+hostNetwork: false
+
 service:
   type: ClusterIP
   port: 3000

@@ -1,3 +1,5 @@
+hostNetwork: true
+
 ingress:
   hostname: adguard-dev.internal
 

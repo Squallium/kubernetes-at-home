@@ -14,6 +14,8 @@ spec:
       labels:
         app: {{ include "adguard-home.name" . }}
     spec:
+      hostNetwork: {{ .Values.hostNetwork }}
+      dnsPolicy: {{ ternary "ClusterFirstWithHostNet" "ClusterFirst" .Values.hostNetwork }}
       containers:
         - name: adguard-home
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
