@@ -13,15 +13,8 @@ spec:
     - host: {{ .Values.ingress.hostname }}
       http:
         paths:
-          - path: /install.html
-            pathType: Exact
-            backend:
-              service:
-                name: adguard-home
-                port:
-                  number: 3000
           - path: /
-            pathType: Prefix
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: adguard-home
