@@ -19,7 +19,7 @@ spec:
               service:
                 name: adguard-home
                 port:
-                  number: 80
+                  number: 3000
   {{- if .Values.ingress.tls }}
   tls:
     {{- range .Values.ingress.tls }}
