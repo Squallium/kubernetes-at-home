@@ -5,20 +5,20 @@ image:
 ingress:
   enabled: true
   className: public
-  hostname: paperless.local
+  hostname: placeholder.example.com
   proxyBodySize: "100m"
 
 storagePath:
-  data: /mnt/paperless/data
-  media: /mnt/paperless/media
+  data: /mnt/paperless-ngx/data
+  media: /mnt/paperless-ngx/media
 
 redis:
   image: redis:7-alpine
-  storagePath: /mnt/paperless/redis
+  storagePath: /mnt/paperless-ngx/redis
 
 postgresql:
   image: postgres:15-alpine
   username: paperless
   password: paperlesspass
   database: paperlessdb
-  storagePath: /mnt/paperless/postgres
+  storagePath: /mnt/paperless-ngx/postgres
