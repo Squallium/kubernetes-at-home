@@ -7,9 +7,14 @@ spec:
   selector:
     app: {{ include "adguard-home.name" . }}
   ports:
-    - name: http
-      port: {{ .Values.service.port }}         # Normalmente 3000 para el panel web
+    - name: http-setup
+      port: 3000
       targetPort: 3000
+      protocol: TCP
+
+    - name: http
+      port: 80
+      targetPort: 80
       protocol: TCP
 
     - name: dns-tcp
