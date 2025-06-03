@@ -393,7 +393,7 @@ argocd-apps:
               - clusters: {}
               - git:
                   repoURL: https://github.com/Squallium/kubernetes-at-home.git
-                  revision: main
+                  revision: feature/adguard-home-configuration
                   files:
                     - path: 'apps/adguard-home/{{metadata.labels.environment}}/values.yaml'
       # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
@@ -427,11 +427,11 @@ argocd-apps:
           project: default
           sources:
           - repoURL: https://github.com/Squallium/kubernetes-at-home.git
-            targetRevision: main
+            targetRevision: feature/adguard-home-configuration
             ref: values
           - repoURL: https://github.com/Squallium/kubernetes-at-home.git
             path: charts/adguard-home
-            targetRevision: main
+            targetRevision: feature/adguard-home-configuration
             helm:
               valueFiles:
                 - $values/apps/adguard-home/{{metadata.labels.environment}}/values.yaml
