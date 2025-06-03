@@ -1,5 +1,8 @@
 hostNetwork: true
 
+service:
+  port: 80
+
 ingress:
   hostname: adguard-dev.internal
 

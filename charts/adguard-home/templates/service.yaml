@@ -7,7 +7,25 @@ spec:
   selector:
     app: {{ include "adguard-home.name" . }}
   ports:
-    - port: {{ .Values.service.port }}
+    - name: http
+      port: {{ .Values.service.port }}         # Normalmente 3000 para el panel web
       targetPort: 3000
       protocol: TCP
-      name: http
+
+    - name: dns-tcp
+      port: 53
+      targetPort: 53
+      protocol: TCP
+
+    - name: dns-udp
+      port: 53
+      targetPort: 53
+      protocol: UDP
+
+    # Opcional: si usas DHCP en AdGuard (normalmente no)
+    #- name: dhcp-udp
+    #  port: 67
+    #  targetPort: 67
+    #  protocol: UDP
+
+    # Puedes añadir más puertos si usas DoH, DoT, etc.
