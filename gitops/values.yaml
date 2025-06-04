@@ -379,96 +379,96 @@ argocd-apps:
 #            automated:
 #              prune: {{ .prune }}
 #        {{- end }}
-    adguard-home:
-      namespace: argocd
-      additionalLabels: {}
-      additionalAnnotations: {}
-      finalizers:
-      - resources-finalizer.argocd.argoproj.io
-      # See PR #10026 (ArgoCD v2.5 or later)
-      # goTemplate: false
-      generators:
-        - matrix:
-            generators:
-              - clusters: {}
-              - git:
-                  repoURL: https://github.com/Squallium/kubernetes-at-home.git
-                  revision: feature/adguard-home-configuration
-                  files:
-                    - path: 'apps/adguard-home/{{metadata.labels.environment}}/values.yaml'
-      # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
-      ignoreApplicationDifferences:
-      - jsonPointers:
-        - /spec/syncPolicy
-      # Progressive Syncs is an experimental feature and it must be explicitly enabled
-      # Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Progressive-Syncs/#enabling-progressive-syncs
-#      strategy:
-#        type: RollingSync
-#        rollingSync:
-#          steps:
-#          - matchExpressions:
-#            - key: project
-#              operator: In
-#              values:
-#              - guestbook
-#          - matchExpressions:
-#            - key: project
-#              operator: In
-#              values:
-#              - kustomize-foo
-#              - kustomize-bar
-      template:
-        metadata:
-          name: 'adguard-home-{{metadata.labels.environment}}'
-          labels:
-            type: 'service'
-          annotations: {}
-        spec:
-          project: default
-          sources:
-          - repoURL: https://github.com/Squallium/kubernetes-at-home.git
-            targetRevision: feature/adguard-home-configuration
-            ref: values
-          - repoURL: https://github.com/Squallium/kubernetes-at-home.git
-            path: charts/adguard-home
-            targetRevision: feature/adguard-home-configuration
-            helm:
-              valueFiles:
-                - $values/apps/adguard-home/{{metadata.labels.environment}}/values.yaml
-          destination:
-            server: '{{server}}'
-            namespace: adguard-home
-          syncPolicy:
-            automated:
-              prune: false
-              selfHeal: false
-            syncOptions:
-              - CreateNamespace=true
-          ignoreDifferences:
-          - group: apps
-            kind: Deployment
-            jsonPointers:
-            - /spec/replicas
-          info:
-          - name: url
-            value: https://argoproj.github.io/
-      syncPolicy:
-        # Set Application finalizer
-        preserveResourcesOnDeletion: false
-      # Templating is only available on string type
-#      templatePatch: |
+#    adguard-home:
+#      namespace: argocd
+#      additionalLabels: {}
+#      additionalAnnotations: {}
+#      finalizers:
+#      - resources-finalizer.argocd.argoproj.io
+#      # See PR #10026 (ArgoCD v2.5 or later)
+#      # goTemplate: false
+#      generators:
+#        - matrix:
+#            generators:
+#              - clusters: {}
+#              - git:
+#                  repoURL: https://github.com/Squallium/kubernetes-at-home.git
+#                  revision: feature/adguard-home-configuration
+#                  files:
+#                    - path: 'apps/adguard-home/{{metadata.labels.environment}}/values.yaml'
+#      # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
+#      ignoreApplicationDifferences:
+#      - jsonPointers:
+#        - /spec/syncPolicy
+#      # Progressive Syncs is an experimental feature and it must be explicitly enabled
+#      # Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Progressive-Syncs/#enabling-progressive-syncs
+##      strategy:
+##        type: RollingSync
+##        rollingSync:
+##          steps:
+##          - matchExpressions:
+##            - key: project
+##              operator: In
+##              values:
+##              - guestbook
+##          - matchExpressions:
+##            - key: project
+##              operator: In
+##              values:
+##              - kustomize-foo
+##              - kustomize-bar
+#      template:
+#        metadata:
+#          name: 'adguard-home-{{metadata.labels.environment}}'
+#          labels:
+#            type: 'service'
+#          annotations: {}
 #        spec:
-#          source:
+#          project: default
+#          sources:
+#          - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+#            targetRevision: feature/adguard-home-configuration
+#            ref: values
+#          - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+#            path: charts/adguard-home
+#            targetRevision: feature/adguard-home-configuration
 #            helm:
 #              valueFiles:
-#              {{- range $valueFile := .valueFiles }}
-#                - {{ $valueFile }}
-#              {{- end }}
-#        {{- if .autoSync }}
+#                - $values/apps/adguard-home/{{metadata.labels.environment}}/values.yaml
+#          destination:
+#            server: '{{server}}'
+#            namespace: adguard-home
 #          syncPolicy:
 #            automated:
-#              prune: {{ .prune }}
-#        {{- end }}
+#              prune: false
+#              selfHeal: false
+#            syncOptions:
+#              - CreateNamespace=true
+#          ignoreDifferences:
+#          - group: apps
+#            kind: Deployment
+#            jsonPointers:
+#            - /spec/replicas
+#          info:
+#          - name: url
+#            value: https://argoproj.github.io/
+#      syncPolicy:
+#        # Set Application finalizer
+#        preserveResourcesOnDeletion: false
+#      # Templating is only available on string type
+##      templatePatch: |
+##        spec:
+##          source:
+##            helm:
+##              valueFiles:
+##              {{- range $valueFile := .valueFiles }}
+##                - {{ $valueFile }}
+##              {{- end }}
+##        {{- if .autoSync }}
+##          syncPolicy:
+##            automated:
+##              prune: {{ .prune }}
+##        {{- end }}
   #  guestbook:
   #    namespace: argocd
   #    additionalLabels: {}
