@@ -29,4 +29,4 @@ spec:
         - name: data
           hostPath:
             path: {{ .Values.persistence.path }}
-            type: DirectoryOrCreate
+            type: Directory
