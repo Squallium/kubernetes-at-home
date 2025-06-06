@@ -110,14 +110,32 @@ Get the role ID and secret ID for the AppRole:
 vault read auth/approle/role/eso-role/role-id
 ```
 
+Increase the secret ID TTL to 720 hours:
+
+```bash
+vault write auth/approle/role/eso-role secret_id_ttl=720h
+```
+
 Get the secret ID for the AppRole:
 
 ```bash
 vault write -f auth/approle/role/eso-role/secret-id
 ```
 
-Create the vault-approle-secret Opaque in Kubernetes with the role ID and secret ID.
+Create the vault-approle-secret Opaque in Kubernetes with the secret ID.
 
 ```bash
 kubectl create secret generic vault-approle-secret --from-literal=secret-id=xxxxxx -n default
+```
+
+Or you can update the vault-approle-secret with the new secret ID after encoding it in base64:
+
+```bash
+echo -n "xxxxxx" | base64
+```
+
+Then patch the secret in Kubernetes:
+
+```bash
+kubectl patch secret vault-approle-secret -p '{"data":{"secret-id":"xxxxxx"}}' -n default
 ```
