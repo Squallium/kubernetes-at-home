@@ -25,5 +25,6 @@ spec:
               mountPath: /data
       volumes:
         - name: data
-          persistentVolumeClaim:
-            claimName: homebox-data
+          hostPath:
+            path: {{ .Values.storagePath.data }}
+            type: Directory

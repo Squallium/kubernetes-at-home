@@ -15,4 +15,7 @@ ingress:
   className: public
   host: placeholder.example.com
 
+storagePath:
+  data: /mnt/homebox/data
+
 resources: {}
