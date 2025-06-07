@@ -4,6 +4,6 @@ default_context:
       - name: "homebox"
       - name: "paperless-ngx"
       - name: "home-assistant"
-        chart_repo_url: "https://pajikos.github.io/home-assistant-helm-chart/"
-        chart_name: "pajikos/home-assistant"
+        chart_repo_url: "https://pajikos.github.io/home-assistant-helm-chart"
+        chart_name: "home-assistant"
         chart_target_revision: "0.3.4"
