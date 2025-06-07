@@ -280,7 +280,7 @@ argocd-apps:
               {%- if service_config.chart_name | default(cookiecutter.default_chart_name) %}
               chart: {{ service_config.chart_name  }}
               {%- else %}
-              path: charts/{{ service_config.name }}
+              path: charts/{{ service_config.name }}-config
               {%- endif %}
               targetRevision: {{ service_config.chart_target_revision | default(cookiecutter.default_chart_target_revision) }}
               helm:
