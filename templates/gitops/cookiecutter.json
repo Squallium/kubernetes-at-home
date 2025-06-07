@@ -8,6 +8,13 @@
       "name": "homebox"
     }]
   },
+  "services_config": {
+    "list": [
+      {
+        "name": "home-assistant"
+      }
+    ]
+  },
   "_extensions": [
     "jinja2_strcase.StrcaseExtension"
   ]
