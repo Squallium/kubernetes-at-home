@@ -9,14 +9,6 @@ ingress:
         - path: /
           pathType: Prefix
 
-initContainers:
-  - name: init-hacs
-    image: bash
-    command: ["bash", "-c", "cd /config && wget -O - https://get.hacs.xyz | bash -"]
-    volumeMounts:
-      - mountPath: /config
-        name: home-assistant-development
-
 configuration:
   enabled: true
   trusted_proxies:
