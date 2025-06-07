@@ -359,8 +359,8 @@ argocd-apps:
             - repoURL: https://github.com/Squallium/kubernetes-at-home.git
               targetRevision: main
               ref: values
-            - repoURL: https://pajikos.github.io/home-assistant-helm-chart/
-              chart: pajikos/home-assistant
+            - repoURL: https://pajikos.github.io/home-assistant-helm-chart
+              chart: home-assistant
               targetRevision: 0.3.4
               helm:
                 valueFiles:
