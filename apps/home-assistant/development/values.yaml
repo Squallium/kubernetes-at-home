@@ -9,6 +9,23 @@ ingress:
         - path: /
           pathType: Prefix
 
+securityContext:
+  privileged: true
+
+persistence:
+  enabled: false  # No usamos PVC, sino hostPath
+
+extraVolumes:
+  - name: home-assistant-config
+    hostPath:
+      path: /mnt/home-assistant/config  # Ruta en la VM de Lima (montada desde el Mac Mini)
+      type: Directory
+
+extraVolumeMounts:
+  - name: home-assistant-config
+    mountPath: /config
+
+
 configuration:
   enabled: true
   trusted_proxies:

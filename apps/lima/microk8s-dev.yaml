@@ -9,8 +9,14 @@ disk: "40GiB"
 mounts:
   - location: "~"
     writable: true
+  - location: "/Users/kuber/shared/dev/homebox"
+    mountPoint: "/mnt/homebox"
+    writable: true
   - location: "/Users/kuber/shared/dev/paperless-ngx"
     mountPoint: "/mnt/paperless-ngx"
+    writable: true
+  - location: "/Users/kuber/shared/dev/home-assistant"
+    mountPoint: "/mnt/home-assistant"
     writable: true
   - location: "/Users/kuber/shared/dev/adguard-home"
     mountPoint: "/mnt/adguard-home"
