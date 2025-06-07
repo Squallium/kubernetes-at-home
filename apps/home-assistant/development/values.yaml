@@ -1,8 +1,10 @@
 ingress:
   enabled: true
   className: public
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
   hosts:
     - host: home-assistant-dev.internal
       paths:
         - path: /
-          pathType: ImplementationSpecific
+          pathType: Prefix
