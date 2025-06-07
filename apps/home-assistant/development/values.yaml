@@ -1,0 +1,8 @@
+ingress:
+  enabled: true
+  className: public
+  hosts:
+    - host: home-assistant-dev.internal
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
