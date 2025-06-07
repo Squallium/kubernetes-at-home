@@ -15,7 +15,6 @@ securityContext:
 persistence:
   enabled: true
   existingVolume: home-assistant-config
-  storageClass: ""
 
 configuration:
   enabled: true
