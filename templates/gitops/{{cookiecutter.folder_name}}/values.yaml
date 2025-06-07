@@ -129,7 +129,8 @@ argocd-apps:
   # @default -- `{}` (See [values.yaml])
   ## Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/
   applicationsets:
-    homebox:
+    {%- for service in cookiecutter.services.list %}
+    {{ service.name }}:
       namespace: argocd
       additionalLabels: {}
       additionalAnnotations: {}
@@ -145,7 +146,7 @@ argocd-apps:
                   repoURL: https://github.com/Squallium/kubernetes-at-home.git
                   revision: main
                   files:
-                    - path: 'apps/homebox/{{metadata.labels.environment}}/values.yaml'
+                    - path: 'apps/{{ service.name }}/{{'{{'}}metadata.labels.environment}}/values.yaml'
       # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
       ignoreApplicationDifferences:
         - jsonPointers:
@@ -169,7 +170,7 @@ argocd-apps:
       #              - kustomize-bar
       template:
         metadata:
-          name: 'homebox-{{metadata.labels.environment}}'
+          name: '{{ service.name }}-{{'{{'}}metadata.labels.environment}}'
           labels:
             type: 'service'
           annotations: {}
@@ -179,15 +180,19 @@ argocd-apps:
             - repoURL: https://github.com/Squallium/kubernetes-at-home.git
               targetRevision: main
               ref: values
-            - repoURL: https://github.com/Squallium/kubernetes-at-home.git
-              path: charts/homebox
-              targetRevision: main
+            - repoURL: {{ service.chart_repo_url | default(cookiecutter.default_chart_repo_url) }}
+              {%- if service.chart_name | default(cookiecutter.default_chart_name) %}
+              chart: {{ service.chart_name  }}
+              {%- else %}
+              path: charts/{{ service.name }}
+              {%- endif %}
+              targetRevision: {{ service.chart_target_revision | default(cookiecutter.default_chart_target_revision) }}
               helm:
                 valueFiles:
-                  - $values/apps/homebox/{{metadata.labels.environment}}/values.yaml
+                  - $values/apps/{{ service.name }}/{{'{{'}}metadata.labels.environment}}/values.yaml
           destination:
-            server: '{{server}}'
-            namespace: homebox
+            server: '{{'{{'}}server}}'
+            namespace: {{ service.name }}
           syncPolicy:
             automated:
               prune: false
@@ -211,194 +216,15 @@ argocd-apps:
     #          source:
     #            helm:
     #              valueFiles:
-    #              {{- range $valueFile := .valueFiles }}
-    #                - {{ $valueFile }}
-    #              {{- end }}
-    #        {{- if .autoSync }}
+    #              {{'{{'}}- range $valueFile := .valueFiles }}
+    #                - {{'{{'}} $valueFile }}
+    #              {{'{{'}}- end }}
+    #        {{'{{'}}- if .autoSync }}
     #          syncPolicy:
     #            automated:
-    #              prune: {{ .prune }}
-    #        {{- end }}
-    paperless-ngx:
-      namespace: argocd
-      additionalLabels: {}
-      additionalAnnotations: {}
-      finalizers:
-        - resources-finalizer.argocd.argoproj.io
-      # See PR #10026 (ArgoCD v2.5 or later)
-      # goTemplate: false
-      generators:
-        - matrix:
-            generators:
-              - clusters: {}
-              - git:
-                  repoURL: https://github.com/Squallium/kubernetes-at-home.git
-                  revision: main
-                  files:
-                    - path: 'apps/paperless-ngx/{{metadata.labels.environment}}/values.yaml'
-      # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
-      ignoreApplicationDifferences:
-        - jsonPointers:
-            - /spec/syncPolicy
-      # Progressive Syncs is an experimental feature and it must be explicitly enabled
-      # Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Progressive-Syncs/#enabling-progressive-syncs
-      #      strategy:
-      #        type: RollingSync
-      #        rollingSync:
-      #          steps:
-      #          - matchExpressions:
-      #            - key: project
-      #              operator: In
-      #              values:
-      #              - guestbook
-      #          - matchExpressions:
-      #            - key: project
-      #              operator: In
-      #              values:
-      #              - kustomize-foo
-      #              - kustomize-bar
-      template:
-        metadata:
-          name: 'paperless-ngx-{{metadata.labels.environment}}'
-          labels:
-            type: 'service'
-          annotations: {}
-        spec:
-          project: default
-          sources:
-            - repoURL: https://github.com/Squallium/kubernetes-at-home.git
-              targetRevision: main
-              ref: values
-            - repoURL: https://github.com/Squallium/kubernetes-at-home.git
-              path: charts/paperless-ngx
-              targetRevision: main
-              helm:
-                valueFiles:
-                  - $values/apps/paperless-ngx/{{metadata.labels.environment}}/values.yaml
-          destination:
-            server: '{{server}}'
-            namespace: paperless-ngx
-          syncPolicy:
-            automated:
-              prune: false
-              selfHeal: false
-            syncOptions:
-              - CreateNamespace=true
-          ignoreDifferences:
-            - group: apps
-              kind: Deployment
-              jsonPointers:
-                - /spec/replicas
-          info:
-            - name: url
-              value: https://argoproj.github.io/
-      syncPolicy:
-        # Set Application finalizer
-        preserveResourcesOnDeletion: false
-      # Templating is only available on string type
-    #      templatePatch: |
-    #        spec:
-    #          source:
-    #            helm:
-    #              valueFiles:
-    #              {{- range $valueFile := .valueFiles }}
-    #                - {{ $valueFile }}
-    #              {{- end }}
-    #        {{- if .autoSync }}
-    #          syncPolicy:
-    #            automated:
-    #              prune: {{ .prune }}
-    #        {{- end }}
-    home-assistant:
-      namespace: argocd
-      additionalLabels: {}
-      additionalAnnotations: {}
-      finalizers:
-        - resources-finalizer.argocd.argoproj.io
-      # See PR #10026 (ArgoCD v2.5 or later)
-      # goTemplate: false
-      generators:
-        - matrix:
-            generators:
-              - clusters: {}
-              - git:
-                  repoURL: https://github.com/Squallium/kubernetes-at-home.git
-                  revision: main
-                  files:
-                    - path: 'apps/home-assistant/{{metadata.labels.environment}}/values.yaml'
-      # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
-      ignoreApplicationDifferences:
-        - jsonPointers:
-            - /spec/syncPolicy
-      # Progressive Syncs is an experimental feature and it must be explicitly enabled
-      # Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Progressive-Syncs/#enabling-progressive-syncs
-      #      strategy:
-      #        type: RollingSync
-      #        rollingSync:
-      #          steps:
-      #          - matchExpressions:
-      #            - key: project
-      #              operator: In
-      #              values:
-      #              - guestbook
-      #          - matchExpressions:
-      #            - key: project
-      #              operator: In
-      #              values:
-      #              - kustomize-foo
-      #              - kustomize-bar
-      template:
-        metadata:
-          name: 'home-assistant-{{metadata.labels.environment}}'
-          labels:
-            type: 'service'
-          annotations: {}
-        spec:
-          project: default
-          sources:
-            - repoURL: https://github.com/Squallium/kubernetes-at-home.git
-              targetRevision: main
-              ref: values
-            - repoURL: http://pajikos.github.io/home-assistant-helm-chart/
-              chart: pajikos/home-assistant
-              targetRevision: 0.3.4
-              helm:
-                valueFiles:
-                  - $values/apps/home-assistant/{{metadata.labels.environment}}/values.yaml
-          destination:
-            server: '{{server}}'
-            namespace: home-assistant
-          syncPolicy:
-            automated:
-              prune: false
-              selfHeal: false
-            syncOptions:
-              - CreateNamespace=true
-          ignoreDifferences:
-            - group: apps
-              kind: Deployment
-              jsonPointers:
-                - /spec/replicas
-          info:
-            - name: url
-              value: https://argoproj.github.io/
-      syncPolicy:
-        # Set Application finalizer
-        preserveResourcesOnDeletion: false
-      # Templating is only available on string type
-    #      templatePatch: |
-    #        spec:
-    #          source:
-    #            helm:
-    #              valueFiles:
-    #              {{- range $valueFile := .valueFiles }}
-    #                - {{ $valueFile }}
-    #              {{- end }}
-    #        {{- if .autoSync }}
-    #          syncPolicy:
-    #            automated:
-    #              prune: {{ .prune }}
-    #        {{- end }}
+    #              prune: {{'{{'}} .prune }}
+    #        {{'{{'}}- end }}
+    {%- endfor %}
   #    adguard-home:
   #      namespace: argocd
   #      additionalLabels: {}
@@ -415,7 +241,7 @@ argocd-apps:
   #                  repoURL: https://github.com/Squallium/kubernetes-at-home.git
   #                  revision: feature/adguard-home-configuration
   #                  files:
-  #                    - path: 'apps/adguard-home/{{metadata.labels.environment}}/values.yaml'
+  #                    - path: 'apps/adguard-home/{{'{{'}}metadata.labels.environment}}/values.yaml'
   #      # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
   #      ignoreApplicationDifferences:
   #      - jsonPointers:
@@ -439,7 +265,7 @@ argocd-apps:
   ##              - kustomize-bar
   #      template:
   #        metadata:
-  #          name: 'adguard-home-{{metadata.labels.environment}}'
+  #          name: 'adguard-home-{{'{{'}}metadata.labels.environment}}'
   #          labels:
   #            type: 'service'
   #          annotations: {}
@@ -454,9 +280,9 @@ argocd-apps:
   #            targetRevision: feature/adguard-home-configuration
   #            helm:
   #              valueFiles:
-  #                - $values/apps/adguard-home/{{metadata.labels.environment}}/values.yaml
+  #                - $values/apps/adguard-home/{{'{{'}}metadata.labels.environment}}/values.yaml
   #          destination:
-  #            server: '{{server}}'
+  #            server: '{{'{{'}}server}}'
   #            namespace: adguard-home
   #          syncPolicy:
   #            automated:
@@ -481,14 +307,14 @@ argocd-apps:
   ##          source:
   ##            helm:
   ##              valueFiles:
-  ##              {{- range $valueFile := .valueFiles }}
-  ##                - {{ $valueFile }}
-  ##              {{- end }}
-  ##        {{- if .autoSync }}
+  ##              {{'{{'}}- range $valueFile := .valueFiles }}
+  ##                - {{'{{'}} $valueFile }}
+  ##              {{'{{'}}- end }}
+  ##        {{'{{'}}- if .autoSync }}
   ##          syncPolicy:
   ##            automated:
-  ##              prune: {{ .prune }}
-  ##        {{- end }}
+  ##              prune: {{'{{'}} .prune }}
+  ##        {{'{{'}}- end }}
   #  guestbook:
   #    namespace: argocd
   #    additionalLabels: {}
@@ -527,16 +353,16 @@ argocd-apps:
   #            - kustomize-bar
   #    template:
   #      metadata:
-  #        name: '{{path.basename}}'
+  #        name: '{{'{{'}}path.basename}}'
   #        labels:
-  #          project: '{{path.basename}}'
+  #          project: '{{'{{'}}path.basename}}'
   #        annotations: {}
   #      spec:
   #        project: default
   #        source:
   #          repoURL: https://github.com/argoproj/argocd-example-apps.git
   #          targetRevision: HEAD
-  #          path: '{{path}}'
+  #          path: '{{'{{'}}path}}'
   #        destination:
   #          server: https://kubernetes.default.svc
   #          namespace: default
@@ -561,14 +387,14 @@ argocd-apps:
   #        source:
   #          helm:
   #            valueFiles:
-  #            {{- range $valueFile := .valueFiles }}
-  #              - {{ $valueFile }}
-  #            {{- end }}
-  #      {{- if .autoSync }}
+  #            {{'{{'}}- range $valueFile := .valueFiles }}
+  #              - {{'{{'}} $valueFile }}
+  #            {{'{{'}}- end }}
+  #      {{'{{'}}- if .autoSync }}
   #        syncPolicy:
   #          automated:
-  #            prune: {{ .prune }}
-  #      {{- end }}
+  #            prune: {{'{{'}} .prune }}
+  #      {{'{{'}}- end }}
 
   # --  Deploy Argo CD Applications/ApplicationSets/Projects within this helm release
   # @default -- `[]` (See [values.yaml])
@@ -589,20 +415,20 @@ argocd-apps:
   #     apiVersion: argoproj.io/v1alpha1
   #     kind: ApplicationSet
   #     metadata:
-  #       name: "{{ .name }}"
+  #       name: "{{'{{'}} .name }}"
   #     spec:
   #       generators: *generators
   #       template:
   #         metadata:
-  #           name: "{{`{{cluster}}`}}-guestbook"
+  #           name: "{{'{{'}}`{{'{{'}}cluster}}`}}-guestbook"
   #         spec:
   #           project: my-project
   #           source:
   #             repoURL: https://github.com/infra-team/cluster-deployments.git
   #             targetRevision: HEAD
-  #             path: guestbook/{{`{{cluster}}`}}
+  #             path: guestbook/{{'{{'}}`{{'{{'}}cluster}}`}}
   #           destination:
-  #             server: "{{`{{cluster}}`}}"
+  #             server: "{{'{{'}}`{{'{{'}}cluster}}`}}"
   #             namespace: guestbook
   # - items:
   #     - name: my-appset
@@ -619,20 +445,20 @@ argocd-apps:
   #     apiVersion: argoproj.io/v1alpha1
   #     kind: ApplicationSet
   #     metadata:
-  #       name: {{ .name }}
+  #       name: {{'{{'}} .name }}
   #     spec:
-  #       generators: {{ toYaml .generators | nindent 4 }}
+  #       generators: {{'{{'}} toYaml .generators | nindent 4 }}
   #       template:
   #         metadata:
-  #           name: '{{`{{cluster}}`}}-guestbook'
+  #           name: '{{'{{'}}`{{'{{'}}cluster}}`}}-guestbook'
   #         spec:
   #           project: my-project
   #           source:
   #             repoURL: https://github.com/infra-team/cluster-deployments.git
   #             targetRevision: HEAD
-  #             path: guestbook/{{`{{cluster}}`}}
+  #             path: guestbook/{{'{{'}}`{{'{{'}}cluster}}`}}
   #           destination:
-  #             server: '{{`{{cluster}}`}}'
+  #             server: '{{'{{'}}`{{'{{'}}cluster}}`}}'
   #             namespace: guestbook
 
   # -- DEPRECATED - Please refer [Deprecation Notice](https://github.com/argoproj-labs/argocd-extensions?tab=readme-ov-file#deprecation-notice) for more info.
