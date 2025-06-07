@@ -20,6 +20,7 @@ configs:
   cm:
     admin.enabled: true
     url: http://argocd.internal
+    exec.enabled: true
 
 dex:
   enabled: false  # Deactivate SSO/OAuth (we'll enable it later)
