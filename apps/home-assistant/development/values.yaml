@@ -11,18 +11,11 @@ ingress:
 
 initContainers:
   - name: init-hacs
-    image: alpine:latest
-    command:
-      - sh
-      - -c
-      - |
-        apk add --no-cache bash wget \
-        && cd /config \
-        && wget -O - https://get.hacs.xyz | bash -
+    image: bash
+    command: ["bash", "-c", "cd /config && wget -O - https://get.hacs.xyz | bash -"]
     volumeMounts:
       - mountPath: /config
-        name: home-assistant-development
-
+        name: home-assistant
 
 configuration:
   enabled: true
