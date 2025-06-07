@@ -8,5 +8,5 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: /mnt/home-assistant-config
+    path: /mnt/home-assistant/config
   persistentVolumeReclaimPolicy: Retain
