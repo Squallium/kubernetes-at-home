@@ -15,15 +15,15 @@ securityContext:
 persistence:
   enabled: false  # No usamos PVC, sino hostPath
 
-extraVolumes:
+volumeMounts:
+  - mountPath: /config
+    name: home-assistant-config
+
+volumes:
   - name: home-assistant-config
     hostPath:
-      path: /mnt/home-assistant/config  # Ruta en la VM de Lima (montada desde el Mac Mini)
+      path: /mnt/home-assistant/config
       type: Directory
-
-extraVolumeMounts:
-  - name: home-assistant-config
-    mountPath: /config
 
 
 configuration:
