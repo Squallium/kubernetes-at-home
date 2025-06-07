@@ -361,7 +361,7 @@ argocd-apps:
               ref: values
             - repoURL: http://pajikos.github.io/home-assistant-helm-chart/
               chart: pajikos/home-assistant
-              targetRevision: 0.3.4
+              targetRevision: 0.1.10
               helm:
                 valueFiles:
                   - $values/apps/home-assistant/{{metadata.labels.environment}}/values.yaml

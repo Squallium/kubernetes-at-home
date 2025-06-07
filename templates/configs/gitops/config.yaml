@@ -6,4 +6,4 @@ default_context:
       - name: "home-assistant"
         chart_repo_url: "http://pajikos.github.io/home-assistant-helm-chart/"
         chart_name: "pajikos/home-assistant"
-        chart_target_revision: "0.3.4"
+        chart_target_revision: "0.1.10"
