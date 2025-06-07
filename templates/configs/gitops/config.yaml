@@ -1,0 +1,4 @@
+default_context:
+  services:
+    - name: homebox
+    - name: paperless-ngx
