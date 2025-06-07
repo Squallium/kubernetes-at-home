@@ -13,17 +13,8 @@ securityContext:
   privileged: true
 
 persistence:
-  enabled: false  # No usamos PVC, sino hostPath
-
-volumeMounts:
-  - mountPath: /config
-    name: home-assistant-config
-
-volumes:
-  - name: home-assistant-config
-    hostPath:
-      path: /mnt/home-assistant/config
-      type: Directory
+  enabled: true
+  existingVolume: home-assistant-config
 
 configuration:
   enabled: true
