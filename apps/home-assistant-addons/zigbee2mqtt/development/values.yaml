@@ -6,7 +6,6 @@ mqtt:
 
 serial:
   port: /dev/ttyUSB0
-  adapter: ezsp
 
 persistence:
   enabled: false
@@ -30,3 +29,4 @@ statefulset:
     - name: zigbee-tty
       hostPath:
         path: /dev/ttyUSB0
+        type: CharDevice
