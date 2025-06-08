@@ -60,9 +60,9 @@ argocd-apps:
             server: '{{server}}'
             namespace: home-assistant
           syncPolicy:
-            automated:
-              prune: false
-              selfHeal: false
+#            automated:
+#              prune: false
+#              selfHeal: false
             syncOptions:
               - CreateNamespace=true
           ignoreDifferences:
