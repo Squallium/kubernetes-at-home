@@ -17,7 +17,7 @@ statefulset:
   volumeMounts:
   #  - name: zigbee2mqtt-config
   #    mountPath: /app/data
-  #  - name: zigbee-tty
+    - name: zigbee-tty
       mountPath: /dev/ttyUSB0
       readOnly: false
 
