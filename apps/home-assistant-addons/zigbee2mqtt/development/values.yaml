@@ -25,3 +25,10 @@ ingress:
         - path: /
           pathType: Prefix
   tls: []
+
+statefulset:
+  storage:
+    enabled: true
+    storageClassName: microk8s-hostpath
+    existingVolume: zigbee2mqtt-data
+

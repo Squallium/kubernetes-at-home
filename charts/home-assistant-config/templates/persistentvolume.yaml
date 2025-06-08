@@ -11,3 +11,17 @@ spec:
   hostPath:
     path: /mnt/home-assistant/config
   persistentVolumeReclaimPolicy: Retain
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: zigbee2mqtt-data
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: microk8s-hostpath
+  hostPath:
+    path: /mnt/home-assistant/zigbee2mqtt/data
+  persistentVolumeReclaimPolicy: Retain
