@@ -29,4 +29,3 @@ statefulset:
     - name: zigbee-tty
       hostPath:
         path: /dev/ttyUSB0
-        type: CharDevice
