@@ -365,7 +365,7 @@ argocd-apps:
       #              - kustomize-bar
       template:
         metadata:
-          name: '{{ app_of_app.name }}-{{'{{'}}metadata.labels.environment}}'
+          name: '{{ app_of_app.name }}-{{'{{'}}metadata.labels.name}}'
           labels:
             type: 'service-config'
           annotations: {}

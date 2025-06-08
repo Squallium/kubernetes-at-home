@@ -532,7 +532,7 @@ argocd-apps:
       #              - kustomize-bar
       template:
         metadata:
-          name: 'home-assistant-addons-{{metadata.labels.environment}}'
+          name: 'home-assistant-addons-{{metadata.labels.name}}'
           labels:
             type: 'service-config'
           annotations: {}
