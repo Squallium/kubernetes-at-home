@@ -27,7 +27,10 @@ configuration:
     default_config:
     
     mqtt:
-      broker: mqtt://mosquitto.default.svc.cluster.local:1883
+      broker: mosquitto.home-assistant.svc.cluster.local
+      port: 1883
+      discovery: true
+      discovery_prefix: homeassistant
     
     frontend:
       themes: !include_dir_merge_named themes
