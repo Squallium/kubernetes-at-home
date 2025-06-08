@@ -6,6 +6,7 @@ mqtt:
 
 serial:
   port: /dev/ttyUSB0
+  adapter: ezsp
 
 persistence:
   enabled: false
