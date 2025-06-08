@@ -333,12 +333,15 @@ argocd-apps:
       generators:
         - matrix:
             generators:
-              - clusters: {}
+              - clusters:
+                  selector:
+                    matchLabels:
+                      name: "in-cluster"
               - git:
                   repoURL: https://github.com/Squallium/kubernetes-at-home.git
                   revision: main
                   files:
-                    - path: 'apps/{{ app_of_app.name }}/{{'{{'}}metadata.labels.environment}}/values.yaml'
+                    - path: 'apps/{{ app_of_app.name }}/{{'{{'}}metadata.labels.name}}/values.yaml'
       # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
       ignoreApplicationDifferences:
         - jsonPointers:
@@ -381,7 +384,7 @@ argocd-apps:
               targetRevision: {{ app_of_app.chart_target_revision | default(cookiecutter.default_chart_target_revision) }}
               helm:
                 valueFiles:
-                  - $values/apps/{{ app_of_app.name }}/{{'{{'}}metadata.labels.environment}}/values.yaml
+                  - $values/apps/{{ app_of_app.name }}/{{'{{'}}metadata.labels.name}}/values.yaml
           destination:
             server: '{{'{{'}}server}}'
             namespace: argocd

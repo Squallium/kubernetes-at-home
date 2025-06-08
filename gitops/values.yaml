@@ -500,12 +500,15 @@ argocd-apps:
       generators:
         - matrix:
             generators:
-              - clusters: {}
+              - clusters:
+                  selector:
+                    matchLabels:
+                      name: "in-cluster"
               - git:
                   repoURL: https://github.com/Squallium/kubernetes-at-home.git
                   revision: main
                   files:
-                    - path: 'apps/home-assistant-addons/{{metadata.labels.environment}}/values.yaml'
+                    - path: 'apps/home-assistant-addons/{{metadata.labels.name}}/values.yaml'
       # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
       ignoreApplicationDifferences:
         - jsonPointers:
@@ -544,7 +547,7 @@ argocd-apps:
               targetRevision: main
               helm:
                 valueFiles:
-                  - $values/apps/home-assistant-addons/{{metadata.labels.environment}}/values.yaml
+                  - $values/apps/home-assistant-addons/{{metadata.labels.name}}/values.yaml
           destination:
             server: '{{server}}'
             namespace: argocd
