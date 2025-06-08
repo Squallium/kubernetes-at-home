@@ -15,6 +15,13 @@
       }
     ]
   },
+  "app_of_apps": {
+    "list": [
+      {
+        "name": "home-assistant-addons"
+      }
+    ]
+  },
   "_extensions": [
     "jinja2_strcase.StrcaseExtension"
   ]

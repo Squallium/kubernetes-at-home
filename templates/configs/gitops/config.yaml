@@ -10,3 +10,6 @@ default_context:
   services_config:
     list:
       - name: "home-assistant"
+  app_of_apps:
+    list:
+      - name: "home-assistant-addons"
