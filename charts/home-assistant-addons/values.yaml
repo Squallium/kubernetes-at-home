@@ -51,7 +51,7 @@ argocd-apps:
               targetRevision: main
               ref: values
             - repoURL: https://koenkk.github.io/zigbee2mqtt-chart
-              path: zigbee2mqtt
+              chart: zigbee2mqtt
               targetRevision: 2.4.0
               helm:
                 valueFiles:
