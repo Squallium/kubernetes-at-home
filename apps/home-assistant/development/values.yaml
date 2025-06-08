@@ -18,23 +18,7 @@ persistence:
 
 configuration:
   enabled: true
-  forceInit: true
   trusted_proxies:
     - 10.0.0.0/8
     - 127.0.0.1
     - ::1
-  templateConfig: |-
-    default_config:
-    
-    mqtt:
-      broker: mosquitto.home-assistant.svc.cluster.local
-      port: 1883
-      discovery: true
-      discovery_prefix: homeassistant
-    
-    frontend:
-      themes: !include_dir_merge_named themes
-    
-    automation: !include automations.yaml
-    script: !include scripts.yaml
-    scene: !include scenes.yaml
