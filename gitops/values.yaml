@@ -2,42 +2,42 @@ argocd-apps:
   # -- Deploy Argo CD Applications within this helm release
   # @default -- `{}` (See [values.yaml])
   ## Ref: https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/
-  applications: {}
-#    home-assistant-addons:
-#      namespace: argocd
-#      additionalLabels: {}
-#      additionalAnnotations: {}
-#      finalizers:
-#      - resources-finalizer.argocd.argoproj.io
-#      project: default
-#      sources:
-#      - repoURL: https://github.com/Squallium/kubernetes-at-home.git
-#        targetRevision: main
-#        ref: values
-#      - repoURL: https://github.com/Squallium/kubernetes-at-home.git
-#        chart: charts/home-assistant-addons
-#        targetRevision: main
-#        helm:
-#          valueFiles:
-#            - $values/apps/home-assistant-addons/values.yaml
-#      destination:
-#        server: https://kubernetes.default.svc
-#        namespace: argocd
-#      syncPolicy:
-#  #      automated:
-#  #        prune: false
-#  #        selfHeal: false
-#        syncOptions:
-#        - CreateNamespace=true
-#      revisionHistoryLimit: null
-#      ignoreDifferences:
-#      - group: apps
-#        kind: Deployment
-#        jsonPointers:
-#        - /spec/replicas
-#      info:
-#      - name: url
-#        value: https://argoproj.github.io/
+  applications:
+    home-assistant-addons:
+      namespace: argocd
+      additionalLabels: {}
+      additionalAnnotations: {}
+      finalizers:
+      - resources-finalizer.argocd.argoproj.io
+      project: default
+      sources:
+      - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+        targetRevision: main
+        ref: values
+      - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+        chart: charts/home-assistant-addons
+        targetRevision: main
+        helm:
+          valueFiles:
+            - $values/apps/home-assistant-addons/values.yaml
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: argocd
+      syncPolicy:
+  #      automated:
+  #        prune: false
+  #        selfHeal: false
+        syncOptions:
+        - CreateNamespace=true
+      revisionHistoryLimit: null
+      ignoreDifferences:
+      - group: apps
+        kind: Deployment
+        jsonPointers:
+        - /spec/replicas
+      info:
+      - name: url
+        value: https://argoproj.github.io/
   #    minio:
   #      namespace: argocd
   #      additionalLabels: {}
