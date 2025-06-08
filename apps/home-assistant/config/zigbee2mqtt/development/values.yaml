@@ -1,0 +1,24 @@
+mqtt:
+  base_topic: zigbee2mqtt
+  server: mqtt://mosquitto.home-assistant.svc.cluster.local
+  user: zigbee2mqtt
+  password: zigbee2mqtt
+
+serial:
+  port: /dev/ttyUSB0
+
+persistence:
+  enabled: false
+
+securityContext:
+  privileged: true
+
+extraVolumeMounts:
+  - name: zigbee2mqtt-config
+    mountPath: /app/data
+
+extraVolumes:
+  - name: zigbee2mqtt-config
+    hostPath:
+      path: /mnt/home-assistant/zigbee2mqtt/config
+      type: Directory

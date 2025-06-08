@@ -10,3 +10,4 @@ This chart deploys a Home Assistant configuration using a ConfigMap to store the
 
 - [Mosquitto Broker](https://github.com/eclipse-mosquitto/mosquitto)
 - [Zigbee2MQTT](https://github.com/Koenkk/zigbee2mqtt)
+  - Using the official chart [Zigbee2MQTT ArtifactHub](https://artifacthub.io/packages/helm/zigbee2mqtt/zigbee2mqtt)
