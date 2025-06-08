@@ -231,9 +231,9 @@ argocd-apps:
             server: '{{'{{'}}server}}'
             namespace: {{ service.name }}
           syncPolicy:
-            automated:
-              prune: false
-              selfHeal: false
+#            automated:
+#              prune: false
+#              selfHeal: false
             syncOptions:
               - CreateNamespace=true
           ignoreDifferences:
@@ -327,9 +327,9 @@ argocd-apps:
             server: '{{'{{'}}server}}'
             namespace: {{ service_config.name }}
           syncPolicy:
-            automated:
-              prune: false
-              selfHeal: false
+#            automated:
+#              prune: false
+#              selfHeal: false
             syncOptions:
               - CreateNamespace=true
           ignoreDifferences:
