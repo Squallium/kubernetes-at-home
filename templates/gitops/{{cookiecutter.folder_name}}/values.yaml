@@ -2,7 +2,44 @@ argocd-apps:
   # -- Deploy Argo CD Applications within this helm release
   # @default -- `{}` (See [values.yaml])
   ## Ref: https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/
-  #  applications:
+    applications:
+      {%- for app_of_app in cookiecutter.app_of_apps.list %}
+      {{ app_of_app.name }}:
+        namespace: argocd
+        additionalLabels: {}
+        additionalAnnotations: {}
+        finalizers:
+        - resources-finalizer.argocd.argoproj.io
+        project: default
+        sources:
+        - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+          targetRevision: main
+          ref: values
+        - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+          chart: charts/{{ app_of_app.name }}
+          targetRevision: main
+          helm:
+            valueFiles:
+              - $values/apps/{{ app_of_app.name }}/values.yaml
+        destination:
+          server: https://kubernetes.default.svc
+          namespace: argocd
+        syncPolicy:
+    #      automated:
+    #        prune: false
+    #        selfHeal: false
+          syncOptions:
+          - CreateNamespace=true
+        revisionHistoryLimit: null
+        ignoreDifferences:
+        - group: apps
+          kind: Deployment
+          jsonPointers:
+          - /spec/replicas
+        info:
+        - name: url
+          value: https://argoproj.github.io/
+      {%- endfor %}
   #    minio:
   #      namespace: argocd
   #      additionalLabels: {}
@@ -289,105 +326,6 @@ argocd-apps:
           destination:
             server: '{{'{{'}}server}}'
             namespace: {{ service_config.name }}
-          syncPolicy:
-            automated:
-              prune: false
-              selfHeal: false
-            syncOptions:
-              - CreateNamespace=true
-          ignoreDifferences:
-            - group: apps
-              kind: Deployment
-              jsonPointers:
-                - /spec/replicas
-          info:
-            - name: url
-              value: https://argoproj.github.io/
-      syncPolicy:
-        # Set Application finalizer
-        preserveResourcesOnDeletion: false
-      # Templating is only available on string type
-    #      templatePatch: |
-    #        spec:
-    #          source:
-    #            helm:
-    #              valueFiles:
-    #              {{'{{'}}- range $valueFile := .valueFiles }}
-    #                - {{'{{'}} $valueFile }}
-    #              {{'{{'}}- end }}
-    #        {{'{{'}}- if .autoSync }}
-    #          syncPolicy:
-    #            automated:
-    #              prune: {{'{{'}} .prune }}
-    #        {{'{{'}}- end }}
-    {%- endfor %}
-    {%- for app_of_app in cookiecutter.app_of_apps.list %}
-    {{ app_of_app.name }}:
-      namespace: argocd
-      additionalLabels: {}
-      additionalAnnotations: {}
-      finalizers:
-        - resources-finalizer.argocd.argoproj.io
-      # See PR #10026 (ArgoCD v2.5 or later)
-      # goTemplate: false
-      generators:
-        - matrix:
-            generators:
-              - clusters:
-                  selector:
-                    matchLabels:
-                      name: "in-cluster"
-              - git:
-                  repoURL: https://github.com/Squallium/kubernetes-at-home.git
-                  revision: main
-                  files:
-                    - path: 'apps/{{ app_of_app.name }}/{{'{{'}}metadata.labels.name}}/values.yaml'
-      # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
-      ignoreApplicationDifferences:
-        - jsonPointers:
-            - /spec/syncPolicy
-      # Progressive Syncs is an experimental feature and it must be explicitly enabled
-      # Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Progressive-Syncs/#enabling-progressive-syncs
-      #      strategy:
-      #        type: RollingSync
-      #        rollingSync:
-      #          steps:
-      #          - matchExpressions:
-      #            - key: project
-      #              operator: In
-      #              values:
-      #              - guestbook
-      #          - matchExpressions:
-      #            - key: project
-      #              operator: In
-      #              values:
-      #              - kustomize-foo
-      #              - kustomize-bar
-      template:
-        metadata:
-          name: '{{ app_of_app.name }}-{{'{{'}}metadata.labels.name}}'
-          labels:
-            type: 'service-config'
-          annotations: {}
-        spec:
-          project: default
-          sources:
-            - repoURL: https://github.com/Squallium/kubernetes-at-home.git
-              targetRevision: main
-              ref: values
-            - repoURL: {{ app_of_app.chart_repo_url | default(cookiecutter.default_chart_repo_url) }}
-              {%- if app_of_app.chart_name | default(cookiecutter.default_chart_name) %}
-              chart: {{ app_of_app.chart_name  }}
-              {%- else %}
-              path: charts/{{ app_of_app.name }}
-              {%- endif %}
-              targetRevision: {{ app_of_app.chart_target_revision | default(cookiecutter.default_chart_target_revision) }}
-              helm:
-                valueFiles:
-                  - $values/apps/{{ app_of_app.name }}/{{'{{'}}metadata.labels.name}}/values.yaml
-          destination:
-            server: '{{'{{'}}server}}'
-            namespace: argocd
           syncPolicy:
             automated:
               prune: false

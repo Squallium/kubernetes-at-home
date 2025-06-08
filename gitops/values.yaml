@@ -2,7 +2,42 @@ argocd-apps:
   # -- Deploy Argo CD Applications within this helm release
   # @default -- `{}` (See [values.yaml])
   ## Ref: https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/
-  #  applications:
+    applications:
+      home-assistant-addons:
+        namespace: argocd
+        additionalLabels: {}
+        additionalAnnotations: {}
+        finalizers:
+        - resources-finalizer.argocd.argoproj.io
+        project: default
+        sources:
+        - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+          targetRevision: main
+          ref: values
+        - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+          chart: charts/home-assistant-addons
+          targetRevision: main
+          helm:
+            valueFiles:
+              - $values/apps/home-assistant-addons/values.yaml
+        destination:
+          server: https://kubernetes.default.svc
+          namespace: argocd
+        syncPolicy:
+    #      automated:
+    #        prune: false
+    #        selfHeal: false
+          syncOptions:
+          - CreateNamespace=true
+        revisionHistoryLimit: null
+        ignoreDifferences:
+        - group: apps
+          kind: Deployment
+          jsonPointers:
+          - /spec/replicas
+        info:
+        - name: url
+          value: https://argoproj.github.io/
   #    minio:
   #      namespace: argocd
   #      additionalLabels: {}
@@ -458,99 +493,6 @@ argocd-apps:
           destination:
             server: '{{server}}'
             namespace: home-assistant
-          syncPolicy:
-            automated:
-              prune: false
-              selfHeal: false
-            syncOptions:
-              - CreateNamespace=true
-          ignoreDifferences:
-            - group: apps
-              kind: Deployment
-              jsonPointers:
-                - /spec/replicas
-          info:
-            - name: url
-              value: https://argoproj.github.io/
-      syncPolicy:
-        # Set Application finalizer
-        preserveResourcesOnDeletion: false
-      # Templating is only available on string type
-    #      templatePatch: |
-    #        spec:
-    #          source:
-    #            helm:
-    #              valueFiles:
-    #              {{- range $valueFile := .valueFiles }}
-    #                - {{ $valueFile }}
-    #              {{- end }}
-    #        {{- if .autoSync }}
-    #          syncPolicy:
-    #            automated:
-    #              prune: {{ .prune }}
-    #        {{- end }}
-    home-assistant-addons:
-      namespace: argocd
-      additionalLabels: {}
-      additionalAnnotations: {}
-      finalizers:
-        - resources-finalizer.argocd.argoproj.io
-      # See PR #10026 (ArgoCD v2.5 or later)
-      # goTemplate: false
-      generators:
-        - matrix:
-            generators:
-              - clusters:
-                  selector:
-                    matchLabels:
-                      name: "in-cluster"
-              - git:
-                  repoURL: https://github.com/Squallium/kubernetes-at-home.git
-                  revision: main
-                  files:
-                    - path: 'apps/home-assistant-addons/{{metadata.labels.name}}/values.yaml'
-      # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
-      ignoreApplicationDifferences:
-        - jsonPointers:
-            - /spec/syncPolicy
-      # Progressive Syncs is an experimental feature and it must be explicitly enabled
-      # Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Progressive-Syncs/#enabling-progressive-syncs
-      #      strategy:
-      #        type: RollingSync
-      #        rollingSync:
-      #          steps:
-      #          - matchExpressions:
-      #            - key: project
-      #              operator: In
-      #              values:
-      #              - guestbook
-      #          - matchExpressions:
-      #            - key: project
-      #              operator: In
-      #              values:
-      #              - kustomize-foo
-      #              - kustomize-bar
-      template:
-        metadata:
-          name: 'home-assistant-addons-{{metadata.labels.name}}'
-          labels:
-            type: 'service-config'
-          annotations: {}
-        spec:
-          project: default
-          sources:
-            - repoURL: https://github.com/Squallium/kubernetes-at-home.git
-              targetRevision: main
-              ref: values
-            - repoURL: https://github.com/Squallium/kubernetes-at-home.git
-              path: charts/home-assistant-addons
-              targetRevision: main
-              helm:
-                valueFiles:
-                  - $values/apps/home-assistant-addons/{{metadata.labels.name}}/values.yaml
-          destination:
-            server: '{{server}}'
-            namespace: argocd
           syncPolicy:
             automated:
               prune: false
