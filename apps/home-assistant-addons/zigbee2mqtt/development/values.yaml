@@ -15,12 +15,12 @@ service:
   type: ClusterIP
 
 ingress:
-    enabled: true
-    ingressClassName: public
-    annotations:
-        nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    hosts:
-        - host: zigbee2mqtt-dev.internal
-          paths:
-            path: /
-            pathType: Prefix
+  enabled: true
+  ingressClassName: public
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+  hosts:
+    - host: zigbee2mqtt-dev.internal
+      paths:
+        path: /
+        pathType: Prefix
