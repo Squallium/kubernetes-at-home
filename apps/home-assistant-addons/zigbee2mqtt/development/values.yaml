@@ -11,3 +11,5 @@ persistence:
 securityContext:
   privileged: true
 
+service:
+  type: ClusterIP
