@@ -11,20 +11,3 @@ persistence:
 securityContext:
   privileged: true
 
-statefulset:
-  volumeMounts:
-  #  - name: zigbee2mqtt-config
-  #    mountPath: /app/data
-    - name: zigbee-tty
-      mountPath: /dev/ttyUSB0
-      readOnly: false
-
-  volumes:
-  #  - name: zigbee2mqtt-config
-  #    hostPath:
-  #      path: /mnt/home-assistant/zigbee2mqtt/config
-  #      type: Directory
-    - name: zigbee-tty
-      hostPath:
-        path: /dev/ttyUSB0
-        type: CharDevice
