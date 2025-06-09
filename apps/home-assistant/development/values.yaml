@@ -45,3 +45,4 @@ initContainers:
     volumeMounts:
       - name: config-volume
         mountPath: /config
+        readOnly: false
