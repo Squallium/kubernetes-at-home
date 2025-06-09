@@ -13,8 +13,8 @@ securityContext:
   privileged: true
 
 persistence:
-  enabled: false
-  existingClaim: home-assistant-config
+  enabled: true
+  existingVolume: home-assistant-config
 
 configuration:
   enabled: true
