@@ -42,6 +42,3 @@ initContainers:
         else
           echo "HACS ya instalado."
         fi
-    volumeMounts:
-      - name: config-volume
-        mountPath: /config
