@@ -13,7 +13,7 @@ securityContext:
   privileged: true
 
 persistence:
-  enabled: true
+  enabled: false
   existingClaim: home-assistant-config
 
 configuration:
