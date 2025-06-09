@@ -14,7 +14,7 @@ securityContext:
 
 persistence:
   enabled: true
-  existingVolume: home-assistant-config
+  existingClaim: home-assistant-config
 
 configuration:
   enabled: true
