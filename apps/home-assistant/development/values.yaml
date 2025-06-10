@@ -43,6 +43,5 @@ initContainers:
           echo "HACS ya instalado."
         fi
     volumeMounts:
-      - name: config-volume
+      - name: home-assistant-development
         mountPath: /config
-        readOnly: false
