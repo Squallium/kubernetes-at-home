@@ -15,6 +15,7 @@ securityContext:
 persistence:
   enabled: true
   existingVolume: home-assistant-config
+  storageClass: microk8s-hostpath
 
 configuration:
   enabled: true
