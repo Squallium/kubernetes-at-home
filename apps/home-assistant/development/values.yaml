@@ -26,22 +26,17 @@ configuration:
 
 initContainers:
   - name: setup-hacs
-    image: alpine:latest
+    image: alpine:3.18
     securityContext:
       runAsUser: 0
-    command: ["/bin/sh", "-c"]
+    command: [ "/bin/sh", "-c" ]
     args:
       - |
-        echo "[HACS] Instalando dependencias y HACS si no existe..."
-        apk add --no-cache curl unzip || true
-        if [ ! -d "/config/custom_components/hacs" ]; then
-          curl -L -o /tmp/hacs.zip https://github.com/hacs/integration/releases/latest/download/hacs.zip
-          unzip /tmp/hacs.zip -d /config/custom_components
-          rm /tmp/hacs.zip
-          echo "HACS instalado."
-        else
-          echo "HACS ya instalado."
-        fi
+        apk add --no-cache bash wget unzip curl > /dev/null; \
+        echo "[INFO] Ejecutando script de instalación de HACS"; \
+        cd /config; \
+        wget -O - https://get.hacs.xyz | bash -; \
+        echo "[INFO] Instalación de HACS completada."
     volumeMounts:
       - name: home-assistant-development
         mountPath: /config
