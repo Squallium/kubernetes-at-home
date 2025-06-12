@@ -23,6 +23,7 @@ metadata:
   name: adguard-home-dns
 spec:
   type: LoadBalancer
+  loadBalancerIP: {{ .Values.metalLb.ip }}
   selector:
     app: adguard-home
   ports:

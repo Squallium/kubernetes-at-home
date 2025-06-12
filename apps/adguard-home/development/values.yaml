@@ -1,3 +1,5 @@
+metalLb:
+  ip: 192.168.1.244
 ingress:
   host: adguard-dev.internal
   port: 80
