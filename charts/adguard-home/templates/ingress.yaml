@@ -20,13 +20,6 @@ spec:
                 name: {{ include "adguard-home.fullname" $ }}
                 port:
                   number: {{ $.Values.ingress.port }}
-          - path: /setup
-            pathType: Prefix
-            backend:
-              service:
-                name: {{ include "adguard-home.fullname" $ }}
-                port:
-                  number: {{ $.Values.ingress.setupPort }}
   {{- if .Values.ingress.tls }}
   tls:
     {{- range .Values.ingress.tls }}

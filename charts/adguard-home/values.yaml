@@ -77,8 +77,7 @@ ingress:
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
   host: placeholder.example.com
-  port: 80
-  setupPort: 3000
+  port: 3000
   tls: []
 
 persistence:
