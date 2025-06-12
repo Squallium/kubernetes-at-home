@@ -22,31 +22,18 @@
    
 5. Finally open a browser and navigate the http://<IP_ADDRESS> to see the nginx welcome page.
 
+## Installing AdGuard Home
 
+1. Install the AdGuard Home Helm chart, first without setting the ingress port. This will point by default to the 300 port. After setting up the Adguard Home, it will try to redirect to the 80 port.
 
-## Steps to follow for freeing up port 53 in limactl
-
-1. Check if the systmd-resolved service is running:
+2. Update the values file to set the ingress port to 80:
+   
+3. Now you can test that the DNS is working using the floating IP assigned by MetalLB. You can use the following command to test DNS resolution:
    ```bash
-   systemctl status systemd-resolved
+   nslookup github.com <IP_ADDRESS>
    ```
-2. If it is running, disable the service:
+4. And you can try to resolve a domain that is blocked by AdGuard Home:
    ```bash
-   sudo systemctl disable --now systemd-resolved
+   nslookup doubleclick.net <IP_ADDRESS>
    ```
-
-3. Point the `/etc/resolv.conf` to another valid DNS server:
-   ```bash
-   sudo rm /etc/resolv.conf
-   echo "nameserver 1.1.1.1" | sudo tee /etc/resolv.conf
-   ```
-4. Verify that you still have nameserver resolution:
-   ```bash
-   ping google.com -c 2
-   nslookup google.com
-   ```
-
-### Troubleshooting
-
-If you see this error "sudo: unable to resolve host lima-microk8s-dev: Name or service not known" add the following
-line "127.0.1.1 lima-microk8s-dev" to the /etc/hosts file:
+   
