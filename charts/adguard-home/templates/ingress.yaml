@@ -24,7 +24,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{ .Values.ingress.host }}
+                name: {{ include "adguard-home.fullname" $ }}
                 port:
                   number: {{ $.Values.ingress.setupPort }}
   {{- if .Values.ingress.tls }}
