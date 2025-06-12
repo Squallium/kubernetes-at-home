@@ -10,7 +10,7 @@ metadata:
 spec:
   ingressClassName: {{ .Values.ingress.className | quote }}
   rules:
-    - host: {{ .Values.ingress.hostname }}
+    - host: {{ .Values.ingress.host }}
       http:
         paths:
           - path: /
@@ -19,7 +19,14 @@ spec:
               service:
                 name: {{ include "adguard-home.fullname" $ }}
                 port:
-                  number: {{ $.Values.service.port }}
+                  number: {{ $.Values.ingress.port }}
+          - path: /setup
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.ingress.host }}
+                port:
+                  number: {{ $.Values.ingress.setupPort }}
   {{- if .Values.ingress.tls }}
   tls:
     {{- range .Values.ingress.tls }}

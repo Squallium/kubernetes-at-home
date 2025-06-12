@@ -6,31 +6,32 @@ spec:
   type: {{ .Values.service.type }}
   selector:
     app: {{ include "adguard-home.name" . }}
+  {{- with .Values.service.ports }}
   ports:
-    - name: http-setup
-      port: 3000
-      targetPort: 3000
-      protocol: TCP
-
-    - name: http
-      port: 80
-      targetPort: 80
-      protocol: TCP
-
+  {{- range . }}
+    - port: {{ .containerPort }}
+      targetPort: {{ .containerPort }}
+      protocol: {{ .protocol }}
+      name: {{ .name }}
+  {{- end }}
+  {{- end }}
+---
+{{- if .Values.metalLb.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: adguard-home-dns
+spec:
+  type: LoadBalancer
+  selector:
+    app: adguard-home
+  ports:
     - name: dns-tcp
       port: 53
       targetPort: 53
       protocol: TCP
-
     - name: dns-udp
       port: 53
       targetPort: 53
       protocol: UDP
-
-    # Opcional: si usas DHCP en AdGuard (normalmente no)
-    #- name: dhcp-udp
-    #  port: 67
-    #  targetPort: 67
-    #  protocol: UDP
-
-    # Puedes añadir más puertos si usas DoH, DoT, etc.
+{{- end }}

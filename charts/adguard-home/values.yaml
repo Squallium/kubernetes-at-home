@@ -9,18 +9,83 @@ hostNetwork: false
 
 service:
   type: ClusterIP
-  port: 3000
+  ports:
+    ## @param service.ports.http-setup HTTP setup port
+    - name: http-setup
+      containerPort: 3000
+      protocol: TCP    ## @param service.ports.dns-udp DNS UDP port
+    ## @param service.ports.http HTTP port
+    - name: http
+      containerPort: 80
+      protocol: TCP
+#    - name: dns-udp
+#      containerPort: 53
+#      protocol: UDP
+#    ## @param service.ports.dns-tcp DNS TCP port
+#    - name: dns-tcp
+#      containerPort: 53
+#      protocol: TCP
+    ## @param service.ports.https-doh HTTPS/DNS-over-HTTPS port
+    # - name: https-doh
+    #   containerPort: 443
+    #   protocol: TCP
+    ## @param service.ports.doh-udp DNS-over-HTTPS UDP port
+    # - name: doh-udp
+    #   containerPort: 443
+    #   protocol: UDP
+
+    ## @param service.ports.dot DNS-over-TLS port
+    # - name: dot
+    #   containerPort: 853
+    #   protocol: TCP
+
+    ## @param service.ports.doq-1 DNS-over-QUIC port 1
+    # - name: doq-1
+    #   containerPort: 784
+    #   protocol: UDP
+    ## @param service.ports.doq-2 DNS-over-QUIC port 2
+    # - name: doq-2
+    #   containerPort: 853
+    #   protocol: UDP
+    ## @param service.ports.doq-3 DNS-over-QUIC port 3
+    # - name: doq-3
+    #   containerPort: 8853
+    #   protocol: UDP
+
+    ## @param service.ports.dnscrypt-tcp DNSCrypt TCP port
+    # - name: dnscrypt-tcp
+    #   containerPort: 5443
+    #   protocol: TCP
+    ## @param service.ports.dnscrypt-udp DNSCrypt UDP port
+    # - name: dnscrypt-udp
+    #   containerPort: 5443
+    #   protocol: UDP
+
+metalLb:
+  enabled: true
+  ports:
+    - name: dns-udp
+      containerPort: 53
+      protocol: UDP
+    - name: dns-tcp
+      containerPort: 53
+      protocol: TCP
 
 ingress:
   enabled: true
   className: public
-  annotations: {}
-  hostname: placeholder.example.com
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+  host: placeholder.example.com
+  port: 80
+  setupPort: 3000
   tls: []
 
 persistence:
   enabled: true
-  path: /data/adguard-home
-  mountPath: /opt/adguardhome/work
+  confMountPath: /opt/adguardhome/conf
+  confPath: /mnt/adguard-home/conf
+  workMountPath: /opt/adguardhome/work
+  workPath: /mnt/adguard-home/work
 
 resources: {}

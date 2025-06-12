@@ -20,13 +20,24 @@ spec:
         - name: adguard-home
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- with .Values.service.ports }}
           ports:
-            - containerPort: 3000
+            {{- toYaml . | nindent 12 }}
+            {{- if $.Values.metalLb.enabled }}
+            {{- toYaml $.Values.metalLb.ports | nindent 12 }}
+            {{- end }}
+          {{- end }}
           volumeMounts:
-            - name: data
-              mountPath: {{ .Values.persistence.mountPath }}
+            - mountPath: {{ .Values.persistence.confMountPath }}
+              name: conf
+            - mountPath: {{ .Values.persistence.workMountPath }}
+              name: work
       volumes:
-        - name: data
+        - name: conf
           hostPath:
-            path: {{ .Values.persistence.path }}
-            type: DirectoryOrCreate
+            path: {{ .Values.persistence.confPath }}
+            type: Directory
+        - name: work
+          hostPath:
+            path: {{ .Values.persistence.workPath }}
+            type: Directory

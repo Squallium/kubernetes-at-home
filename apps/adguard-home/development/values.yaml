@@ -1,7 +1,2 @@
-hostNetwork: true
-
 ingress:
-  hostname: adguard-dev.internal
-
-persistence:
-  path: /mnt/adguard-home/work
+  host: adguard-dev.internal

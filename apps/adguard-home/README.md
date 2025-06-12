@@ -1,3 +1,29 @@
+## Another strategy with floating IPs and Metallb
+
+1. Install MetalLB in your MicroK8s cluster:
+   ```bash
+   microk8s enable metallb
+   ```
+
+2. Check that metalLB is running:
+   ```bash
+   microk8s kubectl get pods -n metallb-system
+   ```
+
+3. For checking that MetalLB is working apply the test file metallb-test.yaml:
+   ```bash
+   kubectl apply -f .\apps\adguard-home\tests\metallb-test.yaml
+   ```
+   
+4. Check the new service to find out the IP assigned by MetalLB:
+   ```bash
+   microk8s kubectl get svc -n nginx-test
+   ```
+   
+5. Finally open a browser and navigate the http://<IP_ADDRESS> to see the nginx welcome page.
+
+
+
 ## Steps to follow for freeing up port 53 in limactl
 
 1. Check if the systmd-resolved service is running:
