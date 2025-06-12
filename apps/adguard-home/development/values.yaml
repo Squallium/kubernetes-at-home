@@ -1,2 +1,3 @@
 ingress:
   host: adguard-dev.internal
+  port: 80
