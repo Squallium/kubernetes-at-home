@@ -1,0 +1,62 @@
+apiVersion: v1
+entries:
+  adguard-home:
+  - apiVersion: v2
+    appVersion: 0.107.62
+    created: "2025-06-15T17:00:56.124621856Z"
+    description: A simple Helm chart for AdGuard Home
+    digest: 4f5712324bf992887fec8066aa73a12c52e0c353ba393180c131aef152b659ed
+    name: adguard-home
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/adguard-home-0.0.9/adguard-home-0.0.9.tgz
+    version: 0.0.9
+  home-assistant-addons:
+  - apiVersion: v2
+    appVersion: 0.0.4
+    created: "2025-06-15T17:00:56.261549808Z"
+    dependencies:
+    - name: argocd-apps
+      repository: https://argoproj.github.io/argo-helm
+      version: 2.0.2
+    description: A Helm chart for managing Home Assistant addons charts.
+    digest: 277c4503bb6c1564a4743839185c53d91161aa9fcdf862490706a3c182b69621
+    name: home-assistant-addons
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/home-assistant-addons-0.0.4/home-assistant-addons-0.0.4.tgz
+    version: 0.0.4
+  home-assistant-config:
+  - apiVersion: v2
+    appVersion: 0.0.11
+    created: "2025-06-15T17:00:56.415616434Z"
+    description: A Helm chart for managing Home Assistant configuration files.
+    digest: 9e355fa2b7b4e08e41877631cf1bf9dd93306c922b55bca0b4d681b3285b13bd
+    name: home-assistant-config
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/home-assistant-config-0.0.11/home-assistant-config-0.0.11.tgz
+    version: 0.0.11
+  homebox:
+  - apiVersion: v2
+    appVersion: 0.19.0
+    created: "2025-06-15T17:00:56.571584643Z"
+    description: A Helm chart for deploying Homebox
+    digest: 6fc5e54467ea72629d49a16021d8e186399d2f8b8c42eefecd6eba63b3c300ce
+    name: homebox
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/homebox-0.0.3/homebox-0.0.3.tgz
+    version: 0.0.3
+  paperless-ngx:
+  - apiVersion: v2
+    appVersion: 2.16.2
+    created: "2025-06-15T17:00:56.718990863Z"
+    description: A Helm chart for deploying Paperless-ngx with PostgreSQL and Redis
+    digest: 092ebf6d81408f612217e7dc40f3b270fabb1fce585ea0c7bb0ce17d1f40455f
+    name: paperless-ngx
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/paperless-ngx-0.0.6/paperless-ngx-0.0.6.tgz
+    version: 0.0.6
+generated: "2025-06-15T17:00:56.719001794Z"
