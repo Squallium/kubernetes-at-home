@@ -7,6 +7,7 @@ default_context:
         chart_repo_url: "https://pajikos.github.io/home-assistant-helm-chart"
         chart_name: "home-assistant"
         chart_target_revision: "0.3.4"
+      - name: "adguard-home"
   services_config:
     list:
       - name: "home-assistant"

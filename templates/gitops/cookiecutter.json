@@ -4,9 +4,11 @@
   "default_chart_name": "",
   "default_chart_target_revision": "main",
   "services": {
-    "list":[ {
-      "name": "homebox"
-    }]
+    "list":[
+      {
+        "name": "homebox"
+      }
+    ]
   },
   "services_config": {
     "list": [
