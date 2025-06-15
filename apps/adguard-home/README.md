@@ -17,10 +17,15 @@
    
 4. Check the new service to find out the IP assigned by MetalLB:
    ```bash
-   microk8s kubectl get svc -n nginx-test
+   kubectl get svc -n default
    ```
    
 5. Finally open a browser and navigate the http://<IP_ADDRESS> to see the nginx welcome page.
+
+6. Optionally you can double-check the address pool of MetalLB to see the IP address assigned:
+   ```bash
+   kubectl describe ipaddresspool -n metallb-system default-addresspool
+   ```
 
 ## Installing AdGuard Home
 
