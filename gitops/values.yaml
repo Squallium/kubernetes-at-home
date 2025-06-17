@@ -575,8 +575,8 @@ argocd-apps:
               targetRevision: main
               ref: values
             - repoURL: https://github.com/Squallium/kubernetes-at-home.git
-              path: charts/home-assistant-config
-              targetRevision: main
+              chart: home-assistant-config
+              targetRevision: 0.0.11
               helm:
                 valueFiles:
                   - $values/apps/home-assistant/config/{{metadata.labels.environment}}/values.yaml
