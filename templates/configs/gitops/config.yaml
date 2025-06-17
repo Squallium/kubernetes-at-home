@@ -2,7 +2,11 @@ default_context:
   services:
     list:
       - name: "homebox"
+        chart_name: "homebox"
+        chart_target_revision: "0.0.3"
       - name: "paperless-ngx"
+        chart_name: "paperless-ngx"
+        chart_target_revision: "0.0.6"
       - name: "home-assistant"
         chart_repo_url: "https://pajikos.github.io/home-assistant-helm-chart"
         chart_name: "home-assistant"
@@ -11,6 +15,10 @@ default_context:
   services_config:
     list:
       - name: "home-assistant"
+        chart_name: "home-assistant-config"
+        chart_target_revision: "0.0.11"
   app_of_apps:
     list:
       - name: "home-assistant-addons"
+        chart_name: "home-assistant-addons"
+        chart_target_revision: "0.0.4"
