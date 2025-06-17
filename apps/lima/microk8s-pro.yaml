@@ -9,6 +9,24 @@ disk: "40GiB"
 mounts:
   - location: "~"
     writable: true
+  - location: "/Users/kuber/shared/pro/homebox"
+    mountPoint: "/mnt/homebox"
+    writable: true
+  - location: "/Users/kuber/shared/pro/paperless-ngx"
+    mountPoint: "/mnt/paperless-ngx"
+    writable: true
+  - location: "/Users/kuber/shared/pro/home-assistant"
+    mountPoint: "/mnt/home-assistant"
+    writable: true
+  - location: "/Users/kuber/shared/pro/adguard-home"
+    mountPoint: "/mnt/adguard-home"
+    writable: true
+  - location: "/Users/kuber/shared/pro/velero"
+    mountPoint: "/mnt/velero"
+    writable: true
+  - location: "/Users/kuber/shared/pro/minio"
+    mountPoint: "/mnt/minio"
+    writable: true
 
 networks:
   - lima: bridged
