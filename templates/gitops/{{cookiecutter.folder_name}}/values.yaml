@@ -227,6 +227,7 @@ argocd-apps:
               targetRevision: {{ service.chart_target_revision | default(cookiecutter.default_chart_target_revision) }}
               helm:
                 valueFiles:
+                  - $values/apps/{{ service.name }}/values.yaml
                   - $values/apps/{{ service.name }}/{{'{{'}}metadata.labels.environment}}/values.yaml
           destination:
             server: '{{'{{'}}server}}'
@@ -324,6 +325,7 @@ argocd-apps:
               targetRevision: {{ service_config.chart_target_revision | default(cookiecutter.default_chart_target_revision) }}
               helm:
                 valueFiles:
+                  - $values/apps/{{ service_config.name }}/config/values.yaml
                   - $values/apps/{{ service_config.name }}/config/{{'{{'}}metadata.labels.environment}}/values.yaml
           destination:
             server: '{{'{{'}}server}}'
