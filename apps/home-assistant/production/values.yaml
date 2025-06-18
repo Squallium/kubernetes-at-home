@@ -4,3 +4,20 @@ ingress:
       paths:
         - path: /
           pathType: Prefix
+
+initContainers:
+  - name: setup-hacs
+    image: alpine:3.18
+    securityContext:
+      runAsUser: 0
+    command: [ "/bin/sh", "-c" ]
+    args:
+      - |
+        apk add --no-cache bash wget unzip curl > /dev/null; \
+        echo "[INFO] Ejecutando script de instalación de HACS"; \
+        cd /config; \
+        wget -O - https://get.hacs.xyz | bash -; \
+        echo "[INFO] Instalación de HACS completada."
+    volumeMounts:
+      - name: home-assistant-production
+        mountPath: /config
