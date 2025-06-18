@@ -217,12 +217,13 @@ argocd-apps:
             - repoURL: https://github.com/Squallium/kubernetes-at-home.git
               targetRevision: main
               ref: values
-            - repoURL: {{ service.chart_repo_url | default(cookiecutter.default_chart_repo_url) }}
-              {%- if service.chart_name | default(cookiecutter.default_chart_name) %}
+            {%- if service.chart_name | default(cookiecutter.default_chart_name) %}
+            - repoURL: {{ service.chart_repo | default(cookiecutter.default_chart_repo) }}
               chart: {{ service.chart_name  }}
-              {%- else %}
+            {%- else %}
+            - repoURL: {{ service.chart_repo_url | default(cookiecutter.default_chart_repo_url) }}
               path: charts/{{ service.name }}
-              {%- endif %}
+            {%- endif %}
               targetRevision: {{ service.chart_target_revision | default(cookiecutter.default_chart_target_revision) }}
               helm:
                 valueFiles:
@@ -313,12 +314,13 @@ argocd-apps:
             - repoURL: https://github.com/Squallium/kubernetes-at-home.git
               targetRevision: main
               ref: values
-            - repoURL: {{ service_config.chart_repo_url | default(cookiecutter.default_chart_repo_url) }}
-              {%- if service_config.chart_name | default(cookiecutter.default_chart_name) %}
+            {%- if service_config.chart_name | default(cookiecutter.default_chart_name) %}
+            - repoURL: {{ service_config.chart_repo | default(cookiecutter.default_chart_repo) }}
               chart: {{ service_config.chart_name  }}
-              {%- else %}
-              path: charts/{{ service_config.name }}-config
-              {%- endif %}
+            {%- else %}
+            - repoURL: {{ service_config.chart_repo_url | default(cookiecutter.default_chart_repo_url) }}
+              path: charts/{{ service_config.name }}
+            {%- endif %}
               targetRevision: {{ service_config.chart_target_revision | default(cookiecutter.default_chart_target_revision) }}
               helm:
                 valueFiles:

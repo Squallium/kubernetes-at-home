@@ -214,7 +214,7 @@ argocd-apps:
             - repoURL: https://github.com/Squallium/kubernetes-at-home.git
               targetRevision: main
               ref: values
-            - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+            - repoURL: https://github.com/Squallium/kubernetes-at-home
               chart: homebox
               targetRevision: 0.0.3
               helm:
@@ -304,7 +304,7 @@ argocd-apps:
             - repoURL: https://github.com/Squallium/kubernetes-at-home.git
               targetRevision: main
               ref: values
-            - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+            - repoURL: https://github.com/Squallium/kubernetes-at-home
               chart: paperless-ngx
               targetRevision: 0.0.6
               helm:
@@ -394,7 +394,7 @@ argocd-apps:
             - repoURL: https://github.com/Squallium/kubernetes-at-home.git
               targetRevision: main
               ref: values
-            - repoURL: https://pajikos.github.io/home-assistant-helm-chart
+            - repoURL: https://github.com/Squallium/kubernetes-at-home
               chart: home-assistant
               targetRevision: 0.3.4
               helm:
@@ -574,7 +574,7 @@ argocd-apps:
             - repoURL: https://github.com/Squallium/kubernetes-at-home.git
               targetRevision: main
               ref: values
-            - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+            - repoURL: https://github.com/Squallium/kubernetes-at-home
               chart: home-assistant-config
               targetRevision: 0.0.11
               helm:
