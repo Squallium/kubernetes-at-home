@@ -1,0 +1,34 @@
+zigbee2mqtt:
+  mqtt:
+    server: "mqtt://mosquitto.home-assistant.svc.cluster.local:1883"
+  serial:
+    port: "tcp://192.168.1.183:55000"
+    adapter: "zstack"
+
+persistence:
+  enabled: false
+
+securityContext:
+  privileged: true
+
+service:
+  type: ClusterIP
+
+ingress:
+  enabled: true
+  ingressClassName: public
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+  hosts:
+    - host: zigbee2mqtt-dev.internal
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+
+statefulset:
+  storage:
+    enabled: true
+    storageClassName: microk8s-hostpath
+    existingVolume: zigbee2mqtt-data
+

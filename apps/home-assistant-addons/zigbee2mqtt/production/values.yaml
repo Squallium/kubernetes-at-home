@@ -1,6 +1,6 @@
 ingress:
   hosts:
-    - host: zigbee2mqtt-dev.internal
+    - host: zigbee2mqtt.internal
       paths:
         - path: /
           pathType: Prefix
