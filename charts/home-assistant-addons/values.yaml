@@ -55,6 +55,7 @@ argocd-apps:
               targetRevision: 2.4.0
               helm:
                 valueFiles:
+                  - $values/apps/home-assistant-addons/zigbee2mqtt/values.yaml
                   - $values/apps/home-assistant-addons/zigbee2mqtt/{{metadata.labels.environment}}/values.yaml
           destination:
             server: '{{server}}'
