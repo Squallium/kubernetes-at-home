@@ -1,6 +1,6 @@
 ingress:
   hosts:
-    - host: home-assistant-dev.internal
+    - host: home-assistant.internal
       paths:
         - path: /
           pathType: Prefix

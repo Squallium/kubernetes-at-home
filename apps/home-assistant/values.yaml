@@ -1,0 +1,38 @@
+ingress:
+  enabled: true
+  className: public
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+
+securityContext:
+  privileged: true
+
+persistence:
+  enabled: true
+  existingVolume: home-assistant-config
+  storageClass: microk8s-hostpath
+
+configuration:
+  enabled: true
+  forceInit: true
+  trusted_proxies:
+    - 10.0.0.0/8
+    - 127.0.0.1
+    - ::1
+
+initContainers:
+  - name: setup-hacs
+    image: alpine:3.18
+    securityContext:
+      runAsUser: 0
+    command: [ "/bin/sh", "-c" ]
+    args:
+      - |
+        apk add --no-cache bash wget unzip curl > /dev/null; \
+        echo "[INFO] Ejecutando script de instalación de HACS"; \
+        cd /config; \
+        wget -O - https://get.hacs.xyz | bash -; \
+        echo "[INFO] Instalación de HACS completada."
+    volumeMounts:
+      - name: home-assistant-development
+        mountPath: /config
