@@ -17,7 +17,7 @@ argocd-apps:
         ref: values
       - repoURL: {{ core_service.chart_repo }}
         chart: {{ core_service.chart_name | default(core_service.name) }}
-        targetRevision: main
+        targetRevision: {{ core_service.chart_target_revision }}
         helm:
           valueFiles:
             - $values/apps/{{ core_service.name }}/values.yaml
