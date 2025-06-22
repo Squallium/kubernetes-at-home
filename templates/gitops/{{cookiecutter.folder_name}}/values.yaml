@@ -30,6 +30,9 @@ argocd-apps:
   #        selfHeal: false
         syncOptions:
         - CreateNamespace=true
+        {%- if core_service.server_side_apply %}
+        - ServerSideApply=true
+        {%- endif %}
       revisionHistoryLimit: null
       ignoreDifferences:
       - group: apps
