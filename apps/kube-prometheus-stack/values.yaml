@@ -1,0 +1,40 @@
+grafana:
+  enabled: true
+  ingress:
+    enabled: true
+    hosts:
+      - grafana.internal
+    annotations:
+      nginx.ingress.kubernetes.io/rewrite-target: /
+    path: /
+    pathType: Prefix
+  adminPassword: admin  # ponlo en un Secret en producción
+  persistence:
+    enabled: true
+    size: 5Gi
+    storageClassName: "microk8s-hostpath"  # usa el default de MicroK8s, o pon uno específico si tienes
+
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelectorNilUsesHelmValues: false
+    retention: 7d
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 10Gi
+          storageClassName: "microk8s-hostpath"  # usa el storageClass por defecto (hostPath en MicroK8s)
+
+alertmanager:
+  alertmanagerSpec:
+    storage:
+      volumeClaimTemplate:
+        spec:
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 2Gi
+          storageClassName: "microk8s-hostpath"
