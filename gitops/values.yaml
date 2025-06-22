@@ -16,7 +16,7 @@ argocd-apps:
         ref: values
       - repoURL: https://prometheus-community.github.io/helm-charts
         chart: kube-prometheus-stack
-        targetRevision: main
+        targetRevision: 75.4.0
         helm:
           valueFiles:
             - $values/apps/kube-prometheus-stack/values.yaml
@@ -51,7 +51,7 @@ argocd-apps:
         ref: values
       - repoURL: https://grafana.github.io/helm-charts
         chart: loki-stack
-        targetRevision: main
+        targetRevision: 2.10.2
         helm:
           valueFiles:
             - $values/apps/loki-stack/values.yaml
