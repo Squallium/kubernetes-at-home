@@ -3,6 +3,43 @@ argocd-apps:
   # @default -- `{}` (See [values.yaml])
   ## Ref: https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/
   applications:
+    {%- for core_service in cookiecutter.core_services.list %}
+    {{ core_service.name }}:
+      namespace: argocd
+      additionalLabels: {}
+      additionalAnnotations: {}
+      finalizers:
+      - resources-finalizer.argocd.argoproj.io
+      project: default
+      sources:
+      - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+        targetRevision: main
+        ref: values
+      - repoURL: {{ core_service.chart_repo }}
+        chart: {{ core_service.chart_name | default(core_service.name) }}
+        targetRevision: main
+        helm:
+          valueFiles:
+            - $values/apps/{{ core_service.name }}/values.yaml
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: {{ core_service.namespace | default(core_service.name) }}
+      syncPolicy:
+  #      automated:
+  #        prune: false
+  #        selfHeal: false
+        syncOptions:
+        - CreateNamespace=true
+      revisionHistoryLimit: null
+      ignoreDifferences:
+      - group: apps
+        kind: Deployment
+        jsonPointers:
+        - /spec/replicas
+      info:
+      - name: url
+        value: https://argoproj.github.io/
+    {%- endfor %}
     {%- for app_of_app in cookiecutter.app_of_apps.list %}
     {{ app_of_app.name }}:
       namespace: argocd

@@ -1,4 +1,10 @@
 default_context:
+  core_services:
+    list:
+      - name: "kube-prometheus-stack"
+        chart_repo: "https://prometheus-community.github.io/helm-charts"
+      - name: "loki-stack"
+        chart_repo: "https://grafana.github.io/helm-charts"
   services:
     list:
       - name: "homebox"
