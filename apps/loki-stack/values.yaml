@@ -1,0 +1,67 @@
+loki:
+  enabled: true
+  isDefault: true
+  commonConfig:
+    replication_factor: 1
+  storage:
+    type: filesystem
+  persistence:
+    enabled: true
+    accessModes:
+      - ReadWriteOnce
+    size: 10Gi
+    storageClassName: microk8s-hostpath
+  auth_enabled: false
+
+  # Opcional: reduce uso para clúster pequeño
+  resources:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 100m
+      memory: 256Mi
+
+  config:
+    schema_config:
+      configs:
+        - from: 2024-01-01
+          store: boltdb-shipper
+          object_store: filesystem
+          schema: v11
+          index:
+            prefix: index_
+            period: 24h
+    ruler:
+      storage:
+        type: local
+        local:
+          directory: /loki/rules
+      rule_path: /loki/rules-temp
+      alertmanager_url: http://kube-prometheus-stack-alertmanager.kube-prometheus-stack:9093
+    server:
+      http_listen_port: 3100
+
+promtail:
+  enabled: false  # Solo quieres Loki por ahora
+
+grafana:
+  enabled: false  # Ya tienes Grafana por separado
+
+service:
+  type: ClusterIP
+  port: 3100
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "3100"
+  labels:
+    app.kubernetes.io/name: loki
+
+ingress:
+  enabled: true
+  ingressClassName: nginx
+  hosts:
+    - host: loki.internal
+      paths:
+        - path: /
+          pathType: Prefix
