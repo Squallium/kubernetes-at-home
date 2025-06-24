@@ -56,12 +56,3 @@ service:
     prometheus.io/port: "3100"
   labels:
     app.kubernetes.io/name: loki
-
-ingress:
-  enabled: true
-  ingressClassName: nginx
-  hosts:
-    - host: loki.internal
-      paths:
-        - path: /
-          pathType: Prefix

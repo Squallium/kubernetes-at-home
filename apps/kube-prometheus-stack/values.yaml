@@ -13,6 +13,17 @@ grafana:
     enabled: true
     size: 5Gi
     storageClassName: "microk8s-hostpath"  # usa el default de MicroK8s, o pon uno específico si tienes
+  additionalDataSources:
+    - name: Loki
+      type: loki
+      access: proxy
+      url: http://loki.loki:3100
+      jsonData:
+        derivedFields:
+          - name: trace_id
+            matcherRegex: "traceID=(\\w+)"
+            url: "$${__value.raw}"
+
 
 prometheus:
   prometheusSpec:
