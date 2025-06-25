@@ -16,6 +16,13 @@ grafana:
     size: 5Gi
   initChownData:
     enabled: false
+  additionalDataSources:
+    - name: Loki
+      type: loki
+      url: http://loki-stack.loki-stack.svc.cluster.local:3100
+      access: proxy
+      isDefault: false
+
 
 prometheus:
   prometheusSpec:
