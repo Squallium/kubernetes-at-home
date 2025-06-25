@@ -14,12 +14,12 @@ grafana:
     storageClassName: microk8s-hostpath
     accessModes: [ "ReadWriteOnce" ]
     size: 5Gi
-    initChownData: false  # 🔧 Evita que el init container intente hacer chown
-    securityContext: # 🔧 Permite acceso sin root ni chown
-      runAsUser: 472
-      runAsGroup: 472
-      fsGroup: 472
-      runAsNonRoot: true
+  initChownData: false  # 🔧 Evita que el init container intente hacer chown
+  securityContext: # 🔧 Permite acceso sin root ni chown
+    runAsUser: 472
+    runAsGroup: 472
+    fsGroup: 472
+    runAsNonRoot: true
 
 prometheus:
   prometheusSpec:
