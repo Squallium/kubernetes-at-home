@@ -23,8 +23,6 @@ loki:
       memory: 256Mi
 
   config:
-    limits_config:
-      volume_enabled: true
     schema_config:
       configs:
         - from: 2024-01-01
