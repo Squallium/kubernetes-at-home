@@ -15,6 +15,9 @@ singleBinary:
   persistence:
     storageClass: microk8s-hostpath
 
+chunksCache:
+  enabled: false
+
 write:
   replicas: 0
 read:
