@@ -43,7 +43,6 @@ loki:
       http_listen_port: 3100
     limits_config:
       reject_old_samples: false
-      volume_enabled: true
 
 promtail:
   enabled: true
