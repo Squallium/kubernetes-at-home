@@ -5,3 +5,10 @@ loki:
   useTestSchema: true
   storage:
     type: filesystem
+
+singleBinary:
+  replicas: 1
+  autoscaling:
+    enabled: true
+  persistence:
+    storageClass: microk8s-hostpath
