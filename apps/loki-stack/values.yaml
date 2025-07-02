@@ -41,6 +41,8 @@ loki:
       alertmanager_url: http://kube-prometheus-stack-alertmanager.kube-prometheus-stack:9093
     server:
       http_listen_port: 3100
+    limits_config:
+      reject_old_samples: false
 
 promtail:
   enabled: true
