@@ -1,2 +1,7 @@
 loki:
   auth_enabled: false
+  limits_config:
+    reject_old_samples: false
+  useTestSchema: true
+  storage:
+    type: filesystem
