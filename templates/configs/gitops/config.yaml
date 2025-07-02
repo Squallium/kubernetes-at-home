@@ -5,10 +5,10 @@ default_context:
         chart_repo: "https://prometheus-community.github.io/helm-charts"
         chart_target_revision: "75.4.0"
         server_side_apply: true
-      - name: "loki-stack"
-        chart_repo: "https://grafana.github.io/helm-charts"
-        chart_target_revision: "2.10.2"
-        server_side_apply: false
+#      - name: "loki-stack"
+#        chart_repo: "https://grafana.github.io/helm-charts"
+#        chart_target_revision: "2.10.2"
+#        server_side_apply: false
   services:
     list:
       - name: "homebox"
