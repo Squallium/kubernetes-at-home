@@ -9,6 +9,9 @@ disk: "40GiB"
 mounts:
   - location: "~"
     writable: true
+  - location: "/Users/kuber/shared/core/minio"
+    mountPoint: "/mnt/minio"
+    writable: true
 
 networks:
   - lima: bridged
