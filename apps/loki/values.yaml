@@ -11,7 +11,7 @@ loki:
 singleBinary:
   replicas: 1
   autoscaling:
-    enabled: true
+    enabled: false
   persistence:
     storageClass: microk8s-hostpath
 
