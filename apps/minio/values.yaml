@@ -18,17 +18,11 @@ resources:
 ingress:
   enabled: true
   ingressClassName: public
-  annotations:
-    nginx.ingress.kubernetes.io/proxy-body-size: "0"
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
   hosts:
     - minio.internal
 
 consoleIngress:
   enabled: true
   ingressClassName: public
-  annotations:
-    nginx.ingress.kubernetes.io/proxy-body-size: "0"
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
   hosts:
     - minio-ui.internal
