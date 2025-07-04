@@ -1,3 +1,6 @@
+rootUser: miUsuario
+rootPassword: miPasswordSegura
+
 mode: standalone
 
 persistence:
