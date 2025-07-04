@@ -6,9 +6,9 @@ persistence:
   storageClass: "microk8s-hostpath"
   accessMode: ReadWriteOnce
   size: 10Gi
-  mountPath: /data
+  mountPath: /export
   type: hostPath
-  hostPath: /mnt/minio/data
+  hostPath: /mnt/minio/export
 
 resources:
   requests:
