@@ -1,3 +1,4 @@
+#TODO set in a kubernetes secret
 rootUser: miUsuario
 rootPassword: miPasswordSegura
 
