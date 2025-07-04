@@ -1,5 +1,9 @@
 mode: standalone
 
+environment:
+  MINIO_SERVER_URL: http://minio.internal
+  MINIO_BROWSER_REDIRECT_URL: http://minio-ui.internal
+
 persistence:
   enabled: true
   existingClaim: ""
@@ -18,11 +22,17 @@ resources:
 ingress:
   enabled: true
   ingressClassName: public
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
   hosts:
     - minio.internal
 
 consoleIngress:
   enabled: true
   ingressClassName: public
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
   hosts:
     - minio-ui.internal
