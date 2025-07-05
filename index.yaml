@@ -48,6 +48,17 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/homebox-0.0.3/homebox-0.0.3.tgz
     version: 0.0.3
+  minio-config:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2025-07-05T15:48:25.232681657Z"
+    description: A Helm chart for managing Minio configuration files.
+    digest: 9911cafcf43de1af37361ebc3fe356f5be4135d0cc5cfb1b97ec4845c5ece7de
+    name: minio-config
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/minio-config-0.0.1/minio-config-0.0.1.tgz
+    version: 0.0.1
   paperless-ngx:
   - apiVersion: v2
     appVersion: 2.16.2
@@ -59,4 +70,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/paperless-ngx-0.0.6/paperless-ngx-0.0.6.tgz
     version: 0.0.6
-generated: "2025-06-15T17:00:56.719001794Z"
+generated: "2025-07-05T15:48:25.232703819Z"
