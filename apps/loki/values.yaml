@@ -21,9 +21,6 @@ loki:
       insecure: true
       s3ForcePathStyle: true
   storage_config:
-    tsdb_shipper:
-      active_index_directory: /loki/index
-      cache_location: /loki/index_cache
     aws:
       s3: s3://uXY6lTBIb627G3WPgtJ9:fujNdS9qUbz42mjEZjK4gXPYiuI5IRdi5RbFf7uP@minio.internal:9000/loki
       s3forcepathstyle: true
