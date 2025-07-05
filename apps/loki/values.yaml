@@ -7,10 +7,10 @@ loki:
   storage:
     type: s3
     s3:
+      s3: loki
       endpoint: minio.internal:9000
-      bucketnames: loki
-      access_key_id: uXY6lTBIb627G3WPgtJ9
-      secret_access_key: fujNdS9qUbz42mjEZjK4gXPYiuI5IRdi5RbFf7uP
+      accessKeyId: uXY6lTBIb627G3WPgtJ9
+      secretAccessKey: fujNdS9qUbz42mjEZjK4gXPYiuI5IRdi5RbFf7uP
       insecure: true
       s3forcepathstyle: true
 
