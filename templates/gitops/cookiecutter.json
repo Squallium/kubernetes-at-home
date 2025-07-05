@@ -7,9 +7,12 @@
   "core_services": {
     "list":[
       {
-        "name": "loki-stack"
+        "name": "loki"
       }
     ]
+  },
+  "core_services_config": {
+    "list":[]
   },
   "services": {
     "list":[

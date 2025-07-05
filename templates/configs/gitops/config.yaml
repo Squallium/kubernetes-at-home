@@ -24,6 +24,11 @@ default_context:
         chart_name: "minio"
         chart_target_revision: "5.4.0"
         server_side_apply: false
+  core_services_config:
+    list:
+      - name: "minio"
+        chart_name: "minio-config"
+        chart_target_revision: "0.0.1"
   services:
     list:
       - name: "homebox"
