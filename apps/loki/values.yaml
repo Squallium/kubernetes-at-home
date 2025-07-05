@@ -19,6 +19,9 @@ loki:
       insecure: true
       s3ForcePathStyle: true
 
+chunksCache:
+  enabled: false
+
 singleBinary:
   enabled: true
   autoscaling:
