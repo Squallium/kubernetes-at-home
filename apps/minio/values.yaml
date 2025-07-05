@@ -6,7 +6,13 @@ mode: standalone
 
 persistence:
   enabled: true
-  existingClaim: minio
+  existingClaim: ""
+  storageClass: microk8s-hostpath
+  accessMode: ReadWriteOnce
+  size: 10Gi
+  mountPath: /export
+  type: hostPath
+  hostPath: /mnt/minio/export
 
 resources:
   requests:
