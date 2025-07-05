@@ -1,3 +1,4 @@
+deploymentMode: SingleBinary
 
 loki:
   auth_enabled: false
@@ -18,12 +19,22 @@ loki:
       insecure: true
       s3ForcePathStyle: true
 
+singleBinary:
+  enabled: true
+  autoscaling:
+    enabled: true
+  persistence:
+    storageClass: microk8s-hostpath
+
 write:
-  persistence:
-    storageClass: microk8s-hostpath
+  replicas: 0
 read:
-  persistence:
-    storageClass: microk8s-hostpath
+  replicas: 0
 backend:
-  persistence:
-    storageClass: microk8s-hostpath
+  replicas: 0
+#ingester:
+#  replicas: 0
+#distributor:
+#  replicas: 0
+#querier:
+#  replicas: 0
