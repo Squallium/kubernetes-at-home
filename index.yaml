@@ -48,6 +48,17 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/homebox-0.0.3/homebox-0.0.3.tgz
     version: 0.0.3
+  loki-config:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2025-07-05T20:32:48.919625215Z"
+    description: A Helm chart for managing Loki configurations
+    digest: d2822b7069efcf44d2f994adf8f52ddfa1b61859838258932b0fecf0810461e3
+    name: loki-config
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/loki-config-0.0.1/loki-config-0.0.1.tgz
+    version: 0.0.1
   minio-config:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -70,4 +81,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/paperless-ngx-0.0.6/paperless-ngx-0.0.6.tgz
     version: 0.0.6
-generated: "2025-07-05T15:48:25.232703819Z"
+generated: "2025-07-05T20:32:48.919631016Z"
