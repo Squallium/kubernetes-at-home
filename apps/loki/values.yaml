@@ -1,7 +1,5 @@
 deploymentMode: SingleBinary
 
-configStorageType: Secret
-
 global:
   extraEnvFrom:
     - secretRef:
@@ -20,6 +18,7 @@ global:
 #          key: s3-secret-key
 
 loki:
+  configStorageType: Secret
   auth_enabled: false
   limits_config:
     reject_old_samples: false
