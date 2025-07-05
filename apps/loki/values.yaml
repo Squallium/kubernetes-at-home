@@ -1,17 +1,23 @@
 deploymentMode: SingleBinary
 
+configStorageType: Secret
+
 global:
-  extraEnv:
-    - name: LOKI_S3_ACCESS_KEY
-      valueFrom:
-        secretKeyRef:
-          name: loki
-          key: s3-access-key
-    - name: LOKI_S3_SECRET_KEY
-      valueFrom:
-        secretKeyRef:
-          name: loki
-          key: s3-secret-key
+  extraEnvFrom:
+    - secretRef:
+        name: loki
+#global:
+#  extraEnv:
+#    - name: LOKI_S3_ACCESS_KEY
+#      valueFrom:
+#        secretKeyRef:
+#          name: loki
+#          key: s3-access-key
+#    - name: LOKI_S3_SECRET_KEY
+#      valueFrom:
+#        secretKeyRef:
+#          name: loki
+#          key: s3-secret-key
 
 loki:
   auth_enabled: false

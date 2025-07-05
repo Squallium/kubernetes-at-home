@@ -139,3 +139,15 @@ Then patch the secret in Kubernetes:
 ```bash
 kubectl patch secret vault-approle-secret -p '{"data":{"secret-id":"xxxxxx"}}' -n default
 ```
+
+## Update expired app role secret ID
+
+If the AppRole secret ID expires, you can create a new one and update the Kubernetes secret with the new secret ID:
+
+```bash
+vault write -f auth/approle/role/eso-role/secret-id
+```
+
+Then encode the new secret ID in base64 and patch the Kubernetes secret:
+
+```bash
