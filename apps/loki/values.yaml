@@ -26,6 +26,7 @@ singleBinary:
   enabled: true
   autoscaling:
     enabled: true
+    minReplicas: 2
   persistence:
     storageClass: microk8s-hostpath
 
