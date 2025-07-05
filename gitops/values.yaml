@@ -109,41 +109,6 @@ argocd-apps:
       info:
       - name: url
         value: https://argoproj.github.io/
-    minio:
-      namespace: argocd
-      additionalLabels: {}
-      additionalAnnotations: {}
-      finalizers:
-      - resources-finalizer.argocd.argoproj.io
-      project: default
-      sources:
-      - repoURL: https://github.com/Squallium/kubernetes-at-home.git
-        targetRevision: main
-        ref: values
-      - repoURL: https://charts.min.io/
-        chart: minio
-        targetRevision: 5.4.0
-        helm:
-          valueFiles:
-            - $values/apps/minio/values.yaml
-      destination:
-        server: https://kubernetes.default.svc
-        namespace: minio
-      syncPolicy:
-  #      automated:
-  #        prune: false
-  #        selfHeal: false
-        syncOptions:
-        - CreateNamespace=true
-      revisionHistoryLimit: null
-      ignoreDifferences:
-      - group: apps
-        kind: Deployment
-        jsonPointers:
-        - /spec/replicas
-      info:
-      - name: url
-        value: https://argoproj.github.io/
     home-assistant-addons:
       namespace: argocd
       additionalLabels: {}
@@ -164,41 +129,6 @@ argocd-apps:
       destination:
         server: https://kubernetes.default.svc
         namespace: argocd
-      syncPolicy:
-  #      automated:
-  #        prune: false
-  #        selfHeal: false
-        syncOptions:
-        - CreateNamespace=true
-      revisionHistoryLimit: null
-      ignoreDifferences:
-      - group: apps
-        kind: Deployment
-        jsonPointers:
-        - /spec/replicas
-      info:
-      - name: url
-        value: https://argoproj.github.io/
-    minio-config:
-      namespace: argocd
-      additionalLabels: {}
-      additionalAnnotations: {}
-      finalizers:
-      - resources-finalizer.argocd.argoproj.io
-      project: default
-      sources:
-      - repoURL: https://github.com/Squallium/kubernetes-at-home.git
-        targetRevision: main
-        ref: values
-      - repoURL: https://squallium.github.io/kubernetes-at-home
-        chart: minio-config
-        targetRevision: 0.0.1
-        helm:
-          valueFiles:
-            - $values/apps/minio/config/values.yaml
-      destination:
-        server: https://kubernetes.default.svc
-        namespace: minio
       syncPolicy:
   #      automated:
   #        prune: false
