@@ -5,6 +5,8 @@ loki:
   limits_config:
     reject_old_samples: false
   useTestSchema: true
+  commonConfig:
+    replication_factor: 1
   storage:
     type: s3
     bucketNames:
@@ -26,7 +28,6 @@ singleBinary:
   enabled: true
   autoscaling:
     enabled: true
-    minReplicas: 2
   persistence:
     storageClass: microk8s-hostpath
 
