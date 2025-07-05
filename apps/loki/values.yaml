@@ -1,4 +1,3 @@
-deploymentMode: SingleBinary
 
 loki:
   auth_enabled: false
@@ -6,27 +5,21 @@ loki:
     reject_old_samples: false
   useTestSchema: true
   storage:
-    type: filesystem
-
-singleBinary:
-  replicas: 1
-  autoscaling:
-    enabled: false
-  persistence:
-    storageClass: microk8s-hostpath
-
-chunksCache:
-  enabled: false
+    type: s3
+    s3:
+      endpoint: minio.internal:9000
+      bucketnames: loki
+      access_key_id: uXY6lTBIb627G3WPgtJ9
+      secret_access_key: fujNdS9qUbz42mjEZjK4gXPYiuI5IRdi5RbFf7uP
+      insecure: true
+      s3forcepathstyle: true
 
 write:
-  replicas: 0
+  persistence:
+    storageClass: microk8s-hostpath
 read:
-  replicas: 0
+  persistence:
+    storageClass: microk8s-hostpath
 backend:
-  replicas: 0
-#ingester:
-#  replicas: 0
-#distributor:
-#  replicas: 0
-#querier:
-#  replicas: 0
+  persistence:
+    storageClass: microk8s-hostpath
