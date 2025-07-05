@@ -5,6 +5,9 @@ loki:
   limits_config:
     reject_old_samples: false
   useTestSchema: true
+  memcached:
+    chunk_cache:
+      enabled: true
   storage:
     type: s3
     bucketNames:
