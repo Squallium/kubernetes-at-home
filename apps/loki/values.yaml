@@ -39,14 +39,14 @@ loki:
     retention_delete_delay: 1h
     retention_delete_worker_count: 100
 
-  storage_config:
-    boltdb_shipper:
-      active_index_directory: /var/loki/boltdb-shipper-active
-      cache_location: /var/loki/boltdb-shipper-cache
-      cache_ttl: 24h
-      shared_store: filesystem
-    filesystem:
-      directory: /var/loki/chunks
+#  storage_config:
+#    boltdb_shipper:
+#      active_index_directory: /var/loki/boltdb-shipper-active
+#      cache_location: /var/loki/boltdb-shipper-cache
+#      cache_ttl: 24h
+#      shared_store: filesystem
+#    filesystem:
+#      directory: /var/loki/chunks
 
 #  storage:
 #    type: s3
