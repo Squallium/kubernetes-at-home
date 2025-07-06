@@ -18,7 +18,7 @@ global:
 #          key: s3-secret-key
 
 loki:
-  configStorageType: Secret
+#  configStorageType: Secret
   auth_enabled: false
   limits_config:
     reject_old_samples: false
