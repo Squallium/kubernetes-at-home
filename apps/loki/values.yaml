@@ -24,6 +24,7 @@ loki:
   auth_enabled: false
   limits_config:
     reject_old_samples: false
+    retention_period: 168h
   useTestSchema: true
   commonConfig:
     replication_factor: 1
