@@ -79,12 +79,11 @@ singleBinary:
   persistence:
     storageClass: microk8s-hostpath
 
-gateway:
-  ingress:
-    enabled: true
-    ingressClassName: public
-    hosts:
-      - loki.internal
+ingress:
+  enabled: true
+  ingressClassName: public
+  hosts:
+    - loki.internal
 
 write:
   replicas: 0
