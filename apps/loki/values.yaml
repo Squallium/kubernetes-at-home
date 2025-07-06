@@ -49,6 +49,8 @@ loki:
   compactor:
     working_directory: /var/loki/compactor
     retention_enabled: true
+    delete_request_store:
+      type: s3
 
 chunksCache:
   enabled: false
