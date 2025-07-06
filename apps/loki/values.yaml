@@ -44,6 +44,10 @@ loki:
     aws:
       s3: s3://${LOKI_S3_ACCESS_KEY}:${LOKI_S3_SECRET_KEY}@minio.internal:9000/loki
       s3forcepathstyle: true
+  compactor:
+    working_directory: /var/loki/compactor
+    shared_store: filesystem
+    retention_enabled: true
 
 chunksCache:
   enabled: false
