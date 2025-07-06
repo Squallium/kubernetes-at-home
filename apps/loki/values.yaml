@@ -37,6 +37,7 @@ loki:
     retention_enabled: true
     retention_delete_delay: 1h
     retention_delete_worker_count: 100
+    delete_request_store: filesystem
 
 #  storage_config:
 #    boltdb_shipper:
