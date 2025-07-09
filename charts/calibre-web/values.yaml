@@ -5,7 +5,7 @@ image:
 
 service:
   type: ClusterIP
-  port: 8083
+  port: 80
 
 volume:
   path: /mnt/calibre-web
