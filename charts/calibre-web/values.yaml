@@ -1,0 +1,11 @@
+image:
+  repository: linuxserver/calibre-web
+  tag: 0.6.24
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8083
+
+volume:
+  path: /mnt/calibre-web

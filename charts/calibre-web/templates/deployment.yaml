@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calibre-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: calibre-web
+  template:
+    metadata:
+      labels:
+        app: calibre-web
+    spec:
+      containers:
+        - name: calibre-web
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 8083
+          volumeMounts:
+            - name: calibre-config
+              mountPath: /config
+            - name: calibre-books
+              mountPath: /books
+      volumes:
+        - name: calibre-config
+          hostPath:
+            path: {{ .Values.volume.path }}/config
+            type: Directory
+        - name: calibre-books
+          hostPath:
+            path: {{ .Values.volume.path }}/books
+            type: Directory
