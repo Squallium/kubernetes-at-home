@@ -791,7 +791,7 @@ argocd-apps:
               ref: values
             - repoURL: https://squallium.github.io/kubernetes-at-home
               chart: calibre-web
-              targetRevision: 0.0.1
+              targetRevision: 0.0.2
               helm:
                 valueFiles:
                   - $values/apps/calibre-web/values.yaml
