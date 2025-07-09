@@ -11,6 +11,17 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/adguard-home-0.0.9/adguard-home-0.0.9.tgz
     version: 0.0.9
+  calibre-web:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2025-07-09T23:48:07.515455689Z"
+    description: A Helm chart for deploying Calibre-Web.
+    digest: 2a20d8856cf0576e876fb47c9248598dec22158a3c1caee4f6e3d5aa1f24f244
+    name: calibre-web
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/calibre-web-0.0.1/calibre-web-0.0.1.tgz
+    version: 0.0.1
   home-assistant-addons:
   - apiVersion: v2
     appVersion: 0.0.4
@@ -81,4 +92,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/paperless-ngx-0.0.6/paperless-ngx-0.0.6.tgz
     version: 0.0.6
-generated: "2025-07-05T20:32:48.919631016Z"
+generated: "2025-07-09T23:48:07.515461641Z"
