@@ -49,7 +49,7 @@ default_context:
         chart_target_revision: "0.0.9"
       - name: "calibre-web"
         chart_name: "calibre-web"
-        chart_target_revision: "0.0.2"
+        chart_target_revision: "0.0.3"
   services_config:
     list:
       - name: "home-assistant"
