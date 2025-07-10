@@ -7,5 +7,9 @@ service:
   type: ClusterIP
   port: 80
 
+ingress:
+  className: public
+  hostname: placeholder.example.com
+
 volume:
   path: /mnt/calibre-web
