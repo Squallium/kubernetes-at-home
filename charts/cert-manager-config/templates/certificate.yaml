@@ -1,0 +1,21 @@
+{{- range $certificate := .Values.certificates }}
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ $certificate.name }}-internal-cert
+  namespace: {{ $certificate.name }}
+spec:
+  secretName: {{ $certificate.name }}-internal-tls
+  duration: {{ $certificate.duration | default "8760h" }} # 1 year
+  renewBefore: {{ $certificate.renewBefore | default "720h" }} # 30 days
+  subject:
+    organizations:
+      - HomeInternal
+  commonName: {{ $certificate.name }}.internal
+  dnsNames:
+    - {{ $certificate.name }}.internal
+  issuerRef:
+    name: {{ $.Values.certIssuer.name }}
+    kind: ClusterIssuer
+---
+{{- end }}
