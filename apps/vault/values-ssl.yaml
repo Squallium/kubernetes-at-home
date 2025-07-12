@@ -1,6 +1,7 @@
 global:
   tlsDisable: false
 
+server:
   ingress:
     annotations:
       nginx.ingress.kubernetes.io/ssl-redirect: "true"
