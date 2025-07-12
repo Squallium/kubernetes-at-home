@@ -42,6 +42,17 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/calibre-web-0.0.1/calibre-web-0.0.1.tgz
     version: 0.0.1
+  cert-manager-config:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2025-07-12T16:31:33.607317419Z"
+    description: A Helm chart for managing Cert Manager configurations
+    digest: 4b0cfa214549d0516a89da1dc19c7904d4f82d9c19946e2ff0dc4d8b5676b19e
+    name: cert-manager-config
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/cert-manager-config-0.0.1/cert-manager-config-0.0.1.tgz
+    version: 0.0.1
   home-assistant-addons:
   - apiVersion: v2
     appVersion: 0.0.4
@@ -112,4 +123,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/paperless-ngx-0.0.6/paperless-ngx-0.0.6.tgz
     version: 0.0.6
-generated: "2025-07-10T00:02:05.555976692Z"
+generated: "2025-07-12T16:31:33.607329802Z"
