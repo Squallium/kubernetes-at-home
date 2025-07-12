@@ -29,6 +29,9 @@ default_context:
       - name : "loki"
         chart_name: "loki-config"
         chart_target_revision: "0.0.1"
+      - name: "cert-manager"
+        chart_name: "cert-manager-config"
+        chart_target_revision: "0.0.1"
   services:
     list:
       - name: "homebox"
