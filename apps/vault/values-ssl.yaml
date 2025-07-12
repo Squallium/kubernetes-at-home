@@ -1,0 +1,10 @@
+global:
+  tlsDisable: false
+
+  ingress:
+    annotations:
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    tls:
+      - secretName: vault-internal-tls
+        hosts:
+          - vault.internal
