@@ -44,6 +44,16 @@ entries:
     version: 0.0.1
   cert-manager-config:
   - apiVersion: v2
+    appVersion: 0.0.4
+    created: "2025-07-12T18:02:46.947747749Z"
+    description: A Helm chart for managing Cert Manager configurations
+    digest: 134458704088a8be286dfae143d64765b67de524e5548e5c3a8cf6052a4627ad
+    name: cert-manager-config
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/cert-manager-config-0.0.4/cert-manager-config-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
     appVersion: 0.0.3
     created: "2025-07-12T16:55:14.17086064Z"
     description: A Helm chart for managing Cert Manager configurations
@@ -143,4 +153,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/paperless-ngx-0.0.6/paperless-ngx-0.0.6.tgz
     version: 0.0.6
-generated: "2025-07-12T16:55:14.170882752Z"
+generated: "2025-07-12T18:02:46.947772335Z"
