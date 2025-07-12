@@ -3,7 +3,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: {{ $certificate.name }}-internal-cert
-  namespace: {{ $certificate.name }}
+  namespace: {{ $certificate.namespace }}
 spec:
   secretName: {{ $certificate.name }}-internal-tls
   duration: {{ $certificate.duration | default "8760h" }} # 1 year

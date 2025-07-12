@@ -1,0 +1,5 @@
+certificates:
+  - name: vault.internal
+    namespace: vault
+    duration: 8760h # 1 year
+    renewBefore: 720h # 30 days

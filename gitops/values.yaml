@@ -297,7 +297,7 @@ argocd-apps:
         ref: values
       - repoURL: https://squallium.github.io/kubernetes-at-home
         chart: cert-manager-config
-        targetRevision: 0.0.4
+        targetRevision: 0.0.5
         helm:
           valueFiles:
             - $values/apps/cert-manager/config/values.yaml

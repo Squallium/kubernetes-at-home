@@ -4,5 +4,6 @@ certIssuer:
   name: "home-internal-ca-issuer"
 certificates:
   - name: placeholder.internal
+    namespace: placeholder
     duration: 8760h # 1 year
     renewBefore: 720h # 30 days
