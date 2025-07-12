@@ -1,5 +1,17 @@
 certificates:
   - name: vault
     namespace: vault
-    duration: 8760h # 1 year
-    renewBefore: 720h # 30 days
+    duration: 8760h
+    renewBefore: 720h
+  - name: argocd
+    namespace: argocd
+    duration: 8760h
+    renewBefore: 720h
+  - name: grafana
+    namespace: kube-prometheus-stack
+    duration: 8760h
+    renewBefore: 720h
+  - name: minio
+    namespace: minio
+    duration: 8760h
+    renewBefore: 720h
