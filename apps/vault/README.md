@@ -53,4 +53,18 @@ manage by ArgoCD because in ArgoCD configurations like clusters or repo are mana
 Go to "Secrets Engines" and enable the "KV" engine. 
 1. In path you can put "secret" in maximun number of versions at lesat
 2. Then create a new secret "myapp/api-key" and add "api_key" as "abcd1234" and "username" as "admin"
-3. 
+
+
+## Upgrade helm chart and values
+
+First remember to update the Helm repository to ensure you have the latest version of the chart:
+
+```bash
+helm repo update
+```
+
+For upgrading the helm chart and values, you can use the following command:
+
+```bash
+helm upgrade vault hashicorp/vault -n vault --values apps/vault/values.yaml --version <version>
+```

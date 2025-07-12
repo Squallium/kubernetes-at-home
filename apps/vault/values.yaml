@@ -1,5 +1,5 @@
 global:
-  tlsDisable: true
+  tlsDisable: false
 
 ui:
   enabled: true
@@ -18,9 +18,12 @@ server:
   ingress:
     enabled: true
     annotations:
-      nginx.ingress.kubernetes.io/ssl-redirect: "false"
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
     hosts:
       - host: vault.internal
         paths:
           - /
-
+    tls:
+      - secretName: vault-internal-tls
+        hosts:
+          - vault.internal
