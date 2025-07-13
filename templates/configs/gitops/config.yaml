@@ -22,6 +22,10 @@ default_context:
         chart_name: "minio"
         chart_target_revision: "5.4.0"
         enable_ssl: true
+      - name: "loki"
+        chart_repo: "https://grafana.github.io/helm-charts"
+        chart_name: "loki"
+        chart_target_revision: "6.30.1"
       - name: "promtail"
         chart_repo: "https://grafana.github.io/helm-charts"
         chart_name: "promtail"
