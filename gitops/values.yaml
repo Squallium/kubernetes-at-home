@@ -523,7 +523,7 @@ argocd-apps:
               value: https://argoproj.github.io/
       syncPolicy:
         # Set Application finalizer
-        preserveResourcesOnDeletion: false
+        preserveResourcesOnDeletion: true
       # Templating is only available on string type
     #      templatePatch: |
     #        spec:
@@ -614,7 +614,7 @@ argocd-apps:
               value: https://argoproj.github.io/
       syncPolicy:
         # Set Application finalizer
-        preserveResourcesOnDeletion: false
+        preserveResourcesOnDeletion: true
       # Templating is only available on string type
     #      templatePatch: |
     #        spec:
@@ -705,7 +705,7 @@ argocd-apps:
               value: https://argoproj.github.io/
       syncPolicy:
         # Set Application finalizer
-        preserveResourcesOnDeletion: false
+        preserveResourcesOnDeletion: true
       # Templating is only available on string type
     #      templatePatch: |
     #        spec:
@@ -797,7 +797,7 @@ argocd-apps:
               value: https://argoproj.github.io/
       syncPolicy:
         # Set Application finalizer
-        preserveResourcesOnDeletion: false
+        preserveResourcesOnDeletion: true
       # Templating is only available on string type
     #      templatePatch: |
     #        spec:
@@ -888,7 +888,7 @@ argocd-apps:
               value: https://argoproj.github.io/
       syncPolicy:
         # Set Application finalizer
-        preserveResourcesOnDeletion: false
+        preserveResourcesOnDeletion: true
       # Templating is only available on string type
     #      templatePatch: |
     #        spec:
@@ -979,7 +979,7 @@ argocd-apps:
               value: https://argoproj.github.io/
       syncPolicy:
         # Set Application finalizer
-        preserveResourcesOnDeletion: false
+        preserveResourcesOnDeletion: true
       # Templating is only available on string type
     #      templatePatch: |
     #        spec:
@@ -1070,7 +1070,7 @@ argocd-apps:
               value: https://argoproj.github.io/
       syncPolicy:
         # Set Application finalizer
-        preserveResourcesOnDeletion: false
+        preserveResourcesOnDeletion: true
       # Templating is only available on string type
     #      templatePatch: |
     #        spec:
@@ -1161,7 +1161,7 @@ argocd-apps:
               value: https://argoproj.github.io/
       syncPolicy:
         # Set Application finalizer
-        preserveResourcesOnDeletion: false
+        preserveResourcesOnDeletion: true
       # Templating is only available on string type
     #      templatePatch: |
     #        spec:
@@ -1241,7 +1241,7 @@ argocd-apps:
   #          value: https://argoproj.github.io/
   #    syncPolicy:
   #      # Set Application finalizer
-  #      preserveResourcesOnDeletion: false
+  #      preserveResourcesOnDeletion: true
   #    # Templating is only available on string type
   #    templatePatch: |
   #      spec:
