@@ -21,3 +21,11 @@ setup process, because at least we need:
 3. [setup External Secrets](addons/external-secrets/README.md)
 4. [setup ArgoCD](apps/argocd/README.md)
 
+
+Once you have ArgoCD up and running, you can use it to manage your applications and resources in the Kubernetes cluster.
+
+In this repository you will find the following folders:
+* `apps/`: Contains applications that are deployed to the cluster.
+* `addons/`: Contains additional components that enhance the cluster functionality.
+* `charts/`: Contains Helm charts for deploying applications and addons.
+* `templates/`: Contains Cookiecutter templates for generating Kubernetes manifests.

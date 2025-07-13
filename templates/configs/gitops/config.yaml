@@ -1,4 +1,9 @@
 default_context:
+  projects:
+    list:
+      - name: "core"
+      - name: "addons"
+      - name: "services"
   core_services:
     list:
       - name: "kube-prometheus-stack"
