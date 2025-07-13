@@ -1,5 +1,5 @@
 applications:
-  {%- for core_service in cookiecutter.core_services_migration.list %}
+  {%- for core_service in cookiecutter.core_services.list %}
   {{ core_service.name }}:
     namespace: argocd
     additionalLabels: {}
@@ -42,7 +42,7 @@ applications:
     - name: url
       value: https://argoproj.github.io/
   {%- endfor %}
-  {%- for core_service_config in cookiecutter.core_services_config_migration.list %}
+  {%- for core_service_config in cookiecutter.core_services_config.list %}
   {{ core_service_config.name }}-config:
     namespace: argocd
     additionalLabels: {}
