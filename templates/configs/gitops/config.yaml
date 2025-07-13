@@ -10,6 +10,7 @@ default_context:
   apps_of_apps:
     list:
       - name: "core-services"
+      - name: "core-addons"
   core_services_migration:
     list:
       - name: "kube-prometheus-stack"
