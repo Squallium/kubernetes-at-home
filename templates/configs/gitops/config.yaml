@@ -57,6 +57,11 @@ default_context:
         chart_repo: "https://charts.jetstack.io"
         chart_name: "cert-manager"
         chart_target_revision: "1.18.2"
+  addons_config:
+    list:
+      - name: "cert-manager"
+        chart_name: "cert-manager-config"
+        chart_target_revision: "0.0.5"
   services:
     list:
       - name: "homebox"
