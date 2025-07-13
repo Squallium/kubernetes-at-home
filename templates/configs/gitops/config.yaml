@@ -110,11 +110,11 @@ default_context:
 #        chart_repo: "https://charts.jetstack.io"
 #        chart_name: "cert-manager"
 #        chart_target_revision: "1.18.2"
-  services_config:
-    list:
-      - name: "home-assistant"
-        chart_name: "home-assistant-config"
-        chart_target_revision: "0.0.11"
+#  services_config:
+#    list:
+#      - name: "home-assistant"
+#        chart_name: "home-assistant-config"
+#        chart_target_revision: "0.0.11"
 #      - name: "cert-manager"
 #        chart_name: "cert-manager-config"
 #        chart_target_revision: "0.0.5"
