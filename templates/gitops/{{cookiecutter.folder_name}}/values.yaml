@@ -314,6 +314,9 @@ argocd-apps:
                 valueFiles:
                   - $values/apps/{{ service.name }}/values.yaml
                   - $values/apps/{{ service.name }}/{{'{{'}}metadata.labels.environment}}/values.yaml
+                  {%- if service.get("enable_ssl", False) %}
+                  - $values/apps/{{ service.name }}/{{'{{'}}metadata.labels.environment}}/values-ssl.yaml
+                  {%- endif %}
           destination:
             server: '{{'{{'}}server}}'
             namespace: {{ service.name }}

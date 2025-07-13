@@ -49,6 +49,7 @@ default_context:
       - name: "adguard-home"
         chart_name: "adguard-home"
         chart_target_revision: "0.0.9"
+        enable_ssl: true
       - name: "calibre-web"
         chart_name: "calibre-web"
         chart_target_revision: "0.0.3"

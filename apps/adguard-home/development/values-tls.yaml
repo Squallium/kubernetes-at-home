@@ -1,0 +1,5 @@
+ingres:
+  tls:
+    - hosts:
+        - adguard-dev.internal
+      secretName: adguard-dev-tls

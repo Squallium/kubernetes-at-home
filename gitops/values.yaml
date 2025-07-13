@@ -777,6 +777,7 @@ argocd-apps:
                 valueFiles:
                   - $values/apps/adguard-home/values.yaml
                   - $values/apps/adguard-home/{{metadata.labels.environment}}/values.yaml
+                  - $values/apps/adguard-home/{{metadata.labels.environment}}/values-ssl.yaml
           destination:
             server: '{{server}}'
             namespace: adguard-home
