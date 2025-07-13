@@ -54,6 +54,11 @@ default_context:
         chart_repo: "https://charts.jetstack.io"
         chart_name: "cert-manager"
         chart_target_revision: "1.18.2"
+  core_services_config_migration:
+    list:
+      - name: "minio"
+        chart_name: "minio-config"
+        chart_target_revision: "0.0.1"
   core_services_config:
     list:
       - name: "minio"

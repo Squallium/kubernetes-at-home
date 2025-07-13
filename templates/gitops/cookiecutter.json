@@ -32,6 +32,9 @@
       }
     ]
   },
+  "core_services_config_migration": {
+    "list":[]
+  },
   "core_services_config": {
     "list":[]
   },
