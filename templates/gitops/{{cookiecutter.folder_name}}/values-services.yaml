@@ -1,5 +1,5 @@
 applicationsets:
-  {%- for service in cookiecutter.services_migration.list %}
+  {%- for service in cookiecutter.services.list %}
   {{ service.name }}:
     namespace: argocd
     additionalLabels: {}
@@ -100,7 +100,7 @@ applicationsets:
   #              prune: {{'{{'}} .prune }}
   #        {{'{{'}}- end }}
   {%- endfor %}
-  {%- for service_config in cookiecutter.services_config_migration.list %}
+  {%- for service_config in cookiecutter.services_config.list %}
   {{ service_config.name }}-config:
     namespace: argocd
     additionalLabels: {}
