@@ -5,25 +5,10 @@
   "default_chart_name": "",
   "default_chart_target_revision": "main",
   "projects": {
-    "list":[
-      {
-        "name": "core"
-      }
-    ]
+    "list":[]
   },
   "apps_of_apps": {
-    "list":[
-      {
-        "name": "placeholder"
-      }
-    ]
-  },
-  "core_services_migration": {
-    "list":[
-      {
-        "name": "loki"
-      }
-    ]
+    "list":[]
   },
   "core_addons": {
     "list":[]
@@ -34,32 +19,23 @@
   "core_services": {
     "list":[]
   },
-  "core_services_config_migration": {
-    "list":[]
-  },
   "core_services_config": {
     "list":[]
   },
+  "addons": {
+    "list":[]
+  },
+  "addons_config": {
+    "list": []
+  },
   "services": {
-    "list":[
-      {
-        "name": "homebox"
-      }
-    ]
+    "list":[]
   },
   "services_config": {
-    "list": [
-      {
-        "name": "home-assistant"
-      }
-    ]
+    "list": []
   },
   "services_addons": {
-    "list": [
-      {
-        "name": "home-assistant-addons"
-      }
-    ]
+    "list": []
   },
   "_extensions": [
     "jinja2_strcase.StrcaseExtension"

@@ -1,0 +1,5 @@
+certificates:
+  - name: adguard-dev
+    namespace: adguard-home
+    duration: 8760h
+    renewBefore: 720h

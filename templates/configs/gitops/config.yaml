@@ -11,6 +11,7 @@ default_context:
     list:
       - name: "core-addons"
       - name: "core-services"
+      - name: "addons"
   core_addons:
     list:
       - name: "cert-manager"
