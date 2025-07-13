@@ -10,6 +10,13 @@ default_context:
   apps_of_apps:
     list:
       - name: "core-services"
+  core_services_migration:
+    list:
+      - name: "minio"
+        chart_repo: "https://charts.min.io/"
+        chart_name: "minio"
+        chart_target_revision: "5.4.0"
+        enable_ssl: true
   core_services:
     list:
       - name: "kube-prometheus-stack"

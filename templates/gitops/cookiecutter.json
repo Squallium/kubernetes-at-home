@@ -18,6 +18,13 @@
       }
     ]
   },
+  "core_services_migration": {
+    "list":[
+      {
+        "name": "loki"
+      }
+    ]
+  },
   "core_services": {
     "list":[
       {
