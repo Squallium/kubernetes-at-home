@@ -51,6 +51,12 @@ default_context:
       - name: "loki"
         chart_name: "loki-config"
         chart_target_revision: "0.0.1"
+  addons:
+    list:
+      - name: "cert-manager"
+        chart_repo: "https://charts.jetstack.io"
+        chart_name: "cert-manager"
+        chart_target_revision: "1.18.2"
   services:
     list:
       - name: "homebox"
