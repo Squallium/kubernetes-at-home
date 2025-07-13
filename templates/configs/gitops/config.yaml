@@ -70,9 +70,9 @@ default_context:
         chart_target_revision: "0.0.3"
   services:
     list:
-      - name: "homebox"
-        chart_name: "homebox"
-        chart_target_revision: "0.0.3"
+#      - name: "homebox"
+#        chart_name: "homebox"
+#        chart_target_revision: "0.0.3"
       - name: "paperless-ngx"
         chart_name: "paperless-ngx"
         chart_target_revision: "0.0.6"
