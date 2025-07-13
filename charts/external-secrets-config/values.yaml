@@ -6,3 +6,5 @@ vault:
       secretRef:
         name: placeholder
         key: placeholder
+  caProvider:
+    name: placeholder
