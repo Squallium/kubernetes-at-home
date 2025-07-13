@@ -2,6 +2,7 @@ grafana:
   enabled: true
   ingress:
     enabled: true
+    ingressClassName: public
     hosts:
       - grafana.internal
     annotations:

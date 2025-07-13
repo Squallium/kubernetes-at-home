@@ -20,6 +20,7 @@ argocd-apps:
         helm:
           valueFiles:
             - $values/apps/kube-prometheus-stack/values.yaml
+            - $values/apps/kube-prometheus-stack/values-ssl.yaml
       destination:
         server: https://kubernetes.default.svc
         namespace: kube-prometheus-stack

@@ -1,0 +1,9 @@
+grafana:
+  ingress:
+    annotations:
+      nginx.ingress.kubernetes.io/rewrite-target: /
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    tls:
+      - secretName: grafana-internal-tls
+        hosts:
+          - grafana.internal
