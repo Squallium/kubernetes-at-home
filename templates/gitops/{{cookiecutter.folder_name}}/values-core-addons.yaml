@@ -42,3 +42,45 @@ applications:
     - name: url
       value: https://argoproj.github.io/
   {%- endfor %}
+  {%- for core_addon_config in cookiecutter.core_addons_config.list %}
+  {{ core_addon_config.name }}-config:
+    namespace: argocd
+    additionalLabels: {}
+    additionalAnnotations: {}
+    finalizers:
+    - resources-finalizer.argocd.argoproj.io
+    project: default
+    sources:
+    - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+      targetRevision: main
+      ref: values
+    {%- if core_addon_config.chart_name | default(cookiecutter.default_chart_name) %}
+    - repoURL: {{ core_addon_config.chart_repo | default(cookiecutter.default_chart_repo) }}
+      chart: {{ core_addon_config.chart_name  }}
+    {%- else %}
+    - repoURL: {{ core_addon_config.chart_repo_url | default(cookiecutter.default_chart_repo_url) }}
+      path: charts/{{ core_addon_config.name }}
+    {%- endif %}
+      targetRevision: {{ core_addon_config.chart_target_revision }}
+      helm:
+        valueFiles:
+          - $values/apps/{{ core_addon_config.name }}/config/values.yaml
+    destination:
+      server: https://kubernetes.default.svc
+      namespace: {{ core_addon_config.namespace | default(core_addon_config.name) }}
+    syncPolicy:
+#      automated:
+#        prune: false
+#        selfHeal: false
+      syncOptions:
+      - CreateNamespace=true
+    revisionHistoryLimit: null
+    ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+      - /spec/replicas
+    info:
+    - name: url
+      value: https://argoproj.github.io/
+  {%- endfor %}

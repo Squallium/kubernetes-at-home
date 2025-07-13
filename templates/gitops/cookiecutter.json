@@ -26,11 +26,10 @@
     ]
   },
   "core_addons": {
-    "list":[
-      {
-        "name": "placeholder"
-      }
-    ]
+    "list":[]
+  },
+  "core_addons_config": {
+    "list":[]
   },
   "core_services": {
     "list":[]
