@@ -35,7 +35,7 @@
       }
     ]
   },
-  "app_of_apps": {
+  "services_addons": {
     "list": [
       {
         "name": "home-assistant-addons"

@@ -46,8 +46,8 @@ argocd-apps:
       - name: url
         value: https://argoproj.github.io/
     {%- endfor %}
-    {%- for app_of_app in cookiecutter.app_of_apps.list %}
-    {{ app_of_app.name }}:
+    {%- for service_addons in cookiecutter.services_addons.list %}
+    {{ service_addons.name }}:
       namespace: argocd
       additionalLabels: {}
       additionalAnnotations: {}
@@ -59,11 +59,11 @@ argocd-apps:
         targetRevision: main
         ref: values
       - repoURL: https://github.com/Squallium/kubernetes-at-home.git
-        path: charts/{{ app_of_app.name }}
+        path: charts/{{ service_addons.name }}
         targetRevision: main
         helm:
           valueFiles:
-            - $values/apps/{{ app_of_app.name }}/values.yaml
+            - $values/apps/{{ service_addons.name }}/values.yaml
       destination:
         server: https://kubernetes.default.svc
         namespace: argocd
