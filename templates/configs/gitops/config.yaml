@@ -76,10 +76,10 @@ default_context:
       - name: "calibre-web"
         chart_name: "calibre-web"
         chart_target_revision: "0.0.3"
-      - name: "cert-manager"
-        chart_repo: "https://charts.jetstack.io"
-        chart_name: "cert-manager"
-        chart_target_revision: "1.18.2"
+#      - name: "cert-manager"
+#        chart_repo: "https://charts.jetstack.io"
+#        chart_name: "cert-manager"
+#        chart_target_revision: "1.18.2"
   services_config:
     list:
       - name: "home-assistant"
