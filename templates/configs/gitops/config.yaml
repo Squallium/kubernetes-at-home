@@ -9,8 +9,14 @@ default_context:
         description: "Kubernetes services and their configurations"
   apps_of_apps:
     list:
-      - name: "core-services"
       - name: "core-addons"
+      - name: "core-services"
+  core_addons:
+    list:
+      - name: "cert-manager"
+        chart_repo: "https://charts.jetstack.io"
+        chart_name: "cert-manager"
+        chart_target_revision: "1.18.2"
   core_services_migration:
     list:
       - name: "kube-prometheus-stack"

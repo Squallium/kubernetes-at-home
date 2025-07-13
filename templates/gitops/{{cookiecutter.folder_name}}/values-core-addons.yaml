@@ -1,0 +1,44 @@
+applications:
+  {%- for core_addon in cookiecutter.core_addons.list %}
+  {{ core_addon.name }}:
+    namespace: argocd
+    additionalLabels: {}
+    additionalAnnotations: {}
+    finalizers:
+    - resources-finalizer.argocd.argoproj.io
+    project: default
+    sources:
+    - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+      targetRevision: main
+      ref: values
+    - repoURL: {{ core_addon.chart_repo }}
+      chart: {{ core_addon.chart_name | default(core_addon.name) }}
+      targetRevision: {{ core_addon.chart_target_revision }}
+      helm:
+        valueFiles:
+          - $values/apps/{{ core_addon.name }}/values.yaml
+          {%- if core_addon.get("enable_ssl", False) %}
+          - $values/apps/{{ core_addon.name }}/values-ssl.yaml
+          {%- endif %}
+    destination:
+      server: https://kubernetes.default.svc
+      namespace: {{ core_addon.namespace | default(core_addon.name) }}
+    syncPolicy:
+#      automated:
+#        prune: false
+#        selfHeal: false
+      syncOptions:
+      - CreateNamespace=true
+      {%- if core_addon.get("server_side_apply", False) %}
+      - ServerSideApply=true
+      {%- endif %}
+    revisionHistoryLimit: null
+    ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+      - /spec/replicas
+    info:
+    - name: url
+      value: https://argoproj.github.io/
+  {%- endfor %}

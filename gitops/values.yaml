@@ -3,7 +3,7 @@ argocd-apps:
   # @default -- `{}` (See [values.yaml])
   ## Ref: https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/
   applications:
-    core-services:
+    core-addons:
       namespace: argocd
       additionalLabels: {}
       additionalAnnotations: {}
@@ -19,7 +19,7 @@ argocd-apps:
         targetRevision: 2.0.2
         helm:
           valueFiles:
-            - $values/gitops/values-core-services.yaml
+            - $values/gitops/values-core-addons.yaml
       destination:
         server: https://kubernetes.default.svc
         namespace: argocd
@@ -38,7 +38,7 @@ argocd-apps:
       info:
       - name: url
         value: https://argoproj.github.io/
-    core-addons:
+    core-services:
       namespace: argocd
       additionalLabels: {}
       additionalAnnotations: {}
@@ -54,7 +54,7 @@ argocd-apps:
         targetRevision: 2.0.2
         helm:
           valueFiles:
-            - $values/gitops/values-core-addons.yaml
+            - $values/gitops/values-core-services.yaml
       destination:
         server: https://kubernetes.default.svc
         namespace: argocd

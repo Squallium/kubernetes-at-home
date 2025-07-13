@@ -25,6 +25,13 @@
       }
     ]
   },
+  "core_addons": {
+    "list":[
+      {
+        "name": "placeholder"
+      }
+    ]
+  },
   "core_services": {
     "list":[
       {
