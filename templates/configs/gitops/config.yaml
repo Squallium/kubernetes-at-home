@@ -12,6 +12,11 @@ default_context:
       - name: "core-services"
   core_services_migration:
     list:
+      - name: "kube-prometheus-stack"
+        chart_repo: "https://prometheus-community.github.io/helm-charts"
+        chart_target_revision: "75.4.0"
+        server_side_apply: true
+        enable_ssl: true
       - name: "minio"
         chart_repo: "https://charts.min.io/"
         chart_name: "minio"
