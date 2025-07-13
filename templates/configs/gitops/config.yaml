@@ -7,6 +7,9 @@ default_context:
         description: "Kubernetes addons and their configurations"
       - name: "services"
         description: "Kubernetes services and their configurations"
+  apps_of_apps:
+    list:
+      - name: "core-services"
   core_services:
     list:
       - name: "kube-prometheus-stack"

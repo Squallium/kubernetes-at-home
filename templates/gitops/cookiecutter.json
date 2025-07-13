@@ -11,6 +11,13 @@
       }
     ]
   },
+  "apps_of_apps": {
+    "list":[
+      {
+        "name": "placeholder"
+      }
+    ]
+  },
   "core_services": {
     "list":[
       {
