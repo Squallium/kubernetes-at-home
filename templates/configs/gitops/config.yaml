@@ -90,9 +90,9 @@ default_context:
       - name: "home-assistant"
         chart_name: "home-assistant-config"
         chart_target_revision: "0.0.11"
-      - name: "cert-manager"
-        chart_name: "cert-manager-config"
-        chart_target_revision: "0.0.5"
+#      - name: "cert-manager"
+#        chart_name: "cert-manager-config"
+#        chart_target_revision: "0.0.5"
   services_addons:
     list:
       - name: "home-assistant-addons"
