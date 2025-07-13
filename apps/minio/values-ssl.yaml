@@ -1,0 +1,15 @@
+ingress:
+  annotations:
+    cert-manager.io/cluster-issuer: home-internal-ca-issuer
+  tls:
+    - hosts:
+        - minio.internal
+      secretName: minio-internal-tls
+
+consoleIngress:
+  annotations:
+    cert-manager.io/cluster-issuer: home-internal-ca-issuer
+  tls:
+    - hosts:
+        - minio-ui.internal
+      secretName: minio-ui-internal-tls

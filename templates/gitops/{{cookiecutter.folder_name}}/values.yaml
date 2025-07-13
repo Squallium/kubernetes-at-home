@@ -21,6 +21,9 @@ argocd-apps:
         helm:
           valueFiles:
             - $values/apps/{{ core_service.name }}/values.yaml
+            {%- if core_service.get("enable_ssl", False) %}
+            - $values/apps/{{ core_service.name }}/values-ssl.yaml
+            {%- endif %}
       destination:
         server: https://kubernetes.default.svc
         namespace: {{ core_service.namespace | default(core_service.name) }}

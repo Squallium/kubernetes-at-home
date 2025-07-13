@@ -126,6 +126,7 @@ argocd-apps:
         helm:
           valueFiles:
             - $values/apps/minio/values.yaml
+            - $values/apps/minio/values-ssl.yaml
       destination:
         server: https://kubernetes.default.svc
         namespace: minio
