@@ -11,7 +11,8 @@ certificates:
     namespace: kube-prometheus-stack
     duration: 8760h
     renewBefore: 720h
-  - name: minio
-    namespace: minio
-    duration: 8760h
-    renewBefore: 720h
+# Seems that the certificate is created by the official chart we should review this.
+#  - name: minio
+#    namespace: minio
+#    duration: 8760h
+#    renewBefore: 720h
