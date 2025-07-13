@@ -1,0 +1,21 @@
+server:
+  ingress:
+    annotations:
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+      nginx.ingress.kubernetes.io/ssl-redirect: "443"
+      cert-manager.io/cluster-issuer: home-internal-ca-issuer
+      nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    extraTls:
+      - hosts:
+          - argocd.internal
+        secretName: argocd-internal-tls
+  extraArgs: []
+
+configs:
+  params:
+    server.insecure: false
+
+  cm:
+    admin.enabled: true
+    url: https://argocd.internal
+    exec.enabled: true

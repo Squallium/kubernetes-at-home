@@ -3,7 +3,6 @@ server:
     enabled: true
     ingressClassName: public
     hostname: argocd.internal
-    service:
 
   service:
     type: ClusterIP
@@ -24,5 +23,3 @@ configs:
 
 dex:
   enabled: false  # Deactivate SSO/OAuth (we'll enable it later)
-
-
