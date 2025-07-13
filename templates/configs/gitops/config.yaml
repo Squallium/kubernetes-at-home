@@ -82,6 +82,11 @@ default_context:
       - name: "calibre-web"
         chart_name: "calibre-web"
         chart_target_revision: "0.0.3"
+  services_config_migration:
+    list:
+      - name: "home-assistant"
+        chart_name: "home-assistant-config"
+        chart_target_revision: "0.0.11"
 #  services:
 #    list:
 #      - name: "homebox"
