@@ -64,6 +64,9 @@ default_context:
         chart_target_revision: "1.18.2"
   addons_config:
     list:
+      - name: "external-secrets"
+        chart_name: "external-secrets-config"
+        chart_target_revision: "0.0.2"
       - name: "cert-manager"
         chart_name: "cert-manager-config"
         chart_target_revision: "0.0.5"
