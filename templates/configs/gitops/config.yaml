@@ -59,6 +59,9 @@ default_context:
       - name: "minio"
         chart_name: "minio-config"
         chart_target_revision: "0.0.1"
+      - name: "loki"
+        chart_name: "loki-config"
+        chart_target_revision: "0.0.1"
   core_services_config:
     list:
 #      - name: "minio"

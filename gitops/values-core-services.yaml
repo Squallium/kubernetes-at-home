@@ -177,3 +177,38 @@ applications:
     info:
     - name: url
       value: https://argoproj.github.io/
+  loki-config:
+    namespace: argocd
+    additionalLabels: {}
+    additionalAnnotations: {}
+    finalizers:
+    - resources-finalizer.argocd.argoproj.io
+    project: default
+    sources:
+    - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+      targetRevision: main
+      ref: values
+    - repoURL: https://squallium.github.io/kubernetes-at-home
+      chart: loki-config
+      targetRevision: 0.0.1
+      helm:
+        valueFiles:
+          - $values/apps/loki/config/values.yaml
+    destination:
+      server: https://kubernetes.default.svc
+      namespace: loki
+    syncPolicy:
+#      automated:
+#        prune: false
+#        selfHeal: false
+      syncOptions:
+      - CreateNamespace=true
+    revisionHistoryLimit: null
+    ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+      - /spec/replicas
+    info:
+    - name: url
+      value: https://argoproj.github.io/
