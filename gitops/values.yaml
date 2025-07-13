@@ -108,6 +108,41 @@ argocd-apps:
       info:
       - name: url
         value: https://argoproj.github.io/
+    services:
+      namespace: argocd
+      additionalLabels: {}
+      additionalAnnotations: {}
+      finalizers:
+      - resources-finalizer.argocd.argoproj.io
+      project: default
+      sources:
+      - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+        targetRevision: main
+        ref: values
+      - repoURL: https://argoproj.github.io/argo-helm
+        chart: argocd-apps
+        targetRevision: 2.0.2
+        helm:
+          valueFiles:
+            - $values/gitops/values-services.yaml
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: argocd
+      syncPolicy:
+  #      automated:
+  #        prune: false
+  #        selfHeal: false
+        syncOptions:
+        - CreateNamespace=true
+      revisionHistoryLimit: null
+      ignoreDifferences:
+      - group: apps
+        kind: Deployment
+        jsonPointers:
+        - /spec/replicas
+      info:
+      - name: url
+        value: https://argoproj.github.io/
     home-assistant-addons:
       namespace: argocd
       additionalLabels: {}

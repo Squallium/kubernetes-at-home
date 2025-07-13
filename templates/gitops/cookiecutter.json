@@ -37,6 +37,12 @@
   "services_addons": {
     "list": []
   },
+  "services_migration": {
+    "list": []
+  },
+  "services_config_migration": {
+    "list": []
+  },
   "_extensions": [
     "jinja2_strcase.StrcaseExtension"
   ]

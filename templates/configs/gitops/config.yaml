@@ -12,6 +12,7 @@ default_context:
       - name: "core-addons"
       - name: "core-services"
       - name: "addons"
+      - name: "services"
   core_addons:
     list:
       - name: "cert-manager"
@@ -62,6 +63,11 @@ default_context:
       - name: "cert-manager"
         chart_name: "cert-manager-config"
         chart_target_revision: "0.0.5"
+  services_migration:
+    list:
+      - name: "homebox"
+        chart_name: "homebox"
+        chart_target_revision: "0.0.3"
   services:
     list:
       - name: "homebox"
