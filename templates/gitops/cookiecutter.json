@@ -33,11 +33,7 @@
     ]
   },
   "core_services": {
-    "list":[
-      {
-        "name": "loki"
-      }
-    ]
+    "list":[]
   },
   "core_services_config_migration": {
     "list":[]

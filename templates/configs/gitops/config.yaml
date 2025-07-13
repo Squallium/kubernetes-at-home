@@ -37,8 +37,8 @@ default_context:
         chart_repo: "https://grafana.github.io/helm-charts"
         chart_name: "promtail"
         chart_target_revision: "6.17.0"
-  core_services:
-    list:
+#  core_services:
+#    list:
 #      - name: "kube-prometheus-stack"
 #        chart_repo: "https://prometheus-community.github.io/helm-charts"
 #        chart_target_revision: "75.4.0"
@@ -57,10 +57,10 @@ default_context:
 #        chart_name: "minio"
 #        chart_target_revision: "5.4.0"
 #        enable_ssl: true
-      - name: "cert-manager"
-        chart_repo: "https://charts.jetstack.io"
-        chart_name: "cert-manager"
-        chart_target_revision: "1.18.2"
+#      - name: "cert-manager"
+#        chart_repo: "https://charts.jetstack.io"
+#        chart_name: "cert-manager"
+#        chart_target_revision: "1.18.2"
   core_services_config_migration:
     list:
       - name: "minio"
