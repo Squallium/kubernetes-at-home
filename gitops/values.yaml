@@ -325,49 +325,133 @@ argocd-apps:
   # -- Deploy Argo CD Projects within this helm release
   # @default -- `{}` (See [values.yaml])
   ## Ref: https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/
-  projects: {}
-  #  guestbook:
-  #    namespace: argocd
-  #    additionalLabels: {}
-  #    additionalAnnotations: {}
-  #    permitOnlyProjectScopedClusters: false
-  #    finalizers:
-  #    - resources-finalizer.argocd.argoproj.io
-  #    description: Example Project
-  #    sourceRepos:
-  #    - '*'
-  #    destinations:
-  #    - namespace: guestbook
-  #      server: https://kubernetes.default.svc
-  #    clusterResourceWhitelist: []
-  #    clusterResourceBlacklist: []
-  #    namespaceResourceBlacklist:
-  #    - group: ''
-  #      kind: ResourceQuota
-  #    - group: ''
-  #      kind: LimitRange
-  #    - group: ''
-  #      kind: NetworkPolicy
-  #      orphanedResources: {}
-  #      roles: []
-  #    namespaceResourceWhitelist:
-  #    - group: 'apps'
-  #      kind: Deployment
-  #    - group: 'apps'
-  #      kind: StatefulSet
-  #    orphanedResources: {}
-  #    roles: []
-  #    syncWindows:
-  #    - kind: allow
-  #      schedule: '10 1 * * *'
-  #      duration: 1h
-  #      applications:
-  #      - '*-prod'
-  #      manualSync: true
-  #    signatureKeys:
-  #    - keyID: ABCDEF1234567890
-  #    sourceNamespaces:
-  #    - argocd
+  projects:
+    core:
+      namespace: argocd
+      additionalLabels: {}
+      additionalAnnotations: {}
+      permitOnlyProjectScopedClusters: false
+      finalizers:
+      - resources-finalizer.argocd.argoproj.io
+      description: Core cluster addons and services
+      sourceRepos:
+      - '*'
+      destinations:
+      - namespace: guestbook
+        server: https://kubernetes.default.svc
+      clusterResourceWhitelist: []
+      clusterResourceBlacklist: []
+      namespaceResourceBlacklist: {}
+#      - group: ''
+#        kind: ResourceQuota
+#      - group: ''
+#        kind: LimitRange
+#      - group: ''
+#        kind: NetworkPolicy
+#        orphanedResources: {}
+#        roles: []
+      namespaceResourceWhitelist: {}
+#      - group: 'apps'
+#        kind: Deployment
+#      - group: 'apps'
+#        kind: StatefulSet
+      orphanedResources: {}
+      roles: []
+      syncWindows: {}
+#      - kind: allow
+#        schedule: '10 1 * * *'
+#        duration: 1h
+#        applications:
+#        - '*-prod'
+#        manualSync: true
+      signatureKeys:
+      - keyID: ABCDEF1234567890
+      sourceNamespaces:
+      - argocd
+    addons:
+      namespace: argocd
+      additionalLabels: {}
+      additionalAnnotations: {}
+      permitOnlyProjectScopedClusters: false
+      finalizers:
+      - resources-finalizer.argocd.argoproj.io
+      description: Kubernetes addons and their configurations
+      sourceRepos:
+      - '*'
+      destinations:
+      - namespace: guestbook
+        server: https://kubernetes.default.svc
+      clusterResourceWhitelist: []
+      clusterResourceBlacklist: []
+      namespaceResourceBlacklist: {}
+#      - group: ''
+#        kind: ResourceQuota
+#      - group: ''
+#        kind: LimitRange
+#      - group: ''
+#        kind: NetworkPolicy
+#        orphanedResources: {}
+#        roles: []
+      namespaceResourceWhitelist: {}
+#      - group: 'apps'
+#        kind: Deployment
+#      - group: 'apps'
+#        kind: StatefulSet
+      orphanedResources: {}
+      roles: []
+      syncWindows: {}
+#      - kind: allow
+#        schedule: '10 1 * * *'
+#        duration: 1h
+#        applications:
+#        - '*-prod'
+#        manualSync: true
+      signatureKeys:
+      - keyID: ABCDEF1234567890
+      sourceNamespaces:
+      - argocd
+    services:
+      namespace: argocd
+      additionalLabels: {}
+      additionalAnnotations: {}
+      permitOnlyProjectScopedClusters: false
+      finalizers:
+      - resources-finalizer.argocd.argoproj.io
+      description: Kubernetes services and their configurations
+      sourceRepos:
+      - '*'
+      destinations:
+      - namespace: guestbook
+        server: https://kubernetes.default.svc
+      clusterResourceWhitelist: []
+      clusterResourceBlacklist: []
+      namespaceResourceBlacklist: {}
+#      - group: ''
+#        kind: ResourceQuota
+#      - group: ''
+#        kind: LimitRange
+#      - group: ''
+#        kind: NetworkPolicy
+#        orphanedResources: {}
+#        roles: []
+      namespaceResourceWhitelist: {}
+#      - group: 'apps'
+#        kind: Deployment
+#      - group: 'apps'
+#        kind: StatefulSet
+      orphanedResources: {}
+      roles: []
+      syncWindows: {}
+#      - kind: allow
+#        schedule: '10 1 * * *'
+#        duration: 1h
+#        applications:
+#        - '*-prod'
+#        manualSync: true
+      signatureKeys:
+      - keyID: ABCDEF1234567890
+      sourceNamespaces:
+      - argocd
 
   # -- Deploy Argo CD ApplicationSets within this helm release
   # @default -- `{}` (See [values.yaml])

@@ -4,6 +4,13 @@
   "default_chart_repo_url": "{{cookiecutter.default_chart_repo}}.git",
   "default_chart_name": "",
   "default_chart_target_revision": "main",
+  "projects": {
+    "list":[
+      {
+        "name": "core"
+      }
+    ]
+  },
   "core_services": {
     "list":[
       {

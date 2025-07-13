@@ -2,8 +2,11 @@ default_context:
   projects:
     list:
       - name: "core"
+        description: "Core cluster addons and services"
       - name: "addons"
+        description: "Kubernetes addons and their configurations"
       - name: "services"
+        description: "Kubernetes services and their configurations"
   core_services:
     list:
       - name: "kube-prometheus-stack"
