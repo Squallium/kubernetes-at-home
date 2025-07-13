@@ -93,6 +93,17 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/cert-manager-config-0.0.1/cert-manager-config-0.0.1.tgz
     version: 0.0.1
+  external-secrets-config:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2025-07-13T18:20:42.913300355Z"
+    description: A Helm chart for managing External Secrets configurations
+    digest: 1e46183a108da35250be2a2bf2b362b2fc2bea12251cd8aa5f32a949d8466347
+    name: external-secrets-config
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/external-secrets-config-0.0.1/external-secrets-config-0.0.1.tgz
+    version: 0.0.1
   home-assistant-addons:
   - apiVersion: v2
     appVersion: 0.0.4
@@ -163,4 +174,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/paperless-ngx-0.0.6/paperless-ngx-0.0.6.tgz
     version: 0.0.6
-generated: "2025-07-12T18:18:24.749562431Z"
+generated: "2025-07-13T18:20:42.913322427Z"
