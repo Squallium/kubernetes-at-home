@@ -37,10 +37,7 @@
   "services_addons": {
     "list": []
   },
-  "services_migration": {
-    "list": []
-  },
-  "services_config_migration": {
+  "services_addons_migration": {
     "list": []
   },
   "_extensions": [
