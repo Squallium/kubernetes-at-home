@@ -233,7 +233,7 @@ applicationsets:
             ref: values
           - repoURL: https://squallium.github.io/kubernetes-at-home
             chart: external-secrets-config
-            targetRevision: 0.0.2
+            targetRevision: 0.0.3
             helm:
               valueFiles:
                 - $values/addons/external-secrets/config/values.yaml
