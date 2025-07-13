@@ -82,8 +82,8 @@ default_context:
       - name: "calibre-web"
         chart_name: "calibre-web"
         chart_target_revision: "0.0.3"
-  services:
-    list:
+#  services:
+#    list:
 #      - name: "homebox"
 #        chart_name: "homebox"
 #        chart_target_revision: "0.0.3"
@@ -94,13 +94,13 @@ default_context:
 #        chart_repo: "https://pajikos.github.io/home-assistant-helm-chart"
 #        chart_name: "home-assistant"
 #        chart_target_revision: "0.3.4"
-      - name: "adguard-home"
-        chart_name: "adguard-home"
-        chart_target_revision: "0.0.9"
-        enable_ssl: true
-      - name: "calibre-web"
-        chart_name: "calibre-web"
-        chart_target_revision: "0.0.3"
+#      - name: "adguard-home"
+#        chart_name: "adguard-home"
+#        chart_target_revision: "0.0.9"
+#        enable_ssl: true
+#      - name: "calibre-web"
+#        chart_name: "calibre-web"
+#        chart_target_revision: "0.0.3"
 #      - name: "cert-manager"
 #        chart_repo: "https://charts.jetstack.io"
 #        chart_name: "cert-manager"
