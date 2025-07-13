@@ -200,7 +200,7 @@ applicationsets:
   {%- endfor %}
 
 applications:
-  {%- for service_addons in cookiecutter.services_addons_migration.list %}
+  {%- for service_addons in cookiecutter.services_addons.list %}
   {{ service_addons.name }}:
     namespace: argocd
     additionalLabels: {}
