@@ -95,6 +95,16 @@ entries:
     version: 0.0.1
   external-secrets-config:
   - apiVersion: v2
+    appVersion: 0.0.2
+    created: "2025-07-13T18:24:31.537334979Z"
+    description: A Helm chart for managing External Secrets configurations
+    digest: 8b3be1ca2406985206abb01b5354ae84085453dfeeee55748e4cf3e2d47ec019
+    name: external-secrets-config
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/external-secrets-config-0.0.2/external-secrets-config-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
     appVersion: 0.0.1
     created: "2025-07-13T18:20:42.913300355Z"
     description: A Helm chart for managing External Secrets configurations
@@ -174,4 +184,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/paperless-ngx-0.0.6/paperless-ngx-0.0.6.tgz
     version: 0.0.6
-generated: "2025-07-13T18:20:42.913322427Z"
+generated: "2025-07-13T18:24:31.537352612Z"
