@@ -74,17 +74,17 @@ default_context:
       - name: "loki"
         chart_name: "loki-config"
         chart_target_revision: "0.0.1"
-  core_services_config:
-    list:
+#  core_services_config:
+#    list:
 #      - name: "minio"
 #        chart_name: "minio-config"
 #        chart_target_revision: "0.0.1"
 #      - name : "loki"
 #        chart_name: "loki-config"
 #        chart_target_revision: "0.0.1"
-      - name: "cert-manager"
-        chart_name: "cert-manager-config"
-        chart_target_revision: "0.0.5"
+#      - name: "cert-manager"
+#        chart_name: "cert-manager-config"
+#        chart_target_revision: "0.0.5"
   services:
     list:
       - name: "homebox"
