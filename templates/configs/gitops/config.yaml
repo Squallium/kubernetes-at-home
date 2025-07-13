@@ -54,6 +54,10 @@ default_context:
         chart_target_revision: "0.0.1"
   addons:
     list:
+      - name: "external-secrets"
+        chart_repo: "https://charts.external-secrets.io"
+        chart_name: "external-secrets"
+        chart_target_revision: "0.17.0"
       - name: "cert-manager"
         chart_repo: "https://charts.jetstack.io"
         chart_name: "cert-manager"
