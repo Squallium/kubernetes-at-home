@@ -17,6 +17,10 @@ default_context:
         chart_name: "minio"
         chart_target_revision: "5.4.0"
         enable_ssl: true
+      - name: "promtail"
+        chart_repo: "https://grafana.github.io/helm-charts"
+        chart_name: "promtail"
+        chart_target_revision: "6.17.0"
   core_services:
     list:
       - name: "kube-prometheus-stack"
