@@ -92,8 +92,8 @@ default_context:
       - name: "home-assistant-addons"
         chart_name: "home-assistant-addons"
         chart_target_revision: "0.0.4"
-  services_addons:
-    list:
-      - name: "home-assistant-addons"
-        chart_name: "home-assistant-addons"
-        chart_target_revision: "0.0.4"
+#  services_addons:
+#    list:
+#      - name: "home-assistant-addons"
+#        chart_name: "home-assistant-addons"
+#        chart_target_revision: "0.0.4"
