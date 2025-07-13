@@ -1,4 +1,4 @@
-ingres:
+ingress:
   tls:
     - hosts:
         - adguard-dev.internal
