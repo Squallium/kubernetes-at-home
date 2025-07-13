@@ -16,9 +16,9 @@ applications:
       targetRevision: {{ core_addon.chart_target_revision }}
       helm:
         valueFiles:
-          - $values/apps/{{ core_addon.name }}/values.yaml
+          - $values/addons/{{ core_addon.name }}/values.yaml
           {%- if core_addon.get("enable_ssl", False) %}
-          - $values/apps/{{ core_addon.name }}/values-ssl.yaml
+          - $values/addons/{{ core_addon.name }}/values-ssl.yaml
           {%- endif %}
     destination:
       server: https://kubernetes.default.svc
@@ -64,7 +64,7 @@ applications:
       targetRevision: {{ core_addon_config.chart_target_revision }}
       helm:
         valueFiles:
-          - $values/apps/{{ core_addon_config.name }}/config/values.yaml
+          - $values/addons/{{ core_addon_config.name }}/config/values.yaml
     destination:
       server: https://kubernetes.default.svc
       namespace: {{ core_addon_config.namespace | default(core_addon_config.name) }}

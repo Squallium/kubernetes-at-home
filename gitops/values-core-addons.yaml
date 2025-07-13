@@ -15,7 +15,7 @@ applications:
       targetRevision: 1.18.2
       helm:
         valueFiles:
-          - $values/apps/cert-manager/values.yaml
+          - $values/addons/cert-manager/values.yaml
     destination:
       server: https://kubernetes.default.svc
       namespace: cert-manager
@@ -50,7 +50,7 @@ applications:
       targetRevision: 0.0.5
       helm:
         valueFiles:
-          - $values/apps/cert-manager/config/values.yaml
+          - $values/addons/cert-manager/config/values.yaml
     destination:
       server: https://kubernetes.default.svc
       namespace: cert-manager
