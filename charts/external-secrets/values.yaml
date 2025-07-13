@@ -1,0 +1,8 @@
+vault:
+  server: https://placeholder
+  auth:
+    appRole:
+      roleId: placeholder
+      secretRef:
+        name: placeholder
+        key: placeholder
