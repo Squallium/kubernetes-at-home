@@ -1,0 +1,38 @@
+certController:
+  extraVolumes:
+    - name: custom-ca
+      configMap:
+        name: home-internal-root-ca
+  extraVolumeMounts:
+    - name: custom-ca
+      mountPath: /etc/ssl/certs/home-internal-root-ca.crt
+      subPath: ca.crt
+  extraEnv:
+    - name: SSL_CERT_FILE
+      value: /etc/ssl/certs/home-internal-root-ca.crt
+
+webhook:
+  extraVolumes:
+    - name: custom-ca
+      configMap:
+        name: home-internal-root-ca
+  extraVolumeMounts:
+    - name: custom-ca
+      mountPath: /etc/ssl/certs/home-internal-root-ca.crt
+      subPath: ca.crt
+  extraEnv:
+    - name: SSL_CERT_FILE
+      value: /etc/ssl/certs/home-internal-root-ca.crt
+
+externalSecrets:
+  extraVolumes:
+    - name: custom-ca
+      configMap:
+        name: home-internal-root-ca
+  extraVolumeMounts:
+    - name: custom-ca
+      mountPath: /etc/ssl/certs/home-internal-root-ca.crt
+      subPath: ca.crt
+  extraEnv:
+    - name: SSL_CERT_FILE
+      value: /etc/ssl/certs/home-internal-root-ca.crt

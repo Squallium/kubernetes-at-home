@@ -151,3 +151,15 @@ vault write -f auth/approle/role/eso-role/secret-id
 Then encode the new secret ID in base64 and patch the Kubernetes secret:
 
 ```bash
+echo -n "new-secret-id" | base64
+kubectl patch secret vault-approle-secret -p '{"data":{"secret-id":"new-base64-encoded-secret-id"}}' -n default
+```
+
+## Connect to vault from other clusters using https
+
+You need to add as configmap the CA certificate of the Vault server to the cluster where you want to connect to Vault. Create a configmap with the CA certificate:
+
+```bash
+kubectl -n external-secrets create configmap home-internal-root-ca --from-file=ca.crt=/path/to/ca.crt
+```
+
