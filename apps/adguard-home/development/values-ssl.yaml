@@ -4,4 +4,4 @@ ingress:
   tls:
     - hosts:
         - adguard-dev.internal
-      secretName: adguard-dev-tls
+      secretName: adguard-dev-internal-cert
