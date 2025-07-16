@@ -7,6 +7,8 @@ ingress:
   className: public
   hostname: placeholder.example.com
   proxyBodySize: "100m"
+  annotations: {}
+  tls: []
 
 storagePath:
   data: /mnt/paperless-ngx/data
