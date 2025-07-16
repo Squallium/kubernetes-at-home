@@ -14,6 +14,16 @@ entries:
   calibre-web:
   - apiVersion: v2
     appVersion: 0.6.24
+    created: "2025-07-16T18:22:31.717751037Z"
+    description: A Helm chart for deploying Calibre-Web.
+    digest: a517eb4cd6dd36e13ccd7a50ead0382d545e244504506d73a5de768c95d78d50
+    name: calibre-web
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/calibre-web-0.0.4/calibre-web-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
+    appVersion: 0.6.24
     created: "2025-07-10T00:02:05.555935534Z"
     description: A Helm chart for deploying Calibre-Web.
     digest: 72b269b55b965e73b153cdf401a82b538de917e92651112bb0392a4be777beeb
@@ -194,4 +204,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/paperless-ngx-0.0.6/paperless-ngx-0.0.6.tgz
     version: 0.0.6
-generated: "2025-07-13T19:48:36.041049305Z"
+generated: "2025-07-16T18:22:31.717781413Z"
