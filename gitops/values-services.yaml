@@ -56,6 +56,7 @@ applicationsets:
               valueFiles:
                 - $values/apps/homebox/values.yaml
                 - $values/apps/homebox/{{metadata.labels.environment}}/values.yaml
+                - $values/apps/homebox/{{metadata.labels.environment}}/values-ssl.yaml
         destination:
           server: '{{server}}'
           namespace: homebox
