@@ -88,7 +88,8 @@ default_context:
         enable_ssl: true
       - name: "calibre-web"
         chart_name: "calibre-web"
-        chart_target_revision: "0.0.3"
+        chart_target_revision: "0.0.4"
+        enable_ssl: true
   services_config:
     list:
       - name: "home-assistant"
