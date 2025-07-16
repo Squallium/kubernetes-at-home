@@ -10,6 +10,8 @@ service:
 ingress:
   className: public
   hostname: placeholder.example.com
+  annotations: {}
+  tls: []
 
 volume:
   path: /mnt/calibre-web
