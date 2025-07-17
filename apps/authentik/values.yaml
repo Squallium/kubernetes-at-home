@@ -19,9 +19,13 @@ server:
         name: authentik-postgres
 
   env:
-    AUTHENTIK_POSTGRESQL__HOST: authentik-db-rw.authentik.svc
-    AUTHENTIK_POSTGRESQL__PORT: "5432"
-    AUTHENTIK_POSTGRESQL__NAME: authentik
+    - name: AUTHENTIK_POSTGRESQL__HOST
+      value: authentik-db-rw.authentik.svc
+    - name: AUTHENTIK_POSTGRESQL__PORT
+      value: "5432"
+    - name: AUTHENTIK_POSTGRESQL__NAME
+      value: authentik
+
 
 redis:
   enabled: true
