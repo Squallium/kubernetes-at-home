@@ -4,3 +4,13 @@ extSecrets:
       - secretKey: AUTHENTIK_SECRET_KEY
         remoteRef:
           key: secret/authentik/development/env
+  - name: postgres
+    secrets:
+      - secretKey: username
+        remoteRef:
+          key: secret/authentik/development/postgres
+          property: username
+      - secretKey: password
+        remoteRef:
+          key: secret/authentik/development/postgres
+          property: password
