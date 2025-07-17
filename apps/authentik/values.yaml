@@ -16,7 +16,7 @@ server:
     - secretRef:
         name: authentik-env
     - secretRef:
-        name: postgres-authentik-creds
+        name: authentik-postgres
 
   env:
     AUTHENTIK_POSTGRESQL__HOST: authentik-db-rw.authentik.svc
@@ -31,4 +31,4 @@ postgresql:
 
 certManager:
   enabled: true
-  clusterIssuerName: ca-interna
+  clusterIssuerName: home-internal-ca-issuer
