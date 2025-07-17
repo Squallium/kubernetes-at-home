@@ -13,6 +13,16 @@ entries:
     version: 0.0.9
   authentik-config:
   - apiVersion: v2
+    appVersion: 0.0.4
+    created: "2025-07-17T21:31:56.09144802Z"
+    description: A Helm chart for managing Authentik configurations
+    digest: 89b2c3a67038a95869bb6ae8fa22ab0b5b47e65670a9a5ff08dc7208e132b1d3
+    name: authentik-config
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/authentik-config-0.0.4/authentik-config-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
     appVersion: 0.0.3
     created: "2025-07-17T20:58:01.260418161Z"
     description: A Helm chart for managing Authentik configurations
@@ -255,4 +265,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/paperless-ngx-0.0.6/paperless-ngx-0.0.6.tgz
     version: 0.0.6
-generated: "2025-07-17T20:58:01.260473856Z"
+generated: "2025-07-17T21:31:56.091493538Z"
