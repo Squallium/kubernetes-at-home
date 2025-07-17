@@ -1,2 +1,6 @@
-vault:
-  envSecretPath: secret/authentik/development/env
+extSecrets:
+  - name: env
+    secrets:
+      - secretKey: AUTHENTIK_SECRET_KEY
+        remoteRef:
+          key: secret/authentik/development/env
