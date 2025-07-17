@@ -11,6 +11,17 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/adguard-home-0.0.9/adguard-home-0.0.9.tgz
     version: 0.0.9
+  authentik-config:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2025-07-17T18:30:00.530146106Z"
+    description: A Helm chart for managing Authentik configurations
+    digest: 2e7218c4b488168aae4b70dfdbbc746cd147e2f17dce307c985e8d4113cd42e1
+    name: authentik-config
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/authentik-config-0.0.1/authentik-config-0.0.1.tgz
+    version: 0.0.1
   calibre-web:
   - apiVersion: v2
     appVersion: 0.6.24
@@ -224,4 +235,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/paperless-ngx-0.0.6/paperless-ngx-0.0.6.tgz
     version: 0.0.6
-generated: "2025-07-16T20:29:16.978869934Z"
+generated: "2025-07-17T18:30:00.530181893Z"
