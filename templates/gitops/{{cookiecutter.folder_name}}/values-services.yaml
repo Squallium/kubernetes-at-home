@@ -74,6 +74,9 @@ applicationsets:
 #              selfHeal: false
           syncOptions:
             - CreateNamespace=true
+            {%- if service.get("server_side_apply", False) %}
+            - ServerSideApply=true
+            {%- endif %}
         ignoreDifferences:
           - group: apps
             kind: Deployment
