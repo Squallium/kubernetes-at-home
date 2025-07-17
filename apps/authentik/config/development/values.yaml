@@ -5,6 +5,7 @@ extSecrets:
         remoteRef:
           key: secret/authentik/development/env
   - name: postgres
+    templateType: kubernetes.io/basic-auth
     secrets:
       - secretKey: username
         remoteRef:

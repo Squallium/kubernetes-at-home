@@ -15,17 +15,20 @@ server:
   envFrom:
     - secretRef:
         name: authentik-env
+    - secretRef:
+        name: postgres-authentik-creds
 
-  # Podemos usar PostgreSQL embebido por ahora o externalizar más adelante
-  database:
-    type: embedded_postgres
-
-certManager:
-  enabled: true
-  clusterIssuerName: ca-interna
+  env:
+    AUTHENTIK_POSTGRESQL__HOST: authentik-db-rw.authentik.svc
+    AUTHENTIK_POSTGRESQL__PORT: "5432"
+    AUTHENTIK_POSTGRESQL__NAME: authentik
 
 redis:
   enabled: true
 
 postgresql:
   enabled: false
+
+certManager:
+  enabled: true
+  clusterIssuerName: ca-interna
