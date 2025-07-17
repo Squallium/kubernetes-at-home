@@ -99,7 +99,7 @@ default_context:
         chart_target_revision: "0.24.0"
         server_side_apply: true
       - name: "authentik"
-        chart_repo: "https://goauthentik.github.io/charts"
+        chart_repo: "https://charts.goauthentik.io"
         chart_name: "authentik"
         chart_target_revision: "2025.6.3"
         enable_ssl: true
