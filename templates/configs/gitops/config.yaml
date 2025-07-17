@@ -93,6 +93,11 @@ default_context:
         chart_name: "calibre-web"
         chart_target_revision: "0.0.4"
         enable_ssl: true
+#      - name: "authentik"
+#        chart_repo: "https://goauthentik.github.io/charts"
+#        chart_name: "authentik"
+#        chart_target_revision: "2025.6.3"
+#        enable_ssl: true
   services_config:
     list:
       - name: "home-assistant"

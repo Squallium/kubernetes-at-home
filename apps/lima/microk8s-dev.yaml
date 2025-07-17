@@ -27,6 +27,16 @@ mounts:
   - location: "/Users/kuber/shared/dev/minio"
     mountPoint: "/mnt/minio"
     writable: true
+  - location: "/Users/kuber/shared/dev/calibre-web"
+    mountPoint: "/mnt/calibre-web"
+    writable: true
+  - location: "/Users/kuber/shared/dev/cloudnative-pg"
+    mountPoint: "/mnt/cloudnative-pg"
+    writable: true
+  - location: "/Users/kuber/shared/dev/authentik"
+    mountPoint: "/mnt/authentik"
+    writable: true
+
 
 networks:
   - lima: bridged

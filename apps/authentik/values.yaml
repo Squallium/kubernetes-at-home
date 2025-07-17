@@ -1,0 +1,31 @@
+server:
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hosts:
+      - host: auth-dev.internal
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - secretName: auth-dev-tls
+        hosts:
+          - auth-dev.internal
+
+  envFrom:
+    - secretRef:
+        name: authentik-env
+
+  # Podemos usar PostgreSQL embebido por ahora o externalizar más adelante
+  database:
+    type: embedded_postgres
+
+certManager:
+  enabled: true
+  clusterIssuerName: ca-interna
+
+redis:
+  enabled: true
+
+postgresql:
+  enabled: false
