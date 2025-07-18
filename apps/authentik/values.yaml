@@ -26,6 +26,10 @@ server:
     - name: AUTHENTIK_POSTGRESQL__NAME
       value: authentik
 
+worker:
+  envFrom:
+    - secretRef:
+        name: authentik-env
 
 redis:
   enabled: true
