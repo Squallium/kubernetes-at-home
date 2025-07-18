@@ -1,49 +1,52 @@
 authentik:
   postgresql:
-    enabled: false
-    host: authentik-db-rw.authentik.svc.cluster.local
-    port: 5432
-    user: file:///postgres-creds/username
-    password: file:///postgres-creds/password
+#    enabled: false
+#    host: authentik-db-rw.authentik.svc.cluster.local
+#    port: 5432
+#    user: file:///postgres-creds/username
+#    password: file:///postgres-creds/password
+    password: "ThisIsNotASecurePassword"
 
 server:
   ingress:
     enabled: true
     ingressClassName: nginx
-    annotations:
-      cert-manager.io/cluster-issuer: home-internal-ca-issuer
+#    annotations:
+#      cert-manager.io/cluster-issuer: home-internal-ca-issuer
     hosts:
       - auth-dev.internal
-#    paths:
-#      - path: /
-#        pathType: Prefix
-    tls:
-      - secretName: auth-dev-tls
-        hosts:
-          - auth-dev.internal
+#    tls:
+#      - secretName: auth-dev-tls
+#        hosts:
+#          - auth-dev.internal
   envFrom:
     - secretRef:
         name: authentik-env
-  volumes:
-    - name: postgres-creds
-      secret:
-        secretName: authentik-postgres
-  volumeMounts:
-    - name: postgres-creds
-      mountPath: /postgres-creds
-      readOnly: true
+#  volumes:
+#    - name: postgres-creds
+#      secret:
+#        secretName: authentik-postgres
+#  volumeMounts:
+#    - name: postgres-creds
+#      mountPath: /postgres-creds
+#      readOnly: true
 worker:
   envFrom:
     - secretRef:
         name: authentik-env
-  volumes:
-    - name: postgres-creds
-      secret:
-        secretName: authentik-postgres
-  volumeMounts:
-    - name: postgres-creds
-      mountPath: /postgres-creds
-      readOnly: true
+#  volumes:
+#    - name: postgres-creds
+#      secret:
+#        secretName: authentik-postgres
+#  volumeMounts:
+#    - name: postgres-creds
+#      mountPath: /postgres-creds
+#      readOnly: true
 
 redis:
   enabled: true
+
+postgresql:
+  enabled: true
+  auth:
+    password: "ThisIsNotASecurePassword"
