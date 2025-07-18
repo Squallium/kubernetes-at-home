@@ -93,11 +93,11 @@ default_context:
         chart_name: "calibre-web"
         chart_target_revision: "0.0.4"
         enable_ssl: true
-      - name: "cloudnative-pg"
-        chart_repo: "https://cloudnative-pg.github.io/charts"
-        chart_name: "cloudnative-pg"
-        chart_target_revision: "0.24.0"
-        server_side_apply: true
+#      - name: "cloudnative-pg"
+#        chart_repo: "https://cloudnative-pg.github.io/charts"
+#        chart_name: "cloudnative-pg"
+#        chart_target_revision: "0.24.0"
+#        server_side_apply: true
       - name: "authentik"
         chart_repo: "https://charts.goauthentik.io"
         chart_name: "authentik"
