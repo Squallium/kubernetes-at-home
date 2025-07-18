@@ -3,7 +3,7 @@ server:
     enabled: true
     ingressClassName: nginx
     hosts:
-      - host: auth-dev.internal
+      - auth-dev.internal
 #    paths:
 #      - path: /
 #        pathType: Prefix
