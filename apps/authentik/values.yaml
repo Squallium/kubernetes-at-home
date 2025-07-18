@@ -1,7 +1,17 @@
+authentik:
+  postgresql:
+    enabled: false
+    host: authentik-db-rw.authentik.svc.cluster.local
+    port: 5432
+    user: file:///postgres-creds/username
+    password: file:///postgres-creds/password
+
 server:
   ingress:
     enabled: true
     ingressClassName: nginx
+    annotations:
+      cert-manager.io/cluster-issuer: home-internal-ca-issuer
     hosts:
       - auth-dev.internal
 #    paths:
@@ -11,35 +21,29 @@ server:
       - secretName: auth-dev-tls
         hosts:
           - auth-dev.internal
-
   envFrom:
     - secretRef:
         name: authentik-env
-    - secretRef:
-        name: authentik-postgres
-
-authentik:
-  postgresql:
-    enabled: false
-    host: authentik-db-rw.authentik.svc.cluster.local
-    port: 5432
-    name: authentik
-    user: authentik
-    password: # lo recomendable aquí es usar un Secret
-      existingSecret: authentik-db-secret
-      existingSecretPasswordKey: password
-
+  volumes:
+    - name: postgres-creds
+      secret:
+        secretName: authentik-postgres
+  volumeMounts:
+    - name: postgres-creds
+      mountPath: /postgres-creds
+      readOnly: true
 worker:
   envFrom:
     - secretRef:
         name: authentik-env
+  volumes:
+    - name: postgres-creds
+      secret:
+        secretName: authentik-postgres
+  volumeMounts:
+    - name: postgres-creds
+      mountPath: /postgres-creds
+      readOnly: true
 
 redis:
   enabled: true
-
-postgresql:
-  enabled: false
-
-certManager:
-  enabled: true
-  clusterIssuerName: home-internal-ca-issuer
