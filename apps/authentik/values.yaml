@@ -6,7 +6,6 @@ server:
       - host: auth-dev.internal
     paths:
       - path: /
-    pathType: Prefix
     tls:
       - secretName: auth-dev-tls
         hosts:
