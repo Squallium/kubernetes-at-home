@@ -18,13 +18,16 @@ server:
     - secretRef:
         name: authentik-postgres
 
-  env:
-    - name: AUTHENTIK_POSTGRESQL__HOST
-      value: authentik-db-rw.authentik.svc.cluster.local
-    - name: AUTHENTIK_POSTGRESQL__PORT
-      value: "5432"
-    - name: AUTHENTIK_POSTGRESQL__NAME
-      value: authentik
+authentik:
+  postgresql:
+    enabled: false
+    host: authentik-db-rw.authentik.svc.cluster.local
+    port: 5432
+    name: authentik
+    user: authentik
+    password: # lo recomendable aquí es usar un Secret
+      existingSecret: authentik-db-secret
+      existingSecretPasswordKey: password
 
 worker:
   envFrom:
