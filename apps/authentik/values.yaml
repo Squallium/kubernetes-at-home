@@ -14,11 +14,11 @@ server:
     annotations:
       cert-manager.io/cluster-issuer: home-internal-ca-issuer
     hosts:
-      - auth-dev.internal.com
+      - auth-dev.internal.org
     tls:
       - secretName: auth-dev-tls
         hosts:
-          - auth-dev.internal.com
+          - auth-dev.internal.org
   envFrom:
     - secretRef:
         name: authentik-env
