@@ -83,7 +83,7 @@ default_context:
       - name: "home-assistant"
         chart_repo: "https://pajikos.github.io/home-assistant-helm-chart"
         chart_name: "home-assistant"
-        chart_target_revision: "0.3.4"
+        chart_target_revision: "0.3.11"
         enable_ssl: true
       - name: "adguard-home"
         chart_name: "adguard-home"
