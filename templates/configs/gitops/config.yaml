@@ -44,6 +44,10 @@ default_context:
         chart_repo: "https://grafana.github.io/helm-charts"
         chart_name: "promtail"
         chart_target_revision: "6.17.0"
+      - name: "kargo"
+        chart_repo: "oci://ghcr.io/akuity/kargo-charts"
+        chart_name: "kargo"
+        chart_target_revision: "1.6.1"
   core_services_config:
     list:
       - name: "minio"
