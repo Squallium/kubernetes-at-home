@@ -1,6 +1,9 @@
 dashboard:
   enabled: true
 
+  service:
+    port: 3100
+
   ingress:
     enabled: true
     hosts:
