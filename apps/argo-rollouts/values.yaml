@@ -3,6 +3,5 @@ dashboard:
 
   ingress:
     enabled: true
-    ingressClassName: nginx
     hosts:
       - rollouts.internal
