@@ -52,7 +52,6 @@ default_context:
         chart_repo: "https://argoproj.github.io/argo-helm"
         chart_name: "argo-rollouts"
         chart_target_revision: "2.40.2"
-
   core_services_config:
     list:
       - name: "minio"
@@ -112,6 +111,10 @@ default_context:
         chart_name: "authentik"
         chart_target_revision: "2025.6.3"
         enable_ssl: true
+      - name: "argo-rollouts"
+        chart_repo: "https://argoproj.github.io/argo-helm"
+        chart_name: "argo-rollouts"
+        chart_target_revision: "2.40.2"
   services_config:
     list:
       - name: "home-assistant"
