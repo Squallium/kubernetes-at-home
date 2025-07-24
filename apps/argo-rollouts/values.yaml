@@ -5,3 +5,5 @@ dashboard:
     enabled: true
     hosts:
       - rollouts.internal
+    pathType: Prefix
+    servicePort: http
