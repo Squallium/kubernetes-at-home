@@ -3,6 +3,5 @@ dashboard:
 
   ingress:
     enabled: true
-    annotations: {}
     hosts:
       - rollouts.internal
