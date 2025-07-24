@@ -1,2 +1,5 @@
 dashboard:
   enabled: true
+
+  ingress:
+    enabled: true
