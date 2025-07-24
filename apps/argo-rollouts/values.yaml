@@ -1,10 +1,2 @@
 dashboard:
   enabled: true
-
-  ingress:
-    enabled: true
-    hosts:
-      - rollouts.internal
-
-  service:
-    portName: dashboard
