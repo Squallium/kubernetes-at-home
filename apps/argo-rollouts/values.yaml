@@ -1,15 +1,8 @@
 dashboard:
   enabled: true
 
-  service:
-    type: ClusterIP
-    port: 3100
-
   ingress:
     enabled: true
     annotations: {}
     hosts:
-      - host: rollouts.internal
-        paths:
-          - /
-    tls: []
+      - rollouts.internal
