@@ -1,0 +1,6 @@
+api:
+  service:
+    type: ClusterIP
+  adminAccount:
+    password: admin123
+    tokenSigningKey: kargo-local-signing-key
