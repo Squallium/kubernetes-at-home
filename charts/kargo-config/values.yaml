@@ -1,0 +1,8 @@
+extSecrets:
+  - name: env
+    templateType: Opaque
+    secrets:
+      - secretKey: secret-key
+        remoteRef:
+          key: placeholder
+          property: placeholder
