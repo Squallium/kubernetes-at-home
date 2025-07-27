@@ -50,12 +50,13 @@ applicationsets:
           - repoURL: https://github.com/Squallium/kubernetes-at-home.git
             targetRevision: main
             ref: values
-          {%- if service.chart_name | default(cookiecutter.default_chart_name) %}
+          {%- set chart_name = service.chart_name | default(cookiecutter.default_chart_name, true) | trim %}
+          {%- if chart_name != "" %}
           - repoURL: {{ service.chart_repo | default(cookiecutter.default_chart_repo) }}
-            chart: {{ service.chart_name  }}
+            chart: {{ chart_name  }}
           {%- else %}
           - repoURL: {{ service.chart_repo_url | default(cookiecutter.default_chart_repo_url) }}
-            path: charts/{{ service.name }}
+            path: {{ service.chart_path | default("charts/" ~ service.name) }}
           {%- endif %}
             targetRevision: {{ service.chart_target_revision | default(cookiecutter.default_chart_target_revision) }}
             helm:

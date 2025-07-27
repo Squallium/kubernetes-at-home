@@ -10,8 +10,8 @@ applications:
     - repoURL: https://github.com/Squallium/kubernetes-at-home.git
       targetRevision: main
       ref: values
-    - repoURL: https://prometheus-community.github.io/helm-charts
-      chart: kube-prometheus-stack
+    - repoURL: https://squallium.github.io/kubernetes-at-home.git
+      path: charts/kube-prometheus-stack
       targetRevision: 75.4.0
       helm:
         valueFiles:
@@ -154,7 +154,7 @@ applications:
       targetRevision: main
       ref: values
     - repoURL: oci://ghcr.io/akuity/kargo-charts/kargo
-      chart: kargo
+      path: .
       targetRevision: 1.6.1
       helm:
         valueFiles:
