@@ -153,8 +153,8 @@ applications:
     - repoURL: https://github.com/Squallium/kubernetes-at-home.git
       targetRevision: main
       ref: values
-    - repoURL: oci://ghcr.io/akuity/kargo-charts/kargo
-      path: .
+    - repoURL: https://squallium.github.io/kubernetes-at-home
+      chart: kargo
       targetRevision: 1.6.1
       helm:
         valueFiles:
