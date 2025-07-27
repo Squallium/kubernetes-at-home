@@ -46,7 +46,7 @@ default_context:
         chart_name: "promtail"
         chart_target_revision: "6.17.0"
       - name: "kargo"
-        repo_url: "ghcr.io/akuity/kargo-charts"
+        chart_repo: "ghcr.io/akuity/kargo-charts"
         chart_name: "kargo"
         chart_target_revision: "1.6.1"
       - name: "argo-rollouts"
