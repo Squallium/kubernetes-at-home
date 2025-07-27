@@ -8,8 +8,8 @@ api:
     enabled: true
     ingressClassName: nginx
   tls:
-    enabled: false
-    selfSignedCert: true
+    enabled: true
+    selfSignedCert: false
     secretName: kargo-api-tls
     hosts:
       - kargo.internal
