@@ -1,5 +1,9 @@
 api:
+  host: kargo.internal
   secret:
     name: kargo-api
   service:
     type: ClusterIP
+  ingress:
+    enabled: true
+    ingressClassName: nginx
