@@ -222,6 +222,17 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/homebox-0.0.3/homebox-0.0.3.tgz
     version: 0.0.3
+  kargo-config:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2025-07-27T16:23:59.380942931Z"
+    description: A Helm chart for managing Kargo configurations
+    digest: 6c514d35f1dc2fc19dd90c02fd8c74d9bbb7b7e0ea9eceb507597bceb7f26b2b
+    name: kargo-config
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/kargo-config-0.0.1/kargo-config-0.0.1.tgz
+    version: 0.0.1
   loki-config:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -265,4 +276,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/paperless-ngx-0.0.6/paperless-ngx-0.0.6.tgz
     version: 0.0.6
-generated: "2025-07-17T21:31:56.091493538Z"
+generated: "2025-07-27T16:23:59.380984849Z"
