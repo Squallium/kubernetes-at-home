@@ -142,41 +142,6 @@ applications:
     info:
     - name: url
       value: https://argoproj.github.io/
-  kargo:
-    namespace: argocd
-    additionalLabels: {}
-    additionalAnnotations: {}
-    finalizers:
-    - resources-finalizer.argocd.argoproj.io
-    project: default
-    sources:
-    - repoURL: https://github.com/Squallium/kubernetes-at-home.git
-      targetRevision: main
-      ref: values
-    - repoURL: ghcr.io/akuity/kargo-charts
-      chart: kargo
-      targetRevision: 1.6.1
-      helm:
-        valueFiles:
-          - $values/apps/kargo/values.yaml
-    destination:
-      server: https://kubernetes.default.svc
-      namespace: kargo
-    syncPolicy:
-#      automated:
-#        prune: false
-#        selfHeal: false
-      syncOptions:
-      - CreateNamespace=true
-    revisionHistoryLimit: null
-    ignoreDifferences:
-    - group: apps
-      kind: Deployment
-      jsonPointers:
-      - /spec/replicas
-    info:
-    - name: url
-      value: https://argoproj.github.io/
   argo-rollouts:
     namespace: argocd
     additionalLabels: {}
