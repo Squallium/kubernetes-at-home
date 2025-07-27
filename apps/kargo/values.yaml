@@ -7,3 +7,4 @@ api:
   ingress:
     enabled: true
     ingressClassName: nginx
+    pathType: Prefix
