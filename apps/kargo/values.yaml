@@ -12,3 +12,5 @@ api:
       cert-manager.io/cluster-issuer: home-internal-ca-issuer
       nginx.ingress.kubernetes.io/ssl-passthrough: "true"
     ingressClassName: nginx
+    tls:
+      selfSignedCert: false
