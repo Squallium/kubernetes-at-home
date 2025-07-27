@@ -3,8 +3,6 @@ api:
   secret:
     name: kargo-api
   service:
-    type: ClusterIP
+    type: NodePort
   ingress:
     enabled: true
-    tls:
-      enabled: false
