@@ -6,4 +6,4 @@ api:
     type: ClusterIP
   ingress:
     enabled: true
-    ingressClassName: public
+    ingressClassName: nginx
