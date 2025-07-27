@@ -61,6 +61,9 @@ default_context:
       - name: "loki"
         chart_name: "loki-config"
         chart_target_revision: "0.0.1"
+      - name: "kargo"
+        chart_name: "kargo-config"
+        chart_target_revision: "0.0.1"
   addons:
     list:
       - name: "external-secrets"
