@@ -8,6 +8,3 @@ api:
   tls:
     enabled: true
     selfSignedCert: true
-    secretName: kargo-api-tls
-    hosts:
-      - kargo.internal
