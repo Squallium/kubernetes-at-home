@@ -10,8 +10,8 @@ applications:
     - repoURL: https://github.com/Squallium/kubernetes-at-home.git
       targetRevision: main
       ref: values
-    - repoURL: https://squallium.github.io/kubernetes-at-home.git
-      path: charts/kube-prometheus-stack
+    - repoURL: https://prometheus-community.github.io/helm-charts
+      chart: kube-prometheus-stack
       targetRevision: 75.4.0
       helm:
         valueFiles:
