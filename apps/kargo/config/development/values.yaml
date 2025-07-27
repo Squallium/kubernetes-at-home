@@ -1,9 +1,0 @@
-extSecrets:
-  - name: api
-    secrets:
-      - secretKey: ADMIN_ACCOUNT_PASSWORD_HASH
-        remoteRef:
-          key: secret/kargo/api
-      - secretKey: ADMIN_ACCOUNT_TOKEN_SIGNING_KEY
-        remoteRef:
-          key: secret/kargo/api
