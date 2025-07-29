@@ -1,0 +1,12 @@
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Warehouse
+metadata:
+  name: home-assistant-image
+  namespace: home-assistant
+spec:
+  subscriptions:
+  - image:
+      repoURL: ghcr.io/home-assistant/home-assistant
+      imageSelectionStrategy: SemVer
+
+
