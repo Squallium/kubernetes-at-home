@@ -224,6 +224,16 @@ entries:
     version: 0.0.3
   kargo-config:
   - apiVersion: v2
+    appVersion: 0.0.2
+    created: "2025-07-31T22:58:13.280426549Z"
+    description: A Helm chart for managing Kargo configurations
+    digest: 60956d2ba58e9f9996ff72684efd5eee1adf2fc2a8c9a47fe8d4a7280517deec
+    name: kargo-config
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/kargo-config-0.0.2/kargo-config-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
     appVersion: 0.0.1
     created: "2025-07-27T16:23:59.380942931Z"
     description: A Helm chart for managing Kargo configurations
@@ -276,4 +286,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/paperless-ngx-0.0.6/paperless-ngx-0.0.6.tgz
     version: 0.0.6
-generated: "2025-07-27T16:23:59.380984849Z"
+generated: "2025-07-31T22:58:13.280466604Z"
