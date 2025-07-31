@@ -8,6 +8,7 @@ extSecrets:
         remoteRef:
           key: secret/kargo/api
   - name: github-ssh
+    namespace: kargo-cluster-secrets
     secrets:
       - secretKey: repoURL
         remoteRef:
