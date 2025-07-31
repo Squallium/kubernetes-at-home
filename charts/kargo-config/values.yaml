@@ -1,5 +1,6 @@
 extSecrets:
   - name: env
+    namespace: kargo
     templateType: Opaque
     secrets:
       - secretKey: secret-key
