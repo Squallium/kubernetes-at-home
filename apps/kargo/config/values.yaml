@@ -16,4 +16,4 @@ extSecrets:
       - secretKey: sshPrivateKey
         remoteRef:
           key: secret/kargo/github
-          property: ssk_private_key
+          property: ssh_private_key
