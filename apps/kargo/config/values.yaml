@@ -7,3 +7,13 @@ extSecrets:
       - secretKey: ADMIN_ACCOUNT_TOKEN_SIGNING_KEY
         remoteRef:
           key: secret/kargo/api
+  - name: github-ssh
+    secrets:
+      - secretKey: repoURL
+        remoteRef:
+          key: secret/kargo/github
+          property: repo_url
+      - secretsKey: sshPrivateKey
+        remoteRef:
+          key: secret/kargo/github
+          property: ssk_private_key
