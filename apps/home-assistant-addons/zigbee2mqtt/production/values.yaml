@@ -4,3 +4,7 @@ ingress:
       paths:
         - path: /
           pathType: Prefix
+
+zigbee2mqtt:
+  external_converters:
+    - aqara-t2.js
