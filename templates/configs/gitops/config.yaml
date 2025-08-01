@@ -97,6 +97,7 @@ default_context:
         chart_name: "home-assistant"
         chart_target_revision: "0.3.11"
         enable_ssl: true
+        enable_kargo: true
       - name: "adguard-home"
         chart_name: "adguard-home"
         chart_target_revision: "0.0.9"
@@ -105,7 +106,6 @@ default_context:
         chart_name: "calibre-web"
         chart_target_revision: "0.0.4"
         enable_ssl: true
-        enable_kargo: true
 #      - name: "cloudnative-pg"
 #        chart_repo: "https://cloudnative-pg.github.io/charts"
 #        chart_name: "cloudnative-pg"
