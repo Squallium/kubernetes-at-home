@@ -7,11 +7,11 @@ metadata:
     kargo.akuity.io/color: green
 spec:
   requestedFreight:
-    - origin:
-        kind: Warehouse
-        name: home-assistant-image
-      sources:
-        direct: true
+  - origin:
+      kind: Warehouse
+      name: home-assistant-image
+    sources:
+      direct: true
   promotionTemplate:
     spec:
       steps:
