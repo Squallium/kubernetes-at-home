@@ -8,7 +8,7 @@ extSecrets:
         remoteRef:
           key: secret/kargo/api
   - name: github-ssh
-    namespace: kargo-cluster-secrets
+    namespace: home-assistant
     labels:
       kargo.akuity.io/cred-type: git
     secrets:
