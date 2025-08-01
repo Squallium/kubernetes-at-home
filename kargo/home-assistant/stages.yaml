@@ -7,28 +7,19 @@ metadata:
     kargo.akuity.io/color: green
 spec:
   requestedFreight:
-    - origin:
-        kind: Warehouse
-        name: home-assistant-image
-      sources:
-        direct: true
-
-  promotionMechanisms:
-    gitRepo:
-      repoURL: git@github.com:Squallium/kubernetes-at-home.git
-      branch: main
-      writeBranch: main
-      sshKeySecretRef:
-        name: kargo-github-ssh
-        namespace: kargo-cluster-secrets
-
+  - origin:
+      kind: Warehouse
+      name: home-assistant-image
+    sources:
+      direct: true
   promotionTemplate:
     spec:
       steps:
-        - task:
-            name: promote
-          vars:
-            - name: valuesPath
-              value: apps/home-assistant/development
-            - name: argocdApp
-              value: home-assistant-development
+      - task:
+          name: promote
+        vars:
+        - name: valuesPath
+          value: apps/home-assistant/development
+        - name: argocdApp
+          value: home-assistant-development
+
