@@ -33,28 +33,28 @@ initContainers:
       - name: home-assistant-development
         mountPath: /config
 
-configuration:
-  templateConfig: |-
-    auth_oidc:
-      client_id: "homeassistant"
-      client_secret: "client_secret"
-      discovery_url: "https://auth-dev.internal.org/application/o/home-assistant/.well-known/openid-configuration"
-    
-    # Loads default set of integrations. Do not remove.
-    default_config:
-    
-    {{- if or .Values.ingress.enabled .Values.ingress.external }}
-    http:
-      use_x_forwarded_for: true
-      trusted_proxies:
-        {{- range .Values.configuration.trusted_proxies }}
-        - {{ . }}
-        {{- end }}
-    {{- end}}
-    # Load frontend themes from the themes folder
-    frontend:
-      themes: !include_dir_merge_named themes
-    
-    automation: !include automations.yaml
-    script: !include scripts.yaml
-    scene: !include scenes.yaml
+#configuration:
+#  templateConfig: |-
+#    auth_oidc:
+#      client_id: "homeassistant"
+#      client_secret: "client_secret"
+#      discovery_url: "https://auth-dev.internal.org/application/o/home-assistant/.well-known/openid-configuration"
+#
+#    # Loads default set of integrations. Do not remove.
+#    default_config:
+#
+#    {{- if or .Values.ingress.enabled .Values.ingress.external }}
+#    http:
+#      use_x_forwarded_for: true
+#      trusted_proxies:
+#        {{- range .Values.configuration.trusted_proxies }}
+#        - {{ . }}
+#        {{- end }}
+#    {{- end}}
+#    # Load frontend themes from the themes folder
+#    frontend:
+#      themes: !include_dir_merge_named themes
+#
+#    automation: !include automations.yaml
+#    script: !include scripts.yaml
+#    scene: !include scenes.yaml
