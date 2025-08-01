@@ -45,7 +45,7 @@ applicationsets:
           type: 'service'
         {%- if service.get("enable_kargo", False) %}
         annotations:
-          kargo.akuity.io/authorized-stage: '{{ service.name }}:{{'{{'}}metadata.labels.environment | trunc 3}}'
+          kargo.akuity.io/authorized-stage: '{{ service.name }}:{{'{{'}}slice metadata.labels.environment 0 3}}'
         {%- else %}
         annotations: {}
         {%- endif %}

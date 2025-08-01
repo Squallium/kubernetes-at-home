@@ -227,7 +227,7 @@ applicationsets:
         labels:
           type: 'service'
         annotations:
-          kargo.akuity.io/authorized-stage: 'home-assistant:{{metadata.labels.environment | trunc 3}}'
+          kargo.akuity.io/authorized-stage: 'home-assistant:{{slice metadata.labels.environment 0 3}}'
       spec:
         project: default
         sources:
