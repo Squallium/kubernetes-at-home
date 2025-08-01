@@ -8,6 +8,14 @@ ingress:
         - path: /
           pathType: Prefix
 
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
 initContainers:
   - name: setup-hacs
     image: alpine:3.18
