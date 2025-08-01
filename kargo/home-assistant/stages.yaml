@@ -22,4 +22,3 @@ spec:
           value: apps/home-assistant/development
         - name: argocdApp
           value: home-assistant-development
-
