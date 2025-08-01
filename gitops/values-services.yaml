@@ -410,7 +410,8 @@ applicationsets:
         name: 'calibre-web-{{metadata.labels.environment}}'
         labels:
           type: 'service'
-        annotations: {}
+        annotations:
+          kargo.akuity.io/authorized-stage: 'calibre-web:{{metadata.labels.environment | trunc 3}}'
       spec:
         project: default
         sources:
