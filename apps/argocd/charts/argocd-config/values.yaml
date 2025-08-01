@@ -1,5 +1,7 @@
 clusters:
   - name: dev
     environment: development
+    kargoStage: dev
   - name: pro
     environment: production
+    kargoStage: pro
