@@ -63,7 +63,7 @@ default_context:
         chart_target_revision: "0.0.1"
       - name: "kargo"
         chart_name: "kargo-config"
-        chart_target_revision: "0.0.3"
+        chart_target_revision: "0.0.4"
   addons:
     list:
       - name: "external-secrets"

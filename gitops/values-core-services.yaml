@@ -295,7 +295,7 @@ applications:
       ref: values
     - repoURL: https://squallium.github.io/kubernetes-at-home
       chart: kargo-config
-      targetRevision: 0.0.3
+      targetRevision: 0.0.4
       helm:
         valueFiles:
           - $values/apps/kargo/config/values.yaml
