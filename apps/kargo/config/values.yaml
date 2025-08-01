@@ -9,6 +9,8 @@ extSecrets:
           key: secret/kargo/api
   - name: github-ssh
     namespace: kargo-cluster-secrets
+    labels:
+      kargo.akuity.io/cred-type: git
     secrets:
       - secretKey: repoURL
         remoteRef:
