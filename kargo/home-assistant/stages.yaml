@@ -7,11 +7,11 @@ metadata:
     kargo.akuity.io/color: green
 spec:
   requestedFreight:
-  - origin:
-      kind: Warehouse
-      name: home-assistant-image
-    sources:
-      direct: true
+    - origin:
+        kind: Warehouse
+        name: home-assistant-image
+      sources:
+        direct: true
 
   promotionMechanisms:
     gitRepo:
@@ -25,10 +25,10 @@ spec:
   promotionTemplate:
     spec:
       steps:
-      - task:
-          name: promote
-        vars:
-        - name: valuesPath
-          value: apps/home-assistant/development
-        - name: argocdApp
-          value: home-assistant-development
+        - task:
+            name: promote
+          vars:
+            - name: valuesPath
+              value: apps/home-assistant/development
+            - name: argocdApp
+              value: home-assistant-development
