@@ -221,9 +221,9 @@ applications:
     - repoURL: https://github.com/Squallium/kubernetes-at-home.git
       targetRevision: main
       ref: values
-    - repoURL: https://github.com/Squallium/kubernetes-at-home.git
-      path: charts/{{ service_addons.name }}
-      targetRevision: main
+    - repoURL: https://squallium.github.io/kubernetes-at-home
+      path: {{ service_addons.chart_name }}
+      targetRevision: {{ service_addons.chart_target_revision }}
       helm:
         valueFiles:
           - $values/apps/{{ service_addons.name }}/values.yaml
