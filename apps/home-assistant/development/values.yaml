@@ -8,30 +8,39 @@ ingress:
         - path: /
           pathType: Prefix
 
-resources:
-  limits:
-    cpu: 350m
-    memory: 256Mi
-  requests:
-    cpu: 350m
-    memory: 256Mi
+#resources:
+#  limits:
+#    cpu: 350m
+#    memory: 256Mi
+#  requests:
+#    cpu: 350m
+#    memory: 256Mi
 
-#initContainers:
-#  - name: setup-hacs
-#    image: alpine:3.18
-#    securityContext:
-#      runAsUser: 0
-#    command: [ "/bin/sh", "-c" ]
-#    args:
-#      - |
-#        apk add --no-cache bash wget unzip curl > /dev/null; \
-#        echo "[INFO] Ejecutando script de instalación de HACS"; \
-#        cd /config; \
-#        wget -O - https://get.hacs.xyz | bash -; \
-#        echo "[INFO] Instalación de HACS completada."
-#    volumeMounts:
-#      - name: home-assistant-development
-#        mountPath: /config
+initContainers:
+  - name: setup-hacs
+    image: alpine:3.18
+    securityContext:
+      runAsUser: 0
+    command: [ "/bin/sh", "-c" ]
+    args:
+      - |
+        set -e;
+        apk add --no-cache bash curl unzip > /dev/null;
+
+        echo "[INFO] Instalando HACS versión 2.0.5";
+        cd /config/custom_components;
+
+        rm -rf hacs || true;
+
+        curl -sL https://github.com/hacs/integration/releases/download/2.0.5/hacs.zip -o hacs.zip;
+        unzip hacs.zip -d hacs;
+        rm hacs.zip;
+
+        echo "[INFO] Instalación de HACS 2.0.5 completada.";
+    volumeMounts:
+      - name: home-assistant-development
+        mountPath: /config
+
 
 #configuration:
 #  templateConfig: |-
