@@ -839,7 +839,7 @@ applications:
       targetRevision: main
       ref: values
     - repoURL: https://squallium.github.io/kubernetes-at-home
-      path: home-assistant-addons
+      chart: home-assistant-addons
       targetRevision: 0.0.6
       helm:
         valueFiles:
