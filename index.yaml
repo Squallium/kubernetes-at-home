@@ -175,6 +175,17 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/external-secrets-config-0.0.1/external-secrets-config-0.0.1.tgz
     version: 0.0.1
+  hacs:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2025-08-02T18:59:15.773734382Z"
+    description: A Helm chart for managing Home Assistant Community Store (HACS) installation.
+    digest: c34a3489dbac05a064ad842b080f3598fdcba1f9486ee7ea1ce5a4c005864b19
+    name: hacs
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/hacs-0.0.1/hacs-0.0.1.tgz
+    version: 0.0.1
   home-assistant-addons:
   - apiVersion: v2
     appVersion: 0.0.5
@@ -320,4 +331,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/paperless-ngx-0.0.6/paperless-ngx-0.0.6.tgz
     version: 0.0.6
-generated: "2025-08-02T16:41:09.242451648Z"
+generated: "2025-08-02T18:59:15.77379218Z"
