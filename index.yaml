@@ -208,6 +208,20 @@ entries:
     version: 0.0.1
   home-assistant-addons:
   - apiVersion: v2
+    appVersion: 0.0.9
+    created: "2025-08-02T20:18:05.847512622Z"
+    dependencies:
+    - name: argocd-apps
+      repository: https://argoproj.github.io/argo-helm
+      version: 2.0.2
+    description: A Helm chart for managing Home Assistant addons charts.
+    digest: d1caed5db548d1f58aee97837524d62a32a838079f10d71cbcabd0345273dfde
+    name: home-assistant-addons
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/home-assistant-addons-0.0.9/home-assistant-addons-0.0.9.tgz
+    version: 0.0.9
+  - apiVersion: v2
     appVersion: 0.0.8
     created: "2025-08-02T20:02:56.303000139Z"
     dependencies:
@@ -393,4 +407,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/paperless-ngx-0.0.6/paperless-ngx-0.0.6.tgz
     version: 0.0.6
-generated: "2025-08-02T20:02:56.30308086Z"
+generated: "2025-08-02T20:18:05.847581581Z"
