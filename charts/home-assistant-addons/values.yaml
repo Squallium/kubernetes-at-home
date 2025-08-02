@@ -52,7 +52,7 @@ argocd-apps:
               ref: values
             - repoURL: https://squallium.github.io/kubernetes-at-home
               chart: hacs
-              targetRevision: 0.0.3
+              targetRevision: 0.0.4
               helm:
                 valueFiles:
                   - $values/apps/home-assistant-addons/hacs/values.yaml

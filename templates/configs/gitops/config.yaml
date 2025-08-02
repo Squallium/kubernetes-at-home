@@ -132,4 +132,4 @@ default_context:
     list:
       - name: "home-assistant-addons"
         chart_name: "home-assistant-addons"
-        chart_target_revision: "0.0.10"
+        chart_target_revision: "0.0.11"
