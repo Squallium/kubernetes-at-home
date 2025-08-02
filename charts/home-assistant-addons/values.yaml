@@ -59,7 +59,7 @@ argocd-apps:
                   - $values/apps/home-assistant-addons/hacs/{{metadata.labels.environment}}/values.yaml
           destination:
             server: '{{server}}'
-            namespace: home-assistant
+            namespace: home-assistant-config
           syncPolicy:
             #            automated:
             #              prune: false
