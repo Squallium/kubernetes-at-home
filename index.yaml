@@ -177,6 +177,16 @@ entries:
     version: 0.0.1
   hacs:
   - apiVersion: v2
+    appVersion: 0.0.4
+    created: "2025-08-02T20:34:36.396331655Z"
+    description: A Helm chart for managing Home Assistant Community Store (HACS) installation.
+    digest: e5f7e03f5c75a19e04a0a73cb14279b3091297a8dd5cf193886d1f9d81de62db
+    name: hacs
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/hacs-0.0.4/hacs-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
     appVersion: 0.0.3
     created: "2025-08-02T20:02:56.17115238Z"
     description: A Helm chart for managing Home Assistant Community Store (HACS) installation.
@@ -207,6 +217,20 @@ entries:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/hacs-0.0.1/hacs-0.0.1.tgz
     version: 0.0.1
   home-assistant-addons:
+  - apiVersion: v2
+    appVersion: 0.0.11
+    created: "2025-08-02T20:34:36.586634093Z"
+    dependencies:
+    - name: argocd-apps
+      repository: https://argoproj.github.io/argo-helm
+      version: 2.0.2
+    description: A Helm chart for managing Home Assistant addons charts.
+    digest: 5667e7b492dd1096f1d45808becd1bdb7431099a39251c4237966ad3cc4ce94a
+    name: home-assistant-addons
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/home-assistant-addons-0.0.11/home-assistant-addons-0.0.11.tgz
+    version: 0.0.11
   - apiVersion: v2
     appVersion: 0.0.10
     created: "2025-08-02T20:25:59.601444179Z"
@@ -421,4 +445,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/paperless-ngx-0.0.6/paperless-ngx-0.0.6.tgz
     version: 0.0.6
-generated: "2025-08-02T20:25:59.601518557Z"
+generated: "2025-08-02T20:34:36.586711898Z"
