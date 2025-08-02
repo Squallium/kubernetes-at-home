@@ -1,3 +1,7 @@
+hacs:
+  enabled: false
+  version: 2.0.5
+
 argocd-apps:
   applicationsets:
     zigbee2mqtt:

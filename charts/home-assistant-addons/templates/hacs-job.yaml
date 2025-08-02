@@ -1,0 +1,44 @@
+{{- if .Values.hacs.enabled }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: install-hacs
+  labels:
+    app.kubernetes.io/name: install-hacs
+    app.kubernetes.io/part-of: home-assistant-addons
+  annotations:
+    "helm.sh/hook": post-install,post-upgrade
+    "helm.sh/hook-delete-policy": before-hook-creation
+spec:
+  template:
+    spec:
+      containers:
+        - name: installer
+          image: alpine:3.18
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              set -e
+              apk add --no-cache curl unzip bash > /dev/null
+              echo "[INFO] Comprobando instalación de HACS"
+              if [ -f /config/custom_components/hacs/manifest.json ]; then
+                echo "[INFO] HACS ya está instalado, saliendo"
+                exit 0
+              fi
+
+              echo "[INFO] Instalando HACS {{ .Values.hacs.version }}..."
+              mkdir -p /config/custom_components
+              cd /config/custom_components
+              curl -sL https://github.com/hacs/integration/releases/download/{{ .Values.hacs.version }}/hacs.zip -o hacs.zip
+              unzip hacs.zip -d hacs
+              rm hacs.zip
+              echo "[INFO] Instalación de HACS completada"
+          volumeMounts:
+            - name: config
+              mountPath: /config
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: home-assistant-config
+      restartPolicy: Never
+{{- end }}
