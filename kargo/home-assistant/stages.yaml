@@ -9,6 +9,11 @@ spec:
   requestedFreight:
     - origin:
         kind: Warehouse
+        name: home-assistant-helm-repo
+      sources:
+        direct: true
+    - origin:
+        kind: Warehouse
         name: home-assistant-image
       sources:
         direct: true
