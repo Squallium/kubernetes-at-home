@@ -5,6 +5,8 @@ metadata:
   namespace: home-assistant
 spec:
   vars:
+  - name: chart
+    value: https://pajikos.github.io/home-assistant-helm-chart
   - name: image
     value: ghcr.io/home-assistant/home-assistant
   - name: repoURL
@@ -29,7 +31,7 @@ spec:
       path: ./out/${{ vars.valuesPath }}/values.yaml
       updates:
       - key: image.tag
-        value: ${{ imageFrom( vars.image ).Tag }}
+        value: ${{ imageFrom( vars.image, warehouse("home-assistant-image") ).Tag }}
 #  - uses: copy
 #    config:
 #      inPath: ./src/base/feature-flags.yaml
