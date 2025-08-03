@@ -236,7 +236,7 @@ applicationsets:
             ref: values
           - repoURL: https://pajikos.github.io/home-assistant-helm-chart
             chart: home-assistant
-            targetRevision: {{.chart.targetRevision}}
+            targetRevision: '{{chart.targetRevision}}'
             helm:
               valueFiles:
                 - $values/apps/home-assistant/values.yaml
