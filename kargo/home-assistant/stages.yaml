@@ -24,7 +24,7 @@ spec:
             name: promote
           vars:
             - name: chartValuesPath
-              value: gitops/values-services.yaml
+              value: apps/home-assistant/development
             - name: valuesPath
               value: apps/home-assistant/development
             - name: argocdApp

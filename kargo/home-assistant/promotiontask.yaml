@@ -24,19 +24,19 @@ spec:
       checkout:
       - branch: ${{ vars.branch }}
         path: ./out
-#  # update the chart version
-#  - uses: yaml-update
-#    as: update-chart
-#    config:
-#      path: ./out/${{ vars.chartValuesPath }}
-#      updates:
-#        - key: applicationsets['home-assistant'].template.spec.sources[1].targetRevision
-#          value: ${{ chartFrom( vars.chart, "home-assistant", warehouse("home-assistant-helm-repo") ).Version }}
-#  - uses: git-commit
-#    as: commit-chart
-#    config:
-#      path: ./out
-#      message: ${{ task.outputs['update-chart'].commitMessage }}
+  # update the chart version
+  - uses: yaml-update
+    as: update-chart
+    config:
+      path: ./out/${{ vars.chartValuesPath }}/config.yaml
+      updates:
+        - key: chart.targetRevision
+          value: ${{ chartFrom( vars.chart, "home-assistant", warehouse("home-assistant-helm-repo") ).Version }}
+  - uses: git-commit
+    as: commit-chart
+    config:
+      path: ./out
+      message: ${{ task.outputs['update-chart'].commitMessage }}
   # update the image version
   - uses: yaml-update
     as: update-image
