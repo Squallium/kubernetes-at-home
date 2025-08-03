@@ -199,7 +199,7 @@ applicationsets:
                 repoURL: https://github.com/Squallium/kubernetes-at-home.git
                 revision: main
                 files:
-                  - path: 'apps/home-assistant/{{metadata.labels.environment}}/values.yaml'
+                  - path: 'apps/home-assistant/{{metadata.labels.environment}}/env.yaml'
     # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
     ignoreApplicationDifferences:
       - jsonPointers:
@@ -236,7 +236,7 @@ applicationsets:
             ref: values
           - repoURL: https://pajikos.github.io/home-assistant-helm-chart
             chart: home-assistant
-            targetRevision: 0.3.11
+            targetRevision: {{chart.targetRevision}}
             helm:
               valueFiles:
                 - $values/apps/home-assistant/values.yaml
