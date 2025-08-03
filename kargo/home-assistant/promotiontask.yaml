@@ -13,6 +13,7 @@ spec:
     value: git@github.com:Squallium/kubernetes-at-home.git
   - name: branch
     value: main
+  - name: chartValuesPath
   - name: valuesPath
   - name: argocdApp
 
@@ -21,10 +22,22 @@ spec:
     config:
       repoURL: ${{ vars.repoURL }}
       checkout:
-#      - commit: ${{ commitFrom( vars.repoURL ).ID }}
-#        path: ./src
       - branch: ${{ vars.branch }}
         path: ./out
+#  # update the chart version
+#  - uses: yaml-update
+#    as: update-chart
+#    config:
+#      path: ./out/${{ vars.chartValuesPath }}
+#      updates:
+#        - key: applicationsets['home-assistant'].template.spec.sources[1].targetRevision
+#          value: ${{ chartFrom( vars.chart, "home-assistant", warehouse("home-assistant-helm-repo") ).Version }}
+#  - uses: git-commit
+#    as: commit-chart
+#    config:
+#      path: ./out
+#      message: ${{ task.outputs['update-chart'].commitMessage }}
+  # update the image version
   - uses: yaml-update
     as: update-image
     config:
@@ -32,12 +45,8 @@ spec:
       updates:
       - key: image.tag
         value: ${{ imageFrom( vars.image, warehouse("home-assistant-image") ).Tag }}
-#  - uses: copy
-#    config:
-#      inPath: ./src/base/feature-flags.yaml
-#      outPath: ./out/${{ vars.envPath }}/feature-flags.yaml
   - uses: git-commit
-    as: commit
+    as: commit-image
     config:
       path: ./out
       message: ${{ task.outputs['update-image'].commitMessage }}
