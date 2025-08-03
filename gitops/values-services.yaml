@@ -15,7 +15,7 @@ applicationsets:
                 repoURL: https://github.com/Squallium/kubernetes-at-home.git
                 revision: main
                 files:
-                  - path: 'apps/homebox/{{metadata.labels.environment}}/values.yaml'
+                  - path: 'apps/homebox/{{metadata.labels.environment}}/config.yaml'
     # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
     ignoreApplicationDifferences:
       - jsonPointers:
@@ -51,7 +51,7 @@ applicationsets:
             ref: values
           - repoURL: https://squallium.github.io/kubernetes-at-home
             chart: homebox
-            targetRevision: 0.0.4
+            targetRevision: '{{chart.targetRevision}}'
             helm:
               valueFiles:
                 - $values/apps/homebox/values.yaml
@@ -107,7 +107,7 @@ applicationsets:
                 repoURL: https://github.com/Squallium/kubernetes-at-home.git
                 revision: main
                 files:
-                  - path: 'apps/paperless-ngx/{{metadata.labels.environment}}/values.yaml'
+                  - path: 'apps/paperless-ngx/{{metadata.labels.environment}}/config.yaml'
     # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
     ignoreApplicationDifferences:
       - jsonPointers:
@@ -143,7 +143,7 @@ applicationsets:
             ref: values
           - repoURL: https://squallium.github.io/kubernetes-at-home
             chart: paperless-ngx
-            targetRevision: 0.0.8
+            targetRevision: '{{chart.targetRevision}}'
             helm:
               valueFiles:
                 - $values/apps/paperless-ngx/values.yaml
@@ -199,7 +199,7 @@ applicationsets:
                 repoURL: https://github.com/Squallium/kubernetes-at-home.git
                 revision: main
                 files:
-                  - path: 'apps/home-assistant/{{metadata.labels.environment}}/env.yaml'
+                  - path: 'apps/home-assistant/{{metadata.labels.environment}}/config.yaml'
     # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
     ignoreApplicationDifferences:
       - jsonPointers:
@@ -292,7 +292,7 @@ applicationsets:
                 repoURL: https://github.com/Squallium/kubernetes-at-home.git
                 revision: main
                 files:
-                  - path: 'apps/adguard-home/{{metadata.labels.environment}}/values.yaml'
+                  - path: 'apps/adguard-home/{{metadata.labels.environment}}/config.yaml'
     # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
     ignoreApplicationDifferences:
       - jsonPointers:
@@ -328,7 +328,7 @@ applicationsets:
             ref: values
           - repoURL: https://squallium.github.io/kubernetes-at-home
             chart: adguard-home
-            targetRevision: 0.0.9
+            targetRevision: '{{chart.targetRevision}}'
             helm:
               valueFiles:
                 - $values/apps/adguard-home/values.yaml
@@ -384,7 +384,7 @@ applicationsets:
                 repoURL: https://github.com/Squallium/kubernetes-at-home.git
                 revision: main
                 files:
-                  - path: 'apps/calibre-web/{{metadata.labels.environment}}/values.yaml'
+                  - path: 'apps/calibre-web/{{metadata.labels.environment}}/config.yaml'
     # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
     ignoreApplicationDifferences:
       - jsonPointers:
@@ -420,7 +420,7 @@ applicationsets:
             ref: values
           - repoURL: https://squallium.github.io/kubernetes-at-home
             chart: calibre-web
-            targetRevision: 0.0.4
+            targetRevision: '{{chart.targetRevision}}'
             helm:
               valueFiles:
                 - $values/apps/calibre-web/values.yaml
@@ -476,7 +476,7 @@ applicationsets:
                 repoURL: https://github.com/Squallium/kubernetes-at-home.git
                 revision: main
                 files:
-                  - path: 'apps/authentik/{{metadata.labels.environment}}/values.yaml'
+                  - path: 'apps/authentik/{{metadata.labels.environment}}/config.yaml'
     # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
     ignoreApplicationDifferences:
       - jsonPointers:
@@ -512,7 +512,7 @@ applicationsets:
             ref: values
           - repoURL: https://charts.goauthentik.io
             chart: authentik
-            targetRevision: 2025.6.3
+            targetRevision: '{{chart.targetRevision}}'
             helm:
               valueFiles:
                 - $values/apps/authentik/values.yaml
@@ -568,7 +568,7 @@ applicationsets:
                 repoURL: https://github.com/Squallium/kubernetes-at-home.git
                 revision: main
                 files:
-                  - path: 'apps/argo-rollouts/{{metadata.labels.environment}}/values.yaml'
+                  - path: 'apps/argo-rollouts/{{metadata.labels.environment}}/config.yaml'
     # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
     ignoreApplicationDifferences:
       - jsonPointers:
@@ -604,7 +604,7 @@ applicationsets:
             ref: values
           - repoURL: https://argoproj.github.io/argo-helm
             chart: argo-rollouts
-            targetRevision: 2.40.2
+            targetRevision: '{{chart.targetRevision}}'
             helm:
               valueFiles:
                 - $values/apps/argo-rollouts/values.yaml
