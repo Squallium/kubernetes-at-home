@@ -1,22 +1,14 @@
 apiVersion: kargo.akuity.io/v1alpha1
 kind: Warehouse
 metadata:
-  name: home-assistant-image
+  name: home-assistant
   namespace: home-assistant
 spec:
   subscriptions:
   - image:
       repoURL: ghcr.io/home-assistant/home-assistant
       imageSelectionStrategy: SemVer
----
-apiVersion: kargo.akuity.io/v1alpha1
-kind: Warehouse
-metadata:
-  name: home-assistant-helm-repo
-  namespace: home-assistant
-spec:
-  subscriptions:
-    - chart:
-        repoURL: https://pajikos.github.io/home-assistant-helm-chart
-        name: home-assistant
+  - chart:
+      repoURL: https://pajikos.github.io/home-assistant-helm-chart
+      name: home-assistant
 

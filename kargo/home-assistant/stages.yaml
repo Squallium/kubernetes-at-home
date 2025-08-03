@@ -9,12 +9,7 @@ spec:
   requestedFreight:
     - origin:
         kind: Warehouse
-        name: home-assistant-helm-repo
-      sources:
-        direct: true
-    - origin:
-        kind: Warehouse
-        name: home-assistant-image
+        name: home-assistant
       sources:
         direct: true
   promotionTemplate:
@@ -29,3 +24,32 @@ spec:
               value: apps/home-assistant/development
             - name: argocdApp
               value: home-assistant-development
+---
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Stage
+metadata:
+  name: pro
+  namespace: home-assistant
+  annotations:
+    kargo.akuity.io/color: red
+spec:
+  requestedFreight:
+    - origin:
+        kind: Warehouse
+        name: home-assistant
+      sources:
+        stages:
+          - dev
+  promotionTemplate:
+    spec:
+      steps:
+        - task:
+            name: promote
+          vars:
+            - name: chartValuesPath
+              value: apps/home-assistant/production
+            - name: valuesPath
+              value: apps/home-assistant/production
+            - name: argocdApp
+              value: home-assistant-production
+

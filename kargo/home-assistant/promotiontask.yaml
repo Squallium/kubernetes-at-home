@@ -31,7 +31,7 @@ spec:
       path: ./out/${{ vars.chartValuesPath }}/config.yaml
       updates:
         - key: chart.targetRevision
-          value: ${{ chartFrom( vars.chart, "home-assistant", warehouse("home-assistant-helm-repo") ).Version }}
+          value: ${{ chartFrom( vars.chart, "home-assistant", warehouse("home-assistant") ).Version }}
   - uses: git-commit
     as: commit-chart
     config:
@@ -44,7 +44,7 @@ spec:
       path: ./out/${{ vars.valuesPath }}/values.yaml
       updates:
       - key: image.tag
-        value: ${{ imageFrom( vars.image, warehouse("home-assistant-image") ).Tag }}
+        value: ${{ imageFrom( vars.image, warehouse("home-assistant") ).Tag }}
   - uses: git-commit
     as: commit-image
     config:
