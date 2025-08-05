@@ -155,6 +155,12 @@ echo -n "new-secret-id" | base64
 kubectl patch secret vault-approle-secret -p '{"data":{"secret-id":"new-base64-encoded-secret-id"}}' -n default
 ```
 
+Finally, to force the External Secrets controller to refresh the secret, rollout restart de deployment:
+
+```bash
+kubectl rollout restart deployment external-secrets -n external-secrets
+```
+
 ## Connect to vault from other clusters using https
 
 You need to add as configmap the CA certificate of the Vault server to the cluster where you want to connect to Vault. Create a configmap with the CA certificate:
