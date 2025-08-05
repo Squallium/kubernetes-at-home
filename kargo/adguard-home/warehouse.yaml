@@ -1,0 +1,14 @@
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Warehouse
+metadata:
+  name: adguard-home
+  namespace: adguard-home
+spec:
+  subscriptions:
+  - image:
+      repoURL: docker.io/adguard/adguardhome
+      imageSelectionStrategy: SemVer
+  - chart:
+      repoURL: https://squallium.github.io/kubernetes-at-home
+      name: adguard-home
+
