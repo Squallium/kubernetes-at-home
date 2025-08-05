@@ -10,6 +10,10 @@ spec:
       imageSelectionStrategy: SemVer
       strictSemvers: true
       discoveryLimit: 3
+      allowTags: '^v\d+\.\d+\.\d+$'
+      ignoreTags:
+        - '.*-b\.\d+$'
+
   - chart:
       repoURL: https://squallium.github.io/kubernetes-at-home
       name: adguard-home
