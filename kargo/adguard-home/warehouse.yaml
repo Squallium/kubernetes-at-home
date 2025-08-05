@@ -8,6 +8,8 @@ spec:
   - image:
       repoURL: docker.io/adguard/adguardhome
       imageSelectionStrategy: SemVer
+      strictSemvers: true
+      discoveryLimit: 3
   - chart:
       repoURL: https://squallium.github.io/kubernetes-at-home
       name: adguard-home
