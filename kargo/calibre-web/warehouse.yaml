@@ -1,0 +1,24 @@
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Warehouse
+metadata:
+  name: calibre-web
+  namespace: calibre-web
+spec:
+  subscriptions:
+  - image:
+      repoURL: docker.io/linuxserver/calibre-web
+      imageSelectionStrategy: SemVer
+      strictSemvers: true
+      discoveryLimit: 3
+      semverConstraint: ^0.6.23
+      allowTags: '^0\.\d+\.\d+$'
+      ignoreTags:
+        - '.*-b\.\d+$'
+        - 'nightly.*$'
+        - 'version-.*$'
+        - 'amd64-.*$'
+
+  - chart:
+      repoURL: https://squallium.github.io/kubernetes-at-home
+      name: calibre-web
+

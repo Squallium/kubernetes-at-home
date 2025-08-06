@@ -1,0 +1,55 @@
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Stage
+metadata:
+  name: dev
+  namespace: calibre-web
+  annotations:
+    kargo.akuity.io/color: green
+spec:
+  requestedFreight:
+    - origin:
+        kind: Warehouse
+        name: calibre-web
+      sources:
+        direct: true
+  promotionTemplate:
+    spec:
+      steps:
+        - task:
+            name: promote
+          vars:
+            - name: chartValuesPath
+              value: apps/calibre-web/development
+            - name: valuesPath
+              value: apps/calibre-web/development
+            - name: argocdApp
+              value: calibre-web-development
+---
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Stage
+metadata:
+  name: pro
+  namespace: calibre-web
+  annotations:
+    kargo.akuity.io/color: red
+spec:
+  requestedFreight:
+    - origin:
+        kind: Warehouse
+        name: calibre-web
+      sources:
+        stages:
+          - dev
+  promotionTemplate:
+    spec:
+      steps:
+        - task:
+            name: promote
+          vars:
+            - name: chartValuesPath
+              value: apps/calibre-web/production
+            - name: valuesPath
+              value: apps/calibre-web/production
+            - name: argocdApp
+              value: calibre-web-production
+
