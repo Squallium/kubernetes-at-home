@@ -7,6 +7,10 @@ kargo:
       semverConstraint: ''
       allowTags: ''
       ignoreTags: []
+    chart:
+      repoURL: placeholder
+      name: placeholder
+      discoveryLimit: 20
 extSecrets:
   - name: env
     namespace: kargo

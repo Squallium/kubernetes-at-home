@@ -14,8 +14,7 @@ spec:
       allowTags: {{ .Values.kargo.warehouse.image.allowTags }}
       ignoreTags:
         {{- toYaml .Values.kargo.warehouse.image.ignoreTags | nindent 8 }}
-
   - chart:
-      repoURL: https://squallium.github.io/kubernetes-at-home
-      name: {{ .Values.kargo.project.name }}
+      repoURL: {{ .Values.kargo.warehouse.chart.repoURL }}
+      name: {{ .Values.kargo.warehouse.chart.name }}
 
