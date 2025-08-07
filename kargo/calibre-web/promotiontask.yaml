@@ -8,7 +8,7 @@ spec:
   - name: chart
     value: https://squallium.github.io/kubernetes-at-home
   - name: image
-    value: docker.io/adguard/adguardhome
+    value: docker.io/linuxserver/calibre-web
   - name: repoURL
     value: git@github.com:Squallium/kubernetes-at-home.git
   - name: branch
