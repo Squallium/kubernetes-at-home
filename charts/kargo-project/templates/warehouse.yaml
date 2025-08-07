@@ -17,4 +17,5 @@ spec:
   - chart:
       repoURL: {{ .Values.kargo.warehouse.chart.repoURL }}
       name: {{ .Values.kargo.warehouse.chart.name }}
+      discoveryLimit: {{ .Values.kargo.warehouse.chart.discoveryLimit }}
 
