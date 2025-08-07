@@ -2,7 +2,7 @@ chart:
   targetRevision: 0.0.5
 extSecrets:
   - name: github-ssh
-    namespace: calibre-web
+    namespace: home-assistant
     labels:
       kargo.akuity.io/cred-type: git
     secrets:
