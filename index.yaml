@@ -418,6 +418,16 @@ entries:
     version: 0.0.1
   kargo-project:
   - apiVersion: v2
+    appVersion: 0.0.6
+    created: "2025-08-07T22:42:01.739274866Z"
+    description: A Helm chart for managing Kargo projects
+    digest: 1aa0e72a2bc613ba88088e70d6e012d62496f7a9a8d6a40d853e5f87b918ef19
+    name: kargo-project
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/kargo-project-0.0.6/kargo-project-0.0.6.tgz
+    version: 0.0.6
+  - apiVersion: v2
     appVersion: 0.0.5
     created: "2025-08-07T21:58:20.334194732Z"
     description: A Helm chart for managing Kargo projects
@@ -510,4 +520,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/paperless-ngx-0.0.6/paperless-ngx-0.0.6.tgz
     version: 0.0.6
-generated: "2025-08-07T21:58:20.33427398Z"
+generated: "2025-08-07T22:42:01.739351769Z"
