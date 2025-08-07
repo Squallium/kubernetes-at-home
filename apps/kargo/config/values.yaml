@@ -97,6 +97,10 @@ argocd-apps:
               helm:
                 valueFiles:
                   - $values/apps/{{service}}/kargo.yaml
+                values: |
+                  kargo:
+                    project:
+                      name: '{{service}}'
           destination:
             server: https://kubernetes.default.svc
             namespace: '{{service}}'
