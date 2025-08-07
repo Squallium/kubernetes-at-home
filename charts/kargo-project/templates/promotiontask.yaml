@@ -6,9 +6,9 @@ metadata:
 spec:
   vars:
   - name: chart
-    value: https://squallium.github.io/kubernetes-at-home
+    value: {{ .Values.kargo.warehouse.chart.repoURL }}
   - name: image
-    value: docker.io/linuxserver/{{ .Values.kargo.project.name }}
+    value: {{ .Values.kargo.warehouse.image.repoURL }}
   - name: repoURL
     value: git@github.com:Squallium/kubernetes-at-home.git
   - name: branch
