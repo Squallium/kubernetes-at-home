@@ -20,41 +20,41 @@ spec:
   steps:
   - uses: git-clone
     config:
-      repoURL: ${{ vars.repoURL }}
+      repoURL: ${{`{{ vars.repoURL }}`}}
       checkout:
-      - branch: ${{ vars.branch }}
+      - branch: ${{`{{ vars.branch }}`}}
         path: ./out
   # update the chart version
   - uses: yaml-update
     as: update-chart
     config:
-      path: ./out/${{ vars.chartValuesPath }}/config.yaml
+      path: ./out/${{`{{ vars.chartValuesPath }}`}}/config.yaml
       updates:
         - key: chart.targetRevision
-          value: ${{ chartFrom( vars.chart, "calibre-web", warehouse("calibre-web") ).Version }}
+          value: ${{`{{ chartFrom( vars.chart, "calibre-web", warehouse("calibre-web") ).Version }}`}}
   - uses: git-commit
     as: commit-chart
     config:
       path: ./out
-      message: ${{ task.outputs['update-chart'].commitMessage }}
+      message: ${{`{{ task.outputs['update-chart'].commitMessage }}`}}
   # update the image version
   - uses: yaml-update
     as: update-image
     config:
-      path: ./out/${{ vars.valuesPath }}/values.yaml
+      path: ./out/${{`{{ vars.valuesPath }}`}}/values.yaml
       updates:
       - key: image.tag
-        value: ${{ imageFrom( vars.image, warehouse("calibre-web") ).Tag }}
+        value: ${{`{{ imageFrom( vars.image, warehouse("calibre-web") ).Tag }}`}}
   - uses: git-commit
     as: commit-image
     config:
       path: ./out
-      message: ${{ task.outputs['update-image'].commitMessage }}
+      message: ${{`{{ task.outputs['update-image'].commitMessage }}`}}
   - uses: git-push
     config:
       path: ./out
   - uses: argocd-update
     config:
       apps:
-      - name: ${{ vars.argocdApp }}
+      - name: ${{`{{ vars.argocdApp }}`}}
 
