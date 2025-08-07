@@ -20,19 +20,6 @@ extSecrets:
         remoteRef:
           key: secret/kargo/github
           property: ssh_private_key
-  - name: calibre-web-github-ssh
-    namespace: calibre-web
-    labels:
-      kargo.akuity.io/cred-type: git
-    secrets:
-      - secretKey: repoURL
-        remoteRef:
-          key: secret/kargo/github
-          property: repo_url
-      - secretKey: sshPrivateKey
-        remoteRef:
-          key: secret/kargo/github
-          property: ssh_private_key
   - name: docker
     namespace: adguard-home
     labels:
