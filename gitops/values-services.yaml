@@ -319,7 +319,8 @@ applicationsets:
         name: 'adguard-home-{{metadata.labels.environment}}'
         labels:
           type: 'service'
-        annotations: {}
+        annotations:
+          kargo.akuity.io/authorized-stage: 'adguard-home:{{metadata.labels.kargo-stage}}'
       spec:
         project: default
         sources:
@@ -411,7 +412,8 @@ applicationsets:
         name: 'calibre-web-{{metadata.labels.environment}}'
         labels:
           type: 'service'
-        annotations: {}
+        annotations:
+          kargo.akuity.io/authorized-stage: 'calibre-web:{{metadata.labels.kargo-stage}}'
       spec:
         project: default
         sources:
