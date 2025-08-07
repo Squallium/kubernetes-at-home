@@ -1,0 +1,16 @@
+chart:
+  targetRevision: 0.0.5
+extSecrets:
+  - name: github-ssh
+    namespace: calibre-web
+    labels:
+      kargo.akuity.io/cred-type: git
+    secrets:
+      - secretKey: repoURL
+        remoteRef:
+          key: secret/kargo/github
+          property: repo_url
+      - secretKey: sshPrivateKey
+        remoteRef:
+          key: secret/kargo/github
+          property: ssh_private_key

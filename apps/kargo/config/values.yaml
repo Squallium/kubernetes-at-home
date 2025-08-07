@@ -7,19 +7,6 @@ extSecrets:
       - secretKey: ADMIN_ACCOUNT_TOKEN_SIGNING_KEY
         remoteRef:
           key: secret/kargo/api
-  - name: home-assistant-github-ssh
-    namespace: home-assistant
-    labels:
-      kargo.akuity.io/cred-type: git
-    secrets:
-      - secretKey: repoURL
-        remoteRef:
-          key: secret/kargo/github
-          property: repo_url
-      - secretKey: sshPrivateKey
-        remoteRef:
-          key: secret/kargo/github
-          property: ssh_private_key
   - name: docker
     namespace: adguard-home
     labels:
@@ -53,6 +40,8 @@ argocd-apps:
               - list:
                   elements:
                     - service: calibre-web
+                    - service: adguard-home
+                    - service: home-assistant
               - git:
                   repoURL: https://github.com/Squallium/kubernetes-at-home.git
                   revision: main
