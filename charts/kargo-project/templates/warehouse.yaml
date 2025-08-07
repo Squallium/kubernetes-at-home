@@ -6,17 +6,14 @@ metadata:
 spec:
   subscriptions:
   - image:
-      repoURL: docker.io/linuxserver/{{ .Values.kargo.project.name }}
+      repoURL: {{ .Values.kargo.warehouse.image.repoURL }}
       imageSelectionStrategy: SemVer
       strictSemvers: true
       discoveryLimit: 3
-      semverConstraint: ^0.6.23
-      allowTags: '^0\.\d+\.\d+$'
+      semverConstraint: {{ .Values.kargo.warehouse.image.semverConstraint }}
+      allowTags: {{ .Values.kargo.warehouse.image.allowTags }}
       ignoreTags:
-        - '.*-b\.\d+$'
-        - 'nightly.*$'
-        - 'version-.*$'
-        - 'amd64-.*$'
+        {{- toYaml .Values.kargo.warehouse.image.ignoreTags | nindent 8 }}
 
   - chart:
       repoURL: https://squallium.github.io/kubernetes-at-home

@@ -1,6 +1,12 @@
 kargo:
   project:
     name: placeholder
+  warehouse:
+    image:
+      repoURL: placeholder
+      semverConstraint: ''
+      allowTags: ''
+      ignoreTags: []
 extSecrets:
   - name: env
     namespace: kargo
