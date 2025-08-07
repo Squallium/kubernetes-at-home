@@ -11,6 +11,9 @@ kargo:
         - 'nightly.*$'
         - 'version-.*$'
         - 'amd64-.*$'
+    chart:
+      repoURL: https://squallium.github.io/kubernetes-at-home
+      name: calibre-web
 extSecrets:
   - name: github-ssh
     namespace: calibre-web
