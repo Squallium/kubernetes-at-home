@@ -1,5 +1,13 @@
 chart:
-  targetRevision: 0.0.5
+  targetRevision: 0.0.6
+kargo:
+  warehouse:
+    image:
+      repoURL: docker.io/adguard/adguardhome
+      semverConstraint: ''
+      allowTags: '^v\d+\.\d+\.\d+$'
+      ignoreTags:
+        - '.*-b\.\d+$'
 extSecrets:
   - name: github-ssh
     namespace: adguard-home

@@ -1,5 +1,16 @@
 chart:
   targetRevision: 0.0.5
+kargo:
+  warehouse:
+    image:
+      repoURL: docker.io/linuxserver/calibre-web
+      semverConstraint: ^0.6.23
+      allowTags: '^0\.\d+\.\d+$'
+      ignoreTags:
+        - '.*-b\.\d+$'
+        - 'nightly.*$'
+        - 'version-.*$'
+        - 'amd64-.*$'
 extSecrets:
   - name: github-ssh
     namespace: calibre-web

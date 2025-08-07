@@ -1,5 +1,12 @@
 chart:
   targetRevision: 0.0.5
+kargo:
+  warehouse:
+    image:
+      repoURL: ghcr.io/home-assistant/home-assistant
+      semverConstraint: ''
+      allowTags: ''
+      ignoreTags: []
 extSecrets:
   - name: github-ssh
     namespace: home-assistant
