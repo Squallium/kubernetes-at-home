@@ -7,8 +7,21 @@ extSecrets:
       - secretKey: ADMIN_ACCOUNT_TOKEN_SIGNING_KEY
         remoteRef:
           key: secret/kargo/api
-  - name: github-ssh
-    namespace: kargo-cluster-secrets
+  - name: home-assistant-github-ssh
+    namespace: home-assistant
+    labels:
+      kargo.akuity.io/cred-type: git
+    secrets:
+      - secretKey: repoURL
+        remoteRef:
+          key: secret/kargo/github
+          property: repo_url
+      - secretKey: sshPrivateKey
+        remoteRef:
+          key: secret/kargo/github
+          property: ssh_private_key
+  - name: calibre-web-github-ssh
+    namespace: calibre-web
     labels:
       kargo.akuity.io/cred-type: git
     secrets:
