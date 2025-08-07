@@ -1,5 +1,5 @@
 chart:
-  targetRevision: 0.0.3
+  targetRevision: 0.0.4
 extSecrets:
   - name: github-ssh
     namespace: calibre-web
