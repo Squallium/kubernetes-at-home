@@ -1,7 +1,7 @@
 chart:
   targetRevision: 0.0.2
 extSecrets:
-  - name: calibre-web-github-ssh
+  - name: github-ssh
     namespace: calibre-web
     labels:
       kargo.akuity.io/cred-type: git
