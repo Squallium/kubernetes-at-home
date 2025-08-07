@@ -2,14 +2,14 @@ apiVersion: kargo.akuity.io/v1alpha1
 kind: Stage
 metadata:
   name: dev
-  namespace: calibre-web
+  namespace: {{ .Values.kargo.project.name }}
   annotations:
     kargo.akuity.io/color: green
 spec:
   requestedFreight:
     - origin:
         kind: Warehouse
-        name: calibre-web
+        name: {{ .Values.kargo.project.name }}
       sources:
         direct: true
   promotionTemplate:
@@ -19,24 +19,24 @@ spec:
             name: promote
           vars:
             - name: chartValuesPath
-              value: apps/calibre-web/development
+              value: apps/{{ .Values.kargo.project.name }}/development
             - name: valuesPath
-              value: apps/calibre-web/development
+              value: apps/{{ .Values.kargo.project.name }}/development
             - name: argocdApp
-              value: calibre-web-development
+              value: {{ .Values.kargo.project.name }}-development
 ---
 apiVersion: kargo.akuity.io/v1alpha1
 kind: Stage
 metadata:
   name: pro
-  namespace: calibre-web
+  namespace: {{ .Values.kargo.project.name }}
   annotations:
     kargo.akuity.io/color: red
 spec:
   requestedFreight:
     - origin:
         kind: Warehouse
-        name: calibre-web
+        name: {{ .Values.kargo.project.name }}
       sources:
         stages:
           - dev
@@ -47,9 +47,9 @@ spec:
             name: promote
           vars:
             - name: chartValuesPath
-              value: apps/calibre-web/production
+              value: apps/{{ .Values.kargo.project.name }}/production
             - name: valuesPath
-              value: apps/calibre-web/production
+              value: apps/{{ .Values.kargo.project.name }}/production
             - name: argocdApp
-              value: calibre-web-production
+              value: {{ .Values.kargo.project.name }}-production
 

@@ -2,13 +2,13 @@ apiVersion: kargo.akuity.io/v1alpha1
 kind: PromotionTask
 metadata:
   name: promote
-  namespace: calibre-web
+  namespace: {{ .Values.kargo.project.name }}
 spec:
   vars:
   - name: chart
     value: https://squallium.github.io/kubernetes-at-home
   - name: image
-    value: docker.io/linuxserver/calibre-web
+    value: docker.io/linuxserver/{{ .Values.kargo.project.name }}
   - name: repoURL
     value: git@github.com:Squallium/kubernetes-at-home.git
   - name: branch
@@ -31,7 +31,7 @@ spec:
       path: ./out/${{`{{ vars.chartValuesPath }}`}}/config.yaml
       updates:
         - key: chart.targetRevision
-          value: ${{`{{ chartFrom( vars.chart, "calibre-web", warehouse("calibre-web") ).Version }}`}}
+          value: {{ printf "${{ chartFrom( vars.chart, \"%s\", warehouse(\"%s\") ).Version }}" .Values.kargo.project.name .Values.kargo.project.name }}
   - uses: git-commit
     as: commit-chart
     config:
@@ -44,7 +44,7 @@ spec:
       path: ./out/${{`{{ vars.valuesPath }}`}}/values.yaml
       updates:
       - key: image.tag
-        value: ${{`{{ imageFrom( vars.image, warehouse("calibre-web") ).Tag }}`}}
+        value: {{ printf "${{ imageFrom( vars.image, warehouse(\"%s\") ).Tag }}" .Values.kargo.project.name }}
   - uses: git-commit
     as: commit-image
     config:
