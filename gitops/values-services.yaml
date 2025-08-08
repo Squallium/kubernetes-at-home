@@ -505,7 +505,8 @@ applicationsets:
         name: 'authentik-{{metadata.labels.environment}}'
         labels:
           type: 'service'
-        annotations: {}
+        annotations:
+          kargo.akuity.io/authorized-stage: 'authentik:{{metadata.labels.kargo-stage}}'
       spec:
         project: default
         sources:

@@ -118,6 +118,7 @@ default_context:
         chart_name: "authentik"
         chart_target_revision: "2025.6.3"
         enable_ssl: true
+        enable_kargo: true
       - name: "argo-rollouts"
         chart_repo: "https://argoproj.github.io/argo-helm"
         chart_name: "argo-rollouts"
