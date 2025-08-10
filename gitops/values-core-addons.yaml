@@ -101,8 +101,10 @@ applications:
   cert-manager:
     namespace: argocd
     additionalLabels: {}
-    additionalAnnotations:
-      kargo.akuity.io/authorized-stage: 'addon-cert-manager:core'
+#
+#    additionalAnnotations:
+#      kargo.akuity.io/authorized-stage: 'addon-cert-manager:core'
+#
     finalizers:
     - resources-finalizer.argocd.argoproj.io
     project: default
@@ -137,8 +139,10 @@ applications:
   cert-manager-config:
     namespace: argocd
     additionalLabels: {}
-    additionalAnnotations:
-      kargo.akuity.io/authorized-stage: 'addon-cert-manager:core-config'
+#
+#    additionalAnnotations:
+#      kargo.akuity.io/authorized-stage: 'addon-cert-manager:core-config'
+#
     finalizers:
     - resources-finalizer.argocd.argoproj.io
     project: default
