@@ -13,16 +13,16 @@ applicationsets:
             - list:
                 elements:
                   - name: 'cert-manager'
-                    path: 'cert-manager'
+                    relPath: 'cert-manager'
                     kargoStage: 'core'
                   - name: 'cert-manager-config'
-                    path: 'cert-manager/config'
+                    relPath: 'cert-manager/config'
                     kargoStage: 'core-config'
             - git:
                 repoURL: https://github.com/Squallium/kubernetes-at-home.git
                 revision: main
                 files:
-                  - path: 'addons/{{ path }}/config.yaml'
+                  - path: 'addons/{{ relPath }}/config.yaml'
     # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
     ignoreApplicationDifferences:
       - jsonPointers:
@@ -62,7 +62,7 @@ applicationsets:
             targetRevision: '{{chart.targetRevision}}'
             helm:
               valueFiles:
-                - $values/addons/{{ path }}/values.yaml
+                - $values/addons/{{ relPath }}/values.yaml
         destination:
           server: https://kubernetes.default.svc
           namespace: cert-manager
