@@ -1,6 +1,6 @@
 applicationsets:
   {%- for core_addon in cookiecutter.core_addons.list %}
-  {{ core_addon.name }}:
+  {{ core_addon.name }}-core:
     namespace: argocd
     additionalLabels: {}
     additionalAnnotations: {}

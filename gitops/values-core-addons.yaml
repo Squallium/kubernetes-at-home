@@ -1,5 +1,5 @@
 applicationsets:
-  cert-manager:
+  cert-manager-core:
     namespace: argocd
     additionalLabels: {}
     additionalAnnotations: {}
