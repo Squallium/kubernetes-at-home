@@ -3,7 +3,12 @@ applications:
   {{ core_addon.name }}:
     namespace: argocd
     additionalLabels: {}
+    {%- if core_addon.get("enable_kargo", False) %}
+    additionalAnnotations:
+      kargo.akuity.io/authorized-stage: 'addon-{{ core_addon.name }}:core'
+    {%- else %}
     additionalAnnotations: {}
+    {%- endif %}
     finalizers:
     - resources-finalizer.argocd.argoproj.io
     project: default
@@ -46,7 +51,12 @@ applications:
   {{ core_addon_config.name }}-config:
     namespace: argocd
     additionalLabels: {}
+    {%- if core_addon_config.get("enable_kargo", False) %}
+    additionalAnnotations:
+      kargo.akuity.io/authorized-stage: 'addon-{{ core_addon_config.name }}:core-config'
+    {%- else %}
     additionalAnnotations: {}
+    {%- endif %}
     finalizers:
     - resources-finalizer.argocd.argoproj.io
     project: default
