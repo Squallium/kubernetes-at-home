@@ -1,176 +1,176 @@
 applicationsets:
-#  cert-manager-core:
+  cert-manager-core:
+    namespace: argocd
+    additionalLabels: {}
+    additionalAnnotations: {}
+    finalizers:
+      - resources-finalizer.argocd.argoproj.io
+    # See PR #10026 (ArgoCD v2.5 or later)
+    # goTemplate: false
+    generators:
+      - matrix:
+          generators:
+            - list:
+                elements:
+                  - name: 'cert-manager'
+                    relPath: 'cert-manager'
+                    kargoStage: 'core'
+                  - name: 'cert-manager-config'
+                    relPath: 'cert-manager/config'
+                    kargoStage: 'core-config'
+            - git:
+                repoURL: https://github.com/Squallium/kubernetes-at-home.git
+                revision: main
+                files:
+                  - path: 'addons/{{ relPath }}/config.yaml'
+    # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
+    ignoreApplicationDifferences:
+      - jsonPointers:
+          - /spec/syncPolicy
+    # Progressive Syncs is an experimental feature and it must be explicitly enabled
+    # Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Progressive-Syncs/#enabling-progressive-syncs
+    #      strategy:
+    #        type: RollingSync
+    #        rollingSync:
+    #          steps:
+    #          - matchExpressions:
+    #            - key: project
+    #              operator: In
+    #              values:
+    #              - guestbook
+    #          - matchExpressions:
+    #            - key: project
+    #              operator: In
+    #              values:
+    #              - kustomize-foo
+    #              - kustomize-bar
+    template:
+      metadata:
+        name: '{{ name }}'
+        labels:
+          type: 'addon'
+        annotations:
+          kargo.akuity.io/authorized-stage: 'cert-manager:{{ kargoStage }}'
+      spec:
+        project: default
+        sources:
+          - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+            targetRevision: main
+            ref: values
+          - repoURL: '{{chart.repoURL}}'
+            chart: '{{chart.name}}'
+            targetRevision: '{{chart.targetRevision}}'
+            helm:
+              valueFiles:
+                - $values/addons/{{ relPath }}/values.yaml
+        destination:
+          server: https://kubernetes.default.svc
+          namespace: cert-manager
+        syncPolicy:
+#            automated:
+#              prune: false
+#              selfHeal: false
+          syncOptions:
+            - CreateNamespace=true
+        ignoreDifferences:
+          - group: apps
+            kind: Deployment
+            jsonPointers:
+              - /spec/replicas
+        info:
+          - name: url
+            value: https://argoproj.github.io/
+    syncPolicy:
+      # Set Application finalizer
+      preserveResourcesOnDeletion: true
+    # Templating is only available on string type
+  #      templatePatch: |
+  #        spec:
+  #          source:
+  #            helm:
+  #              valueFiles:
+  #              {{- range $valueFile := .valueFiles }}
+  #                - {{ $valueFile }}
+  #              {{- end }}
+  #        {{- if .autoSync }}
+  #          syncPolicy:
+  #            automated:
+  #              prune: {{ .prune }}
+  #        {{- end }}
+#applications:
+#  cert-manager:
 #    namespace: argocd
 #    additionalLabels: {}
-#    additionalAnnotations: {}
+##
+##    additionalAnnotations:
+##      kargo.akuity.io/authorized-stage: 'addon-cert-manager:core'
+##
 #    finalizers:
-#      - resources-finalizer.argocd.argoproj.io
-#    # See PR #10026 (ArgoCD v2.5 or later)
-#    # goTemplate: false
-#    generators:
-#      - matrix:
-#          generators:
-#            - list:
-#                elements:
-#                  - name: 'cert-manager'
-#                    relPath: 'cert-manager'
-#                    kargoStage: 'core'
-#                  - name: 'cert-manager-config'
-#                    relPath: 'cert-manager/config'
-#                    kargoStage: 'core-config'
-#            - git:
-#                repoURL: https://github.com/Squallium/kubernetes-at-home.git
-#                revision: main
-#                files:
-#                  - path: 'addons/{{ relPath }}/config.yaml'
-#    # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
-#    ignoreApplicationDifferences:
-#      - jsonPointers:
-#          - /spec/syncPolicy
-#    # Progressive Syncs is an experimental feature and it must be explicitly enabled
-#    # Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Progressive-Syncs/#enabling-progressive-syncs
-#    #      strategy:
-#    #        type: RollingSync
-#    #        rollingSync:
-#    #          steps:
-#    #          - matchExpressions:
-#    #            - key: project
-#    #              operator: In
-#    #              values:
-#    #              - guestbook
-#    #          - matchExpressions:
-#    #            - key: project
-#    #              operator: In
-#    #              values:
-#    #              - kustomize-foo
-#    #              - kustomize-bar
-#    template:
-#      metadata:
-#        name: '{{ name }}'
-#        labels:
-#          type: 'addon'
-#        annotations:
-#          kargo.akuity.io/authorized-stage: 'cert-manager:{{ kargoStage }}'
-#      spec:
-#        project: default
-#        sources:
-#          - repoURL: https://github.com/Squallium/kubernetes-at-home.git
-#            targetRevision: main
-#            ref: values
-#          - repoURL: '{{chart.repoURL}}'
-#            chart: '{{chart.name}}'
-#            targetRevision: '{{chart.targetRevision}}'
-#            helm:
-#              valueFiles:
-#                - $values/addons/{{ relPath }}/values.yaml
-#        destination:
-#          server: https://kubernetes.default.svc
-#          namespace: cert-manager
-#        syncPolicy:
-##            automated:
-##              prune: false
-##              selfHeal: false
-#          syncOptions:
-#            - CreateNamespace=true
-#        ignoreDifferences:
-#          - group: apps
-#            kind: Deployment
-#            jsonPointers:
-#              - /spec/replicas
-#        info:
-#          - name: url
-#            value: https://argoproj.github.io/
+#    - resources-finalizer.argocd.argoproj.io
+#    project: default
+#    sources:
+#    - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+#      targetRevision: main
+#      ref: values
+#    - repoURL: https://charts.jetstack.io
+#      chart: cert-manager
+#      targetRevision: 1.18.2
+#      helm:
+#        valueFiles:
+#          - $values/addons/cert-manager/values.yaml
+#    destination:
+#      server: https://kubernetes.default.svc
+#      namespace: cert-manager
 #    syncPolicy:
-#      # Set Application finalizer
-#      preserveResourcesOnDeletion: true
-#    # Templating is only available on string type
-#  #      templatePatch: |
-#  #        spec:
-#  #          source:
-#  #            helm:
-#  #              valueFiles:
-#  #              {{- range $valueFile := .valueFiles }}
-#  #                - {{ $valueFile }}
-#  #              {{- end }}
-#  #        {{- if .autoSync }}
-#  #          syncPolicy:
-#  #            automated:
-#  #              prune: {{ .prune }}
-#  #        {{- end }}
-applications:
-  cert-manager:
-    namespace: argocd
-    additionalLabels: {}
-#
-#    additionalAnnotations:
-#      kargo.akuity.io/authorized-stage: 'addon-cert-manager:core'
-#
-    finalizers:
-    - resources-finalizer.argocd.argoproj.io
-    project: default
-    sources:
-    - repoURL: https://github.com/Squallium/kubernetes-at-home.git
-      targetRevision: main
-      ref: values
-    - repoURL: https://charts.jetstack.io
-      chart: cert-manager
-      targetRevision: 1.18.2
-      helm:
-        valueFiles:
-          - $values/addons/cert-manager/values.yaml
-    destination:
-      server: https://kubernetes.default.svc
-      namespace: cert-manager
-    syncPolicy:
-#      automated:
-#        prune: false
-#        selfHeal: false
-      syncOptions:
-      - CreateNamespace=true
-    revisionHistoryLimit: null
-    ignoreDifferences:
-    - group: apps
-      kind: Deployment
-      jsonPointers:
-      - /spec/replicas
-    info:
-    - name: url
-      value: https://argoproj.github.io/
-  cert-manager-config:
-    namespace: argocd
-    additionalLabels: {}
-#
-#    additionalAnnotations:
-#      kargo.akuity.io/authorized-stage: 'addon-cert-manager:core-config'
-#
-    finalizers:
-    - resources-finalizer.argocd.argoproj.io
-    project: default
-    sources:
-    - repoURL: https://github.com/Squallium/kubernetes-at-home.git
-      targetRevision: main
-      ref: values
-    - repoURL: https://squallium.github.io/kubernetes-at-home
-      chart: cert-manager-config
-      targetRevision: 0.0.5
-      helm:
-        valueFiles:
-          - $values/addons/cert-manager/config/values.yaml
-    destination:
-      server: https://kubernetes.default.svc
-      namespace: cert-manager
-    syncPolicy:
-#      automated:
-#        prune: false
-#        selfHeal: false
-      syncOptions:
-      - CreateNamespace=true
-    revisionHistoryLimit: null
-    ignoreDifferences:
-    - group: apps
-      kind: Deployment
-      jsonPointers:
-      - /spec/replicas
-    info:
-    - name: url
-      value: https://argoproj.github.io/
+##      automated:
+##        prune: false
+##        selfHeal: false
+#      syncOptions:
+#      - CreateNamespace=true
+#    revisionHistoryLimit: null
+#    ignoreDifferences:
+#    - group: apps
+#      kind: Deployment
+#      jsonPointers:
+#      - /spec/replicas
+#    info:
+#    - name: url
+#      value: https://argoproj.github.io/
+#  cert-manager-config:
+#    namespace: argocd
+#    additionalLabels: {}
+##
+##    additionalAnnotations:
+##      kargo.akuity.io/authorized-stage: 'addon-cert-manager:core-config'
+##
+#    finalizers:
+#    - resources-finalizer.argocd.argoproj.io
+#    project: default
+#    sources:
+#    - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+#      targetRevision: main
+#      ref: values
+#    - repoURL: https://squallium.github.io/kubernetes-at-home
+#      chart: cert-manager-config
+#      targetRevision: 0.0.5
+#      helm:
+#        valueFiles:
+#          - $values/addons/cert-manager/config/values.yaml
+#    destination:
+#      server: https://kubernetes.default.svc
+#      namespace: cert-manager
+#    syncPolicy:
+##      automated:
+##        prune: false
+##        selfHeal: false
+#      syncOptions:
+#      - CreateNamespace=true
+#    revisionHistoryLimit: null
+#    ignoreDifferences:
+#    - group: apps
+#      kind: Deployment
+#      jsonPointers:
+#      - /spec/replicas
+#    info:
+#    - name: url
+#      value: https://argoproj.github.io/
