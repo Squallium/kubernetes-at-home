@@ -1,0 +1,4 @@
+chart:
+  repoUlr: https://charts.jetstack.io
+  chart: cert-manager
+  targetRevision: 1.18.2

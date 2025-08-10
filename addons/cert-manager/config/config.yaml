@@ -1,0 +1,4 @@
+chart:
+  repoURL: https://squallium.github.io/kubernetes-at-home
+  name: cert-manager-config
+  targetRevision: 0.0.5

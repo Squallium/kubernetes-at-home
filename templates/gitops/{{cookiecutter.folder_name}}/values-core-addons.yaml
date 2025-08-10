@@ -1,3 +1,117 @@
+applicationsets:
+  {%- for core_addon in cookiecutter.core_addons.list %}
+  {{ core_addon.name }}:
+    namespace: argocd
+    additionalLabels: {}
+    additionalAnnotations: {}
+    finalizers:
+      - resources-finalizer.argocd.argoproj.io
+    # See PR #10026 (ArgoCD v2.5 or later)
+    # goTemplate: false
+    generators:
+      - matrix:
+          generators:
+            - list:
+                elements:
+                  - name: '{{ core_addon.name }}'
+                    path: '{{ core_addon.name }}'
+                    kargoStage: 'core'
+                  - name: '{{ core_addon.name }}-config'
+                    path: '{{ core_addon.name }}/config'
+                    kargoStage: 'core-config'
+            - git:
+                repoURL: https://github.com/Squallium/kubernetes-at-home.git
+                revision: main
+                files:
+                  - path: 'addons/{{'{{'}} path }}/config.yaml'
+    # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
+    ignoreApplicationDifferences:
+      - jsonPointers:
+          - /spec/syncPolicy
+    # Progressive Syncs is an experimental feature and it must be explicitly enabled
+    # Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Progressive-Syncs/#enabling-progressive-syncs
+    #      strategy:
+    #        type: RollingSync
+    #        rollingSync:
+    #          steps:
+    #          - matchExpressions:
+    #            - key: project
+    #              operator: In
+    #              values:
+    #              - guestbook
+    #          - matchExpressions:
+    #            - key: project
+    #              operator: In
+    #              values:
+    #              - kustomize-foo
+    #              - kustomize-bar
+    template:
+      metadata:
+        name: '{{'{{'}} name }}'
+        labels:
+          type: 'addon'
+        {%- if core_addon.get("enable_kargo", False) %}
+        annotations:
+          kargo.akuity.io/authorized-stage: '{{ core_addon.name }}:{{'{{'}} kargoStage }}'
+        {%- else %}
+        annotations: {}
+        {%- endif %}
+      spec:
+        project: default
+        sources:
+          - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+            targetRevision: main
+            ref: values
+          {%- set chart_name = core_addon.chart_name | default(cookiecutter.default_chart_name, true) | trim %}
+          {%- if chart_name != "" %}
+          - repoURL: {{ core_addon.chart_repo | default(cookiecutter.default_chart_repo) }}
+            chart: {{ chart_name  }}
+          {%- else %}
+          - repoURL: {{ core_addon.chart_repo_url | default(cookiecutter.default_chart_repo_url) }}
+            path: {{ core_addon.chart_path | default("charts/" ~ core_addon.name) }}
+          {%- endif %}
+            targetRevision: '{{'{{'}}chart.targetRevision}}'
+            helm:
+              valueFiles:
+                - $values/addons/{{'{{'}} path }}/values.yaml
+        destination:
+          server: https://kubernetes.default.svc
+          namespace: {{ core_addon.name }}
+        syncPolicy:
+#            automated:
+#              prune: false
+#              selfHeal: false
+          syncOptions:
+            - CreateNamespace=true
+            {%- if core_addon.get("server_side_apply", False) %}
+            - ServerSideApply=true
+            {%- endif %}
+        ignoreDifferences:
+          - group: apps
+            kind: Deployment
+            jsonPointers:
+              - /spec/replicas
+        info:
+          - name: url
+            value: https://argoproj.github.io/
+    syncPolicy:
+      # Set Application finalizer
+      preserveResourcesOnDeletion: true
+    # Templating is only available on string type
+  #      templatePatch: |
+  #        spec:
+  #          source:
+  #            helm:
+  #              valueFiles:
+  #              {{'{{'}}- range $valueFile := .valueFiles }}
+  #                - {{'{{'}} $valueFile }}
+  #              {{'{{'}}- end }}
+  #        {{'{{'}}- if .autoSync }}
+  #          syncPolicy:
+  #            automated:
+  #              prune: {{'{{'}} .prune }}
+  #        {{'{{'}}- end }}
+  {%- endfor %}
 applications:
   {%- for core_addon in cookiecutter.core_addons.list %}
   {{ core_addon.name }}:

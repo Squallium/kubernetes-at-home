@@ -1,0 +1,15 @@
+chart:
+  targetRevision: 0.0.9
+kargo:
+  warehouse:
+    image:
+      repoURL: quay.io/jetstack/cert-manager-controller
+      semverConstraint: ''
+      allowTags: '^v\d+\.\d+\.\d+$'
+      ignoreTags:
+        - '.*-alpha\.\d+$'
+        - '.*-beta\.\d+$'
+    chart:
+      repoURL: https://charts.jetstack.io
+      name: cert-manager
+extSecrets: []
