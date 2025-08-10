@@ -62,14 +62,8 @@ applicationsets:
           - repoURL: https://github.com/Squallium/kubernetes-at-home.git
             targetRevision: main
             ref: values
-          {%- set chart_name = core_addon.chart_name | default(cookiecutter.default_chart_name, true) | trim %}
-          {%- if chart_name != "" %}
-          - repoURL: {{ core_addon.chart_repo | default(cookiecutter.default_chart_repo) }}
-            chart: {{ chart_name  }}
-          {%- else %}
-          - repoURL: {{ core_addon.chart_repo_url | default(cookiecutter.default_chart_repo_url) }}
-            path: {{ core_addon.chart_path | default("charts/" ~ core_addon.name) }}
-          {%- endif %}
+          - repoURL: '{{'{{'}}chart.repoURL}}'
+            chart: '{{'{{'}}chart.name}}'
             targetRevision: '{{'{{'}}chart.targetRevision}}'
             helm:
               valueFiles:
