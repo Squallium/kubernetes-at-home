@@ -193,7 +193,6 @@ argocd-apps:
             #            automated:
             #              prune: false
             #              selfHeal: false
-            preserveResourcesOnDeletion: true
             syncOptions:
               - CreateNamespace=false
           ignoreDifferences:
