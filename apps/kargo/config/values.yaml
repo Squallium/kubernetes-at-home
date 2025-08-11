@@ -88,6 +88,7 @@ argocd-apps:
                   - $values/apps/{{service}}/kargo.yaml
                 values: |
                   kargo:
+                    type: apps
                     project:
                       name: '{{service}}'
           destination:
@@ -184,6 +185,7 @@ argocd-apps:
                   - $values/addons/{{addon}}/kargo.yaml
                 values: |
                   kargo:
+                    type: addons
                     project:
                       name: 'addon-{{addon}}'
           destination:
