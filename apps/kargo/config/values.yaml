@@ -193,8 +193,8 @@ argocd-apps:
             #            automated:
             #              prune: false
             #              selfHeal: false
-            syncOptions:
-              - CreateNamespace=true
+#            syncOptions:
+#              - CreateNamespace=true
           ignoreDifferences:
             - group: apps
               kind: Deployment
