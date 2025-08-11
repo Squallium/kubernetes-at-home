@@ -110,8 +110,6 @@ argocd-apps:
       syncPolicy:
         # Set Application finalizer
         preserveResourcesOnDeletion: true
-        syncOptions:
-          - CreateNamespace=false
       # Templating is only available on string type
     #      templatePatch: |
     #        spec:
@@ -196,7 +194,7 @@ argocd-apps:
             #              prune: false
             #              selfHeal: false
             syncOptions:
-              - CreateNamespace=false
+              - CreateNamespace=true
           ignoreDifferences:
             - group: apps
               kind: Deployment
@@ -208,8 +206,6 @@ argocd-apps:
       syncPolicy:
         # Set Application finalizer
         preserveResourcesOnDeletion: true
-        syncOptions:
-          - CreateNamespace=false
       # Templating is only available on string type
     #      templatePatch: |
     #        spec:
