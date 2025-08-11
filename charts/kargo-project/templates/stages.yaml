@@ -19,9 +19,9 @@ spec:
             name: promote
           vars:
             - name: chartValuesPath
-              value: {{ .Values.kargo.project.type}}/{{ .Values.kargo.project.name }}/development
+              value: {{ .Values.kargo.type }}/{{ .Values.kargo.project.name }}/development
             - name: valuesPath
-              value: {{ .Values.kargo.project.type}}/{{ .Values.kargo.project.name }}/development
+              value: {{ .Values.kargo.type }}/{{ .Values.kargo.project.name }}/development
             - name: argocdApp
               value: {{ .Values.kargo.project.name }}-development
 ---
@@ -47,9 +47,9 @@ spec:
             name: promote
           vars:
             - name: chartValuesPath
-              value: {{ .Values.kargo.project.type}}/{{ .Values.kargo.project.name }}/production
+              value: {{ .Values.kargo.type }}/{{ .Values.kargo.project.name }}/production
             - name: valuesPath
-              value: {{ .Values.kargo.project.type}}/{{ .Values.kargo.project.name }}/production
+              value: {{ .Values.kargo.type }}/{{ .Values.kargo.project.name }}/production
             - name: argocdApp
               value: {{ .Values.kargo.project.name }}-production
 
