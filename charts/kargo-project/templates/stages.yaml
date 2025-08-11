@@ -19,11 +19,11 @@ spec:
             name: promote
           vars:
             - name: chartValuesPath
-              value: {{ .Values.kargo.type }}/{{ .Values.kargo.project.name }}/development
+              value: {{ .Values.kargo.type }}/{{ .Values.kargo.name }}/development
             - name: valuesPath
-              value: {{ .Values.kargo.type }}/{{ .Values.kargo.project.name }}/development
+              value: {{ .Values.kargo.type }}/{{ .Values.kargo.name }}/development
             - name: argocdApp
-              value: {{ .Values.kargo.project.name }}-development
+              value: {{ .Values.kargo.name }}-development
 ---
 apiVersion: kargo.akuity.io/v1alpha1
 kind: Stage
@@ -47,9 +47,9 @@ spec:
             name: promote
           vars:
             - name: chartValuesPath
-              value: {{ .Values.kargo.type }}/{{ .Values.kargo.project.name }}/production
+              value: {{ .Values.kargo.type }}/{{ .Values.kargo.name }}/production
             - name: valuesPath
-              value: {{ .Values.kargo.type }}/{{ .Values.kargo.project.name }}/production
+              value: {{ .Values.kargo.type }}/{{ .Values.kargo.name }}/production
             - name: argocdApp
-              value: {{ .Values.kargo.project.name }}-production
+              value: {{ .Values.kargo.name }}-production
 
