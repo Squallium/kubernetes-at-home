@@ -193,6 +193,7 @@ argocd-apps:
             #            automated:
             #              prune: false
             #              selfHeal: false
+            preserveResourcesOnDeletion: true
             syncOptions:
               - CreateNamespace=false
           ignoreDifferences:
@@ -203,9 +204,9 @@ argocd-apps:
           info:
             - name: url
               value: https://argoproj.github.io/
-      syncPolicy:
-        # Set Application finalizer
-        preserveResourcesOnDeletion: true
+#      syncPolicy:
+#        # Set Application finalizer
+#        preserveResourcesOnDeletion: true
       # Templating is only available on string type
     #      templatePatch: |
     #        spec:
