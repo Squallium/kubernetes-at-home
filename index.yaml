@@ -11,6 +11,17 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/adguard-home-0.0.9/adguard-home-0.0.9.tgz
     version: 0.0.9
+  argocd-addons:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2025-08-13T21:08:45.073212367Z"
+    description: A Helm chart for managing ArgoCD addons
+    digest: c8e44a546f08580ab973c9f3798de9237753a1e149018380bf66a9e17dc8e344
+    name: argocd-addons
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/argocd-addons-0.0.1/argocd-addons-0.0.1.tgz
+    version: 0.0.1
   authentik-config:
   - apiVersion: v2
     appVersion: 0.0.4
@@ -580,4 +591,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/paperless-ngx-0.0.6/paperless-ngx-0.0.6.tgz
     version: 0.0.6
-generated: "2025-08-11T22:26:26.228237389Z"
+generated: "2025-08-13T21:08:45.073286126Z"
