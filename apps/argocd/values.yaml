@@ -12,6 +12,31 @@ server:
   extraArgs:
     - --insecure
 
+repoServer:
+  volumes:
+    - configMap:
+        name: cmp-plugin
+      name: cmp-plugin
+  extraContainers:
+    - name: avp
+      command: [ /var/run/argocd/argocd-cmp-server ]
+      image: ghcr.io/squallium/kubernetes-at-home/avp-sidecar:1.18.1
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 999
+      volumeMounts:
+        - mountPath: /var/run/argocd
+          name: var-files
+        - mountPath: /home/argocd/cmp-server/plugins
+          name: plugins
+        - mountPath: /tmp
+          name: tmp
+
+        # Register plugins into sidecar
+        - mountPath: /home/argocd/cmp-server/config/plugin.yaml
+          subPath: avp.yaml
+          name: cmp-plugin
+
 configs:
   params:
     server.insecure: true  # Allow HTTP access without TLS (We'll enable HTTPS later)
