@@ -32,8 +32,10 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Set image name
-        run: echo "IMAGE_NAME=ghcr.io/${{ github.repository }}/avp-sidecar" >> $GITHUB_ENV
+      - name: Set image name (lowercase)
+        run: |
+          IMAGE_NAME="ghcr.io/$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')/avp-sidecar"
+          echo "IMAGE_NAME=$IMAGE_NAME" >> $GITHUB_ENV
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
