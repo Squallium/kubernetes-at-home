@@ -12,7 +12,7 @@ on:
       - main
     paths:
       - apps/argocd/addons/avp/Dockerfile
-      - .github/workflows/argo-avp-sidecar.yml
+      - .github/workflows/argo-avp-sidecar.yaml
 
 jobs:
   build:
