@@ -1,0 +1,49 @@
+name: Build and Push AVP Sidecar
+
+on:
+  workflow_dispatch:
+    inputs:
+      avp_version:
+        description: "Versión de argocd-vault-plugin"
+        required: true
+        default: "1.16.1"
+  push:
+    branches:
+      - main
+    paths:
+      - apps/argocd/addons/avp/Dockerfile
+      - .github/workflows/argo-avp-sidecar.yml
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set image name
+        run: echo "IMAGE_NAME=ghcr.io/${{ github.repository }}/avp-sidecar" >> $GITHUB_ENV
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          build-args: |
+            AVP_VERSION=${{ github.event.inputs.avp_version || '1.16.1' }}
+          tags: |
+            ${{ env.IMAGE_NAME }}:latest
+            ${{ env.IMAGE_NAME }}:${{ github.event.inputs.avp_version || '1.16.1' }}
+            ${{ env.IMAGE_NAME }}:${{ github.sha }}
