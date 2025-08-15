@@ -415,7 +415,7 @@ applicationsets:
             ref: values
           - repoURL: https://squallium.github.io/kubernetes-at-home
             chart: coredns-config
-            targetRevision: 0.0.1
+            targetRevision: 0.0.2
             helm:
               valueFiles:
                 - $values/addons/coredns/config/values.yaml
