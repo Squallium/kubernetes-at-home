@@ -11,6 +11,7 @@ default_context:
     list:
       - name: "core-addons"
       - name: "core-services"
+      - name: "core-services-addons"
       - name: "addons"
       - name: "services"
   core_addons:
@@ -125,6 +126,9 @@ default_context:
         chart_repo: "https://argoproj.github.io/argo-helm"
         chart_name: "argo-rollouts"
         chart_target_revision: "2.40.2"
+      - name: "prowlarr"
+        chart_name: "prowlarr"
+        chart_target_revision: "0.0.1"
   services_config:
     list:
       - name: "home-assistant"
