@@ -36,6 +36,9 @@ mounts:
   - location: "/Users/kuber/shared/dev/authentik"
     mountPoint: "/mnt/authentik"
     writable: true
+  - location: "/Users/kuber/shared/dev/prowlarr"
+    mountPoint: "/mnt/prowlarr"
+    writable: true
 
 
 networks:
