@@ -594,6 +594,17 @@ entries:
   prowlarr:
   - apiVersion: v2
     appVersion: 1.37.0.5076
+    created: "2025-08-15T16:28:12.434378984Z"
+    description: A Helm chart for deploying Prowlarr, an indexer manager for various
+      torrent and usenet indexers.
+    digest: b5c769675b6e7254bc8e240437e1f5ee0a5dac0f2f0f3fb71deca1995997754e
+    name: prowlarr
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/prowlarr-0.0.3/prowlarr-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
+    appVersion: 1.37.0.5076
     created: "2025-08-15T16:19:55.852062275Z"
     description: A Helm chart for deploying Prowlarr, an indexer manager for various
       torrent and usenet indexers.
@@ -614,4 +625,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/prowlarr-0.0.1/prowlarr-0.0.1.tgz
     version: 0.0.1
-generated: "2025-08-15T16:19:55.852151513Z"
+generated: "2025-08-15T16:28:12.434482017Z"
