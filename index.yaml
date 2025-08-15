@@ -591,4 +591,16 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/paperless-ngx-0.0.6/paperless-ngx-0.0.6.tgz
     version: 0.0.6
-generated: "2025-08-13T21:08:45.073286126Z"
+  prowlarr:
+  - apiVersion: v2
+    appVersion: 1.37.0.5076
+    created: "2025-08-15T16:00:30.953449735Z"
+    description: A Helm chart for deploying Prowlarr, an indexer manager for various
+      torrent and usenet indexers.
+    digest: f53425bb7a28c58253a7983c4223785d604e7aadf71ae76f6e4acceea8005a1b
+    name: prowlarr
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/prowlarr-0.0.1/prowlarr-0.0.1.tgz
+    version: 0.0.1
+generated: "2025-08-15T16:00:30.953589547Z"
