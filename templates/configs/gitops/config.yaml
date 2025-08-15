@@ -128,7 +128,7 @@ default_context:
         chart_target_revision: "2.40.2"
       - name: "prowlarr"
         chart_name: "prowlarr"
-        chart_target_revision: "0.0.1"
+        enable_ssl: true
   services_config:
     list:
       - name: "home-assistant"

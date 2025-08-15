@@ -703,6 +703,7 @@ applicationsets:
               valueFiles:
                 - $values/apps/prowlarr/values.yaml
                 - $values/apps/prowlarr/{{metadata.labels.environment}}/values.yaml
+                - $values/apps/prowlarr/{{metadata.labels.environment}}/values-ssl.yaml
         destination:
           server: '{{server}}'
           namespace: prowlarr
