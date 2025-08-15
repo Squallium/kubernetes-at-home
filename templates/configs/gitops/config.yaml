@@ -27,6 +27,9 @@ default_context:
         chart_name: "cert-manager-config"
         chart_target_revision: "0.0.5"
         enable_kargo: true
+      - name: "coredns"
+        chart_name: "coredns-config"
+        chart_target_revision: "0.0.1"
   core_services:
     list:
       - name: "kube-prometheus-stack"
