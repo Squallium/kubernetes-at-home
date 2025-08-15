@@ -155,6 +155,17 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/cert-manager-config-0.0.1/cert-manager-config-0.0.1.tgz
     version: 0.0.1
+  coredns-config:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2025-08-15T23:28:03.584324972Z"
+    description: A Helm chart for managing CoreDNS configurations
+    digest: d796c4aa07083c7bd4890240de2f0d69701712fded1826016f616df90d99d9ab
+    name: coredns-config
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/coredns-config-0.0.1/coredns-config-0.0.1.tgz
+    version: 0.0.1
   external-secrets-config:
   - apiVersion: v2
     appVersion: 0.0.3
@@ -647,4 +658,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/prowlarr-0.0.1/prowlarr-0.0.1.tgz
     version: 0.0.1
-generated: "2025-08-15T16:48:19.066151676Z"
+generated: "2025-08-15T23:28:03.584449897Z"
