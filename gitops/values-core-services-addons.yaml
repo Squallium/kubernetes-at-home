@@ -10,7 +10,7 @@ applications:
     - repoURL: https://github.com/Squallium/kubernetes-at-home.git
       targetRevision: main
       ref: values
-    - repoURL: https://prometheus-community.github.io/helm-charts
+    - repoURL: https://squallium.github.io/kubernetes-at-home
       chart: argocd-addons
       targetRevision: 0.0.1
       helm:
