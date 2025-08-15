@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: prowlarr
-  namespace: media
 spec:
   replicas: 1
   selector:
@@ -15,7 +14,7 @@ spec:
     spec:
       containers:
         - name: prowlarr
-          image: lscr.io/linuxserver/prowlarr:{{ .Values.image.tag }}
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           ports:
             - containerPort: 9696
           env:
