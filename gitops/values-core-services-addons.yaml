@@ -1,0 +1,37 @@
+applications:
+  argocd-vault-plugin:
+    namespace: argocd
+    additionalLabels: {}
+    additionalAnnotations: {}
+    finalizers:
+    - resources-finalizer.argocd.argoproj.io
+    project: default
+    sources:
+    - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+      targetRevision: main
+      ref: values
+    - repoURL: https://prometheus-community.github.io/helm-charts
+      chart: argocd-addons
+      targetRevision: 0.0.1
+      helm:
+        valueFiles:
+          - $values/apps/argocd/addons/avp/values.yaml
+    destination:
+      server: https://kubernetes.default.svc
+      namespace: argocd
+    syncPolicy:
+#      automated:
+#        prune: false
+#        selfHeal: false
+      syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+    revisionHistoryLimit: null
+    ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+      - /spec/replicas
+    info:
+    - name: url
+      value: https://argoproj.github.io/
