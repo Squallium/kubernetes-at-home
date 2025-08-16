@@ -237,8 +237,6 @@ applicationsets:
           - repoURL: https://pajikos.github.io/home-assistant-helm-chart
             chart: home-assistant
             targetRevision: '{{chart.targetRevision}}'
-            plugin:
-              name: argocd-vault-plugin
             helm:
               valueFiles:
                 - $values/apps/home-assistant/values.yaml
