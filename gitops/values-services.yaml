@@ -334,6 +334,7 @@ applicationsets:
               valueFiles:
                 - $values/apps/adguard-home/values.yaml
                 - $values/apps/adguard-home/{{metadata.labels.environment}}/values.yaml
+                - $values/apps/adguard-home/{{metadata.labels.environment}}/values-ssl.yaml
         destination:
           server: '{{server}}'
           namespace: adguard-home
@@ -426,6 +427,7 @@ applicationsets:
               valueFiles:
                 - $values/apps/calibre-web/values.yaml
                 - $values/apps/calibre-web/{{metadata.labels.environment}}/values.yaml
+                - $values/apps/calibre-web/{{metadata.labels.environment}}/values-ssl.yaml
         destination:
           server: '{{server}}'
           namespace: calibre-web
