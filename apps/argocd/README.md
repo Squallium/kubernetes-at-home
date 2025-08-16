@@ -86,3 +86,17 @@ Finally check the logs of the argocd-application-controller to see if there are 
 ```shell
 stern argocd-application-controller -n argocd
 ```
+
+### Upgrading ArgoCD
+
+To upgrade ArgoCD, you can use the following command:
+
+```shell
+helm upgrade argocd argo/argo-cd --namespace argocd --values apps/argocd/values.yaml --values apps/argocd/values-ssl.yaml --version <version>
+```
+
+And for upgrade the config chart
+
+```shell
+helm upgrade argocd-config .\apps\argocd\charts\argocd-config\ --namespace argocd --values .\apps\argocd\charts\argocd-config\values.yaml                     
+```

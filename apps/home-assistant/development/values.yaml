@@ -42,28 +42,31 @@ ingress:
 #        mountPath: /config
 
 
-#configuration:
-#  templateConfig: |-
-#    auth_oidc:
-#      client_id: "homeassistant"
-#      client_secret: "client_secret"
-#      discovery_url: "https://auth-dev.internal.org/application/o/home-assistant/.well-known/openid-configuration"
-#
-#    # Loads default set of integrations. Do not remove.
-#    default_config:
-#
-#    {{- if or .Values.ingress.enabled .Values.ingress.external }}
-#    http:
-#      use_x_forwarded_for: true
-#      trusted_proxies:
-#        {{- range .Values.configuration.trusted_proxies }}
-#        - {{ . }}
-#        {{- end }}
-#    {{- end}}
-#    # Load frontend themes from the themes folder
-#    frontend:
-#      themes: !include_dir_merge_named themes
-#
-#    automation: !include automations.yaml
-#    script: !include scripts.yaml
-#    scene: !include scenes.yaml
+configuration:
+  templateConfig: |-
+    auth_oidc:
+      client_id: <path:home-assistant/development/authentik#client_id>
+      client_secret: <path:home-assistant/development/authentik#client_secret>
+      configure_url: "https://auth-dev.internal.org/application/o/home-assistant/.well-known/openid-configuration"
+      scope: "openid profile email"
+      username_field: "preferred_username"
+      block_login: false
+
+    # Loads default set of integrations. Do not remove.
+    default_config:
+
+    {{- if or .Values.ingress.enabled .Values.ingress.external }}
+    http:
+      use_x_forwarded_for: true
+      trusted_proxies:
+        {{- range .Values.configuration.trusted_proxies }}
+        - {{ . }}
+        {{- end }}
+    {{- end}}
+    # Load frontend themes from the themes folder
+    frontend:
+      themes: !include_dir_merge_named themes
+
+    automation: !include automations.yaml
+    script: !include scripts.yaml
+    scene: !include scenes.yaml

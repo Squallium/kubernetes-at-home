@@ -36,6 +36,20 @@ repoServer:
         - mountPath: /home/argocd/cmp-server/config/plugin.yaml
           subPath: avp.yaml
           name: cmp-plugin
+  env:
+    - name: VAULT_ADDR
+      value: "https://vault.internal:8200"
+    - name: AVP_TYPE
+      value: "vault"
+    - name: AVP_AUTH_TYPE
+      value: "approle"
+    - name: AVP_ROLE_ID
+      value: d9eafc08-1dd0-492d-3750-a79b31ae3650
+    - name: AVP_SECRET_ID
+      valueFrom:
+        secretKeyRef:
+          name: vault-approle-secret
+          key: secret-id
 
 configs:
   params:
