@@ -13,6 +13,16 @@ entries:
     version: 0.0.9
   argocd-addons:
   - apiVersion: v2
+    appVersion: 0.0.2
+    created: "2025-08-16T23:08:31.856639338Z"
+    description: A Helm chart for managing ArgoCD addons
+    digest: 5a1550f71c244b10761895603e06e774599c815ef96f0b5685764cce1c2d3972
+    name: argocd-addons
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/argocd-addons-0.0.2/argocd-addons-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
     appVersion: 0.0.1
     created: "2025-08-13T21:08:45.073212367Z"
     description: A Helm chart for managing ArgoCD addons
@@ -668,4 +678,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/prowlarr-0.0.1/prowlarr-0.0.1.tgz
     version: 0.0.1
-generated: "2025-08-15T23:37:10.82147549Z"
+generated: "2025-08-16T23:08:31.856740367Z"
