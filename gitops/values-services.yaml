@@ -237,11 +237,16 @@ applicationsets:
           - repoURL: https://pajikos.github.io/home-assistant-helm-chart
             chart: home-assistant
             targetRevision: '{{chart.targetRevision}}'
-            helm:
-              valueFiles:
-                - $values/apps/home-assistant/values.yaml
-                - $values/apps/home-assistant/{{metadata.labels.environment}}/values.yaml
-                - $values/apps/home-assistant/{{metadata.labels.environment}}/values-ssl.yaml
+            source:
+              path: .
+              plugin:
+                name: argocd-vault-plugin-helm
+                env:
+                  - name: HELM_ARGS
+                    value: >
+                      -f $values/apps/home-assistant/values.yaml
+                      -f $values/apps/home-assistant/{{metadata.labels.environment}}/values.yaml
+                      -f $values/apps/home-assistant/{{metadata.labels.environment}}/values-ssl.yaml
         destination:
           server: '{{server}}'
           namespace: home-assistant
