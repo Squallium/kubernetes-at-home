@@ -165,7 +165,7 @@ applicationsets:
                 - $values/addons/{{ addon_config.name }}/config/{{'{{'}}metadata.labels.environment}}/values.yaml
         destination:
           server: '{{'{{'}}server}}'
-          namespace: {{ addon_config.name }}
+          namespace: {{ addon_config.namespace | default(addon_config.name) }}
         syncPolicy:
 #            automated:
 #              prune: false

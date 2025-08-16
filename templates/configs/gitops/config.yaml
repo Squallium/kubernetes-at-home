@@ -88,6 +88,10 @@ default_context:
       - name: "cert-manager"
         chart_name: "cert-manager-config"
         chart_target_revision: "0.0.5"
+      - name: "coredns"
+        chart_name: "coredns-config"
+        chart_target_revision: "0.0.2"
+        namespace: "kube-system"
   services:
     list:
       - name: "homebox"
@@ -112,7 +116,7 @@ default_context:
       - name: "calibre-web"
         chart_name: "calibre-web"
         chart_target_revision: "0.0.4"
-        enable_ssl: true
+        enable_ssl: false
         enable_kargo: true
 #      - name: "cloudnative-pg"
 #        chart_repo: "https://cloudnative-pg.github.io/charts"

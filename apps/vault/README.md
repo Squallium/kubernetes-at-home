@@ -68,3 +68,11 @@ For upgrading the helm chart and values, you can use the following command:
 ```bash
 helm upgrade vault hashicorp/vault -n vault --values apps/vault/values.yaml --version <version>
 ```
+
+## Test connectivity from other cluster's pods
+
+```bash
+run -n external-secrets debug --rm -it --image=alpine:3.18 -- sh
+apk add --no-cache curl
+curl -v http://vault.internal:8200/v1/secret
+```
