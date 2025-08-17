@@ -41,7 +41,6 @@ ingress:
 #      - name: home-assistant-development
 #        mountPath: /config
 
-
 configuration:
   templateConfig: |-
     openid:
