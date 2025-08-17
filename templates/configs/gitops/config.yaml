@@ -94,14 +94,14 @@ default_context:
         namespace: "kube-system"
   services:
     list:
-      - name: "homebox"
-        chart_name: "homebox"
-        chart_target_revision: "0.0.4"
-        enable_ssl: true
-      - name: "paperless-ngx"
-        chart_name: "paperless-ngx"
-        chart_target_revision: "0.0.8"
-        enable_ssl: true
+#      - name: "homebox"
+#        chart_name: "homebox"
+#        chart_target_revision: "0.0.4"
+#        enable_ssl: true
+#      - name: "paperless-ngx"
+#        chart_name: "paperless-ngx"
+#        chart_target_revision: "0.0.8"
+#        enable_ssl: true
       - name: "home-assistant"
         chart_repo: "https://pajikos.github.io/home-assistant-helm-chart"
         chart_name: "home-assistant"

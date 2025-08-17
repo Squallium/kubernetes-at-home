@@ -29,3 +29,10 @@ https://docs.goauthentik.io/docs/users-sources/sources/social-logins/google/clou
 https://docs.goauthentik.io/docs/users-sources/sources/#add-sources-to-default-login-page
 
 
+## Configure Services with Authentik
+
+### Home Assistant
+
+https://integrations.goauthentik.io/miscellaneous/home-assistant/
+https://github.com/cavefire/hass-openid
+
