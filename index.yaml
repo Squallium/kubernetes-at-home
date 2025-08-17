@@ -167,6 +167,16 @@ entries:
     version: 0.0.1
   coredns-config:
   - apiVersion: v2
+    appVersion: 0.0.3
+    created: "2025-08-17T17:06:30.012874556Z"
+    description: A Helm chart for managing CoreDNS configurations
+    digest: e44eb1dc5795e9e6028a0d24566c674618aa0ddbf764a5e569eca00cb36c529d
+    name: coredns-config
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/coredns-config-0.0.3/coredns-config-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
     appVersion: 0.0.2
     created: "2025-08-15T23:37:10.821369642Z"
     description: A Helm chart for managing CoreDNS configurations
@@ -678,4 +688,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/prowlarr-0.0.1/prowlarr-0.0.1.tgz
     version: 0.0.1
-generated: "2025-08-16T23:08:31.856740367Z"
+generated: "2025-08-17T17:06:30.012988866Z"
