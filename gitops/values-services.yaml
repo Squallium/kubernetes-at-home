@@ -58,6 +58,7 @@ applicationsets:
                 - $values/apps/home-assistant/values.yaml
                 - $values/apps/home-assistant/{{metadata.labels.environment}}/values.yaml
                 - $values/apps/home-assistant/{{metadata.labels.environment}}/values-ssl.yaml
+                - $values/apps/home-assistant/{{metadata.labels.environment}}/secrets.yaml
         destination:
           server: '{{server}}'
           namespace: home-assistant
