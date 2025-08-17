@@ -44,9 +44,9 @@ ingress:
 
 configuration:
   templateConfig: |-
-    auth_oidc:
-      client_id: <path:secret/home-assistant/development/authentik#client_id>
-      client_secret: <path:secret/home-assistant/development/authentik#client_secret>
+    openid:
+      client_id: {{ .Values.openid.client_id | quote }}
+      client_secret: {{ .Values.openid.client_secret | quote }}
       configure_url: "https://auth-dev.internal.org/application/o/home-assistant/.well-known/openid-configuration"
       scope: "openid profile email"
       username_field: "preferred_username"
