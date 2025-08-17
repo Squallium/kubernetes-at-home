@@ -55,7 +55,6 @@ applicationsets:
             targetRevision: '{{chart.targetRevision}}'
             helm:
               valueFiles:
-                - $values/apps/home-assistant/{{metadata.labels.environment}}/secrets.yaml
                 - $values/apps/home-assistant/values.yaml
                 - $values/apps/home-assistant/{{metadata.labels.environment}}/values.yaml
                 - $values/apps/home-assistant/{{metadata.labels.environment}}/values-ssl.yaml
