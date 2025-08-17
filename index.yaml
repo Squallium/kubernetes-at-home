@@ -268,6 +268,31 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/hacs-0.0.1/hacs-0.0.1.tgz
     version: 0.0.1
+  home-assistant:
+  - apiVersion: v2
+    appVersion: 2025.8.2
+    created: "2025-08-17T22:27:30.881680314Z"
+    description: Automatically Updated Helm Chart for Home Assistant
+    digest: 8c1c3f5a09ff223012a565e314d2515fbd3b9ee2f8f3ba6f93b339ab137a22d3
+    home: https://github.com/pajikos/home-assistant-helm-chart
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Home_Assistant_Logo.svg/519px-Home_Assistant_Logo.svg.png
+    keywords:
+    - home-assistant
+    - hass
+    - homeassistant
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: sklenar.pav@gmail.com
+      name: pajikos
+    name: home-assistant
+    sources:
+    - https://github.com/pajikos/home-assistant-helm-chart
+    - https://github.com/cdr/code-server
+    - https://github.com/pajikos/home-assistant-helm-chart/tree/main/charts/home-assistant
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/home-assistant-0.3.16/home-assistant-0.3.16.tgz
+    version: 0.3.16
   home-assistant-addons:
   - apiVersion: v2
     appVersion: 0.0.11
@@ -688,4 +713,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/prowlarr-0.0.1/prowlarr-0.0.1.tgz
     version: 0.0.1
-generated: "2025-08-17T17:06:30.012988866Z"
+generated: "2025-08-17T22:27:30.881788527Z"
