@@ -1,6 +1,7 @@
 # Custom ignores
 temp/
 secrets/
+charts/home-assistant/
 
 # Created by https://www.toptal.com/developers/gitignore/api/intellij+all,helm
 # Edit at https://www.toptal.com/developers/gitignore?templates=intellij+all,helm

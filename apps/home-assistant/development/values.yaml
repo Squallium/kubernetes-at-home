@@ -41,6 +41,10 @@ ingress:
 #      - name: home-assistant-development
 #        mountPath: /config
 
+openid:
+  client_id: "home-assistant-dev"
+  client_secret: "supersecret"
+
 configuration:
   templateConfig: |-
     openid:
