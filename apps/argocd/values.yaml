@@ -42,7 +42,7 @@ repoServer:
           name: cmp-plugin
   env:
     - name: VAULT_ADDR
-      value: "https://vault.internal:8200"
+      value: "http://vault.vault.svc.cluster.local:8200"
     # helm secrets configuration
     - name: VAULT_NAMESPACE
       value: "vault"
@@ -76,6 +76,11 @@ configs:
     admin.enabled: true
     url: http://argocd.internal
     exec.enabled: true
+    helm.valuesFileSchemes: >-
+      secrets+gpg-import, secrets+gpg-import-kubernetes,
+      secrets+age-import, secrets+age-import-kubernetes,
+      secrets,secrets+literal,
+      https
 
 dex:
   enabled: false  # Deactivate SSO/OAuth (we'll enable it later)
