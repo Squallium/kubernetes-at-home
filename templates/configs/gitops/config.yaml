@@ -109,6 +109,12 @@ default_context:
         enable_ssl: true
         enable_kargo: true
         enable_secrets: true
+        ignore_differences:
+          - group: apps
+            kind: StatefulSet
+            name: home-assistant-{{ "{{'{{'}}" }}metadata.labels.environment}}
+            jsonPointers:
+              - /spec/template/metadata/annotations/checksum~1hass-configuration
       - name: "adguard-home"
         chart_name: "adguard-home"
         chart_target_revision: "0.0.9"

@@ -95,11 +95,17 @@ applicationsets:
             kind: Deployment
             jsonPointers:
               - /spec/replicas
-          - group: apps
-            kind: StatefulSet
-            name: home-assistant-{{'{{'}}metadata.labels.environment}}
+          {%- for ignore in service.ignore_differences | default([]) %}
+          - group: {{ ignore.group }}
+            kind: {{ ignore.kind }}
+            {%- if ignore.name %}
+            name: {{ ignore.name }}
+            {%- endif %}
             jsonPointers:
-              - /spec/template/metadata/annotations/checksum~1hass-configuration
+            {%- for pointer in ignore.jsonPointers %}
+              - {{ pointer }}
+            {%- endfor %}
+          {%- endfor %}
         info:
           - name: url
             value: https://argoproj.github.io/
