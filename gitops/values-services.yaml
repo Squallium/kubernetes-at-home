@@ -60,9 +60,9 @@ applicationsets:
                 - $values/apps/home-assistant/{{metadata.labels.environment}}/values-ssl.yaml
               fileParameters:
                 - name: openid.client_id
-                  path: secrets+literal://vals!ref+vault://secret/home-assistant/development/authentik#/client_id
+                  path: secrets+literal://vals!ref+vault://secret/home-assistant/{{metadata.labels.environment}}/authentik#/client_id
                 - name: openid.client_secret
-                  path: secrets+literal://vals!ref+vault://secret/home-assistant/development/authentik#/client_secret
+                  path: secrets+literal://vals!ref+vault://secret/home-assistant/{{metadata.labels.environment}}/authentik#/client_secret
         destination:
           server: '{{server}}'
           namespace: home-assistant
@@ -77,11 +77,6 @@ applicationsets:
             kind: Deployment
             jsonPointers:
               - /spec/replicas
-          - group: apps
-            kind: StatefulSet
-            name: home-assistant-development
-            jsonPointers:
-              - /spec/template/metadata/annotations/checksum~1hass-configuration
         info:
           - name: url
             value: https://argoproj.github.io/
