@@ -13,6 +13,10 @@ server:
     - --insecure
 
 repoServer:
+  image:
+    repository: ghcr.io/squallium/kubernetes-at-home/helm-secrets-argocd-repo-server
+    tag: v3.1.0-helm-secrets-4.6.5
+    imagePullPolicy: Always
   volumes:
     - configMap:
         name: cmp-plugin
