@@ -77,6 +77,11 @@ applicationsets:
             kind: Deployment
             jsonPointers:
               - /spec/replicas
+          - group: apps
+            kind: Deployment
+            name: home-assistant
+            jsonPointers:
+              - /spec/template/metadata/annotations/checksum~1hass-configuration
         info:
           - name: url
             value: https://argoproj.github.io/
