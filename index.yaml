@@ -32,6 +32,17 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/argocd-addons-0.0.1/argocd-addons-0.0.1.tgz
     version: 0.0.1
+  argocd-config:
+  - apiVersion: v2
+    appVersion: 0.0.9
+    created: "2025-08-18T10:52:48.24607271Z"
+    description: A Helm chart for managing ArgoCD configuration
+    digest: ad1a442aab50959db8051480b5cd7774fed880ecb0c23caac97ce792877ed306
+    name: argocd-config
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/argocd-config-0.0.9/argocd-config-0.0.9.tgz
+    version: 0.0.9
   authentik-config:
   - apiVersion: v2
     appVersion: 0.0.4
@@ -713,4 +724,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/prowlarr-0.0.1/prowlarr-0.0.1.tgz
     version: 0.0.1
-generated: "2025-08-17T22:27:30.881788527Z"
+generated: "2025-08-18T10:52:48.246196327Z"
