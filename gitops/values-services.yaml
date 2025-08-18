@@ -78,7 +78,7 @@ applicationsets:
             jsonPointers:
               - /spec/replicas
           - group: apps
-            kind: Deployment
+            kind: StatefulSet
             name: home-assistant-development
             jsonPointers:
               - /spec/template/metadata/annotations/checksum~1hass-configuration
