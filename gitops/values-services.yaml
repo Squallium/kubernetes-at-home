@@ -79,7 +79,7 @@ applicationsets:
               - /spec/replicas
           - group: apps
             kind: Deployment
-            name: home-assistant
+            name: home-assistant-development
             jsonPointers:
               - /spec/template/metadata/annotations/checksum~1hass-configuration
         info:
