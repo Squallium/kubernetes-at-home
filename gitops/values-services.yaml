@@ -58,7 +58,6 @@ applicationsets:
                 - $values/apps/home-assistant/values.yaml
                 - $values/apps/home-assistant/{{metadata.labels.environment}}/values.yaml
                 - $values/apps/home-assistant/{{metadata.labels.environment}}/values-ssl.yaml
-                - $values/apps/home-assistant/{{metadata.labels.environment}}/secrets.yaml
               fileParameters:
                 - name: openid.client_id
                   path: secrets+literal://vals!ref+vault://home-assistant/development/authentik#/client_id

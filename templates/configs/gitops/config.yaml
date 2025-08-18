@@ -108,6 +108,7 @@ default_context:
         chart_target_revision: "0.3.11"
         enable_ssl: true
         enable_kargo: true
+        enable_secrets: true
       - name: "adguard-home"
         chart_name: "adguard-home"
         chart_target_revision: "0.0.9"
