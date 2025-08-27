@@ -80,6 +80,10 @@ default_context:
         chart_repo: "https://charts.jetstack.io"
         chart_name: "cert-manager"
         chart_target_revision: "1.18.2"
+      - name: "cloudflared"
+        chart_repo: "https://squallium.github.io/kubernetes-at-home"
+        chart_name: "cloudflared"
+        chart_target_revision: "0.0.2"
   addons_config:
     list:
       - name: "external-secrets"
