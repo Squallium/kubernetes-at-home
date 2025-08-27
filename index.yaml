@@ -176,6 +176,17 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/cert-manager-config-0.0.1/cert-manager-config-0.0.1.tgz
     version: 0.0.1
+  cloudflared:
+  - apiVersion: v2
+    appVersion: 0.0.2
+    created: "2025-08-27T22:09:11.86474817Z"
+    description: A Helm chart for managing Cloudflared
+    digest: f2f2149f9b863462c4be832136cf5fce1fa640e735a3940d8099683d4638a24f
+    name: cloudflared
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/cloudflared-0.0.2/cloudflared-0.0.2.tgz
+    version: 0.0.2
   coredns-config:
   - apiVersion: v2
     appVersion: 0.0.3
@@ -724,4 +735,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/prowlarr-0.0.1/prowlarr-0.0.1.tgz
     version: 0.0.1
-generated: "2025-08-18T10:52:48.246196327Z"
+generated: "2025-08-27T22:09:11.86485972Z"
