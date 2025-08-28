@@ -27,10 +27,3 @@ spec:
                 secretKeyRef:
                   name: cloudflared
                   key: token
-          volumeMounts:
-            - name: config
-              mountPath: /etc/cloudflared
-      volumes:
-        - name: config
-          configMap:
-            name: cloudflared-config
