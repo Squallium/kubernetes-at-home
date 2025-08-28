@@ -83,7 +83,7 @@ default_context:
       - name: "cloudflared"
         chart_repo: "https://squallium.github.io/kubernetes-at-home"
         chart_name: "cloudflared"
-        chart_target_revision: "0.0.2"
+        chart_target_revision: "0.0.3"
   addons_config:
     list:
       - name: "external-secrets"
