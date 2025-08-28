@@ -178,6 +178,16 @@ entries:
     version: 0.0.1
   cloudflared:
   - apiVersion: v2
+    appVersion: 0.0.3
+    created: "2025-08-28T15:18:43.285095696Z"
+    description: A Helm chart for managing Cloudflared
+    digest: b6d2019cfd21e11460139f274438143a3f69115c9ac9db334c17ae47ff26ab69
+    name: cloudflared
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/cloudflared-0.0.3/cloudflared-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
     appVersion: 0.0.2
     created: "2025-08-27T22:09:11.86474817Z"
     description: A Helm chart for managing Cloudflared
@@ -735,4 +745,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/prowlarr-0.0.1/prowlarr-0.0.1.tgz
     version: 0.0.1
-generated: "2025-08-27T22:09:11.86485972Z"
+generated: "2025-08-28T15:18:43.285212245Z"
