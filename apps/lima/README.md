@@ -99,9 +99,11 @@ Enable the following microk8s addons:
 
 ```bash 
 sudo microk8s enable dns 
+sudo microk8s enable hostpath-storage 
 sudo microk8s enable ingress 
-sudo microk8s enable dashboard 
-sudo microk8s enable community
+sudo microk8s enable metallb 
+sudo microk8s enable metrics-server 
+sudo microk8s enable community (optional)
 ```
 
 Check the status of microk8s:
