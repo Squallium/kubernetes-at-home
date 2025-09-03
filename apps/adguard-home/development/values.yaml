@@ -1,5 +1,5 @@
 image:
-  tag: v0.107.64
+  tag: v0.107.65
 metalLb:
   ip: 192.168.1.244
 ingress:
