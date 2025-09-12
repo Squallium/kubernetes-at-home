@@ -41,7 +41,7 @@ export VAULT_TOKEN=s.xxxxxx
 For windows in your PowerShell profile:
 
 ```powershell
-$env:VAULT_ADDR = "http://vault.famrefveg.local"
+$env:VAULT_ADDR = "https://vault.internal/"
 $env:VAULT_TOKEN = "s.xxxxxx"
 ```
 
@@ -151,7 +151,7 @@ vault write -f auth/approle/role/eso-role/secret-id
 Then encode the new secret ID in base64 and patch the Kubernetes secret:
 
 ```bash
-echo -n "new-secret-id" | base64
+echo new-secret-id | base64
 kubectl patch secret vault-approle-secret -p '{"data":{"secret-id":"new-base64-encoded-secret-id"}}' -n default
 ```
 
