@@ -42,6 +42,7 @@ argocd-apps:
                     - service: calibre-web
                     - service: adguard-home
                     - service: home-assistant
+                    - service: home-assistant-addons/zigbee2mqtt
               - git:
                   repoURL: https://github.com/Squallium/kubernetes-at-home.git
                   revision: main
