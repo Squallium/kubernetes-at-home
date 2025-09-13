@@ -1,6 +1,4 @@
 zigbee2mqtt:
-  mqtt:
-    server: "mqtt://mosquitto.home-assistant.svc.cluster.local:1883"
   serial:
     adapter: "fake"
 ingress:

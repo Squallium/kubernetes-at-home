@@ -1,9 +1,6 @@
 zigbee2mqtt:
   mqtt:
     server: "mqtt://mosquitto.home-assistant.svc.cluster.local:1883"
-  serial:
-    port: "tcp://192.168.1.183:55000"
-    adapter: "zstack"
 
 persistence:
   enabled: false
