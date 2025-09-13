@@ -1,6 +1,6 @@
 zigbee2mqtt:
   serial:
-    adapter: "fake"
+    adapter: fake
 ingress:
   hosts:
     - host: zigbee2mqtt-dev.internal
