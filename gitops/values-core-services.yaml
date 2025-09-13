@@ -155,7 +155,7 @@ applications:
       ref: values
     - repoURL: ghcr.io/akuity/kargo-charts
       chart: kargo
-      targetRevision: 1.6.1
+      targetRevision: 1.6.2
       helm:
         valueFiles:
           - $values/apps/kargo/values.yaml
