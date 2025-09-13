@@ -29,7 +29,7 @@
 
 ## Installing AdGuard Home
 
-1. Install the AdGuard Home Helm chart, first without setting the ingress port. This will point by default to the 300 port. After setting up the Adguard Home, it will try to redirect to the 80 port.
+1. Install the AdGuard Home Helm chart, first without setting the ingress port. This will point by default to the 3000 port. After setting up the Adguard Home, it will try to redirect to the 80 port.
 
 2. Update the values file to set the ingress port to 80:
    
