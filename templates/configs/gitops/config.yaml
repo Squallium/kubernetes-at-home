@@ -151,7 +151,7 @@ default_context:
     list:
       - name: "home-assistant"
         chart_name: "home-assistant-config"
-        chart_target_revision: "0.0.11"
+        chart_target_revision: "0.0.12"
       - name: "authentik"
         chart_name: "authentik-config"
         chart_target_revision: "0.0.4"
