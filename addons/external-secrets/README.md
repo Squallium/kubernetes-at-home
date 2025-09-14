@@ -57,10 +57,10 @@ We need to use the token to create a Kubernetes secret that the External Secrets
 kubectl create secret generic vault-token --from-literal=token=hvs.xxxxxx... -n default
 ```
 
-Now we have to create a "ClusterSecretStore" resource in Kubernetes that defines how to access the Vault. Apply the vault.secretstore.yaml file:
+Now we have to create a "ClusterSecretStore" resource in Kubernetes that defines how to access the Vault. Apply the vault-token.clustersecretstore.yaml file:
 
 ```bash
-kubectl apply -f addons/external-secrets/vault.clustersecretstore.yaml
+kubectl apply -f addons/external-secrets/vault-token.clustersecretstore.yaml
 ```
 
 And finally, for testing purposes, we can create a test `ExternalSecret` resource that will be populated with the secret from Vault by applying the `vault.secret.yaml` file:
@@ -101,7 +101,7 @@ vault auth enable approle
 First we need to create a new AppRole in Vault with the following command:
 
 ```bash
-vault write auth/approle/role/eso-role token_policies="eso-read" token_ttl=1h token_max_ttl=4h secret_id_ttl=24h token_period=1h token_renewable=true
+vault write auth/approle/role/eso-role token_policies="eso-read" token_ttl=1h token_max_ttl=4h secret_id_ttl=720h token_period=1h token_renewable=true
 ```
 
 Get the role ID and secret ID for the AppRole:
@@ -138,6 +138,12 @@ Then patch the secret in Kubernetes:
 
 ```bash
 kubectl patch secret vault-approle-secret -p '{"data":{"secret-id":"xxxxxx"}}' -n default
+```
+
+Finally we have to create a new "ClusterSecretStore" resource in Kubernetes that defines how to access the Vault using the AppRole authentication method. Apply the vault-approle.clustersecretstore.yaml file:
+
+```bash
+kubectl apply -f addons/external-secrets/vault-approle.clustersecretstore.yaml
 ```
 
 ## Update expired app role secret ID

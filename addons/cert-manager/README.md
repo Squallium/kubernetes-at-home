@@ -2,13 +2,13 @@
 
 ## create new cert authority
 
-# create a new directory for the CA
+1. create a new directory for the CA
 
 ```shell
 mkdir -p ~/my-ca && cd ~/my-ca
 ```
 
-# Create a ca.conf file with the following content:
+2. Create a ca.conf file with the following content:
 
 ```shell
 cat > ca.conf <<EOF
@@ -29,16 +29,29 @@ keyUsage = critical, digitalSignature, cRLSign, keyCertSign
 EOF
 ```
 
-# create a new private key for the CA
+3. create a new private key for the CA
 
 ```shell
 openssl genrsa -out rootCA.key 4096
 ```
 
-# root certificate self-signed (valid for 10 years)
+4. root certificate self-signed (valid for 10 years)
 
 ```shell
 openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 3650 -out rootCA.crt -config rootCA.conf
 ```
 
-# save the key and the crt files in the vault and create the secret in the cert-manager namespace using the cert-manager-config chart
+5. save the key and the crt files in the vault and create the secret in the cert-manager namespace using the cert-manager-config chart
+
+
+## Install the cert-manager-config helm chart
+
+Before installing the cert-manager-config helm chart, make sure you have added the the following secrets in your vault:
+- key: secret/cert-manager/root-ca  property: tls.crt
+- key: secret/cert-manager/root-ca  property: tls.key
+
+Then install the cert-manager-config helm chart with the following command:
+
+```shell
+helm install cert-manager-config squallium/cert-manager-config --namespace argocd --version 0.0.5
+```

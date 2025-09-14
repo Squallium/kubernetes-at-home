@@ -101,7 +101,7 @@ Enable the following microk8s addons:
 sudo microk8s enable dns 
 sudo microk8s enable hostpath-storage 
 sudo microk8s enable ingress 
-sudo microk8s enable metallb 
+sudo microk8s enable metallb (not core)
 sudo microk8s enable metrics-server 
 sudo microk8s enable community (optional)
 ```

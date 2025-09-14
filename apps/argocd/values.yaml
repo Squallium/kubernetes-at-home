@@ -15,7 +15,7 @@ server:
 repoServer:
   image:
     repository: ghcr.io/squallium/kubernetes-at-home/helm-secrets-argocd-repo-server
-    tag: v3.1.0-helm-secrets-4.6.5
+    tag: v3.1.5-helm-secrets-4.6.10
     imagePullPolicy: Always
   volumes:
     - configMap:
@@ -49,7 +49,7 @@ repoServer:
     - name: VAULT_AUTH_METHOD
       value: "approle"
     - name: VAULT_ROLE_ID
-      value: d9eafc08-1dd0-492d-3750-a79b31ae3650
+      value: 0370b1d1-46ce-5239-dfbd-66f738d95a7c
     - name: VAULT_SECRET_ID
       valueFrom:
         secretKeyRef:
@@ -61,7 +61,7 @@ repoServer:
     - name: AVP_AUTH_TYPE
       value: "approle"
     - name: AVP_ROLE_ID
-      value: d9eafc08-1dd0-492d-3750-a79b31ae3650
+      value: 0370b1d1-46ce-5239-dfbd-66f738d95a7c
     - name: AVP_SECRET_ID
       valueFrom:
         secretKeyRef:

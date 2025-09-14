@@ -19,7 +19,7 @@ helm repo update
 Then, you can install Vault using Helm. Make sure you have Helm installed and configured in your microk8s environment.
 
 ```bash
-helm install vault hashicorp/vault -n vault --create-namespace --values apps/vault/values.yaml
+helm install vault hashicorp/vault -n vault --create-namespace --values apps/vault/values.yaml --version <version>
 ``` 
 
 Now you should see the pod/vault-0 in ready 0/1 and in you run this command:
@@ -51,7 +51,7 @@ not
 manage by ArgoCD because in ArgoCD configurations like clusters or repo are manage by kubernetes secrets.
 
 Go to "Secrets Engines" and enable the "KV" engine. 
-1. In path you can put "secret" in maximun number of versions at lesat
+1. In path, you can put "secret" and in maximum number of versions set 2 at least
 2. Then create a new secret "myapp/api-key" and add "api_key" as "abcd1234" and "username" as "admin"
 
 
