@@ -1,0 +1,4 @@
+mosquitto:
+  image:
+    repository: eclipse-mosquitto
+    tag: 2
