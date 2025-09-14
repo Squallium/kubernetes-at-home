@@ -2,7 +2,7 @@ vault:
   server: https://vault.internal
   auth:
     appRole:
-      roleId: d9eafc08-1dd0-492d-3750-a79b31ae3650
+      roleId: 0370b1d1-46ce-5239-dfbd-66f738d95a7c
       secretRef:
         name: vault-approle-secret
         key: secret-id
