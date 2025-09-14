@@ -41,16 +41,17 @@ ingress:
 #      - name: home-assistant-development
 #        mountPath: /config
 
+#configuration:
+#  templateConfig: |-
+#    openid:
+#      client_id: {{ .Values.openid.client_id | quote }}
+#      client_secret: {{ .Values.openid.client_secret | quote }}
+#      configure_url: "https://auth-dev.internal.org/application/o/home-assistant/.well-known/openid-configuration"
+#      scope: "openid profile email"
+#      username_field: "preferred_username"
+#      block_login: false
 configuration:
   templateConfig: |-
-    openid:
-      client_id: {{ .Values.openid.client_id | quote }}
-      client_secret: {{ .Values.openid.client_secret | quote }}
-      configure_url: "https://auth-dev.internal.org/application/o/home-assistant/.well-known/openid-configuration"
-      scope: "openid profile email"
-      username_field: "preferred_username"
-      block_login: false
-
     # Loads default set of integrations. Do not remove.
     default_config:
 
