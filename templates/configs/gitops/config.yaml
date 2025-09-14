@@ -112,7 +112,7 @@ default_context:
         chart_target_revision: "0.3.11"
         enable_ssl: true
         enable_kargo: true
-        enable_secrets: true
+        enable_secrets: false
         ignore_differences:
           - group: apps
             kind: StatefulSet
