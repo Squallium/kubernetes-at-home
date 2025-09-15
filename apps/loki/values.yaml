@@ -7,17 +7,17 @@ deploymentMode: SingleBinary
 global:
   extraArgs:
     - -config.expand-env=true
-  extraEnv:
-    - name: LOKI_S3_ACCESS_KEY
-      valueFrom:
-        secretKeyRef:
-          name: loki
-          key: s3-access-key
-    - name: LOKI_S3_SECRET_KEY
-      valueFrom:
-        secretKeyRef:
-          name: loki
-          key: s3-secret-key
+#  extraEnv:
+#    - name: LOKI_S3_ACCESS_KEY
+#      valueFrom:
+#        secretKeyRef:
+#          name: loki
+#          key: s3-access-key
+#    - name: LOKI_S3_SECRET_KEY
+#      valueFrom:
+#        secretKeyRef:
+#          name: loki
+#          key: s3-secret-key
 
 loki:
 #  configStorageType: Secret
