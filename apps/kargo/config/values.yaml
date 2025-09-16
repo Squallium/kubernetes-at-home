@@ -7,23 +7,6 @@ extSecrets:
       - secretKey: ADMIN_ACCOUNT_TOKEN_SIGNING_KEY
         remoteRef:
           key: secret/kargo/api
-  - name: docker
-    namespace: adguard-home
-    labels:
-      kargo.akuity.io/cred-type: image
-    secrets:
-      - secretKey: repoURL
-        remoteRef:
-          key: secret/kargo/docker
-          property: repo_url
-      - secretKey: username
-        remoteRef:
-          key: secret/kargo/docker
-          property: username
-      - secretKey: password
-        remoteRef:
-          key: secret/kargo/docker
-          property: password
 argocd-apps:
   applicationsets:
     kargo-projects:
