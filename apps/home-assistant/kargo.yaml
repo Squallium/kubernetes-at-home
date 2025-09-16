@@ -4,6 +4,7 @@ kargo:
   warehouse:
     image:
       repoURL: ghcr.io/home-assistant/home-assistant
+      discoveryLimit: 7
       semverConstraint: ''
       allowTags: ''
       ignoreTags: []
