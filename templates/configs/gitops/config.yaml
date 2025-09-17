@@ -159,5 +159,5 @@ default_context:
     list:
       - name: "home-assistant-addons"
         chart_name: "home-assistant-addons"
-        chart_target_revision: "0.0.14"
+        chart_target_revision: "0.0.15"
         enable_kargo: true
