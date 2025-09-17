@@ -134,7 +134,12 @@ argocd-apps:
           name: 'zigbee2mqtt-{{metadata.labels.environment}}'
           labels:
             type: 'service'
+          {%- if service.get("enable_kargo", False) %}
+          annotations:
+            kargo.akuity.io/authorized-stage: 'zigbee2mqtt:{{'{{'}}metadata.labels.kargo-stage}}'
+          {%- else %}
           annotations: {}
+          {%- endif %}
         spec:
           project: default
           sources:
