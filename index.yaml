@@ -337,6 +337,20 @@ entries:
     version: 0.3.16
   home-assistant-addons:
   - apiVersion: v2
+    appVersion: 0.0.14
+    created: "2025-09-17T22:03:07.702862408Z"
+    dependencies:
+    - name: argocd-apps
+      repository: https://argoproj.github.io/argo-helm
+      version: 2.0.2
+    description: A Helm chart for managing Home Assistant addons charts.
+    digest: b7a787f9aa6fd49d9f191debc7ee4ba1d08b0133f6e068ae9616b32296ef718c
+    name: home-assistant-addons
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/home-assistant-addons-0.0.14/home-assistant-addons-0.0.14.tgz
+    version: 0.0.14
+  - apiVersion: v2
     appVersion: 0.0.12
     created: "2025-09-17T20:24:15.822609456Z"
     dependencies:
@@ -829,4 +843,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/prowlarr-0.0.1/prowlarr-0.0.1.tgz
     version: 0.0.1
-generated: "2025-09-17T21:18:49.212919696Z"
+generated: "2025-09-17T22:03:07.703010536Z"
