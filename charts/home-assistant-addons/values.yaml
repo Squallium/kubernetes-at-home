@@ -107,7 +107,7 @@ argocd-apps:
                   repoURL: https://github.com/Squallium/kubernetes-at-home.git
                   revision: main
                   files:
-                    - path: 'apps/home-assistant-addons/zigbee2mqtt/{{metadata.labels.environment}}/values.yaml'
+                    - path: 'apps/home-assistant-addons/zigbee2mqtt/{{metadata.labels.environment}}/config.yaml'
       # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
       ignoreApplicationDifferences:
         - jsonPointers:
@@ -143,7 +143,7 @@ argocd-apps:
               ref: values
             - repoURL: https://koenkk.github.io/zigbee2mqtt-chart
               chart: zigbee2mqtt
-              targetRevision: 2.4.0
+              targetRevision: '{{chart.targetRevision}}'
               helm:
                 valueFiles:
                   - $values/apps/home-assistant-addons/zigbee2mqtt/values.yaml
