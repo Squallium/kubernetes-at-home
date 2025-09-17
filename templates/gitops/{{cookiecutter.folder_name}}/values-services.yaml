@@ -245,6 +245,8 @@ applications:
       helm:
         valueFiles:
           - $values/apps/{{ service_addons.name }}/values.yaml
+        values: |
+          enable_kargo: {{ service_addons.get("enable_kargo", False) | lower }}
     destination:
       server: https://kubernetes.default.svc
       namespace: argocd

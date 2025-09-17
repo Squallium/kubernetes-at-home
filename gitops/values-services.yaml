@@ -848,10 +848,12 @@ applications:
       ref: values
     - repoURL: https://squallium.github.io/kubernetes-at-home
       chart: home-assistant-addons
-      targetRevision: 0.0.12
+      targetRevision: 0.0.13
       helm:
         valueFiles:
           - $values/apps/home-assistant-addons/values.yaml
+        values: |
+          enable_kargo: true
     destination:
       server: https://kubernetes.default.svc
       namespace: argocd
