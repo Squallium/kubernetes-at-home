@@ -7,7 +7,7 @@ spec:
   vars:
   - name: chart
     value: {{ .Values.kargo.warehouse.chart.repoURL }}
-  {{- if .Values.kargo.warehouse.image }}
+  {{- if .Values.kargo.warehouse.image.repoURL }}
   - name: image
     value: {{ .Values.kargo.warehouse.image.repoURL }}
   {{- end }}
@@ -39,7 +39,7 @@ spec:
     config:
       path: ./out
       message: ${{`{{ task.outputs['update-chart'].commitMessage }}`}}
-  {{- if .Values.kargo.warehouse.image }}
+  {{- if .Values.kargo.warehouse.image.repoURL }}
   # update the image version
   - uses: yaml-update
     as: update-image

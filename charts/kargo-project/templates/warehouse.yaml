@@ -5,7 +5,7 @@ metadata:
   namespace: {{ .Values.kargo.project.name }}
 spec:
   subscriptions:
-  {{- if .Values.kargo.warehouse.image }}
+  {{- if .Values.kargo.warehouse.image.repoURL }}
   - image:
       repoURL: {{ .Values.kargo.warehouse.image.repoURL }}
       imageSelectionStrategy: SemVer
@@ -19,5 +19,5 @@ spec:
   - chart:
       repoURL: {{ .Values.kargo.warehouse.chart.repoURL }}
       name: {{ .Values.kargo.warehouse.chart.name }}
-      discoveryLimit: {{ .Values.kargo.warehouse.chart.discoveryLimit }}
+      discoveryLimit: {{ .Values.kargo.warehouse.chart.discoveryLimit | default 3 }}
 

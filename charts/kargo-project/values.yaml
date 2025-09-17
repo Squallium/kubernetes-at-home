@@ -2,15 +2,15 @@ kargo:
   project:
     name: placeholder
   warehouse:
-#    image:
-#      repoURL: placeholder
-#      semverConstraint: ''
-#      allowTags: ''
-#      ignoreTags: []
+    image:
+      repoURL: ''
+      semverConstraint: ''
+      allowTags: ''
+      ignoreTags: []
     chart:
       repoURL: placeholder
       name: placeholder
-      discoveryLimit: 20
+      discoveryLimit: 10
 extSecrets:
   - name: env
     namespace: kargo
