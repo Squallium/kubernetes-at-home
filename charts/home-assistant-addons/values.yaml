@@ -135,7 +135,7 @@ argocd-apps:
           labels:
             type: 'service'
           annotations:
-            kargo.akuity.io/authorized-stage: 'zigbee2mqtt-{{metadata.labels.kargo-stage}}'
+            kargo.akuity.io/authorized-stage: 'zigbee2mqtt:{{metadata.labels.kargo-stage}}'
         spec:
           project: default
           sources:
