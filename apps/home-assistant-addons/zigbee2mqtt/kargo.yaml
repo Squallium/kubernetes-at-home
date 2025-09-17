@@ -1,2 +1,38 @@
 chart:
-  targetRevision: 0.0.12
+  targetRevision: 0.0.13
+kargo:
+  warehouse:
+    chart:
+      repoURL: https://koenkk.github.io/zigbee2mqtt-chart
+      name: zigbee2mqtt
+extSecrets:
+  - name: github-ssh
+    namespace: zigbee2mqtt
+    labels:
+      kargo.akuity.io/cred-type: git
+    secrets:
+      - secretKey: repoURL
+        remoteRef:
+          key: secret/kargo/github
+          property: repo_url
+      - secretKey: sshPrivateKey
+        remoteRef:
+          key: secret/kargo/github
+          property: ssh_private_key
+  - name: docker
+    namespace: zigbee2mqtt
+    labels:
+      kargo.akuity.io/cred-type: image
+    secrets:
+      - secretKey: repoURL
+        remoteRef:
+          key: secret/kargo/docker
+          property: repo_url
+      - secretKey: username
+        remoteRef:
+          key: secret/kargo/docker
+          property: username
+      - secretKey: password
+        remoteRef:
+          key: secret/kargo/docker
+          property: password

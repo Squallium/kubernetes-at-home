@@ -26,7 +26,7 @@ extSecrets:
           key: secret/kargo/github
           property: ssh_private_key
   - name: docker
-    namespace: adguard-home
+    namespace: home-assistant
     labels:
       kargo.akuity.io/cred-type: image
     secrets:
