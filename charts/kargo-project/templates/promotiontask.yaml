@@ -7,8 +7,10 @@ spec:
   vars:
   - name: chart
     value: {{ .Values.kargo.warehouse.chart.repoURL }}
+  {{- if .Values.kargo.warehouse.image }}
   - name: image
     value: {{ .Values.kargo.warehouse.image.repoURL }}
+  {{- end }}
   - name: repoURL
     value: git@github.com:Squallium/kubernetes-at-home.git
   - name: branch
@@ -37,6 +39,7 @@ spec:
     config:
       path: ./out
       message: ${{`{{ task.outputs['update-chart'].commitMessage }}`}}
+  {{- if .Values.kargo.warehouse.image }}
   # update the image version
   - uses: yaml-update
     as: update-image
@@ -50,6 +53,7 @@ spec:
     config:
       path: ./out
       message: ${{`{{ task.outputs['update-image'].commitMessage }}`}}
+  {{- end }}
   - uses: git-push
     config:
       path: ./out

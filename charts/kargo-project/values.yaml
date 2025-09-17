@@ -2,11 +2,11 @@ kargo:
   project:
     name: placeholder
   warehouse:
-    image:
-      repoURL: placeholder
-      semverConstraint: ''
-      allowTags: ''
-      ignoreTags: []
+#    image:
+#      repoURL: placeholder
+#      semverConstraint: ''
+#      allowTags: ''
+#      ignoreTags: []
     chart:
       repoURL: placeholder
       name: placeholder

@@ -5,6 +5,7 @@ metadata:
   namespace: {{ .Values.kargo.project.name }}
 spec:
   subscriptions:
+  {{- if .Values.kargo.warehouse.image }}
   - image:
       repoURL: {{ .Values.kargo.warehouse.image.repoURL }}
       imageSelectionStrategy: SemVer
@@ -14,6 +15,7 @@ spec:
       allowTags: {{ .Values.kargo.warehouse.image.allowTags }}
       ignoreTags:
         {{- toYaml .Values.kargo.warehouse.image.ignoreTags | nindent 8 }}
+  {{- end }}
   - chart:
       repoURL: {{ .Values.kargo.warehouse.chart.repoURL }}
       name: {{ .Values.kargo.warehouse.chart.name }}
