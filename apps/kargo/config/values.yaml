@@ -23,18 +23,18 @@ argocd-apps:
               - list:
                   elements:
                     - service: calibre-web
-                      path: calibre-web
+                      location: calibre-web
                     - service: adguard-home
-                      path: adguard-home
+                      location: adguard-home
                     - service: home-assistant
-                      path: home-assistant
+                      location: home-assistant
                     - service: zigbee2mqtt
-                      path: home-assistant-addons/zigbee2mqtt
+                      location: home-assistant-addons/zigbee2mqtt
               - git:
                   repoURL: https://github.com/Squallium/kubernetes-at-home.git
                   revision: main
                   files:
-                    - path: 'apps/{{path}}/kargo.yaml'
+                    - path: 'apps/{{location}}/kargo.yaml'
       # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
       ignoreApplicationDifferences:
         - jsonPointers:
@@ -73,7 +73,7 @@ argocd-apps:
               targetRevision: '{{chart.targetRevision}}'
               helm:
                 valueFiles:
-                  - $values/apps/{{path}}/kargo.yaml
+                  - $values/apps/{{location}}/kargo.yaml
                 values: |
                   kargo:
                     name: '{{service}}'
