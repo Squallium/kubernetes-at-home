@@ -78,6 +78,7 @@ argocd-apps:
                   kargo:
                     name: '{{service}}'
                     type: apps
+                    location: '{{location}}'
                     project:
                       name: '{{service}}'
           destination:
