@@ -35,10 +35,3 @@ typesense:
     enabled: true
     storageClass: microk8s-hostpath
     size: 5Gi
-
-vikunja:
-  api:
-    persistence:
-      enabled: true
-      storageClass: microk8s-hostpath
-      size: 5Gi
