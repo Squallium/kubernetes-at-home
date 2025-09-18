@@ -1,13 +1,27 @@
-#vikunja:
-#  ingress:
-#    enabled: true
-#    className: nginx
-#    hosts:
-#      - host: vikunja-dev.internal
-#        paths:
-#          - path: /
-#            pathType: Prefix
-#    tls: []
+vikunja:
+  persistence:
+    # This is where your Vikunja data lives,
+    # provide an existing PVC or let one be autocreated
+    data:
+      enabled: true
+      # existingClaim: # your-claim
+      accessMode: ReadWriteOnce
+      size: 2Gi
+      mountPath: /app/vikunja/files
+      # storageClass: storage-class
+  ingress:
+    main:
+      enabled: true
+      annotations:
+        # proxy-body-size is set to 0 to remove the body limit on file uploads
+        nginx.ingress.kubernetes.io/proxy-body-size: "0"
+      hosts:
+        - host: vikunja-dev.internal
+          paths:
+            - path: /
+      tls: []
+
+
 #
 #postgresql:
 #  enabled: true
