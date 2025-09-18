@@ -150,7 +150,6 @@ default_context:
       - name: "vikunja"
         chart_repo: "oci://ghcr.io/go-vikunja/helm-chart"
         chart_name: "vikunja"
-        chart_target_revision: "1.0.0"
   services_config:
     list:
       - name: "home-assistant"
