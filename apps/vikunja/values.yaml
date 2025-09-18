@@ -46,6 +46,10 @@ postgresql:
       enabled: true
       storageClass: microk8s-hostpath
       size: 5Gi
+    podSecurityContext:
+      fsGroup: 999
+    containerSecurityContext:
+      runAsUser: 999
   auth:
     username: vikunja
     password: supersecret
