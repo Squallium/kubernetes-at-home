@@ -1,0 +1,43 @@
+ingress:
+  enabled: true
+  className: nginx
+  hosts:
+    - host: vikunja-dev.internal
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+
+postgresql:
+  enabled: true
+  primary:
+    persistence:
+      enabled: true
+      storageClass: microk8s-hostpath
+      size: 5Gi
+  auth:
+    username: vikunja
+    password: supersecret
+    database: vikunja
+
+redis:
+  enabled: true
+  master:
+    persistence:
+      enabled: true
+      storageClass: microk8s-hostpath
+      size: 1Gi
+
+typesense:
+  enabled: true
+  persistence:
+    enabled: true
+    storageClass: microk8s-hostpath
+    size: 5Gi
+
+vikunja:
+  api:
+    persistence:
+      enabled: true
+      storageClass: microk8s-hostpath
+      size: 5Gi
