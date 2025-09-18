@@ -1,12 +1,13 @@
-ingress:
-  enabled: true
-  className: nginx
-  hosts:
-    - host: vikunja-dev.internal
-      paths:
-        - path: /
-          pathType: Prefix
-  tls: []
+vikunja:
+  ingress:
+    enabled: true
+    className: nginx
+    hosts:
+      - host: vikunja-dev.internal
+        paths:
+          - path: /
+            pathType: Prefix
+    tls: []
 
 postgresql:
   enabled: true
