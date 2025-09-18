@@ -8,7 +8,7 @@ vikunja:
       accessMode: ReadWriteOnce
       size: 2Gi
       mountPath: /app/vikunja/files
-      # storageClass: storage-class
+      storageClass: microk8s-hostpath
   ingress:
     main:
       enabled: true
@@ -21,31 +21,29 @@ vikunja:
             - path: /
       tls: []
 
+typesense:
+  enabled: true
+  env:
+    TYPESENSE_DATA_DIR: /data
+    TYPESENSE_API_KEY: typesense
+  persistence:
+    data:
+      # Enabling typesense persistence is recommended to avoid slow reindexing
+      enabled: true
+      accessMode: ReadWriteOnce
+      size: 1Gi
+      storageClass: microk8s-hostpath
 
-#
-#postgresql:
-#  enabled: true
-#  primary:
-#    persistence:
-#      enabled: true
-#      storageClass: microk8s-hostpath
-#      size: 5Gi
-#  auth:
-#    username: vikunja
-#    password: supersecret
-#    database: vikunja
-#
-#redis:
-#  enabled: true
-#  master:
-#    persistence:
-#      enabled: true
-#      storageClass: microk8s-hostpath
-#      size: 1Gi
-#
-#typesense:
-#  enabled: true
-#  persistence:
-#    enabled: true
-#    storageClass: microk8s-hostpath
-#    size: 5Gi
+
+postgresql:
+  enabled: true
+  primary:
+    persistence:
+      enabled: true
+      storageClass: microk8s-hostpath
+      size: 5Gi
+  auth:
+    username: vikunja
+    password: supersecret
+    database: vikunja
+
