@@ -1,57 +1,57 @@
-vikunja:
-  persistence:
-    # This is where your Vikunja data lives,
-    # provide an existing PVC or let one be autocreated
-    data:
-      enabled: true
-      # existingClaim: # your-claim
-      accessMode: ReadWriteOnce
-      size: 2Gi
-      mountPath: /app/vikunja/files
-      storageClass: microk8s-hostpath
-  ingress:
-    main:
-      enabled: true
-      annotations:
-        # proxy-body-size is set to 0 to remove the body limit on file uploads
-        nginx.ingress.kubernetes.io/proxy-body-size: "0"
-      hosts:
-        - host: vikunja-dev.internal
-          paths:
-            - path: /
-      tls: []
-
-typesense:
-  enabled: true
-  env:
-    TYPESENSE_DATA_DIR: /data
-    TYPESENSE_API_KEY: typesense
-  persistence:
-    data:
-      # Enabling typesense persistence is recommended to avoid slow reindexing
-      enabled: true
-      accessMode: ReadWriteOnce
-      size: 1Gi
-      storageClass: microk8s-hostpath
-
-
-postgresql:
-  enabled: true
-  image:
-    registry: docker.io
-    repository: postgres
-    tag: 17.3
-  primary:
-    persistence:
-      enabled: true
-      storageClass: microk8s-hostpath
-      size: 5Gi
-    podSecurityContext:
-      fsGroup: 999
-    containerSecurityContext:
-      runAsUser: 999
-  auth:
-    username: vikunja
-    password: supersecret
-    database: vikunja
-
+#vikunja:
+#  persistence:
+#    # This is where your Vikunja data lives,
+#    # provide an existing PVC or let one be autocreated
+#    data:
+#      enabled: true
+#      # existingClaim: # your-claim
+#      accessMode: ReadWriteOnce
+#      size: 2Gi
+#      mountPath: /app/vikunja/files
+#      storageClass: microk8s-hostpath
+#  ingress:
+#    main:
+#      enabled: true
+#      annotations:
+#        # proxy-body-size is set to 0 to remove the body limit on file uploads
+#        nginx.ingress.kubernetes.io/proxy-body-size: "0"
+#      hosts:
+#        - host: vikunja-dev.internal
+#          paths:
+#            - path: /
+#      tls: []
+#
+#typesense:
+#  enabled: true
+#  env:
+#    TYPESENSE_DATA_DIR: /data
+#    TYPESENSE_API_KEY: typesense
+#  persistence:
+#    data:
+#      # Enabling typesense persistence is recommended to avoid slow reindexing
+#      enabled: true
+#      accessMode: ReadWriteOnce
+#      size: 1Gi
+#      storageClass: microk8s-hostpath
+#
+#
+#postgresql:
+#  enabled: true
+#  image:
+#    registry: docker.io
+#    repository: postgres
+#    tag: 17.3
+#  primary:
+#    persistence:
+#      enabled: true
+#      storageClass: microk8s-hostpath
+#      size: 5Gi
+#    podSecurityContext:
+#      fsGroup: 999
+#    containerSecurityContext:
+#      runAsUser: 999
+#  auth:
+#    username: vikunja
+#    password: supersecret
+#    database: vikunja
+#

@@ -148,7 +148,6 @@ default_context:
         chart_name: "prowlarr"
         enable_ssl: true
       - name: "vikunja"
-        chart_repo: "oci://ghcr.io/go-vikunja/helm-chart"
         chart_name: "vikunja"
   services_config:
     list:

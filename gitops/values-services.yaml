@@ -701,7 +701,7 @@ applicationsets:
           - repoURL: https://github.com/Squallium/kubernetes-at-home.git
             targetRevision: main
             ref: values
-          - repoURL: oci://ghcr.io/go-vikunja/helm-chart
+          - repoURL: https://squallium.github.io/kubernetes-at-home
             chart: vikunja
             targetRevision: '{{chart.targetRevision}}'
             helm:
