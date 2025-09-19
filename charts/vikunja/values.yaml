@@ -1,10 +1,12 @@
-image:
-  repository: lscr.io/linuxserver/prowlarr
-  tag: version-1.37.0.5076
+vikunja:
+  image: vikunja/vikunja:0.24.6
+  jwtSecret: supersecreto # cámbialo luego en serio
 
-ingress:
-  annotations: {}
-  tls: []
+  ingress:
+    enabled: true
+    host: vikunja-dev.internal
+    annotations: {}
+    tls: []
 
 postgresql:
   image: postgres:17.3

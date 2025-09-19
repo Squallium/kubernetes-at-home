@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: vikunja-config
+data:
+  VIKUNJA_DATABASE_TYPE: postgres
+  VIKUNJA_DATABASE_HOST: vikunja-postgres
+  VIKUNJA_DATABASE_USER: postgres
+  VIKUNJA_DATABASE_PASSWORD: postgres
+  VIKUNJA_DATABASE_DATABASE: vikunja
+  VIKUNJA_TYPESENSE_HOST: vikunja-typesense
+  VIKUNJA_TYPESENSE_PORT: "8108"
+  VIKUNJA_TYPESENSE_APIKEY: vikunja
+  VIKUNJA_SERVICE_JWTSECRET: {{ .Values.vikunja.jwtSecret }}
