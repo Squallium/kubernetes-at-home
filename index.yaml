@@ -857,4 +857,15 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/prowlarr-0.0.1/prowlarr-0.0.1.tgz
     version: 0.0.1
-generated: "2025-09-17T22:08:40.458088052Z"
+  vikunja:
+  - apiVersion: v2
+    appVersion: 0.24.6
+    created: "2025-09-19T19:10:22.47285039Z"
+    description: A Helm chart for deploying Vikunja, a to-do and task management application.
+    digest: 706ae6c0ea12dff9506d6dce034cac43d93f9f848106a897a8031d58a162ee24
+    name: vikunja
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/vikunja-0.0.1/vikunja-0.0.1.tgz
+    version: 0.0.1
+generated: "2025-09-19T19:10:22.472990872Z"
