@@ -1,0 +1,17 @@
+image:
+  repository: lscr.io/linuxserver/prowlarr
+  tag: version-1.37.0.5076
+
+ingress:
+  annotations: {}
+  tls: []
+
+postgresql:
+  image: postgres:17.3
+  username: vikunja
+  password: vikunja
+  database: vikunja
+  port: 5432
+  storage:
+    enabled: false
+    size: 1Gi

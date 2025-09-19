@@ -1,0 +1,36 @@
+{{/*apiVersion: apps/v1*/}}
+{{/*kind: Deployment*/}}
+{{/*metadata:*/}}
+{{/*  name: prowlarr*/}}
+{{/*spec:*/}}
+{{/*  replicas: 1*/}}
+{{/*  selector:*/}}
+{{/*    matchLabels:*/}}
+{{/*      app: prowlarr*/}}
+{{/*  template:*/}}
+{{/*    metadata:*/}}
+{{/*      labels:*/}}
+{{/*        app: prowlarr*/}}
+{{/*    spec:*/}}
+{{/*      containers:*/}}
+{{/*        - name: prowlarr*/}}
+{{/*          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}*/}}
+{{/*          ports:*/}}
+{{/*            - containerPort: 9696*/}}
+{{/*          env:*/}}
+{{/*            - name: PUID*/}}
+{{/*              value: "1000"   # UID del usuario en Lima*/}}
+{{/*            - name: PGID*/}}
+{{/*              value: "1000"   # GID del usuario en Lima*/}}
+{{/*            - name: TZ*/}}
+{{/*              value: "Europe/Madrid"*/}}
+{{/*          volumeMounts:*/}}
+{{/*            - name: config*/}}
+{{/*              mountPath: /config*/}}
+{{/*      volumes:*/}}
+{{/*        - name: config*/}}
+{{/*          hostPath:*/}}
+{{/*            path: /mnt/prowlarr/config   # Ruta montada en la VM de Lima desde el Mac Mini*/}}
+{{/*            type: DirectoryOrCreate*/}}
+
+
