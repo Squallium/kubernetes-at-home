@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: vikunja
   annotations:
-    {{- range $key, $value := .Values.ingress.annotations }}
+    {{- range $key, $value := .Values.vikunja.ingress.annotations }}
     {{ $key }}: {{ $value | quote }}
     {{- end }}
 spec:
