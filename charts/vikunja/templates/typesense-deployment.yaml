@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vikunja-typesense
+  labels:
+    app: vikunja-typesense
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vikunja-typesense
+  template:
+    metadata:
+      labels:
+        app: vikunja-typesense
+    spec:
+      containers:
+        - name: typesense
+          image: {{ .Values.typesense.image }}
+          args: ["--data-dir", "/data", "--api-key", {{ .Values.typesense.apiKey | quote }}]
+          ports:
+            - containerPort: {{ .Values.typesense.port }}
+          volumeMounts:
+            - name: typesense-data
+              mountPath: /data
+      volumes:
+        - name: typesense-data
+          emptyDir: {}
