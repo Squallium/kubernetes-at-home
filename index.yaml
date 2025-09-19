@@ -860,6 +860,16 @@ entries:
   vikunja:
   - apiVersion: v2
     appVersion: 0.24.6
+    created: "2025-09-19T20:04:18.849417607Z"
+    description: A Helm chart for deploying Vikunja, a to-do and task management application.
+    digest: 6231de87b74386fdade6ef01ccce2487146a03d3ccfbce07b3ea790e998d2008
+    name: vikunja
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/vikunja-0.0.4/vikunja-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
+    appVersion: 0.24.6
     created: "2025-09-19T19:58:31.902888162Z"
     description: A Helm chart for deploying Vikunja, a to-do and task management application.
     digest: 111aac47c15b49c6c62afa49c4b70825635bbd0b24b2643cae4597155ccdd7fc
@@ -888,4 +898,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/vikunja-0.0.1/vikunja-0.0.1.tgz
     version: 0.0.1
-generated: "2025-09-19T19:58:31.903039976Z"
+generated: "2025-09-19T20:04:18.849538253Z"
