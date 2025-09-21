@@ -1,0 +1,7 @@
+postgres:
+  image: postgres:15-alpine
+  user: warracker
+  password: changeme
+  database: warracker
+  storage: 1Gi
+  servicePort: 5432
