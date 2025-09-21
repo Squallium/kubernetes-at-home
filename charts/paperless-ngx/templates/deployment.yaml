@@ -28,6 +28,10 @@ spec:
               value: {{ .Values.postgresql.username }}
             - name: PAPERLESS_DBPASS
               value: {{ .Values.postgresql.password }}
+            {{- range $key, $value := .Values.deployment.additionalEnv }}
+            - name: {{ $key }}
+              value: "{{ $value }}"
+            {{- end }}
           ports:
             - containerPort: 8000
           volumeMounts:

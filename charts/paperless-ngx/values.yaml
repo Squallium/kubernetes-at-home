@@ -2,6 +2,9 @@ image:
   repository: paperlessngx/paperless-ngx
   tag: 2.16.2
 
+deployment:
+  additionalEnv: {}
+
 ingress:
   enabled: true
   className: public
