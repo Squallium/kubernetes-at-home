@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: warracker
+spec:
+  replicas: {{ .Values.warracker.replicas }}
+  selector:
+    matchLabels:
+      app: warracker
+  template:
+    metadata:
+      labels:
+        app: warracker
+    spec:
+      containers:
+        - name: warracker
+          image: {{ .Values.warracker.image }}
+          ports:
+            - containerPort: {{ .Values.warracker.containerPort }}
+          env:
+            - name: DATABASE_URL
+              value: "postgresql://{{ .Values.postgres.user }}:{{ .Values.postgres.password }}@warracker-postgres:{{ .Values.postgres.servicePort }}/{{ .Values.postgres.database }}"
+          volumeMounts:
+            - mountPath: /data/uploads
+              name: uploads-storage
+      volumes:
+        - name: uploads-storage
+          persistentVolumeClaim:
+            claimName: warracker-uploads-pvc

@@ -5,3 +5,16 @@ postgres:
   database: warracker
   storage: 1Gi
   servicePort: 5432
+
+warracker:
+  image: ghcr.io/sassanix/warracker/main:0.10.1.12
+  replicas: 1
+  servicePort: 80
+  containerPort: 80
+  storage: 1Gi
+
+  ingress:
+    enabled: true
+    host: warracker-dev.internal
+    annotations: {}
+    tls: []

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: warracker
+spec:
+  type: ClusterIP
+  ports:
+    - port: {{ .Values.warracker.servicePort }}
+      targetPort: {{ .Values.warracker.containerPort }}
+  selector:
+    app: warracker
