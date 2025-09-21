@@ -149,6 +149,8 @@ default_context:
         enable_ssl: true
       - name: "vikunja"
         chart_name: "vikunja"
+      - name: "warracker"
+        chart_name: "warracker"
   services_config:
     list:
       - name: "home-assistant"
