@@ -18,8 +18,16 @@ spec:
           ports:
             - containerPort: {{ .Values.warracker.containerPort }}
           env:
-            - name: DATABASE_URL
-              value: "postgresql://{{ .Values.postgres.user }}:{{ .Values.postgres.password }}@warracker-postgres:{{ .Values.postgres.servicePort }}/{{ .Values.postgres.database }}"
+            - name: DB_HOST
+              value: {{ .Values.postgres.host | default "warracker-postgres" }}
+            - name: DB_PORT
+              value: "{{ .Values.postgres.servicePort }}"
+            - name: DB_NAME
+              value: {{ .Values.postgres.database }}
+            - name: DB_USER
+              value: {{ .Values.postgres.user }}
+            - name: DB_PASSWORD
+              value: {{ .Values.postgres.password }}
           volumeMounts:
             - mountPath: /data/uploads
               name: uploads-storage
