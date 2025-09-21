@@ -19,3 +19,4 @@ spec:
                 name: warracker
                 port:
                   number: {{ .Values.warracker.servicePort }}
+{{- end }}
