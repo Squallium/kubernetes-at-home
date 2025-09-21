@@ -1,0 +1,2 @@
+postgresql:
+  image: postgres:17.3
