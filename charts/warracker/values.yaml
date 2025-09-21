@@ -13,8 +13,6 @@ warracker:
   containerPort: 80
   storage: 1Gi
 
-  ingress:
-    enabled: true
-    host: warracker-dev.internal
-    annotations: {}
-    tls: []
+  additionalEnv:
+    WARRACKER_MEMORY_MODE: ultra-light
+    WARRACKER_NOTIFICATION_ENABLED: "false"

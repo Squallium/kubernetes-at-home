@@ -28,6 +28,10 @@ spec:
               value: {{ .Values.postgres.user }}
             - name: DB_PASSWORD
               value: {{ .Values.postgres.password }}
+            {{- range $key, $value := .Values.warracker.additionalEnv }}
+            - name: {{ $key }}
+              value: "{{ $value }}"
+            {{- end }}
           volumeMounts:
             - mountPath: /data/uploads
               name: uploads-storage
