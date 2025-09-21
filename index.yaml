@@ -928,4 +928,15 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/vikunja-0.0.1/vikunja-0.0.1.tgz
     version: 0.0.1
-generated: "2025-09-19T20:37:54.485900089Z"
+  warracker:
+  - apiVersion: v2
+    appVersion: 0.10.1.12
+    created: "2025-09-21T16:13:08.182379626Z"
+    description: A Helm chart for deploying Warracker, a warranty tracking application.
+    digest: b757c7704ae631a5c00cba6afe94e99bfdffea997c1dccd885347cd0143e47fe
+    name: warracker
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/warracker-0.0.1/warracker-0.0.1.tgz
+    version: 0.0.1
+generated: "2025-09-21T16:13:08.182612152Z"
