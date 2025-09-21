@@ -1,5 +1,5 @@
 postgres:
-  image: postgres:15-alpine
+  image: postgres:17.3
   user: warracker
   password: changeme
   database: warracker
