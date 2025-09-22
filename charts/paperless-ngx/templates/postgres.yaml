@@ -26,6 +26,7 @@ spec:
           volumeMounts:
             - name: pgdata
               mountPath: /var/lib/postgresql/data
+          {{- include "chart.resources" (dict "name" "postgresql" "Values" .Values) | nindent 10 }}
       volumes:
         - name: pgdata
           hostPath:
