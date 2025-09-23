@@ -71,6 +71,7 @@ applicationsets:
                 {%- if service.get("enable_ssl", False) %}
                 - $values/apps/{{ service.name }}/{{'{{'}}metadata.labels.environment}}/values-ssl.yaml
                 {%- endif %}
+                - $values/defaults/{{'{{'}}metadata.labels.environment}}/resources/values.yaml
               {%- if service.get("enable_secrets", False) %}
               fileParameters:
                 - name: openid.client_id
