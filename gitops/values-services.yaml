@@ -57,7 +57,7 @@ applicationsets:
                 - $values/apps/paperless-ngx/values.yaml
                 - $values/apps/paperless-ngx/{{metadata.labels.environment}}/values.yaml
                 - $values/apps/paperless-ngx/{{metadata.labels.environment}}/values-ssl.yaml
-                - $values/defaults/resources/{{metadata.labels.environment}}/values.yaml
+                - $values/defaults/{{metadata.labels.environment}}/resources/values.yaml
         destination:
           server: '{{server}}'
           namespace: paperless-ngx
@@ -151,7 +151,7 @@ applicationsets:
                 - $values/apps/home-assistant/values.yaml
                 - $values/apps/home-assistant/{{metadata.labels.environment}}/values.yaml
                 - $values/apps/home-assistant/{{metadata.labels.environment}}/values-ssl.yaml
-                - $values/defaults/resources/{{metadata.labels.environment}}/values.yaml
+                - $values/defaults/{{metadata.labels.environment}}/resources/values.yaml
         destination:
           server: '{{server}}'
           namespace: home-assistant
@@ -250,7 +250,7 @@ applicationsets:
                 - $values/apps/adguard-home/values.yaml
                 - $values/apps/adguard-home/{{metadata.labels.environment}}/values.yaml
                 - $values/apps/adguard-home/{{metadata.labels.environment}}/values-ssl.yaml
-                - $values/defaults/resources/{{metadata.labels.environment}}/values.yaml
+                - $values/defaults/{{metadata.labels.environment}}/resources/values.yaml
         destination:
           server: '{{server}}'
           namespace: adguard-home
@@ -344,7 +344,7 @@ applicationsets:
                 - $values/apps/calibre-web/values.yaml
                 - $values/apps/calibre-web/{{metadata.labels.environment}}/values.yaml
                 - $values/apps/calibre-web/{{metadata.labels.environment}}/values-ssl.yaml
-                - $values/defaults/resources/{{metadata.labels.environment}}/values.yaml
+                - $values/defaults/{{metadata.labels.environment}}/resources/values.yaml
         destination:
           server: '{{server}}'
           namespace: calibre-web
@@ -436,7 +436,7 @@ applicationsets:
               valueFiles:
                 - $values/apps/cloudnative-pg/values.yaml
                 - $values/apps/cloudnative-pg/{{metadata.labels.environment}}/values.yaml
-                - $values/defaults/resources/{{metadata.labels.environment}}/values.yaml
+                - $values/defaults/{{metadata.labels.environment}}/resources/values.yaml
         destination:
           server: '{{server}}'
           namespace: cloudnative-pg
@@ -531,7 +531,7 @@ applicationsets:
                 - $values/apps/authentik/values.yaml
                 - $values/apps/authentik/{{metadata.labels.environment}}/values.yaml
                 - $values/apps/authentik/{{metadata.labels.environment}}/values-ssl.yaml
-                - $values/defaults/resources/{{metadata.labels.environment}}/values.yaml
+                - $values/defaults/{{metadata.labels.environment}}/resources/values.yaml
         destination:
           server: '{{server}}'
           namespace: authentik
@@ -623,7 +623,7 @@ applicationsets:
               valueFiles:
                 - $values/apps/argo-rollouts/values.yaml
                 - $values/apps/argo-rollouts/{{metadata.labels.environment}}/values.yaml
-                - $values/defaults/resources/{{metadata.labels.environment}}/values.yaml
+                - $values/defaults/{{metadata.labels.environment}}/resources/values.yaml
         destination:
           server: '{{server}}'
           namespace: argo-rollouts
@@ -716,7 +716,7 @@ applicationsets:
                 - $values/apps/prowlarr/values.yaml
                 - $values/apps/prowlarr/{{metadata.labels.environment}}/values.yaml
                 - $values/apps/prowlarr/{{metadata.labels.environment}}/values-ssl.yaml
-                - $values/defaults/resources/{{metadata.labels.environment}}/values.yaml
+                - $values/defaults/{{metadata.labels.environment}}/resources/values.yaml
         destination:
           server: '{{server}}'
           namespace: prowlarr
@@ -808,7 +808,7 @@ applicationsets:
               valueFiles:
                 - $values/apps/vikunja/values.yaml
                 - $values/apps/vikunja/{{metadata.labels.environment}}/values.yaml
-                - $values/defaults/resources/{{metadata.labels.environment}}/values.yaml
+                - $values/defaults/{{metadata.labels.environment}}/resources/values.yaml
         destination:
           server: '{{server}}'
           namespace: vikunja
@@ -900,7 +900,7 @@ applicationsets:
               valueFiles:
                 - $values/apps/warracker/values.yaml
                 - $values/apps/warracker/{{metadata.labels.environment}}/values.yaml
-                - $values/defaults/resources/{{metadata.labels.environment}}/values.yaml
+                - $values/defaults/{{metadata.labels.environment}}/resources/values.yaml
         destination:
           server: '{{server}}'
           namespace: warracker
