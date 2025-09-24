@@ -45,6 +45,13 @@ prometheus:
         static_configs:
           - targets: [ '192.168.1.183:9100' ] # IP del Mac Mini en tu LAN
 
+      - job_name: 'rog_laptop'
+        scrape_interval: 15s
+        static_configs:
+          - targets:
+            - '192.168.1.146:9182' # IP de tu ROG en la LAN
+            - '192.168.1.187:9182' # IP de tu ROG en la WiFi
+
 
 alertmanager:
   alertmanagerSpec:
