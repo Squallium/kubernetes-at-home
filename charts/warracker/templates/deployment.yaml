@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: warracker
 spec:
-  replicas: {{ .Values.warracker.replicas }}
+  replicas: {{ .Values.deployment.replicas }}
   selector:
     matchLabels:
       app: warracker
@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
         - name: warracker
-          image: {{ .Values.warracker.image }}
+          image: {{ .Values.deployment.image }}
           ports:
-            - containerPort: {{ .Values.warracker.containerPort }}
+            - containerPort: {{ .Values.deployment.containerPort }}
           env:
             - name: DB_HOST
               value: {{ .Values.postgres.host | default "warracker-postgres" }}
@@ -28,7 +28,7 @@ spec:
               value: {{ .Values.postgres.user }}
             - name: DB_PASSWORD
               value: {{ .Values.postgres.password }}
-            {{- range $key, $value := .Values.warracker.additionalEnv }}
+            {{- range $key, $value := .Values.deployment.additionalEnv }}
             - name: {{ $key }}
               value: "{{ $value }}"
             {{- end }}

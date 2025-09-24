@@ -5,7 +5,7 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: {{ .Values.warracker.servicePort }}
-      targetPort: {{ .Values.warracker.containerPort }}
+    - port: {{ .Values.service.servicePort }}
+      targetPort: {{ .Values.deployment.containerPort }}
   selector:
     app: warracker

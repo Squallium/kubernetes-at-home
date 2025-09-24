@@ -1,3 +1,23 @@
+deployment:
+  image: ghcr.io/sassanix/warracker/main:0.10.1.12
+  replicas: 1
+  containerPort: 80
+
+  additionalEnv:
+    WARRACKER_MEMORY_MODE: ultra-light
+    WARRACKER_NOTIFICATION_ENABLED: "false"
+
+service:
+  servicePort: 80
+
+ingress:
+  enabled: false
+  annotations: {}
+  tls: []
+
+pvc:
+  storage: 1Gi
+
 postgres:
   image: postgres:17.3
   user: warracker
@@ -5,14 +25,3 @@ postgres:
   database: warracker
   storage: 1Gi
   servicePort: 5432
-
-warracker:
-  image: ghcr.io/sassanix/warracker/main:0.10.1.12
-  replicas: 1
-  servicePort: 80
-  containerPort: 80
-  storage: 1Gi
-
-  additionalEnv:
-    WARRACKER_MEMORY_MODE: ultra-light
-    WARRACKER_NOTIFICATION_ENABLED: "false"

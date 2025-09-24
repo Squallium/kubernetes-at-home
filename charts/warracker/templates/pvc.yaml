@@ -7,4 +7,4 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: {{ .Values.warracker.storage }}
+      storage: {{ .Values.pvc.storage }}

@@ -1,15 +1,15 @@
-{{- if .Values.warracker.ingress.enabled }}
+{{- if .Values.ingress.enabled }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: warracker
   annotations:
-    {{- range $key, $value := .Values.warracker.ingress.annotations }}
+    {{- range $key, $value := .Values.ingress.annotations }}
     {{ $key }}: {{ $value | quote }}
     {{- end }}
 spec:
   rules:
-    - host: {{ .Values.warracker.ingress.host }}
+    - host: {{ .Values.ingress.host }}
       http:
         paths:
           - path: /
@@ -18,5 +18,15 @@ spec:
               service:
                 name: warracker
                 port:
-                  number: {{ .Values.warracker.servicePort }}
+                  number: {{ .Values.service.servicePort }}
+  {{- if .Values.ingress.tls }}
+  tls:
+    {{- range .Values.ingress.tls }}
+    - hosts:
+        {{- range .hosts }}
+        - {{ . }}
+        {{- end }}
+      secretName: {{ .secretName }}
+    {{- end }}
+  {{- end }}
 {{- end }}
