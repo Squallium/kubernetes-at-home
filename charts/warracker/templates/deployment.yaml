@@ -38,6 +38,8 @@ spec:
             - name: trusted-ca
               mountPath: /usr/local/share/ca-certificates/root-ca.crt
               subPath: tls.crt
+          resources:
+            {{- toYaml .Values.deployment.resources | nindent 12 }}
           command: [ "/bin/sh", "-c" ]
           args:
             - update-ca-certificates && exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf

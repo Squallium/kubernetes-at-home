@@ -7,6 +7,14 @@ deployment:
     WARRACKER_MEMORY_MODE: ultra-light
     WARRACKER_NOTIFICATION_ENABLED: "false"
 
+  resources:
+    requests:
+      cpu: 200m
+      memory: 512Mi
+    limits:
+      cpu: 500m
+      memory: 1Gi
+
 service:
   servicePort: 80
 
