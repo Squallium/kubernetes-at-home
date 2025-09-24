@@ -1,6 +1,0 @@
-warracker:
-  ingress:
-    enabled: true
-    host: warracker-dev.internal
-    annotations: { }
-    tls: [ ]
