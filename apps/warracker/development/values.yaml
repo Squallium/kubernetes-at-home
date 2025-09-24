@@ -1,5 +1,5 @@
 deployment:
-  image: ghcr.io/sassanix/warracker/main:0.10.1.12-beta
+  image: ghcr.io/sassanix/warracker/main:0.10.1.12
 
 ingress:
   enabled: true
