@@ -971,6 +971,16 @@ entries:
   warracker:
   - apiVersion: v2
     appVersion: 0.10.1.12
+    created: "2025-09-24T15:22:02.146885954Z"
+    description: A Helm chart for deploying Warracker, a warranty tracking application.
+    digest: 8f03854335f311b4412c855f864565e4760f7708f671cb4ebdcc46d41d50f7a8
+    name: warracker
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/warracker-0.0.11/warracker-0.0.11.tgz
+    version: 0.0.11
+  - apiVersion: v2
+    appVersion: 0.10.1.12
     created: "2025-09-24T15:16:34.417633723Z"
     description: A Helm chart for deploying Warracker, a warranty tracking application.
     digest: ea11ce666470f2f0753217caa269987c39f175806de6a0fcc149d522abc3dcdf
@@ -1069,4 +1079,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/warracker-0.0.1/warracker-0.0.1.tgz
     version: 0.0.1
-generated: "2025-09-24T15:16:34.417828068Z"
+generated: "2025-09-24T15:22:02.147114454Z"
