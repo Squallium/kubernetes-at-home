@@ -27,7 +27,31 @@ spec:
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: postgres-storage
+          {{- include "chart.resources" (dict "name" "postgresql" "Values" .Values) | nindent 10 }}
       volumes:
         - name: postgres-storage
           persistentVolumeClaim:
             claimName: warracker-postgres-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: warracker-postgres-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.postgres.storage }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: warracker-postgres
+spec:
+  type: ClusterIP
+  ports:
+    - port: {{ .Values.postgres.servicePort }}
+      targetPort: {{ .Values.postgres.servicePort }}
+  selector:
+    app: warracker-postgres
