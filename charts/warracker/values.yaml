@@ -18,8 +18,8 @@ ingress:
 pvc:
   storage: 1Gi
 
-postgres:
-  image: postgres:17.3
+postgresql:
+  image: postgres:17.3-alpine
   user: warracker
   password: changeme
   database: warracker

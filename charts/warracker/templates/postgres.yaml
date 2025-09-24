@@ -14,16 +14,16 @@ spec:
     spec:
       containers:
         - name: postgres
-          image: {{ .Values.postgres.image }}
+          image: {{ .Values.postgresql.image }}
           ports:
-            - containerPort: {{ .Values.postgres.servicePort }}
+            - containerPort: {{ .Values.postgresql.servicePort }}
           env:
             - name: POSTGRES_USER
-              value: {{ .Values.postgres.user | quote }}
+              value: {{ .Values.postgresql.user | quote }}
             - name: POSTGRES_PASSWORD
-              value: {{ .Values.postgres.password | quote }}
+              value: {{ .Values.postgresql.password | quote }}
             - name: POSTGRES_DB
-              value: {{ .Values.postgres.database | quote }}
+              value: {{ .Values.postgresql.database | quote }}
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: postgres-storage
@@ -42,7 +42,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: {{ .Values.postgres.storage }}
+      storage: {{ .Values.postgresql.storage }}
 ---
 apiVersion: v1
 kind: Service
@@ -51,7 +51,7 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: {{ .Values.postgres.servicePort }}
-      targetPort: {{ .Values.postgres.servicePort }}
+    - port: {{ .Values.postgresql.servicePort }}
+      targetPort: {{ .Values.postgresql.servicePort }}
   selector:
     app: warracker-postgres
