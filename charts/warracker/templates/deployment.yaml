@@ -19,15 +19,15 @@ spec:
             - containerPort: {{ .Values.deployment.containerPort }}
           env:
             - name: DB_HOST
-              value: {{ .Values.postgres.host | default "warracker-postgres" }}
+              value: {{ .Values.postgresql.host | default "warracker-postgres" }}
             - name: DB_PORT
-              value: "{{ .Values.postgres.servicePort }}"
+              value: "{{ .Values.postgresql.servicePort }}"
             - name: DB_NAME
-              value: {{ .Values.postgres.database }}
+              value: {{ .Values.postgresql.database }}
             - name: DB_USER
-              value: {{ .Values.postgres.user }}
+              value: {{ .Values.postgresql.user }}
             - name: DB_PASSWORD
-              value: {{ .Values.postgres.password }}
+              value: {{ .Values.postgresql.password }}
             {{- range $key, $value := .Values.deployment.additionalEnv }}
             - name: {{ $key }}
               value: "{{ $value }}"
