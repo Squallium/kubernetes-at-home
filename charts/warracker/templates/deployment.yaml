@@ -35,7 +35,16 @@ spec:
           volumeMounts:
             - mountPath: /data/uploads
               name: uploads-storage
+            - name: trusted-ca
+              mountPath: /usr/local/share/ca-certificates/root-ca.crt
+              subPath: tls.crt
+          command: [ "/bin/sh", "-c" ]
+          args:
+            - update-ca-certificates && exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
       volumes:
         - name: uploads-storage
           persistentVolumeClaim:
             claimName: warracker-uploads-pvc
+        - name: trusted-ca
+          secret:
+            secretName: warracker-trusted-ca
