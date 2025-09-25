@@ -1,0 +1,7 @@
+ingress:
+  annotations:
+    cert-manager.io/cluster-issuer: home-internal-ca-issuer
+  tls:
+    - hosts:
+        - paperless.internal
+      secretName: paperless-internal-tls
