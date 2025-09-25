@@ -1,6 +1,6 @@
 ingress:
   hostname: paperless-dev.internal
 
-#deployment:
-#  additionalEnv:
-#    PAPERLESS_CSRF_TRUSTED_ORIGINS: https://paperless-dev.internal
+deployment:
+  additionalEnv:
+    PAPERLESS_CSRF_TRUSTED_ORIGINS: https://paperless-dev.internal
