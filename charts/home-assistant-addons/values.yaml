@@ -149,6 +149,7 @@ argocd-apps:
                 valueFiles:
                   - $values/apps/home-assistant-addons/zigbee2mqtt/values.yaml
                   - $values/apps/home-assistant-addons/zigbee2mqtt/{{metadata.labels.environment}}/values.yaml
+                  - $values/apps/home-assistant-addons/zigbee2mqtt/{{metadata.labels.environment}}/values-ssl.yaml
           destination:
             server: '{{server}}'
             namespace: home-assistant
