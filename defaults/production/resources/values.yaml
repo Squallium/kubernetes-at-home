@@ -16,3 +16,13 @@ defaults:
       limits:
         cpu: 300m
         memory: 512Mi
+
+  typesense:
+    resources:
+      requests:
+        cpu: 200m
+        memory: 512Mi
+      limits:
+        cpu: 500m
+        memory: 1Gi
+
