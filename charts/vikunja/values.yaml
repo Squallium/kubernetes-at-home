@@ -9,16 +9,15 @@ vikunja:
     tls: []
 
 postgresql:
-  image: postgres:17.3
+  image: postgres:17.3-alpine
   username: vikunja
   password: vikunja
   database: vikunja
+  storage: 1Gi
   port: 5432
-  storage:
-    enabled: false
-    size: 1Gi
 
 typesense:
-  image: typesense/typesense:27.1
+  image: typesense/typesense:27.1-alpine
   apiKey: vikunja
+  storage: 1Gi
   port: 8108

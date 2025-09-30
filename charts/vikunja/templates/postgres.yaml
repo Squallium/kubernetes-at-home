@@ -29,6 +29,33 @@ spec:
           volumeMounts:
             - name: postgres-data
               mountPath: /var/lib/postgresql/data
+          {{- include "chart.resources" (dict "name" "postgresql" "Values" .Values) | nindent 10 }}
       volumes:
         - name: postgres-data
-          emptyDir: {}   # lo cambiaremos por PVC luego
+          persistentVolumeClaim:
+            claimName: vikunja-postgres-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: vikunja-postgres-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.postgresql.storage }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vikunja-postgres
+  labels:
+    app: vikunja-postgres
+spec:
+  type: ClusterIP
+  ports:
+    - port: {{ .Values.postgresql.port }}
+      targetPort: {{ .Values.postgresql.port }}
+  selector:
+    app: vikunja-postgres

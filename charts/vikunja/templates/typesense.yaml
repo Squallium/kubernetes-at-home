@@ -23,6 +23,33 @@ spec:
           volumeMounts:
             - name: typesense-data
               mountPath: /data
+          {{- include "chart.resources" (dict "name" "typesense" "Values" .Values) | nindent 10 }}
       volumes:
         - name: typesense-data
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: vikunja-typesense-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: vikunja-postgres-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.postgresql.storage }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vikunja-typesense
+  labels:
+    app: vikunja-typesense
+spec:
+  type: ClusterIP
+  ports:
+    - port: {{ .Values.typesense.port }}
+      targetPort: {{ .Values.typesense.port }}
+  selector:
+    app: vikunja-typesense
