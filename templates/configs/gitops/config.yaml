@@ -54,7 +54,7 @@ default_context:
       - name: "kargo"
         chart_repo: "ghcr.io/akuity/kargo-charts"
         chart_name: "kargo"
-        chart_target_revision: "1.6.2"
+        chart_target_revision: "1.7.5"
       - name: "argo-rollouts"
         chart_repo: "https://argoproj.github.io/argo-helm"
         chart_name: "argo-rollouts"
