@@ -32,13 +32,13 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: vikunja-postgres-pvc
+  name: vikunja-typesense-pvc
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: {{ .Values.postgresql.storage }}
+      storage: {{ .Values.typesense.storage }}
 ---
 apiVersion: v1
 kind: Service
