@@ -4,7 +4,7 @@ vikunja:
 
   ingress:
     enabled: true
-    host: vikunja-dev.internal
+    host: placeholder
     annotations: {}
     tls: []
 
