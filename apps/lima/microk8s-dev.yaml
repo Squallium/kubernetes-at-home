@@ -39,6 +39,9 @@ mounts:
   - location: "/Users/kuber/shared/dev/prowlarr"
     mountPoint: "/mnt/prowlarr"
     writable: true
+  - location: "/Users/kuber/shared/dev/services"
+    mountPoint: "/mnt/services"
+    writable: true
 
 
 networks:

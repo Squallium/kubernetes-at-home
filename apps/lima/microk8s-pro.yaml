@@ -27,6 +27,9 @@ mounts:
   - location: "/Users/kuber/shared/pro/minio"
     mountPoint: "/mnt/minio"
     writable: true
+  - location: "/Users/kuber/shared/pro/services"
+    mountPoint: "/mnt/services"
+    writable: true
 
 networks:
   - lima: bridged
