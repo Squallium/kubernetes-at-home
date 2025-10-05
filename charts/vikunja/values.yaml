@@ -7,6 +7,9 @@ ingress:
   annotations: {}
   tls: []
 
+storagePath:
+  files: /mnt/services/vikunja/files
+
 postgresql:
   image: postgres:17.3-alpine
   username: vikunja
@@ -21,3 +24,4 @@ typesense:
   apiKey: vikunja
   storage: 1Gi
   port: 8108
+  storagePath: /mnt/services/vikunja/typesense

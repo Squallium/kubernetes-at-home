@@ -30,15 +30,31 @@ spec:
             claimName: vikunja-typesense-pvc
 ---
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: vikunja-typesense-pv
+spec:
+  capacity:
+    storage: {{ .Values.typesense.storage | default "2Gi" }}
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: manual
+  hostPath:
+    path: {{ .Values.typesense.storagePath }}
+    type: DirectoryOrCreate
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: vikunja-typesense-pvc
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: manual
   resources:
     requests:
-      storage: {{ .Values.typesense.storage }}
+      storage: {{ .Values.typesense.storage | default "2Gi" }}
 ---
 apiVersion: v1
 kind: Service
