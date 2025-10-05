@@ -1,3 +1,2 @@
-vikunja:
-  ingress:
-    host: vikunja-dev.internal
+ingress:
+  host: vikunja-dev.internal
