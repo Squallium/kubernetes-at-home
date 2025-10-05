@@ -19,11 +19,3 @@ worker:
     limits:
       cpu: 250m
       memory: 256Mi
-
-postgresql:
-  primary:
-    resourcesPreset: small
-
-redis:
-  master:
-    resourcesPreset: small
