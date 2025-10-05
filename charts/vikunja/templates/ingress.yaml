@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: vikunja
   annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
     {{- range $key, $value := .Values.ingress.annotations }}
     {{ $key }}: {{ $value | quote }}
     {{- end }}
