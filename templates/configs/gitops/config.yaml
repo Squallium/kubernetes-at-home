@@ -137,7 +137,6 @@ default_context:
       - name: "authentik"
         chart_repo: "https://charts.goauthentik.io"
         chart_name: "authentik"
-        chart_target_revision: "2025.6.3"
         enable_ssl: true
         enable_kargo: true
       - name: "argo-rollouts"
