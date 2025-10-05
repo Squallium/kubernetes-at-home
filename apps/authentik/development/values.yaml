@@ -4,20 +4,8 @@ global:
 
 postgresql:
   primary:
-    resourcesPreset:
-      requests:
-        cpu: 100m
-        memory: 256Mi
-      limits:
-        cpu: 300m
-        memory: 512Mi
+    resourcesPreset: small
 
 redis:
   master:
-    resourcesPreset:
-      requests:
-        cpu: 50m
-        memory: 64Mi
-      limits:
-        cpu: 200m
-        memory: 256Mi
+    resourcesPreset: small
