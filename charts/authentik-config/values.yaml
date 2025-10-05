@@ -18,4 +18,5 @@ postgresql:
 
 redis:
   image: redis:7-alpine
+  storage: 512Mi
   storagePath: /mnt/authentik/redis

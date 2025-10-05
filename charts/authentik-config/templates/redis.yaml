@@ -31,12 +31,13 @@ metadata:
   name: authentik-redis-pv
 spec:
   capacity:
-    storage: 512Mi
+    storage: {{ .Values.redis.storage }}
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
+  storageClassName: manual
   hostPath:
-    path: /mnt/services/authentik/redis
+    path: {{ .Values.redis.storagePath }}
     type: DirectoryOrCreate
 ---
 apiVersion: v1
@@ -46,10 +47,10 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: manual
   resources:
     requests:
-      storage: 512Mi
-  volumeName: authentik-redis-pv
+      storage: {{ .Values.redis.storage }}
 ---
 apiVersion: v1
 kind: Service
