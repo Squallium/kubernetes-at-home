@@ -1,11 +1,28 @@
+postgresql:
+  enabled: false
+
+redis:
+  enabled: false
+
 authentik:
   postgresql:
-#    enabled: false
-#    host: authentik-db-rw.authentik.svc.cluster.local
-#    port: 5432
-#    user: file:///postgres-creds/username
-#    password: file:///postgres-creds/password
-    password: "ThisIsNotASecurePassword"
+    # -- set the postgresql hostname to talk to
+    # if unset and .Values.postgresql.enabled == true, will generate the default
+    # @default -- `{{ .Release.Name }}-postgresql`
+    host: "{{ .Release.Name }}-postgresql"
+    # -- postgresql Database name
+    # @default -- `authentik`
+    name: "authentik"
+    # -- postgresql Username
+    # @default -- `authentik`
+    user: "authentik"
+    password: ""
+    port: 5432
+  redis:
+    # -- set the redis hostname to talk to
+    # @default -- `{{ .Release.Name }}-redis-master`
+    host: "{{ .Release.Name }}-redis-master"
+    password: ""
 
 server:
   ingress:
@@ -43,10 +60,3 @@ worker:
 #      mountPath: /postgres-creds
 #      readOnly: true
 
-redis:
-  enabled: true
-
-postgresql:
-  enabled: true
-  auth:
-    password: "ThisIsNotASecurePassword"
