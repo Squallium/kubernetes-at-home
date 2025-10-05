@@ -1,3 +1,5 @@
 vikunja:
   ingress:
     host: vikunja-dev.internal
+typesense:
+  image: typesense/typesense:27.1
