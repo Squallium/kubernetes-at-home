@@ -808,6 +808,7 @@ applicationsets:
               valueFiles:
                 - $values/apps/vikunja/values.yaml
                 - $values/apps/vikunja/{{metadata.labels.environment}}/values.yaml
+                - $values/apps/vikunja/{{metadata.labels.environment}}/values-ssl.yaml
                 - $values/defaults/{{metadata.labels.environment}}/resources/values.yaml
         destination:
           server: '{{server}}'
