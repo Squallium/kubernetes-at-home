@@ -6,3 +6,16 @@ extSecrets:
         remoteRef:
           key: placeholder
           property: placeholder
+
+postgresql:
+  image: postgres:17.3-alpine
+  username: authentik
+  password: authentik
+  database: authentik
+  storage: 1Gi
+  port: 5432
+  storagePath: /mnt/authentik/postgres
+
+redis:
+  image: redis:7-alpine
+  storagePath: /mnt/authentik/redis

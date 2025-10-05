@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: authentik-redis
+spec:
+  selector:
+    matchLabels:
+      app: authentik-redis
+  template:
+    metadata:
+      labels:
+        app: authentik-redis
+    spec:
+      containers:
+        - name: redis
+          image: {{ .Values.redis.image }}
+          ports:
+            - containerPort: 6379
+          volumeMounts:
+            - name: redisdata
+              mountPath: /data
+          {{- include "chart.resources" (dict "name" "redis" "Values" .Values) | nindent 10 }}
+      volumes:
+        - name: redisdata
+          persistentVolumeClaim:
+            claimName: authentik-redis-pvc
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: authentik-redis-pv
+spec:
+  capacity:
+    storage: 512Mi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /mnt/services/authentik/redis
+    type: DirectoryOrCreate
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: authentik-redis-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 512Mi
+  volumeName: authentik-redis-pv
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: authentik-redis
+spec:
+  selector:
+    app: authentik-redis
+  ports:
+    - protocol: TCP
+      port: 6379
