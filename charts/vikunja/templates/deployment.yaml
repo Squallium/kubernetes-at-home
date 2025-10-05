@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: vikunja
-          image: {{ .Values.vikunja.image }}
+          image: {{ .Values.image }}
           ports:
             - containerPort: 3456
           envFrom:

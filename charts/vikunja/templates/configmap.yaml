@@ -11,4 +11,4 @@ data:
   VIKUNJA_TYPESENSE_HOST: vikunja-typesense
   VIKUNJA_TYPESENSE_PORT: "8108"
   VIKUNJA_TYPESENSE_APIKEY: vikunja
-  VIKUNJA_SERVICE_JWTSECRET: {{ .Values.vikunja.jwtSecret }}
+  VIKUNJA_SERVICE_JWTSECRET: {{ .Values.jwtSecret }}

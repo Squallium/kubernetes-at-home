@@ -3,12 +3,12 @@ kind: Ingress
 metadata:
   name: vikunja
   annotations:
-    {{- range $key, $value := .Values.vikunja.ingress.annotations }}
+    {{- range $key, $value := .Values.ingress.annotations }}
     {{ $key }}: {{ $value | quote }}
     {{- end }}
 spec:
   rules:
-    - host: {{ .Values.vikunja.ingress.host }}
+    - host: {{ .Values.ingress.host }}
       http:
         paths:
           - path: /

@@ -1,12 +1,11 @@
-vikunja:
-  image: vikunja/vikunja:0.24.6
-  jwtSecret: supersecreto # cámbialo luego en serio
+image: vikunja/vikunja:0.24.6
+jwtSecret: supersecreto # cámbialo luego en serio
 
-  ingress:
-    enabled: true
-    host: placeholder
-    annotations: {}
-    tls: []
+ingress:
+  enabled: true
+  host: placeholder
+  annotations: {}
+  tls: []
 
 postgresql:
   image: postgres:17.3-alpine
