@@ -36,15 +36,31 @@ spec:
             claimName: vikunja-postgres-pvc
 ---
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: vikunja-postgres-pv
+spec:
+  capacity:
+    storage: {{ .Values.postgresql.storage | default "5Gi" }}
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: manual
+  hostPath:
+    path: {{ .Values.postgresql.storagePath }}
+    type: DirectoryOrCreate
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: vikunja-postgres-pvc
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: manual
   resources:
     requests:
-      storage: {{ .Values.postgresql.storage }}
+      storage: {{ .Values.postgresql.storage | default "5Gi" }}
 ---
 apiVersion: v1
 kind: Service
