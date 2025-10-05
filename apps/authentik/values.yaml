@@ -9,7 +9,7 @@ authentik:
     # -- set the postgresql hostname to talk to
     # if unset and .Values.postgresql.enabled == true, will generate the default
     # @default -- `{{ .Release.Name }}-postgresql`
-    host: "authentik-postgresql"
+    host: "authentik-postgres"
     # -- postgresql Database name
     # @default -- `authentik`
     name: "authentik"
@@ -21,7 +21,7 @@ authentik:
   redis:
     # -- set the redis hostname to talk to
     # @default -- `{{ .Release.Name }}-redis-master`
-    host: "authentik-redis-master"
+    host: "authentik-redis"
     password: ""
 
 server:
