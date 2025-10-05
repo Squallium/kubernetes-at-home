@@ -1,6 +1,15 @@
 image: vikunja/vikunja:0.24.6
 jwtSecret: supersecreto # cámbialo luego en serio
 
+deployment:
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+
 ingress:
   enabled: true
   host: placeholder

@@ -22,3 +22,39 @@ spec:
           envFrom:
             - configMapRef:
                 name: vikunja-config
+          volumeMounts:
+            - name: vikunja-files
+              mountPath: /app/vikunja/files
+          resources:
+            {{- toYaml .Values.deployment.resources | nindent 12 }}
+      volumes:
+        - name: vikunja-files
+          persistentVolumeClaim:
+            claimName: vikunja-files-pvc
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: vikunja-files-pv
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: manual
+  hostPath:
+    path: /mnt/services/vikunja/files
+    type: DirectoryOrCreate
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: vikunja-files-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: manual
