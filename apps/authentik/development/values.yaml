@@ -5,17 +5,17 @@ global:
 server:
   resources:
     requests:
-      cpu: 200m
+      cpu: 400m
       memory: 256Mi
     limits:
-      cpu: 500m
+      cpu: 1000m
       memory: 512Mi
 
 worker:
   resources:
     requests:
-      cpu: 200m
+      cpu: 400m
       memory: 256Mi
     limits:
-      cpu: 500m
+      cpu: 1000m
       memory: 512Mi
