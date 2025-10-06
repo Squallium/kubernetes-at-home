@@ -3,7 +3,7 @@
 # Access to 
 
 ```bash
-kubectl exec -it deploy/authentik-worker -n <namespa -- bash
+kubectl exec -it deploy/authentik-worker -n <namespace> -- bash
 ```
 
 # access to the authentik shell
