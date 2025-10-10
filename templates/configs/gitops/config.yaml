@@ -100,6 +100,9 @@ default_context:
         chart_name: "coredns-config"
         chart_target_revision: "0.0.3"
         namespace: "kube-system"
+      - name: "metallb"
+        chart_name: "metallb-config"
+        chart_target_revision: "0.0.1"
   services:
     list:
 #      - name: "homebox"
