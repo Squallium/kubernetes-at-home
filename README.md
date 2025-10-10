@@ -60,7 +60,7 @@ limactl start --name=microk8s-core ./core.yaml
 2. Register the new cluster credentials in vault to add it into ArgoCD
 3. Starting with [coredns](addons/coredns/README.md) config to add additional configuration
 2. After that you need the [external-secrets](addons/external-secrets/README.md) remember that
-   for establish connection with vault you need to add the home-internal-root-ca as secret in the external-secrets namespacee
+   for establish connection with vault you need to add the [home-internal-root-ca](addons/external-secrets/README.md) as secret in the external-secrets namespacee
 3. Then install the [cert-manager](addons/cert-manager/README.md)
 4. Finally test that everything works by installing home assistant
   1. Install the home assistant config
