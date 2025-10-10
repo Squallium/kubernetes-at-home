@@ -84,6 +84,10 @@ default_context:
         chart_repo: "https://squallium.github.io/kubernetes-at-home"
         chart_name: "cloudflared"
         chart_target_revision: "0.0.4"
+      - name: "metallb"
+        chart_repo: "https://metallb.github.io/metallb"
+        chart_name: "metallb"
+        chart_target_revision: "0.15.2"
   addons_config:
     list:
       - name: "external-secrets"

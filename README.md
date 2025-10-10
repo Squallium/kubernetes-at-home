@@ -33,6 +33,7 @@ In this repository you will find the following folders:
 ## Disaster recovery
 
 - 2025-09-14 - First version of disaster recovery steps
+- 2025-10-09 - MetalLB stop working in production for Adguard Home 53 port
 
 ### Setup core cluster
 
@@ -55,7 +56,9 @@ limactl start --name=microk8s-core ./core.yaml
 
 #### Configure dev cluster to test restoration of the shared folder in the machine
 
-1. Install all the needed addons starting with [coredns](addons/coredns/README.md) config to add additional configuration
+1. Install all the needed addons [apps/lima/README.md](apps/lima/README.md)
+2. Register the new cluster credentials in vault to add it into ArgoCD
+3. Starting with [coredns](addons/coredns/README.md) config to add additional configuration
 2. After that you need the [external-secrets](addons/external-secrets/README.md) remember that
    for establish connection with vault you need to add the home-internal-root-ca as secret in the external-secrets namespacee
 3. Then install the [cert-manager](addons/cert-manager/README.md)

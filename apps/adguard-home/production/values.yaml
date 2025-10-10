@@ -1,7 +1,7 @@
 image:
   tag: v0.107.67
 metalLb:
-  ip: 192.168.1.125
+  ip: 192.168.1.247
 ingress:
   host: adguard.internal
   port: 80
