@@ -803,6 +803,17 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/loki-config-0.0.1/loki-config-0.0.1.tgz
     version: 0.0.1
+  metallb-config:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2025-10-10T10:23:48.168822949Z"
+    description: A Helm chart for managing MetalLb configurations
+    digest: 78dc46db1b42464531a405d31a09e434e6d7f8769cca12cceb4effa0574f8503
+    name: metallb-config
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/metallb-config-0.0.1/metallb-config-0.0.1.tgz
+    version: 0.0.1
   minio-config:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -1223,4 +1234,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/warracker-0.0.1/warracker-0.0.1.tgz
     version: 0.0.1
-generated: "2025-10-05T22:30:30.536052932Z"
+generated: "2025-10-10T10:23:48.169055043Z"
