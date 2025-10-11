@@ -156,6 +156,7 @@ default_context:
       - name: "vikunja"
         chart_name: "vikunja"
         enable_ssl: true
+        enable_secrets: true
       - name: "warracker"
         chart_name: "warracker"
         enable_ssl: true

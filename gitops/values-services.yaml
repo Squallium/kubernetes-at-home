@@ -810,6 +810,11 @@ applicationsets:
                 - $values/apps/vikunja/{{metadata.labels.environment}}/values.yaml
                 - $values/apps/vikunja/{{metadata.labels.environment}}/values-ssl.yaml
                 - $values/defaults/{{metadata.labels.environment}}/resources/values.yaml
+              fileParameters:
+                - name: openid.client_id
+                  path: secrets+literal://vals!ref+vault://secret/vikunja/{{metadata.labels.environment}}/authentik#/client_id
+                - name: openid.client_secret
+                  path: secrets+literal://vals!ref+vault://secret/vikunja/{{metadata.labels.environment}}/authentik#/client_secret
         destination:
           server: '{{server}}'
           namespace: vikunja
