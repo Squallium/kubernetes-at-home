@@ -1,6 +1,10 @@
 image: vikunja/vikunja:0.24.6
 jwtSecret: supersecreto # cámbialo luego en serio
 
+auth:
+  openid:
+    enabled: false
+
 deployment:
   resources:
     requests:

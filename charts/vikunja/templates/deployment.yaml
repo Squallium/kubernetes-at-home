@@ -25,12 +25,18 @@ spec:
           volumeMounts:
             - name: vikunja-files
               mountPath: /app/vikunja/files
+            - name: vikunja-config-file
+              mountPath: /app/vikunja/config.yml
+              subPath: config.yml
           resources:
             {{- toYaml .Values.deployment.resources | nindent 12 }}
       volumes:
         - name: vikunja-files
           persistentVolumeClaim:
             claimName: vikunja-files-pvc
+        - name: vikunja-config-file
+          configMap:
+            name: vikunja-config-file
 ---
 apiVersion: v1
 kind: PersistentVolume

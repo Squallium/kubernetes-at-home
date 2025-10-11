@@ -12,3 +12,21 @@ data:
   VIKUNJA_TYPESENSE_PORT: "8108"
   VIKUNJA_TYPESENSE_APIKEY: vikunja
   VIKUNJA_SERVICE_JWTSECRET: {{ .Values.jwtSecret }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: vikunja-config-file
+data:
+  config.yml: |
+{{- if .Values.auth.openid.enabled }}
+    auth:
+      openid:
+        enabled: true
+        providers:
+          - name: {{ default "authentik" .Values.auth.openid.providerName }}
+            authurl: {{ .Values.auth.openid.authurl | quote }}
+            logouturl: {{ .Values.auth.openid.logouturl | quote }}
+            clientid: {{ .Values.auth.openid.clientid | quote }}
+            clientsecret: {{ .Values.auth.openid.clientsecret | quote }}
+{{- end }}
