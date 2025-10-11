@@ -74,9 +74,9 @@ applicationsets:
                 - $values/defaults/{{'{{'}}metadata.labels.environment}}/resources/values.yaml
               {%- if service.get("enable_secrets", False) %}
               fileParameters:
-                - name: openid.client_id
+                - name: auth.openid.client_id
                   path: secrets+literal://vals!ref+vault://secret/{{ service.name }}/{{'{{'}}metadata.labels.environment}}/authentik#/client_id
-                - name: openid.client_secret
+                - name: auth.openid.client_secret
                   path: secrets+literal://vals!ref+vault://secret/{{ service.name }}/{{'{{'}}metadata.labels.environment}}/authentik#/client_secret
               {%- endif %}
         destination:
