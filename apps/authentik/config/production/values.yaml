@@ -24,7 +24,7 @@ extSecrets:
           property: password
 
 postgresql:
-  user: secrets+literal://vals!ref+vault://secret/authentik/production/postgres#/username
+  username: secrets+literal://vals!ref+vault://secret/authentik/production/postgres#/username
   password: secrets+literal://vals!ref+vault://secret/authentik/production/postgres#/password
 redis:
   password: secrets+literal://vals!ref+vault://secret/authentik/production/redis#/password
