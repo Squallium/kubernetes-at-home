@@ -1,0 +1,40 @@
+global:
+  image:
+    tag: 2025.8.4
+
+authentik:
+  postgresql:
+    user: secrets+literal://vals!ref+vault://secret/authentik/production/postgres#/username
+    password: secrets+literal://vals!ref+vault://secret/authentik/production/postgres#/password
+  redis:
+    password: secrets+literal://vals!ref+vault://secret/authentik/production/redis#/password
+
+server:
+  ingress:
+    hosts:
+      - auth.internal.org
+
+  envFrom:
+    - secretRef:
+        name: authentik-env
+
+  resources:
+    requests:
+      cpu: 800m
+      memory: 1Gi
+    limits:
+      cpu: 2000m
+      memory: 2Gi
+
+worker:
+  envFrom:
+    - secretRef:
+        name: authentik-env
+
+  resources:
+    requests:
+      cpu: 800m
+      memory: 1Gi
+    limits:
+      cpu: 2000m
+      memory: 2Gi

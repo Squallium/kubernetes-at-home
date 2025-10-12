@@ -19,6 +19,14 @@ spec:
           volumeMounts:
             - name: redisdata
               mountPath: /data
+          {{- if .Values.redis.password }}
+          env:
+            - name: REDIS_PASSWORD
+              value: "{{ .Values.redis.password }}"
+          command: [ "sh", "-c" ]
+          args:
+            - redis-server --requirepass "$REDIS_PASSWORD"
+          {{- end }}
           {{- include "chart.resources" (dict "name" "redis" "Values" .Values) | nindent 10 }}
       volumes:
         - name: redisdata

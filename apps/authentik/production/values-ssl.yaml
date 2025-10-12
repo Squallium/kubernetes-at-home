@@ -1,0 +1,8 @@
+server:
+  ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: home-internal-ca-issuer
+    tls:
+      - secretName: auth-tls
+        hosts:
+          - auth.internal.org

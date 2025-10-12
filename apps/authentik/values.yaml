@@ -28,12 +28,3 @@ server:
   ingress:
     enabled: true
     ingressClassName: nginx
-
-  envFrom:
-    - secretRef:
-        name: authentik-env
-
-worker:
-  envFrom:
-    - secretRef:
-        name: authentik-env

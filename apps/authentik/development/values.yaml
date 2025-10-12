@@ -11,6 +11,11 @@ server:
   ingress:
     hosts:
       - auth-dev.internal.org
+
+  envFrom:
+    - secretRef:
+        name: authentik-env
+
   resources:
     requests:
       cpu: 400m
@@ -20,6 +25,10 @@ server:
       memory: 1Gi
 
 worker:
+  envFrom:
+    - secretRef:
+        name: authentik-env
+
   resources:
     requests:
       cpu: 400m

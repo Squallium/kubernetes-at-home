@@ -15,3 +15,16 @@ extSecrets:
         remoteRef:
           key: secret/authentik/production/postgres
           property: password
+  - name: redis
+    templateType: kubernetes.io/basic-auth
+    secrets:
+      - secretKey: password
+        remoteRef:
+          key: secret/authentik/production/redis
+          property: password
+
+postgresql:
+  user: secrets+literal://vals!ref+vault://secret/authentik/production/postgres#/username
+  password: secrets+literal://vals!ref+vault://secret/authentik/production/postgres#/password
+redis:
+  password: secrets+literal://vals!ref+vault://secret/authentik/production/redis#/password

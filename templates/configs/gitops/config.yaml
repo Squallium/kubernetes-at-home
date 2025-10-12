@@ -167,7 +167,7 @@ default_context:
         chart_target_revision: "0.0.12"
       - name: "authentik"
         chart_name: "authentik-config"
-        chart_target_revision: "0.0.6"
+        chart_target_revision: "0.0.7"
   services_addons:
     list:
       - name: "home-assistant-addons"
