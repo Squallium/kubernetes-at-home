@@ -14,6 +14,19 @@ spec:
       labels:
         app: vikunja
     spec:
+      initContainers:
+        - name: install-ca-cert
+          image: busybox:1.35.0-uclibc
+          command:
+            - sh
+            - -c
+            - |
+              cp /etc/ssl/certs/my-ca-cert.crt /usr/local/share/ca-certificates/root-ca.crt
+              update-ca-certificates
+          volumeMounts:
+            - name: trusted-ca
+              mountPath: /etc/ssl/certs/my-ca-cert.crt
+              subPath: tls.crt
       containers:
         - name: vikunja
           image: {{ .Values.image }}
@@ -28,14 +41,8 @@ spec:
             - name: vikunja-config-file
               mountPath: /app/vikunja/config.yml
               subPath: config.yml
-            - name: trusted-ca
-              mountPath: /usr/local/share/ca-certificates/root-ca.crt
-              subPath: tls.crt
           resources:
             {{- toYaml .Values.deployment.resources | nindent 12 }}
-          command: [ "/bin/sh", "-c" ]
-          args:
-            - update-ca-certificates && exec /app/vikunja/vikunja
       volumes:
         - name: vikunja-files
           persistentVolumeClaim:
