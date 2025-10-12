@@ -21,13 +21,13 @@ data:
   config.yml: |
 {{- if .Values.auth.openid.enabled }}
     auth:
-      openid_connect:
+      openid:
         enabled: true
         providers:
           - name: {{ default "authentik" .Values.auth.openid.providerName }}
-            authurl: {{ .Values.auth.openid.authurl | quote }}
-            clientid: {{ .Values.auth.openid.client_id | quote }}
-            clientsecret: {{ .Values.auth.openid.client_secret | quote }}
+            authurl: {{ .Values.auth.openid.authurl }}
+            clientid: {{ .Values.auth.openid.client_id }}
+            clientsecret: {{ .Values.auth.openid.client_secret }}
             scope: openid profile email
             forceuserinfo: false
 {{- end }}
