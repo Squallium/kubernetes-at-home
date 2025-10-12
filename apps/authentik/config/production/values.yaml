@@ -1,0 +1,17 @@
+extSecrets:
+  - name: env
+    secrets:
+      - secretKey: AUTHENTIK_SECRET_KEY
+        remoteRef:
+          key: secret/authentik/production/env
+  - name: postgres
+    templateType: kubernetes.io/basic-auth
+    secrets:
+      - secretKey: username
+        remoteRef:
+          key: secret/authentik/production/postgres
+          property: username
+      - secretKey: password
+        remoteRef:
+          key: secret/authentik/production/postgres
+          property: password
