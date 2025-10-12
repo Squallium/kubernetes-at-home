@@ -28,8 +28,14 @@ spec:
             - name: vikunja-config-file
               mountPath: /app/vikunja/config.yml
               subPath: config.yml
+            - name: trusted-ca
+              mountPath: /usr/local/share/ca-certificates/root-ca.crt
+              subPath: tls.crt
           resources:
             {{- toYaml .Values.deployment.resources | nindent 12 }}
+          command: [ "/bin/sh", "-c" ]
+          args:
+            - update-ca-certificates && exec /app/vikunja/vikunja
       volumes:
         - name: vikunja-files
           persistentVolumeClaim:
@@ -37,6 +43,9 @@ spec:
         - name: vikunja-config-file
           configMap:
             name: vikunja-config-file
+        - name: trusted-ca
+          secret:
+            secretName: vikunja-trusted-ca
 ---
 apiVersion: v1
 kind: PersistentVolume
