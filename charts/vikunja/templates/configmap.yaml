@@ -21,7 +21,7 @@ data:
   config.yml: |
 {{- if .Values.auth.openid.enabled }}
     auth:
-      openid:
+      openid_connect:
         enabled: true
         providers:
           - name: {{ default "authentik" .Values.auth.openid.providerName }}
