@@ -192,6 +192,8 @@ applicationsets:
                 - $values/apps/{{ service_config.name }}/config/values.yaml
                 - $values/apps/{{ service_config.name }}/config/{{'{{'}}metadata.labels.environment}}/values.yaml
                 - $values/defaults/{{'{{'}}metadata.labels.environment}}/resources/values.yaml
+              extraArgs:
+                - --evaluate-templates
         destination:
           server: '{{'{{'}}server}}'
           namespace: {{ service_config.name }}

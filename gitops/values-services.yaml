@@ -1000,6 +1000,8 @@ applicationsets:
                 - $values/apps/home-assistant/config/values.yaml
                 - $values/apps/home-assistant/config/{{metadata.labels.environment}}/values.yaml
                 - $values/defaults/{{metadata.labels.environment}}/resources/values.yaml
+              extraArgs:
+                - --evaluate-templates
         destination:
           server: '{{server}}'
           namespace: home-assistant
@@ -1092,6 +1094,8 @@ applicationsets:
                 - $values/apps/authentik/config/values.yaml
                 - $values/apps/authentik/config/{{metadata.labels.environment}}/values.yaml
                 - $values/defaults/{{metadata.labels.environment}}/resources/values.yaml
+              extraArgs:
+                - --evaluate-templates
         destination:
           server: '{{server}}'
           namespace: authentik
