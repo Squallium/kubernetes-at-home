@@ -2,8 +2,7 @@ auth:
   openid:
     enabled: true
     providerName: authentik
-    authurl: https://auth-dev.internal.org/application/o/vikunja/
-    logouturl: https://auth-dev.internal.org/application/o/vikunja/end-session/
+    authurl: https://auth-dev.internal.org/application/o/vikunja/.well-known/openid-configuration
 
 ingress:
   host: vikunja-dev.internal
