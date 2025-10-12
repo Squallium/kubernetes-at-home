@@ -28,35 +28,12 @@ server:
   ingress:
     enabled: true
     ingressClassName: nginx
-    annotations:
-      cert-manager.io/cluster-issuer: home-internal-ca-issuer
-    hosts:
-      - auth-dev.internal.org
-    tls:
-      - secretName: auth-dev-tls
-        hosts:
-          - auth-dev.internal.org
+
   envFrom:
     - secretRef:
         name: authentik-env
-#  volumes:
-#    - name: postgres-creds
-#      secret:
-#        secretName: authentik-postgres
-#  volumeMounts:
-#    - name: postgres-creds
-#      mountPath: /postgres-creds
-#      readOnly: true
+
 worker:
   envFrom:
     - secretRef:
         name: authentik-env
-#  volumes:
-#    - name: postgres-creds
-#      secret:
-#        secretName: authentik-postgres
-#  volumeMounts:
-#    - name: postgres-creds
-#      mountPath: /postgres-creds
-#      readOnly: true
-

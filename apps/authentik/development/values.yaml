@@ -2,7 +2,15 @@ global:
   image:
     tag: 2025.8.4
 
+authentik:
+  postgresql:
+    user: secrets+literal://vals!ref+vault://secret/authentik/development/postgres#/username
+    password: secrets+literal://vals!ref+vault://secret/authentik/development/postgres#/password
+
 server:
+  ingress:
+    hosts:
+      - auth-dev.internal.org
   resources:
     requests:
       cpu: 400m
