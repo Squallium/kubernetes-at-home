@@ -2,7 +2,7 @@ auth:
   openid:
     enabled: true
     providerName: authentik
-    authurl: https://auth-dev.internal.org/application/o/vikunja/.well-known/openid-configuration
+    authurl: https://auth-dev.internal.org/application/o/vikunja
 
 ingress:
   host: vikunja-dev.internal
