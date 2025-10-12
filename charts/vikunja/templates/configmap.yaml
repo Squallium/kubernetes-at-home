@@ -26,7 +26,8 @@ data:
         providers:
           - name: {{ default "authentik" .Values.auth.openid.providerName }}
             authurl: {{ .Values.auth.openid.authurl | quote }}
-            logouturl: {{ .Values.auth.openid.logouturl | quote }}
             clientid: {{ .Values.auth.openid.client_id | quote }}
             clientsecret: {{ .Values.auth.openid.client_secret | quote }}
+            scope: openid profile email
+            forceuserinfo: false
 {{- end }}
