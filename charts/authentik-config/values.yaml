@@ -9,8 +9,7 @@ extSecrets:
 
 postgresql:
   image: postgres:17.3-alpine
-  username: authentik
-  password: authentik
+  secretName: authentik-postgres
   database: authentik
   storage: 1Gi
   port: 5432

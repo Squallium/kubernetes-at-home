@@ -22,9 +22,3 @@ extSecrets:
         remoteRef:
           key: secret/authentik/production/redis
           property: password
-
-postgresql:
-  username: secrets+literal://vals!ref+vault://secret/authentik/production/postgres#/username
-  password: secrets+literal://vals!ref+vault://secret/authentik/production/postgres#/password
-redis:
-  password: secrets+literal://vals!ref+vault://secret/authentik/production/redis#/password

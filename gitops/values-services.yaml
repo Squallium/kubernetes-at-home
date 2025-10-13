@@ -1086,7 +1086,7 @@ applicationsets:
             ref: values
           - repoURL: https://squallium.github.io/kubernetes-at-home
             chart: authentik-config
-            targetRevision: 0.0.7
+            targetRevision: 0.0.8
             helm:
               valueFiles:
                 - $values/apps/authentik/config/values.yaml

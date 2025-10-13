@@ -19,10 +19,13 @@ spec:
           volumeMounts:
             - name: redisdata
               mountPath: /data
-          {{- if .Values.redis.password }}
+          {{- if .Values.redis.secretName }}
           env:
             - name: REDIS_PASSWORD
-              value: "{{ .Values.redis.password }}"
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.redis.secretName }}
+                  key: password
           command: [ "sh", "-c" ]
           args:
             - redis-server --requirepass "$REDIS_PASSWORD"
