@@ -15,7 +15,7 @@ statefulset:
       memory: 300Mi
       cpu: 200m
     limits:
-      memory: 600Mi
+      memory: 300Mi
       cpu: 200m
 
 #zigbee2mqtt:
