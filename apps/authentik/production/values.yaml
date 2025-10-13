@@ -2,13 +2,6 @@ global:
   image:
     tag: 2025.8.4
 
-authentik:
-  postgresql:
-    user: secrets+literal://vals!ref+vault://secret/authentik/production/postgres#/username
-    password: secrets+literal://vals!ref+vault://secret/authentik/production/postgres#/password
-  redis:
-    password: secrets+literal://vals!ref+vault://secret/authentik/production/redis#/password
-
 server:
   ingress:
     hosts:

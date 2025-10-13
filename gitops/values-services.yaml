@@ -532,6 +532,13 @@ applicationsets:
                 - $values/apps/authentik/{{metadata.labels.environment}}/values.yaml
                 - $values/apps/authentik/{{metadata.labels.environment}}/values-ssl.yaml
                 - $values/defaults/{{metadata.labels.environment}}/resources/values.yaml
+              fileParameters:
+                - name: authentik.postgresql.user
+                  path: secrets+literal://vals!ref+vault://secret/authentik/{{metadata.labels.environment}}/postgres#/username
+                - name: authentik.postgresql.password
+                  path: secrets+literal://vals!ref+vault://secret/authentik/{{metadata.labels.environment}}/postgres#/password
+                - name: authentik.redis.password
+                  path: secrets+literal://vals!ref+vault://secret/authentik/{{metadata.labels.environment}}/redis#/password
         destination:
           server: '{{server}}'
           namespace: authentik
