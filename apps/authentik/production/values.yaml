@@ -16,8 +16,8 @@ server:
       cpu: 300m
       memory: 512Mi
     limits:
-      cpu: 1500m
-      memory: 2Gi
+      cpu: 600m
+      memory: 1Gi
 
 worker:
   envFrom:
@@ -29,5 +29,5 @@ worker:
       cpu: 200m
       memory: 512Mi
     limits:
-      cpu: 1500m
-      memory: 2Gi
+      cpu: 400m
+      memory: 1Gi
