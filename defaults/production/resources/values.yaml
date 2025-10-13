@@ -2,27 +2,27 @@ defaults:
   postgresql:
     resources:
       requests:
-        cpu: 200m
-        memory: 512Mi
+        cpu: 100m
+        memory: 256Mi
       limits:
         cpu: 500m
-        memory: 1Gi
+        memory: 512Mi
 
   redis:
     resources:
       requests:
-        cpu: 100m
-        memory: 128Mi
+        cpu: 50m
+        memory: 64Mi
       limits:
-        cpu: 300m
-        memory: 512Mi
+        cpu: 200m
+        memory: 256Mi
 
   typesense:
     resources:
       requests:
-        cpu: 200m
-        memory: 512Mi
+        cpu: 100m
+        memory: 256Mi
       limits:
-        cpu: 500m
-        memory: 1Gi
+        cpu: 300m
+        memory: 512Mi
 
