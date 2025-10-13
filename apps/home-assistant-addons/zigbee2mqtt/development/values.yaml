@@ -7,3 +7,12 @@ ingress:
       paths:
         - path: /
           pathType: Prefix
+
+statefulset:
+  resources:
+    requests:
+      memory: 200Mi
+      cpu: 75m
+    limits:
+      memory: 200Mi
+      cpu: 75m

@@ -9,6 +9,15 @@ ingress:
         - path: /
           pathType: Prefix
 
+statefulset:
+  resources:
+    requests:
+      memory: 300Mi
+      cpu: 100m
+    limits:
+      memory: 300Mi
+      cpu: 100m
+
 #zigbee2mqtt:
 #  external_converters:
 #    - aqara-t2.js
