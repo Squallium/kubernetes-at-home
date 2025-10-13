@@ -22,3 +22,6 @@ extSecrets:
         remoteRef:
           key: secret/authentik/production/redis
           property: password
+
+redis:
+  secretName: authentik-redis
