@@ -13,10 +13,10 @@ statefulset:
   resources:
     requests:
       memory: 300Mi
-      cpu: 100m
+      cpu: 200m
     limits:
-      memory: 300Mi
-      cpu: 100m
+      memory: 600Mi
+      cpu: 200m
 
 #zigbee2mqtt:
 #  external_converters:
