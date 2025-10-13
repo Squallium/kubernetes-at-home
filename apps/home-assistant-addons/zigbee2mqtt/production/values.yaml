@@ -12,7 +12,7 @@ ingress:
 statefulset:
   resources:
     requests:
-      memory: 300Mi
+      memory: 150Mi
       cpu: 200m
     limits:
       memory: 300Mi
