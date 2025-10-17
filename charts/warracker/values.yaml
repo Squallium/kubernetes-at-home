@@ -3,6 +3,12 @@ deployment:
   replicas: 1
   containerPort: 80
 
+  oidc:
+    enabled: false
+    providerName: authentik
+    issuerUrl: https://auth.internal.org/application/o/warracker/
+    scope: openid email profile
+
   additionalEnv:
     WARRACKER_MEMORY_MODE: ultra-light
     WARRACKER_NOTIFICATION_ENABLED: "false"

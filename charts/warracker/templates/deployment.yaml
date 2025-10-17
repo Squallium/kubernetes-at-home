@@ -28,6 +28,18 @@ spec:
               value: {{ .Values.postgresql.user }}
             - name: DB_PASSWORD
               value: {{ .Values.postgresql.password }}
+            {{- if .Values.deployment.oidc.enabled }}
+            - name: OIDC_PROVIDER_NAME
+              value: {{ .Values.deployment.oidc.providerName }}
+            - name: OIDC_CLIENT_ID
+              value: {{ .Values.deployment.oidc.clientId }}
+            - name: OIDC_CLIENT_SECRET
+              value: {{ .Values.deployment.oidc.clientSecret }}
+            - name: OIDC_ISSUER_URL
+              value: {{ .Values.deployment.oidc.issuerUrl }}
+            - name: OIDC_SCOPE
+              value: "{{ .Values.deployment.oidc.scope }}"
+            {{- end }}
             {{- range $key, $value := .Values.deployment.additionalEnv }}
             - name: {{ $key }}
               value: "{{ $value }}"
