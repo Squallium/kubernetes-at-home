@@ -1,6 +1,9 @@
 deployment:
   image: ghcr.io/sassanix/warracker/main:0.10.1.12
 
+  oidc:
+    enabled: true
+
 ingress:
   enabled: true
   host: warracker-dev.internal
