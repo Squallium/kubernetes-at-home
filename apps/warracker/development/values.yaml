@@ -2,7 +2,7 @@ deployment:
   image: ghcr.io/sassanix/warracker/main:0.10.1.12
 
   oidc:
-    enabled: false
+    enabled: true
 
 ingress:
   enabled: true
