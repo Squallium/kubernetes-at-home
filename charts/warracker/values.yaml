@@ -6,7 +6,7 @@ deployment:
   oidc:
     enabled: false
     providerName: authentik
-    issuerUrl: https://auth.internal.org/application/o/warracker/
+    issuerUrl: https://auth-dev.internal.org/application/o/warracker/
     scope: openid email profile
 
   additionalEnv:
