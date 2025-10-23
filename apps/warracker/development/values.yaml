@@ -4,6 +4,11 @@ deployment:
   oidc:
     enabled: true
 
+  additionalEnv:
+    WARRACKER_MEMORY_MODE: ultra-light
+    WARRACKER_NOTIFICATION_ENABLED: "false"
+    FLASK_ENV: "production"
+
 ingress:
   enabled: true
   host: warracker-dev.internal
