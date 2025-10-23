@@ -8,6 +8,7 @@ deployment:
     WARRACKER_MEMORY_MODE: ultra-light
     WARRACKER_NOTIFICATION_ENABLED: "false"
     FLASK_ENV: "production"
+    FRONTEND_URL: "https://warracker-dev.internal"
 
 ingress:
   enabled: true
