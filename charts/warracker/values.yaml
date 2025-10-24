@@ -31,12 +31,15 @@ ingress:
   tls: []
 
 pvc:
-  storage: 1Gi
+  uploads:
+    storage: 1Gi
+    storagePath: /mnt/services/warracker/uploads
 
 postgresql:
   image: postgres:17.3-alpine
-  user: warracker
+  username: warracker
   password: changeme
   database: warracker
+  port: 5432
   storage: 1Gi
-  servicePort: 5432
+  storagePath: /mnt/services/warracker/postgres
