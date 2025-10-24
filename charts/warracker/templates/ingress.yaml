@@ -4,6 +4,7 @@ kind: Ingress
 metadata:
   name: warracker
   annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: {{ .Values.ingress.proxyBodySize }}
     {{- range $key, $value := .Values.ingress.annotations }}
     {{ $key }}: {{ $value | quote }}
     {{- end }}
