@@ -34,6 +34,7 @@ In this repository you will find the following folders:
 
 - 2025-09-14 - First version of disaster recovery steps
 - 2025-10-09 - MetalLB stop working in production for Adguard Home 53 port
+- 2025-10-27 - Trying to recover vault volume after power failure
 
 ### Setup core cluster
 

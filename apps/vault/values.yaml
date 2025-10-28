@@ -9,12 +9,18 @@ server:
   enabled: true
   ha:
     enabled: false
-  dataStorage:
-    enabled: true
-    size: 2Gi
-    storageClass: microk8s-hostpath
   standalone:
     enabled: true
+
+  volumes:
+    - name: vault-data
+      persistentVolumeClaim:
+        claimName: vault-pvc
+
+  volumeMounts:
+    - name: vault-data
+      mountPath: /vault/data
+
   ingress:
     enabled: true
     annotations:
