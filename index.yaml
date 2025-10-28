@@ -962,6 +962,18 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/prowlarr-0.0.1/prowlarr-0.0.1.tgz
     version: 0.0.1
+  vault-config:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2025-10-28T21:13:21.627852769Z"
+    description: A Helm chart for deploying Vault configuration including PersistentVolume
+      for Vault data.
+    digest: 3e6cbaed9b4827e75b362c0426f3e21d10d90d6acdbad162aa6caad73346746c
+    name: vault-config
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/vault-config-0.0.1/vault-config-0.0.1.tgz
+    version: 0.0.1
   vikunja:
   - apiVersion: v2
     appVersion: 0.24.6
@@ -1414,4 +1426,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/warracker-0.0.1/warracker-0.0.1.tgz
     version: 0.0.1
-generated: "2025-10-24T23:13:08.415443233Z"
+generated: "2025-10-28T21:13:21.628127049Z"
