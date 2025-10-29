@@ -12,6 +12,9 @@ server:
   standalone:
     enabled: true
 
+  dataStorage:
+    enabled: false
+    
   volumes:
     - name: vault-data
       persistentVolumeClaim:

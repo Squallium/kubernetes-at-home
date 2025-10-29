@@ -9,6 +9,20 @@ First you need to go to the microk8s shell and enable the hostpath-storage addon
 sudo microk8s enable hostpath-storage
 ```
 
+We need first to setup a pv and a pvc for Vault to store its data. We use the vault-config chart. First we need to install the repo:
+
+```shell
+helm repo add squallium https://squallium.github.io/kubernetes-at-home
+helm repo update
+```
+
+Then install vault-config:
+
+```bash
+helm install vault-config squallium/vault-config -n vault --create-namespace --version 0.0.1
+```
+
+
 Add the Hashicorp Vault Helm repository and update it:
 
 ```bash
