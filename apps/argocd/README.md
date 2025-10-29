@@ -24,7 +24,7 @@ helm repo update
 Install ArgoCD using our custom values file located at `apps/argocd/values.yaml`.
 
 ```shell
-helm install argocd argo/argo-cd --namespace argocd --values apps/argocd/values.yaml --version 8.3.7
+helm install argocd argo/argo-cd --namespace argocd --values apps/argocd/values.yaml --version 9.0.5
 ```
 
 These are the notes you will see after the installation:

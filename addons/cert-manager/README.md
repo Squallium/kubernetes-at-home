@@ -46,7 +46,7 @@ openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 3650 -out rootCA.crt
 
 ## Install the cert-manager-config helm chart
 
-Before installing the cert-manager-config helm chart, make sure you have added the the following secrets in your vault:
+Before installing the cert-manager-config helm chart, make sure you have added the following secrets in your vault:
 - key: secret/cert-manager/root-ca  property: tls.crt
 - key: secret/cert-manager/root-ca  property: tls.key
 

@@ -80,7 +80,7 @@ helm repo update
 For upgrading the helm chart and values, you can use the following command:
 
 ```bash
-helm upgrade vault hashicorp/vault -n vault --values apps/vault/values.yaml --version <version>
+helm upgrade vault hashicorp/vault -n vault --values apps/vault/values.yaml --values apps/vault/values-ssl.yaml --version <version>
 ```
 
 ## Test connectivity from other cluster's pods
