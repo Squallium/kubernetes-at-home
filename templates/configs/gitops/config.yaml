@@ -38,11 +38,6 @@ default_context:
         chart_target_revision: "75.4.0"
         server_side_apply: true
         enable_ssl: true
-      - name: "minio"
-        chart_repo: "https://charts.min.io/"
-        chart_name: "minio"
-        chart_target_revision: "5.4.0"
-        enable_ssl: true
       - name: "loki"
         chart_repo: "https://grafana.github.io/helm-charts"
         chart_name: "loki"
@@ -84,10 +79,6 @@ default_context:
         chart_repo: "https://squallium.github.io/kubernetes-at-home"
         chart_name: "cloudflared"
         chart_target_revision: "0.0.4"
-      - name: "metallb"
-        chart_repo: "https://metallb.github.io/metallb"
-        chart_name: "metallb"
-        chart_target_revision: "0.15.2"
   addons_config:
     list:
       - name: "external-secrets"
@@ -100,9 +91,6 @@ default_context:
         chart_name: "coredns-config"
         chart_target_revision: "0.0.3"
         namespace: "kube-system"
-      - name: "metallb"
-        chart_name: "metallb-config"
-        chart_target_revision: "0.0.1"
   services:
     list:
 #      - name: "homebox"
@@ -126,21 +114,11 @@ default_context:
             name: home-assistant-{{'{{'}}metadata.labels.environment}}
             jsonPointers:
               - /spec/template/metadata/annotations/checksum~1hass-configuration
-      - name: "adguard-home"
-        chart_name: "adguard-home"
-        chart_target_revision: "0.0.9"
-        enable_ssl: true
-        enable_kargo: true
       - name: "calibre-web"
         chart_name: "calibre-web"
         chart_target_revision: "0.0.4"
         enable_ssl: true
         enable_kargo: true
-      - name: "cloudnative-pg"
-        chart_repo: "https://cloudnative-pg.github.io/charts"
-        chart_name: "cloudnative-pg"
-        chart_target_revision: "0.24.0"
-        server_side_apply: true
       - name: "authentik"
         chart_repo: "https://charts.goauthentik.io"
         chart_name: "authentik"

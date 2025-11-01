@@ -36,42 +36,6 @@ applications:
     info:
     - name: url
       value: https://argoproj.github.io/
-  minio:
-    namespace: argocd
-    additionalLabels: {}
-    additionalAnnotations: {}
-    finalizers:
-    - resources-finalizer.argocd.argoproj.io
-    project: default
-    sources:
-    - repoURL: https://github.com/Squallium/kubernetes-at-home.git
-      targetRevision: main
-      ref: values
-    - repoURL: https://charts.min.io/
-      chart: minio
-      targetRevision: 5.4.0
-      helm:
-        valueFiles:
-          - $values/apps/minio/values.yaml
-          - $values/apps/minio/values-ssl.yaml
-    destination:
-      server: https://kubernetes.default.svc
-      namespace: minio
-    syncPolicy:
-#      automated:
-#        prune: false
-#        selfHeal: false
-      syncOptions:
-      - CreateNamespace=true
-    revisionHistoryLimit: null
-    ignoreDifferences:
-    - group: apps
-      kind: Deployment
-      jsonPointers:
-      - /spec/replicas
-    info:
-    - name: url
-      value: https://argoproj.github.io/
   loki:
     namespace: argocd
     additionalLabels: {}
