@@ -20,6 +20,9 @@ deployment:
     limits:
       cpu: 500m
       memory: 512Mi
+  envSecretKeys:
+    postgres: secret/warracker/development/postgres
+    oidc: secret/warracker/development/authentik
 
 service:
   servicePort: 80
