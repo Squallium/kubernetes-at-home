@@ -1,0 +1,13 @@
+#WARNING! This file should be located in the repository root directory in order to take effect.
+
+# deny by default
+*
+
+# explicitly list included directories
+!/terraform/
+
+# deny unneeded files and folders from included directories
+.terraform/
+.terragrunt-cache/
+.terragrunt-version
+*.hcl
