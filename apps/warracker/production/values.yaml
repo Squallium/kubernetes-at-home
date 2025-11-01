@@ -1,0 +1,15 @@
+deployment:
+  image: ghcr.io/sassanix/warracker/main:0.10.1.12
+
+  oidc:
+    enabled: true
+
+  additionalEnv:
+    WARRACKER_MEMORY_MODE: ultra-light
+    WARRACKER_NOTIFICATION_ENABLED: "false"
+    FLASK_ENV: "production"
+    FRONTEND_URL: "https://warracker.internal"
+
+ingress:
+  enabled: true
+  host: warracker.internal
