@@ -11,6 +11,10 @@ deployment:
     FLASK_ENV: "production"
     FRONTEND_URL: "https://warracker.internal"
 
+  envSecretKeys:
+    postgres: secret/warracker/production/postgres
+    oidc: secret/warracker/production/authentik
+
 ingress:
   enabled: true
   host: warracker.internal
