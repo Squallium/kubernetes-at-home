@@ -1,4 +1,4 @@
 hosts: |
-  192.168.1.147 vault.internal
+  192.168.1.207 vault.internal
   192.168.1.223 auth-dev.internal.org
   192.168.1.223 paperless-dev.internal
