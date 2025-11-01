@@ -3,6 +3,7 @@ deployment:
 
   oidc:
     enabled: true
+    issuerUrl: https://auth.internal.org/application/o/warracker/
 
   additionalEnv:
     WARRACKER_MEMORY_MODE: ultra-light
