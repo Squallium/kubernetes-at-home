@@ -11,10 +11,12 @@ module "k8s-at-home-common" {
   ]
 
   # vikunja
-  vikunja_meta_launch_url = "https://vikunja.internal/"
-  vikunja_allowed_redirect_uri = "https://vikunja.internal/auth/openid/authentik"
-  vikunja_backchannel_logout_uri = "https://vikunja.internal/auth/openid/authentik"
+  vikunja_domain_name = "https://vikunja.internal"
   vikunja_client_id = "4S14myjUOBF1gu1gB3XtxCMltNsg8rr0luexLdgM"
+
+  # warracker
+  warracker_domain_name = "https://warracker.internal"
+  warracker_client_id = "V9N1XYYt6ejMFCTkg28O4NKfY9Hewd9mp4ooOif1"
 }
 
 

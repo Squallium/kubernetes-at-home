@@ -13,22 +13,24 @@ variable "authentik_property_mappings" {
   type        = list(string)
 }
 
-variable "vikunja_meta_launch_url" {
-  description = "The launch URL for Vikunja application in Authentik"
-  type        = string
-}
-
-variable "vikunja_allowed_redirect_uri" {
-  description = "The allowed redirect URI for Vikunja OAuth2 provider in Authentik"
-  type        = string
-}
-
-variable "vikunja_backchannel_logout_uri" {
-  description = "The backchannel logout URI for Vikunja OAuth2 provider in Authentik"
-  type        = string
+variable "vikunja_domain_name" {
+    description = "The domain name for Vikunja application in Authentik"
+    type        = string
 }
 
 variable "vikunja_client_id" {
   description = "The client ID for Vikunja OAuth2 provider in Authentik"
   type        = string
+  default     = null
+}
+
+variable "warracker_domain_name" {
+    description = "The domain name for Warracker application in Authentik"
+    type        = string
+}
+
+variable "warracker_client_id" {
+    description = "The client ID for Warracker OAuth2 provider in Authentik"
+    type        = string
+    default     = null
 }
