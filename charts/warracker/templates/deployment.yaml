@@ -42,10 +42,6 @@ spec:
               value: {{ .Values.postgresql.port | quote }}
             - name: DB_NAME
               value: {{ .Values.postgresql.database | quote }}
-            - name: DB_USER
-              value: {{ .Values.postgresql.username | quote }}
-            - name: DB_PASSWORD
-              value: {{ .Values.postgresql.password | quote }}
             {{- if .Values.deployment.oidc.enabled }}
             - name: OIDC_ENABLED
               value: "true"
