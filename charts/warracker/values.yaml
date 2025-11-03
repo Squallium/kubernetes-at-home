@@ -41,8 +41,6 @@ pvc:
 
 postgresql:
   image: postgres:17.3-alpine
-  username: warracker
-  password: changeme
   database: warracker
   port: 5432
   storage: 1Gi
