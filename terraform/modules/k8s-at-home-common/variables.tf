@@ -13,6 +13,19 @@ variable "authentik_property_mappings" {
   type        = list(string)
 }
 
+variable "standard_oidc_services" {
+  description = "A map of standard OIDC services with their respective domain names and optional client IDs"
+  type = map(object({
+    name       = string
+    domain_name = string
+    redirect_uri_suffix = string
+    logout_uri_suffix = string
+    client_id  = optional(string)
+  }))
+  default = {}
+}
+
+
 variable "vikunja_domain_name" {
     description = "The domain name for Vikunja application in Authentik"
     type        = string

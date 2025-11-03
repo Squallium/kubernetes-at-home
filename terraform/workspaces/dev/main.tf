@@ -17,5 +17,15 @@ module "k8s-at-home-common" {
   # warracker
   warracker_domain_name = "https://warracker-dev.internal"
   warracker_client_id = "mxvp0Bc2Kxu5EgdOuhp0MDdNpJmjeb5rsPm0xYoz"
+
+  standard_oidc_services = {
+    paperless = {
+      name        = "Paperless"
+      domain_name = "https://paperless-dev.internal"
+      redirect_uri_suffix = "/accounts/oidc/authentik/login/callback/"
+      logout_uri_suffix = "/application/o/paperless/end-session/"
+      client_id   = "W518HnjYJYoPmFpHpmpRV1BgDBgGXYFUaWyEalx9LFSCMXkD"
+    }
+  }
 }
 
