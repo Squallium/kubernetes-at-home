@@ -36,3 +36,11 @@ https://docs.goauthentik.io/docs/users-sources/sources/#add-sources-to-default-l
 https://integrations.goauthentik.io/miscellaneous/home-assistant/
 https://github.com/cavefire/hass-openid
 
+
+## Other things
+
+### Geneate secure client id
+
+```bash
+python3 -c "import secrets; import string; print(''.join(secrets.choice(string.ascii_letters + string.digits) for _ in range(48)))"
+```
