@@ -11,6 +11,13 @@ deployment:
     limits:
       cpu: 300m
       memory: 512Mi
+  oidc:
+    enabled: false
+    logoutRedirectUrl: https://placeholder.example.com
+
+  envSecretKeys:
+    postgres: secret/paperless/development/postgres
+    oidc: secret/paperless/development/authentik
 
 ingress:
   enabled: true
@@ -30,7 +37,6 @@ redis:
 
 postgresql:
   image: postgres:15-alpine
-  username: paperless
-  password: paperlesspass
   database: paperlessdb
+  port: 5432
   storagePath: /mnt/paperless-ngx/postgres

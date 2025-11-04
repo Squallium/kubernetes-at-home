@@ -17,6 +17,11 @@ spec:
       containers:
         - name: paperless-ngx
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          envFrom:
+            - secretRef:
+                name: paperless-db
+            - secretRef:
+                name: paperless-oidc
           env:
             - name: PAPERLESS_REDIS
               value: redis://paperless-redis:6379
@@ -24,10 +29,18 @@ spec:
               value: paperless-postgresql
             - name: PAPERLESS_DBNAME
               value: {{ .Values.postgresql.database }}
-            - name: PAPERLESS_DBUSER
-              value: {{ .Values.postgresql.username }}
-            - name: PAPERLESS_DBPASS
-              value: {{ .Values.postgresql.password }}
+            {{- if .Values.deployment.oidc.enabled }}
+            - name: PAPERLESS_ENABLE_ALLAUTH
+              value: "true"
+            - name: PAPERLESS_APPS
+              value: "allauth.socialaccount.providers.openid_connect"
+            - name: PAPERLESS_AUTO_LOGIN
+              value: "true"
+            - name: PAPERLESS_AUTO_CREATE
+              value: "true"
+            - name: PAPERLESS_LOGOUT_REDIRECT_URL
+              value: {{ .Values.deployment.oidc.logoutRedirectUrl | quote }}
+            {{- end }}
             {{- range $key, $value := .Values.deployment.additionalEnv }}
             - name: {{ $key }}
               value: "{{ $value }}"

@@ -14,15 +14,21 @@ spec:
       containers:
         - name: postgres
           image: {{ .Values.postgresql.image }}
+          ports:
+            - containerPort: {{ .Values.postgresql.port }}
           env:
             - name: POSTGRES_DB
-              value: {{ .Values.postgresql.database }}
+              value: {{ .Values.postgresql.database | quote }}
             - name: POSTGRES_USER
-              value: {{ .Values.postgresql.username }}
+              valueFrom:
+                secretKeyRef:
+                  name: paperless-db
+                  key: PAPERLESS_DBUSER
             - name: POSTGRES_PASSWORD
-              value: {{ .Values.postgresql.password }}
-          ports:
-            - containerPort: 5432
+              valueFrom:
+                secretKeyRef:
+                  name: paperless-db
+                  key: PAPERLESS_DBPASS
           volumeMounts:
             - name: pgdata
               mountPath: /var/lib/postgresql/data
