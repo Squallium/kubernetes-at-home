@@ -848,6 +848,16 @@ entries:
   paperless-ngx:
   - apiVersion: v2
     appVersion: 2.16.2
+    created: "2025-11-04T22:42:48.358480487Z"
+    description: A Helm chart for deploying Paperless-ngx with PostgreSQL and Redis
+    digest: a6af97e1c1d58c36ab0f4c36d4b02f1d688d9d57b74ffe2662851f10b1457eb8
+    name: paperless-ngx
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/paperless-ngx-0.0.13/paperless-ngx-0.0.13.tgz
+    version: 0.0.13
+  - apiVersion: v2
+    appVersion: 2.16.2
     created: "2025-09-22T21:18:30.105695711Z"
     description: A Helm chart for deploying Paperless-ngx with PostgreSQL and Redis
     digest: b8de5a3b7698b212be8e7c48e7176c5d80768bdad1bf91cf52e6b8db7e0fb2b4
@@ -1506,4 +1516,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/warracker-0.0.1/warracker-0.0.1.tgz
     version: 0.0.1
-generated: "2025-11-03T21:03:05.402424398Z"
+generated: "2025-11-04T22:42:48.358752726Z"
