@@ -4,3 +4,6 @@ ingress:
 deployment:
   additionalEnv:
     PAPERLESS_CSRF_TRUSTED_ORIGINS: https://paperless-dev.internal
+  oidc:
+    enabled: true
+    logoutRedirectUrl: https://paperless-dev.internal/application/o/paperless/end-session/
