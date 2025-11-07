@@ -14,6 +14,19 @@ spec:
       labels:
         app: paperless-ngx
     spec:
+      initContainers:
+        - name: copy-ca
+          image: alpine:3.18
+          command:
+            - sh
+            - -c
+            - cp /tmp/root-ca.crt /ca/root-ca.crt
+          volumeMounts:
+            - name: trusted-ca
+              mountPath: /tmp/root-ca.crt
+              subPath: tls.crt
+            - name: ca-dir
+              mountPath: /ca
       containers:
         - name: paperless-ngx
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -41,6 +54,8 @@ spec:
             - name: PAPERLESS_LOGOUT_REDIRECT_URL
               value: {{ .Values.deployment.oidc.logoutRedirectUrl | quote }}
             {{- end }}
+            - name: REQUESTS_CA_BUNDLE
+              value: /ca/root-ca.crt
             {{- range $key, $value := .Values.deployment.additionalEnv }}
             - name: {{ $key }}
               value: "{{ $value }}"
@@ -52,6 +67,8 @@ spec:
               mountPath: /usr/src/paperless/data
             - name: media
               mountPath: /usr/src/paperless/media
+            - name: ca-dir
+              mountPath: /ca
           resources:
             {{- toYaml .Values.deployment.resources | nindent 12 }}
       volumes:
@@ -63,3 +80,8 @@ spec:
           hostPath:
             path: {{ .Values.storagePath.media }}
             type: Directory
+        - name: trusted-ca
+          secret:
+            secretName: paperless-trusted-ca
+        - name: ca-dir
+          emptyDir: { }
