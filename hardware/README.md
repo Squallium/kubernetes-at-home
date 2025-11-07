@@ -13,5 +13,15 @@ Once downloaded we need the balenaEtcher tool to flash the image into a microSD 
 scoop install etcher
 ```
 
+Then you have extend the size of the data parition using a software in my case the parition magic community edition.
+
+## Install MindTheGapps
+
+Use the recommened version of MindTheGapps for LineageOS in the KonstaKANG page. In this case the information is the
+entry for my
+release [LineageOS 23.0 (Android 16)](https://konstakang.com/devices/rpi4/LineageOS23/).
+
+Enable the advanced restart ooptions to reboot into recovery mode, select the USB storage in which you have saved the
+MindTheGapps zip and install it.
 
 

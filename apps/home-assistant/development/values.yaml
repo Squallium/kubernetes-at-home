@@ -8,13 +8,13 @@ ingress:
         - path: /
           pathType: Prefix
 
-#resources:
-#  limits:
-#    cpu: 350m
-#    memory: 256Mi
-#  requests:
-#    cpu: 350m
-#    memory: 256Mi
+resources:
+  limits:
+    cpu: 350m
+    memory: 256Mi
+  requests:
+    cpu: 350m
+    memory: 256Mi
 
 #initContainers:
 #  - name: setup-hacs
