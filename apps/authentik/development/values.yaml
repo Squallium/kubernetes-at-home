@@ -7,10 +7,6 @@ authentik:
     user: secrets+literal://vals!ref+vault://secret/authentik/development/postgres#/username
     password: secrets+literal://vals!ref+vault://secret/authentik/development/postgres#/password
 
-deployment:
-  additionalEnv:
-    PAPERLESS_URL: "https://paperless-dev.internal"
-
 server:
   ingress:
     hosts:
