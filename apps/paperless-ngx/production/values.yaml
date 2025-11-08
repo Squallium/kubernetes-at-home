@@ -7,6 +7,9 @@ deployment:
   oidc:
     enabled: true
     logoutRedirectUrl: https://paperless.internal/application/o/paperless/end-session/
+  envSecretKeys:
+    postgres: secret/paperless/production/postgres
+    oidc: secret/paperless/production/authentik
   resources:
     requests:
       cpu: 500m
