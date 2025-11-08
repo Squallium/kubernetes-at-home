@@ -40,6 +40,10 @@ extSecrets:
         remoteRef:
           key: secret/kargo/docker
           property: repo_url
+      - secretKey: repoURLIsRegex
+        remoteRef:
+          key: secret/kargo/docker
+          property: repo_url_is_regex
       - secretKey: username
         remoteRef:
           key: secret/kargo/docker
