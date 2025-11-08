@@ -79,6 +79,13 @@ applicationsets:
                 - name: auth.openid.client_secret
                   path: secrets+literal://vals!ref+vault://secret/{{ service.name }}/{{'{{'}}metadata.labels.environment}}/authentik#/client_secret
               {%- endif %}
+              {%- if service.get("helm_secrets", False) %}
+              fileParameters:
+                {%- for helm_secret in service.helm_secrets.list %}
+                - name: {{ helm_secret.name }}
+                  path: secrets+literal://vals!ref+vault://secret/{{ service.name }}/{{'{{'}}metadata.labels.environment}}/{{ helm_secret.key }}
+                {%- endfor %}
+              {%- endif %}
         destination:
           server: '{{'{{'}}server}}'
           namespace: {{ service.name }}
