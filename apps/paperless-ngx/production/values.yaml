@@ -4,6 +4,9 @@ ingress:
 deployment:
   additionalEnv:
     PAPERLESS_CSRF_TRUSTED_ORIGINS: https://paperless.internal
+  oidc:
+    enabled: true
+    logoutRedirectUrl: https://paperless.internal/application/o/paperless/end-session/
   resources:
     requests:
       cpu: 1000m
