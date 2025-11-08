@@ -98,6 +98,7 @@ default_context:
         chart_name: "paperless-ngx"
         chart_target_revision: "0.0.8"
         enable_ssl: true
+        enable_kargo: true
       - name: "home-assistant"
         chart_repo: "https://pajikos.github.io/home-assistant-helm-chart"
         chart_name: "home-assistant"

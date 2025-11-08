@@ -42,7 +42,8 @@ applicationsets:
         name: 'paperless-ngx-{{metadata.labels.environment}}'
         labels:
           type: 'service'
-        annotations: {}
+        annotations:
+          kargo.akuity.io/authorized-stage: 'paperless-ngx:{{metadata.labels.kargo-stage}}'
       spec:
         project: default
         sources:
