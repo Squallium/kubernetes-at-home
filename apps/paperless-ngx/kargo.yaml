@@ -13,6 +13,7 @@ kargo:
         - 'dev'
         - 'version-.*$'
         - 'amd64-.*$'
+      discoveryLimit: 15
     chart:
       repoURL: https://squallium.github.io/kubernetes-at-home
       name: paperless-ngx
