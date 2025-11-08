@@ -24,8 +24,8 @@ argocd-apps:
                   elements:
                     - service: calibre-web
                       location: calibre-web
-                    - service: adguard-home
-                      location: adguard-home
+                    - service: paperless-ngx
+                      location: paperless-ngx
                     - service: home-assistant
                       location: home-assistant
                     - service: zigbee2mqtt
