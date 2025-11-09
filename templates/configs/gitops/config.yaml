@@ -105,6 +105,12 @@ default_context:
         chart_target_revision: "0.3.11"
         enable_ssl: true
         enable_kargo: true
+        helm_secrets:
+          list:
+            - name: auth.openid.client_id
+              key: authentik#/client_id
+            - name: auth.openid.client_secret
+              key: authentik#/client_secret
         ignore_differences:
           - group: apps
             kind: StatefulSet
