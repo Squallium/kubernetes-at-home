@@ -546,6 +546,16 @@ entries:
     version: 0.0.4
   home-assistant-config:
   - apiVersion: v2
+    appVersion: 0.0.13
+    created: "2025-11-09T23:32:26.352399255Z"
+    description: A Helm chart for managing Home Assistant configuration files.
+    digest: 2384af6f78345d0b14b557426980cc178a0143b6b552cae34c354c3dddb4f823
+    name: home-assistant-config
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/home-assistant-config-0.0.13/home-assistant-config-0.0.13.tgz
+    version: 0.0.13
+  - apiVersion: v2
     appVersion: 0.0.12
     created: "2025-09-14T18:51:48.557717146Z"
     description: A Helm chart for managing Home Assistant configuration files.
@@ -1546,4 +1556,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/warracker-0.0.1/warracker-0.0.1.tgz
     version: 0.0.1
-generated: "2025-11-08T23:16:23.318278037Z"
+generated: "2025-11-09T23:32:26.352696749Z"
