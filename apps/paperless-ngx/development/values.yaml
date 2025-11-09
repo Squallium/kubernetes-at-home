@@ -1,5 +1,5 @@
 image:
-  tag: 2.18.1
+  tag: 2.19.0
 
 ingress:
   hostname: paperless-dev.internal
