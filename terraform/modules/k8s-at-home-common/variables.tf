@@ -17,6 +17,7 @@ variable "standard_oidc_services" {
   description = "A map of standard OIDC services with their respective domain names and optional client IDs"
   type = map(object({
     name       = string
+    group      = optional(string, "Organización")
     domain_name = string
     redirect_uri_suffix = string
     logout_uri_suffix = string

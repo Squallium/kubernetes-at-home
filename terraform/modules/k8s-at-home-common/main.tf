@@ -25,7 +25,7 @@ resource "authentik_application" "oidc_apps" {
 
   name              = each.value.name
   slug              = each.key
-  group             = "Organization"
+  group             = each.value.group
   meta_icon         = "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/${each.key}.png"
   meta_launch_url   = "${each.value.domain_name}/"
   open_in_new_tab   = true
@@ -52,7 +52,7 @@ resource "authentik_provider_oauth2" "provider_for_vikunja" {
 resource "authentik_application" "vikunja" {
   name              = "Vikunja"
   slug              = "vikunja"
-  group             = "Organization"
+  group             = "Organización"
   meta_icon         = "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/vikunja.png"
   meta_launch_url   = "${var.vikunja_domain_name}/"
   open_in_new_tab   = true
@@ -79,7 +79,7 @@ resource "authentik_provider_oauth2" "provider_for_warracker" {
 resource "authentik_application" "warracker" {
   name              = "Warracker"
   slug              = "warracker"
-  group             = "Inventory"
+  group             = "Inventario"
   meta_icon         = "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/warracker.png"
   meta_launch_url   = var.warracker_domain_name
   open_in_new_tab   = true

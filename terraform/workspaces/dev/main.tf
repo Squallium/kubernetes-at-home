@@ -21,10 +21,19 @@ module "k8s-at-home-common" {
   standard_oidc_services = {
     paperless = {
       name        = "Paperless"
+      group       = "Inventario"
       domain_name = "https://paperless-dev.internal"
       redirect_uri_suffix = "/accounts/oidc/authentik/login/callback/"
       logout_uri_suffix = "/application/o/paperless/end-session/"
       client_id   = "W518HnjYJYoPmFpHpmpRV1BgDBgGXYFUaWyEalx9LFSCMXkD"
+    }
+    home-assistant = {
+      name        = "Home Assistant"
+      group       = "Domótica"
+      domain_name = "https://home-assistant-dev.internal"
+      redirect_uri_suffix = "/auth/openid/callback"
+      logout_uri_suffix = "/auth/logout/"
+      client_id   = "JYJzXGZgXJH1bXG3fY2qQ1bF0h3v3Z8K5K5K5K5K5K5K5K5K5K"
     }
   }
 }
