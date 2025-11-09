@@ -41,15 +41,22 @@ resources:
 #      - name: home-assistant-development
 #        mountPath: /config
 
+# Other OpenID addon configuration
+#    openid:
+#      client_id: {{ .Values.auth.openid.client_id | quote }}
+#      client_secret: {{ .Values.auth.openid.client_secret | quote }}
+#      configure_url: "https://auth-dev.internal.org/application/o/home-assistant/.well-known/openid-configuration"
+#      scope: "openid profile email"
+#      username_field: "preferred_username"
+#      block_login: false
+
 configuration:
   templateConfig: |-
-    openid:
+    auth_oidc:
       client_id: {{ .Values.auth.openid.client_id | quote }}
       client_secret: {{ .Values.auth.openid.client_secret | quote }}
-      configure_url: "https://auth-dev.internal.org/application/o/home-assistant/.well-known/openid-configuration"
-      scope: "openid profile email"
-      username_field: "preferred_username"
-      block_login: false
+      discovery_url: "https://auth-dev.internal.org/application/o/home-assistant/.well-known/openid-configuration"
+      display_name: "Login with Authentik"
     
     # Loads default set of integrations. Do not remove.
     default_config:
