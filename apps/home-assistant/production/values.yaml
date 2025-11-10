@@ -8,19 +8,66 @@ ingress:
         - path: /
           pathType: Prefix
 
-#initContainers:
-#  - name: setup-hacs
-#    image: alpine:3.18
-#    securityContext:
-#      runAsUser: 0
-#    command: [ "/bin/sh", "-c" ]
-#    args:
-#      - |
-#        apk add --no-cache bash wget unzip curl > /dev/null; \
-#        echo "[INFO] Ejecutando script de instalación de HACS"; \
-#        cd /config; \
-#        wget -O - https://get.hacs.xyz | bash -; \
-#        echo "[INFO] Instalación de HACS completada."
-#    volumeMounts:
-#      - name: home-assistant-production
-#        mountPath: /config
+resources:
+  requests:
+    cpu: 350m
+    memory: 500Mi
+  limits:
+    cpu: 500m
+    memory: 1Gi
+
+initContainers:
+  - name: copy-ca
+    image: alpine:3.18
+    command:
+      - sh
+      - -c
+      - cp /tmp/root-ca.crt /ca/root-ca.crt
+    volumeMounts:
+      - name: trusted-ca
+        mountPath: /tmp/root-ca.crt
+        subPath: tls.crt
+      - name: ca-dir
+        mountPath: /ca
+
+env:
+  - name: SSL_CERT_FILE
+    value: /ca/root-ca.crt
+
+additionalMounts:
+  - name: ca-dir
+    mountPath: /ca
+
+additionalVolumes:
+  - name: trusted-ca
+    secret:
+      secretName: home-assistant-trusted-ca
+  - name: ca-dir
+    emptyDir: {}
+
+configuration:
+  templateConfig: |-
+    auth_oidc:
+      client_id: {{ .Values.auth.openid.client_id | quote }}
+      client_secret: {{ .Values.auth.openid.client_secret | quote }}
+      discovery_url: "https://auth.internal.org/application/o/home-assistant/.well-known/openid-configuration"
+      display_name: "Login with Authentik"
+    
+    # Loads default set of integrations. Do not remove.
+    default_config:
+
+    {{- if or .Values.ingress.enabled .Values.ingress.external }}
+    http:
+      use_x_forwarded_for: true
+      trusted_proxies:
+        {{- range .Values.configuration.trusted_proxies }}
+        - {{ . }}
+        {{- end }}
+    {{- end}}
+    # Load frontend themes from the themes folder
+    frontend:
+      themes: !include_dir_merge_named themes
+
+    automation: !include automations.yaml
+    script: !include scripts.yaml
+    scene: !include scenes.yaml

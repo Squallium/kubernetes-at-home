@@ -9,10 +9,10 @@ ingress:
           pathType: Prefix
 
 resources:
-  limits:
+  requests:
     cpu: 350m
     memory: 500Mi
-  requests:
+  limits:
     cpu: 350m
     memory: 500Mi
 
@@ -44,16 +44,6 @@ additionalVolumes:
       secretName: home-assistant-trusted-ca
   - name: ca-dir
     emptyDir: {}
-
-
-# Other OpenID addon configuration
-#    openid:
-#      client_id: {{ .Values.auth.openid.client_id | quote }}
-#      client_secret: {{ .Values.auth.openid.client_secret | quote }}
-#      configure_url: "https://auth-dev.internal.org/application/o/home-assistant/.well-known/openid-configuration"
-#      scope: "openid profile email"
-#      username_field: "preferred_username"
-#      block_login: false
 
 configuration:
   templateConfig: |-
