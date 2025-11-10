@@ -41,7 +41,7 @@ additionalMounts:
 additionalVolumes:
   - name: trusted-ca
     secret:
-      secretName: paperless-trusted-ca
+      secretName: home-assistant-trusted-ca
   - name: ca-dir
     emptyDir: {}
 
