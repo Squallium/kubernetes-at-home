@@ -26,6 +26,15 @@ module "k8s-at-home-common" {
       logout_uri_suffix = "/application/o/paperless/end-session/"
       client_id   = "W518HnjYJYoPmFpHpmpRV1BgDBgGXYFUaWyEalx9LFSCMXkD"
     }
+    home-assistant = {
+      name        = "Home Assistant"
+      group       = "Domótica"
+      domain_name = "https://home-assistant.internal"
+      meta_launch_url = "https://home-assistant.internal/auth/oidc/welcome"
+      redirect_uri_suffix = "/auth/oidc/callback"
+      logout_uri_suffix = "/auth/logout/"
+      client_id   = "M1oz8Z1CyWUarzadq4EMhyrZJaBZy1G_F7cxzVXr7uI"
+    }
   }
 }
 

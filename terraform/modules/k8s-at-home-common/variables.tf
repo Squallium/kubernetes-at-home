@@ -19,6 +19,7 @@ variable "standard_oidc_services" {
     name       = string
     group      = optional(string, "Organización")
     domain_name = string
+    meta_launch_url = optional(string)
     redirect_uri_suffix = string
     logout_uri_suffix = string
     client_id  = optional(string)
