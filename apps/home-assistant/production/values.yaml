@@ -16,34 +16,34 @@ resources:
     cpu: 500m
     memory: 1Gi
 
-initContainers:
-  - name: copy-ca
-    image: alpine:3.18
-    command:
-      - sh
-      - -c
-      - cp /tmp/root-ca.crt /ca/root-ca.crt
-    volumeMounts:
-      - name: trusted-ca
-        mountPath: /tmp/root-ca.crt
-        subPath: tls.crt
-      - name: ca-dir
-        mountPath: /ca
-
-env:
-  - name: SSL_CERT_FILE
-    value: /ca/root-ca.crt
-
-additionalMounts:
-  - name: ca-dir
-    mountPath: /ca
-
-additionalVolumes:
-  - name: trusted-ca
-    secret:
-      secretName: home-assistant-trusted-ca
-  - name: ca-dir
-    emptyDir: {}
+#initContainers:
+#  - name: copy-ca
+#    image: alpine:3.18
+#    command:
+#      - sh
+#      - -c
+#      - cp /tmp/root-ca.crt /ca/root-ca.crt
+#    volumeMounts:
+#      - name: trusted-ca
+#        mountPath: /tmp/root-ca.crt
+#        subPath: tls.crt
+#      - name: ca-dir
+#        mountPath: /ca
+#
+#env:
+#  - name: SSL_CERT_FILE
+#    value: /ca/root-ca.crt
+#
+#additionalMounts:
+#  - name: ca-dir
+#    mountPath: /ca
+#
+#additionalVolumes:
+#  - name: trusted-ca
+#    secret:
+#      secretName: home-assistant-trusted-ca
+#  - name: ca-dir
+#    emptyDir: {}
 
 configuration:
   templateConfig: |-
