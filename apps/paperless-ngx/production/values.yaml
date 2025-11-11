@@ -8,6 +8,7 @@ deployment:
   additionalEnv:
     PAPERLESS_URL: https://paperless.internal
     PAPERLESS_CSRF_TRUSTED_ORIGINS: https://paperless.internal
+    PAPERLESS_ALLOWED_HOSTS: "paperless.internal,paperless-ngx,paperless-ngx.paperless-ngx.svc.cluster.local,localhost,127.0.0.1"
   oidc:
     enabled: true
     logoutRedirectUrl: https://paperless.internal/application/o/paperless/end-session/
