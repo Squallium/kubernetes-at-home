@@ -1,5 +1,8 @@
+image:
+  repository: ghcr.io/sassanix/warracker/main
+  tag: 0.10.1.12
+
 deployment:
-  image: ghcr.io/sassanix/warracker/main:0.10.1.12
   replicas: 1
   containerPort: 80
 

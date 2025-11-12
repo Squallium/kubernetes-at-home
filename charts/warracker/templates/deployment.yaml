@@ -27,7 +27,7 @@ spec:
               mountPath: /ca
       containers:
         - name: warracker
-          image: {{ .Values.deployment.image }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           ports:
             - containerPort: {{ .Values.deployment.containerPort }}
           envFrom:
