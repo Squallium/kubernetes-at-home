@@ -1,6 +1,7 @@
-deployment:
-  image: ghcr.io/sassanix/warracker/main:0.10.1.12
+image:
+  tag: 1.0.2
 
+deployment:
   oidc:
     enabled: true
 
