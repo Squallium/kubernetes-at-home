@@ -70,9 +70,12 @@ spec:
               mountPath: /ca
           resources:
             {{- toYaml .Values.deployment.resources | nindent 12 }}
-          command: [ "/bin/sh", "-c" ]
+          command:
+            - /app/entrypoint.sh
           args:
-            - update-ca-certificates && exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
+            - /usr/bin/supervisord
+            - -c
+            - /etc/supervisor/conf.d/supervisord.conf
       volumes:
         - name: uploads-storage
           persistentVolumeClaim:
