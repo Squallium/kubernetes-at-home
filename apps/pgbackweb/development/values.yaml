@@ -3,4 +3,4 @@ image:
 
 ingress:
   enabled: true
-  host: warracker-dev.internal
+  host: pgbackweb-dev.internal
