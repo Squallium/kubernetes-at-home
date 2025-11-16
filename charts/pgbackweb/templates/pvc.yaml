@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pgbackweb-backups-pv
+  labels:
+    app: pgbackweb
+    type: backups
+spec:
+  capacity:
+    storage: {{ .Values.pvc.backups.storage | default "5Gi" }}
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: manual
+  hostPath:
+    path: {{ .Values.pvc.backups.storagePath }}
+    type: DirectoryOrCreate
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pgbackweb-backups-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: manual
+  selector:
+    matchLabels:
+      app: pgbackweb
+      type: backups
+  resources:
+    requests:
+      storage: {{ .Values.pvc.backups.storage }}

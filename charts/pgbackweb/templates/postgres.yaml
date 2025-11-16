@@ -1,0 +1,88 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pgbackweb-postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pgbackweb-postgres
+  template:
+    metadata:
+      labels:
+        app: pgbackweb-postgres
+    spec:
+      containers:
+        - name: postgres
+          image: {{ .Values.postgresql.image }}
+          ports:
+            - containerPort: {{ .Values.postgresql.port }}
+          env:
+            - name: POSTGRES_DB
+              value: {{ .Values.postgresql.database | quote }}
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: pgbackweb-db
+                  key: DB_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pgbackweb-db
+                  key: DB_PASSWORD
+          volumeMounts:
+            - name: postgres-data
+              mountPath: /var/lib/postgresql/data
+          {{- include "chart.resources" (dict "name" "postgresql" "Values" .Values) | nindent 10 }}
+      volumes:
+        - name: postgres-data
+          persistentVolumeClaim:
+            claimName: pgbackweb-postgres-pvc
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pgbackweb-postgres-pv
+  labels:
+    app: pgbackweb
+    type: postgres
+spec:
+  capacity:
+    storage: {{ .Values.postgresql.storage | default "5Gi" }}
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: manual
+  hostPath:
+    path: {{ .Values.postgresql.storagePath }}
+    type: DirectoryOrCreate
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pgbackweb-postgres-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: manual
+  selector:
+    matchLabels:
+      app: pgbackweb
+      type: postgres
+  resources:
+    requests:
+      storage: {{ .Values.postgresql.storage | default "5Gi" }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pgbackweb-postgres
+  labels:
+    app: pgbackweb-postgres
+spec:
+  type: ClusterIP
+  ports:
+    - port: {{ .Values.postgresql.port }}
+      targetPort: {{ .Values.postgresql.port }}
+  selector:
+    app: pgbackweb-postgres

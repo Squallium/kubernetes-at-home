@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pgbackweb
+spec:
+  replicas: {{ .Values.deployment.replicas }}
+  selector:
+    matchLabels:
+      app: pgbackweb
+  template:
+    metadata:
+      labels:
+        app: pgbackweb
+    spec:
+      containers:
+        - name: pgbackweb
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: {{ .Values.deployment.containerPort }}
+          envFrom:
+            - secretRef:
+                name: pgbackweb-config
+          env:
+            - name: PBW_ENCRYPTION_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: pgbackweb-config
+                  key: PBW_ENCRYPTION_KEY
+            - name: PBW_POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: pgbackweb-db
+                  key: DB_USER
+            - name: PBW_POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pgbackweb-db
+                  key: DB_PASSWORD
+            - name: PBW_POSTGRES_CONN_STRING
+              value: "postgresql://$(PBW_POSTGRES_USER):$(PBW_POSTGRES_PASSWORD)@pgbackweb-postgres.pgbackweb.svc.cluster.local:5432/pgbackweb?sslmode=disable"
+            {{- range $key, $value := .Values.deployment.additionalEnv }}
+            - name: {{ $key }}
+              value: "{{ $value }}"
+            {{- end }}
+          volumeMounts:
+            - mountPath: /backups
+              name: backups-storage
+          resources:
+            {{- toYaml .Values.deployment.resources | nindent 12 }}
+      volumes:
+        - name: backups-storage
+          persistentVolumeClaim:
+            claimName: pgbackweb-backups-pvc

@@ -1,0 +1,40 @@
+image:
+  repository: eduardolat/pgbackweb
+  tag: 0.5.1
+
+deployment:
+  replicas: 1
+  containerPort: 8085
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+
+  envSecretKeys:
+    postgres: secret/pgbackweb/development/postgres
+    config: secret/pgbackweb/development/config
+
+service:
+  servicePort: 80
+
+ingress:
+  enabled: false
+  proxyBodySize: "100m"
+  annotations: {}
+  tls: []
+
+pvc:
+  backups:
+    storage: 10Gi
+    storagePath: /mnt/services/pgbackweb/backups
+
+postgresql:
+  image: postgres:17.3-alpine
+  database: pgbackweb
+  port: 5432
+  storage: 1Gi
+  storagePath: /mnt/services/pgbackweb/postgres
