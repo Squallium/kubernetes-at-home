@@ -156,6 +156,7 @@ default_context:
         enable_ssl: true
       - name: "pgbackweb"
         chart_name: "pgbackweb"
+        enable_ssl: true
   services_config:
     list:
       - name: "home-assistant"
