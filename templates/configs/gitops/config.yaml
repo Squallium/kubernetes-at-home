@@ -154,6 +154,8 @@ default_context:
       - name: "warracker"
         chart_name: "warracker"
         enable_ssl: true
+      - name: "pgbackweb"
+        chart_name: "pgbackweb"
   services_config:
     list:
       - name: "home-assistant"
