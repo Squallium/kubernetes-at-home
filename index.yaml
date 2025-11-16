@@ -976,6 +976,18 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/paperless-ngx-0.0.6/paperless-ngx-0.0.6.tgz
     version: 0.0.6
+  pgbackweb:
+  - apiVersion: v2
+    appVersion: 0.5.1
+    created: "2025-11-16T17:52:52.177444745Z"
+    description: A Helm chart for deploying PG Back Web, a web interface for managing
+      PostgreSQL backups.
+    digest: 8d6b3e10f1acfb4783c8a878ecb44c166022d3a8c058547124e3d993c49939ef
+    name: pgbackweb
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/pgbackweb-0.0.1/pgbackweb-0.0.1.tgz
+    version: 0.0.1
   prowlarr:
   - apiVersion: v2
     appVersion: 1.37.0.5076
@@ -1606,4 +1618,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/warracker-0.0.1/warracker-0.0.1.tgz
     version: 0.0.1
-generated: "2025-11-13T23:16:24.122484437Z"
+generated: "2025-11-16T17:52:52.177765254Z"
