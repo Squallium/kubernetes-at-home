@@ -30,8 +30,8 @@ module "k8s-at-home-common" {
     home-assistant = {
       name        = "Home Assistant"
       group       = "Domótica"
-      domain_name = "https://home-assistant-dev.internal"
-      meta_launch_url = "https://home-assistant-dev.internal/auth/oidc/welcome"
+      domain_name = "https://home-assistant-dev.internal.org"
+      meta_launch_url = "https://home-assistant-dev.internal.org/auth/oidc/welcome"
       redirect_uri_suffix = "/auth/oidc/callback"
       logout_uri_suffix = "/auth/logout/"
       client_id   = "JYJzXGZgXJH1bXG3fY2qQ1bF0h3v3Z8K5K5K5K5K5K5K5K5K5K"

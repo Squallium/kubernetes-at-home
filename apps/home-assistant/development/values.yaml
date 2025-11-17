@@ -3,7 +3,7 @@ image:
 
 ingress:
   hosts:
-    - host: home-assistant-dev.internal
+    - host: home-assistant-dev.internal.org
       paths:
         - path: /
           pathType: Prefix
@@ -52,6 +52,10 @@ configuration:
       client_secret: {{ .Values.auth.openid.client_secret | quote }}
       discovery_url: "https://auth-dev.internal.org/application/o/home-assistant/.well-known/openid-configuration"
       display_name: "Login with Authentik"
+    
+    frontend:	
+      extra_module_url:	
+        - /hacsfiles/kiosk-mode/kiosk-mode.js
     
     # Loads default set of integrations. Do not remove.
     default_config:
