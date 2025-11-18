@@ -3,7 +3,7 @@ image:
 
 ingress:
   hosts:
-    - host: home-assistant.internal
+    - host: home-assistant.internal.org
       paths:
         - path: /
           pathType: Prefix
