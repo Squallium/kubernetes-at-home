@@ -27,6 +27,16 @@ variable "standard_oidc_services" {
   default = {}
 }
 
+variable "non_oidc_services" {
+    description = "A map of non-OIDC services with their respective domain names"
+    type = map(object({
+        name       = string
+        group      = optional(string, "Organización")
+        icon_theme = optional(string, "")
+        domain_name = string
+    }))
+    default = {}
+}
 
 variable "vikunja_domain_name" {
     description = "The domain name for Vikunja application in Authentik"

@@ -19,6 +19,22 @@ module "k8s-at-home-common" {
   warracker_client_id = "mxvp0Bc2Kxu5EgdOuhp0MDdNpJmjeb5rsPm0xYoz"
 
   standard_oidc_services = {
+    vikunja = {
+      name        = "Vikunja"
+      group       = "Organización"
+      domain_name = "https://vikunja-dev.internal"
+      redirect_uri_suffix = "/auth/openid/authentik"
+      logout_uri_suffix = "/auth/openid/authentik"
+      client_id   = "oOJdgBUOw1jA2luNHhb2kZGCfjkRuGC44whmEhfv"
+    }
+    warracker = {
+      name        = "Warracker"
+      group       = "Inventario"
+      domain_name = "https://warracker-dev.internal"
+      redirect_uri_suffix = "/api/oidc/callback"
+      logout_uri_suffix = ""
+      client_id   = "mxvp0Bc2Kxu5EgdOuhp0MDdNpJmjeb5rsPm0xYoz"
+    }
     paperless = {
       name        = "Paperless"
       group       = "Inventario"
@@ -35,6 +51,20 @@ module "k8s-at-home-common" {
       redirect_uri_suffix = "/auth/oidc/callback"
       logout_uri_suffix = "/auth/logout/"
       client_id   = "JYJzXGZgXJH1bXG3fY2qQ1bF0h3v3Z8K5K5K5K5K5K5K5K5K5K"
+    }
+  }
+
+  non_oidc_services = {
+    pgbackweb = {
+      name        = "pgBackWeb"
+      group       = "Backup & DR"
+      icon_theme = "-light"
+      domain_name = "https://pgbackweb-dev.internal"
+    }
+    zigbee2mqtt = {
+      name        = "Zigbee2MQTT"
+      group       = "Domótica"
+      domain_name = "https://zigbee2mqtt-dev.internal"
     }
   }
 }

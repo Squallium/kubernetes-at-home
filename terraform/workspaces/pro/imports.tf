@@ -1,19 +1,19 @@
 import {
   id = 1
-  to = module.k8s-at-home-common.authentik_provider_oauth2.provider_for_vikunja
+  to = module.k8s-at-home-common.authentik_provider_oauth2.oidc_providers["vikunja"]
 }
 
 import {
   id = "vikunja"
-  to = module.k8s-at-home-common.authentik_application.vikunja
+  to = module.k8s-at-home-common.authentik_application.oidc_apps["vikunja"]
 }
 
-# import {
-#   id = 6
-#   to = module.k8s-at-home-common.authentik_provider_oauth2.provider_for_warracker
-# }
-#
-# import {
-#   id = "warracker"
-#   to = module.k8s-at-home-common.authentik_application.warracker
-# }
+import {
+  id = 2
+  to = module.k8s-at-home-common.authentik_provider_oauth2.oidc_providers["warracker"]
+}
+
+import {
+  id = "warracker"
+  to = module.k8s-at-home-common.authentik_application.oidc_apps["warracker"]
+}
