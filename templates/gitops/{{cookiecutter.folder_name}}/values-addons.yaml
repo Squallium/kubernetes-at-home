@@ -16,7 +16,7 @@ applicationsets:
                 repoURL: https://github.com/Squallium/kubernetes-at-home.git
                 revision: main
                 files:
-                  - path: 'addons/{{ addon.name }}/{{'{{'}}metadata.labels.environment}}/values.yaml'
+                  - path: 'addons/{{ addon.name }}/{{'{{'}}metadata.labels.environment}}/config.yaml'
     # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
     ignoreApplicationDifferences:
       - jsonPointers:
