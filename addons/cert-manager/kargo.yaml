@@ -1,5 +1,5 @@
 chart:
-  targetRevision: 0.0.12
+  targetRevision: 0.0.18
 kargo:
   warehouse:
     image:
