@@ -1,5 +1,5 @@
 chart:
-  targetRevision: 0.0.22
+  targetRevision: 0.0.23
 kargo:
   warehouse:
     image:
@@ -13,6 +13,11 @@ kargo:
       repoURL: https://charts.jetstack.io
       name: cert-manager
       semverConstraint: ^1.0.0
+  config:
+    enabled: true
+    warehouse:
+      chart:
+        name: cert-manager-config
 extSecrets:
   - name: github-ssh
     namespace: addon-cert-manager
