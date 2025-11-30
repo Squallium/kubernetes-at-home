@@ -33,7 +33,7 @@ spec:
       path: ./out/${{`{{ vars.chartValuesPath }}`}}/config.yaml
       updates:
         - key: chart.targetRevision
-          value: {{ printf "${{ chartFrom( vars.chart, \"%s\", warehouse(\"%s\") ).Version }}" .Values.kargo.project.name .Values.kargo.project.name }}
+          value: {{ printf "${{ chartFrom( vars.chart, \"%s\", warehouse(\"%s\") ).Version }}" .Values.kargo.warehouse.chart.name .Values.kargo.project.name }}
   - uses: git-commit
     as: commit-chart
     config:
