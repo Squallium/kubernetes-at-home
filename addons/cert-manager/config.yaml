@@ -1,4 +1,4 @@
 chart:
   repoURL: https://charts.jetstack.io
   name: cert-manager
-  targetRevision: 1.18.2
+  targetRevision: v1.19.0
