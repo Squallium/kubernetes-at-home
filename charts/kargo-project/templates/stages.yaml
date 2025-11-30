@@ -76,9 +76,9 @@ spec:
             name: promote
           vars:
             - name: chartValuesPath
-              value: {{ .Values.kargo.type }}/{{ .Values.kargo.location }}/production
+              value: {{ .Values.kargo.type }}/{{ .Values.kargo.location }}
             - name: valuesPath
-              value: {{ .Values.kargo.type }}/{{ .Values.kargo.location }}/production
+              value: {{ .Values.kargo.type }}/{{ .Values.kargo.location }}
             - name: argocdApp
-              value: {{ .Values.kargo.name }}-production
+              value: {{ .Values.kargo.name }}
 {{- end -}}
