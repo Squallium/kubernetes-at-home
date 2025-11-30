@@ -20,4 +20,6 @@ spec:
       repoURL: {{ .Values.kargo.warehouse.chart.repoURL }}
       name: {{ .Values.kargo.warehouse.chart.name }}
       discoveryLimit: {{ .Values.kargo.warehouse.chart.discoveryLimit | default 3 }}
-
+      allowTags: {{ .Values.kargo.warehouse.chart.allowTags }}
+      ignoreTags:
+        {{- toYaml .Values.kargo.warehouse.chart.ignoreTags | nindent 8 }}
