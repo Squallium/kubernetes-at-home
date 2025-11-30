@@ -12,6 +12,9 @@ kargo:
       name: placeholder
       discoveryLimit: 10
       semverConstraint: ''
+  stages:
+    core:
+      enabled: false
 extSecrets:
   - name: env
     namespace: kargo

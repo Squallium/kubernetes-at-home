@@ -52,6 +52,7 @@ spec:
               value: {{ .Values.kargo.type }}/{{ .Values.kargo.location }}/production
             - name: argocdApp
               value: {{ .Values.kargo.name }}-production
+{{ if .Values.kargo.stages.core.enabled -}}
 ---
 apiVersion: kargo.akuity.io/v1alpha1
 kind: Stage
@@ -80,4 +81,4 @@ spec:
               value: {{ .Values.kargo.type }}/{{ .Values.kargo.location }}/production
             - name: argocdApp
               value: {{ .Values.kargo.name }}-production
-
+{{- end -}}
