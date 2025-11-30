@@ -43,7 +43,12 @@ applicationsets:
         name: '{{ addon.name }}-{{'{{'}}metadata.labels.environment}}'
         labels:
           type: 'addon'
+        {%- if addon.get("enable_kargo", False) %}
+        annotations:
+          kargo.akuity.io/authorized-stage: '{{ addon.name }}:{{'{{'}}metadata.labels.kargo-stage}}'
+        {%- else %}
         annotations: {}
+        {%- endif %}
       spec:
         project: default
         sources:
@@ -57,7 +62,7 @@ applicationsets:
           - repoURL: {{ addon.chart_repo_url | default(cookiecutter.default_chart_repo_url) }}
             path: charts/{{ addon.name }}
           {%- endif %}
-            targetRevision: {{ addon.chart_target_revision | default(cookiecutter.default_chart_target_revision) }}
+            targetRevision: '{{'{{'}}chart.targetRevision}}'
             helm:
               valueFiles:
                 - $values/addons/{{ addon.name }}/values.yaml

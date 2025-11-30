@@ -51,7 +51,7 @@ applicationsets:
             ref: values
           - repoURL: https://charts.external-secrets.io
             chart: external-secrets
-            targetRevision: 0.17.0
+            targetRevision: '{{chart.targetRevision}}'
             helm:
               valueFiles:
                 - $values/addons/external-secrets/values.yaml
@@ -142,7 +142,7 @@ applicationsets:
             ref: values
           - repoURL: https://charts.jetstack.io
             chart: cert-manager
-            targetRevision: 1.18.2
+            targetRevision: '{{chart.targetRevision}}'
             helm:
               valueFiles:
                 - $values/addons/cert-manager/values.yaml
@@ -233,7 +233,7 @@ applicationsets:
             ref: values
           - repoURL: https://squallium.github.io/kubernetes-at-home
             chart: cloudflared
-            targetRevision: 0.0.4
+            targetRevision: '{{chart.targetRevision}}'
             helm:
               valueFiles:
                 - $values/addons/cloudflared/values.yaml
