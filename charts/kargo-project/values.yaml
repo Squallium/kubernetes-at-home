@@ -11,6 +11,7 @@ kargo:
       repoURL: placeholder
       name: placeholder
       discoveryLimit: 10
+      semverConstraint: ''
 extSecrets:
   - name: env
     namespace: kargo
