@@ -70,6 +70,7 @@ default_context:
       - name: "cert-manager"
         chart_repo: "https://charts.jetstack.io"
         chart_name: "cert-manager"
+        enable_kargo: true
       - name: "cloudflared"
         chart_repo: "https://squallium.github.io/kubernetes-at-home"
         chart_name: "cloudflared"
