@@ -21,3 +21,10 @@ spec:
       name: {{ .Values.kargo.warehouse.chart.name }}
       discoveryLimit: {{ .Values.kargo.warehouse.chart.discoveryLimit | default 3 }}
       semverConstraint: {{ .Values.kargo.warehouse.chart.semverConstraint }}
+  {{- if .Values.kargo.config.enabled }}
+  - chart:
+      repoURL: {{ .Values.kargo.config.warehouse.chart.repoURL }}
+      name: {{ .Values.kargo.config.warehouse.chart.name }}
+      discoveryLimit: {{ .Values.kargo.config.warehouse.chart.discoveryLimit | default 3 }}
+      semverConstraint: {{ .Values.kargo.config.warehouse.chart.semverConstraint }}
+  {{- end }}
