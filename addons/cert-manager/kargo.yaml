@@ -12,4 +12,21 @@ kargo:
     chart:
       repoURL: https://charts.jetstack.io
       name: cert-manager
-extSecrets: []
+      allowTags: '^v\d+\.\d+\.\d+$'
+      ignoreTags:
+        - '.*-alpha\.\d+$'
+        - '.*-beta\.\d+$'
+extSecrets:
+  - name: github-ssh
+    namespace: addon-cert-manager
+    labels:
+      kargo.akuity.io/cred-type: git
+    secrets:
+      - secretKey: repoURL
+        remoteRef:
+          key: secret/kargo/github
+          property: repo_url
+      - secretKey: sshPrivateKey
+        remoteRef:
+          key: secret/kargo/github
+          property: ssh_private_key

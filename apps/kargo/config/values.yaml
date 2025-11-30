@@ -129,6 +129,7 @@ argocd-apps:
               - list:
                   elements:
                     - addon: cert-manager
+                    - addon: external-secrets
               - git:
                   repoURL: https://github.com/Squallium/kubernetes-at-home.git
                   revision: main

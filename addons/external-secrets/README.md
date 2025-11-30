@@ -175,3 +175,8 @@ You need to add as configmap the CA certificate of the Vault server to the clust
 kubectl -n external-secrets create configmap home-internal-root-ca --from-file=ca.crt=/path/to/ca.crt
 ```
 
+## For upgrading the helm chart manually you need to specify the --version paramter with the desired version, for example:
+
+```bash
+helm upgrade external-secrets external-secrets/external-secrets --namespace external-secrets --version 1.1.0
+```
