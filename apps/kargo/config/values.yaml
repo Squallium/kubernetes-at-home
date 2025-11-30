@@ -180,6 +180,7 @@ argocd-apps:
                   kargo:
                     name: '{{addon}}'
                     type: addons
+                    location: '{{location}}'
                     project:
                       name: 'addon-{{addon}}'
           destination:
