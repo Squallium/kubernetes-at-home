@@ -50,7 +50,7 @@ applicationsets:
         labels:
           type: 'addon'
         annotations:
-          kargo.akuity.io/authorized-stage: 'cert-manager:{{ kargoStage }}'
+          kargo.akuity.io/authorized-stage: 'addon-cert-manager:{{ kargoStage }}'
       spec:
         project: default
         sources:

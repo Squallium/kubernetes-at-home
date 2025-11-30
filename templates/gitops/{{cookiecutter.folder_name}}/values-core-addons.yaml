@@ -52,7 +52,7 @@ applicationsets:
           type: 'addon'
         {%- if core_addon.get("enable_kargo", False) %}
         annotations:
-          kargo.akuity.io/authorized-stage: '{{ core_addon.name }}:{{'{{'}} kargoStage }}'
+          kargo.akuity.io/authorized-stage: 'addon-{{ core_addon.name }}:{{'{{'}} kargoStage }}'
         {%- else %}
         annotations: {}
         {%- endif %}
