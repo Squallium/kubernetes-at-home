@@ -130,10 +130,10 @@ argocd-apps:
                   elements:
                     - addon: cert-manager
                       location: cert-manager
-                      enableCoreStage: true
+                      enableCoreStage: 'true'
                     - addon: external-secrets
                       location: external-secrets
-                      enableCoreStage: false
+                      enableCoreStage: 'false'
               - git:
                   repoURL: https://github.com/Squallium/kubernetes-at-home.git
                   revision: main
@@ -187,7 +187,7 @@ argocd-apps:
                       name: 'addon-{{addon}}'
                     stages:
                       core:
-                        enabled: {{ 'true' if enableCoreStage else 'false' }}
+                        enabled: '{{enableCoreStage}}'
           destination:
             server: https://kubernetes.default.svc
             namespace: 'addon-{{addon}}'
