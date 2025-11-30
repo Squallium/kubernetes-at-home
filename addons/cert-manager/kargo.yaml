@@ -12,10 +12,7 @@ kargo:
     chart:
       repoURL: https://charts.jetstack.io
       name: cert-manager
-      allowTags: '^v\d+\.\d+\.\d+$'
-      ignoreTags:
-        - '.*-alpha\.\d+$'
-        - '.*-beta\.\d+$'
+      semverConstraint: ">=1.0.0"
 extSecrets:
   - name: github-ssh
     namespace: addon-cert-manager
