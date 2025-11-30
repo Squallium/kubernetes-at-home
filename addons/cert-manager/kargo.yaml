@@ -12,7 +12,7 @@ kargo:
     chart:
       repoURL: https://charts.jetstack.io
       name: cert-manager
-      semverConstraint: ">=1.0.0"
+      semverConstraint: ''
 extSecrets:
   - name: github-ssh
     namespace: addon-cert-manager
