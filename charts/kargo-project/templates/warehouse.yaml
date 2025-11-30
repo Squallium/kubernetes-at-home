@@ -21,10 +21,18 @@ spec:
       name: {{ .Values.kargo.warehouse.chart.name }}
       discoveryLimit: {{ .Values.kargo.warehouse.chart.discoveryLimit | default 3 }}
       semverConstraint: {{ .Values.kargo.warehouse.chart.semverConstraint }}
-  {{- if .Values.kargo.config.enabled }}
+{{- if .Values.kargo.config.enabled }}
+---
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Warehouse
+metadata:
+  name: {{ .Values.kargo.project.name }}-config
+  namespace: {{ .Values.kargo.project.name }}
+spec:
+  subscriptions:
   - chart:
       repoURL: {{ .Values.kargo.config.warehouse.chart.repoURL }}
       name: {{ .Values.kargo.config.warehouse.chart.name }}
       discoveryLimit: {{ .Values.kargo.config.warehouse.chart.discoveryLimit | default 3 }}
       semverConstraint: {{ .Values.kargo.config.warehouse.chart.semverConstraint }}
-  {{- end }}
+{{- end }}
