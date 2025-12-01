@@ -74,6 +74,8 @@ spec:
         - task:
             name: promote
           vars:
+            - name: chart
+              value: {{ .Values.kargo.config.warehouse.chart.repoURL }}
             - name: chartValuesPath
               value: {{ .Values.kargo.type }}/{{ .Values.kargo.location }}/config/development
             - name: valuesPath
