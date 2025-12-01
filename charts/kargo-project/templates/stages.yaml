@@ -52,6 +52,35 @@ spec:
               value: {{ .Values.kargo.type }}/{{ .Values.kargo.location }}/production
             - name: argocdApp
               value: {{ .Values.kargo.name }}-production
+{{- if .Values.kargo.config.enabled }}
+---
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Stage
+metadata:
+  name: dev-config
+  namespace: {{ .Values.kargo.project.name }}
+  annotations:
+    kargo.akuity.io/color: yellow
+spec:
+  requestedFreight:
+    - origin:
+        kind: Warehouse
+        name: {{ .Values.kargo.project.name }}-config
+      sources:
+        direct: true
+  promotionTemplate:
+    spec:
+      steps:
+        - task:
+            name: promote
+          vars:
+            - name: chartValuesPath
+              value: {{ .Values.kargo.type }}/{{ .Values.kargo.location }}/config/development
+            - name: valuesPath
+              value: {{ .Values.kargo.type }}/{{ .Values.kargo.location }}/config/development
+            - name: argocdApp
+              value: {{ .Values.kargo.name }}-config-development
+{{- end }}
 {{ if .Values.kargo.stages.core.enabled -}}
 ---
 apiVersion: kargo.akuity.io/v1alpha1
