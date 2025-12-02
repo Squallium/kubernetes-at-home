@@ -149,7 +149,12 @@ applicationsets:
         name: '{{ addon_config.name }}-config-{{'{{'}}metadata.labels.environment}}'
         labels:
           type: 'addon-config'
+        {%- if addon_config.get("enable_kargo", False) %}
+        annotations:
+          kargo.akuity.io/authorized-stage: 'addon-{{ addon_config.name }}:{{'{{'}}metadata.labels.kargo-stage}}-config'
+        {%- else %}
         annotations: {}
+        {%- endif %}
       spec:
         project: default
         sources:

@@ -407,7 +407,8 @@ applicationsets:
         name: 'cert-manager-config-{{metadata.labels.environment}}'
         labels:
           type: 'addon-config'
-        annotations: {}
+        annotations:
+          kargo.akuity.io/authorized-stage: 'addon-cert-manager:{{metadata.labels.kargo-stage}}-config'
       spec:
         project: default
         sources:
