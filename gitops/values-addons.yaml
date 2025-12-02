@@ -289,7 +289,7 @@ applicationsets:
                 repoURL: https://github.com/Squallium/kubernetes-at-home.git
                 revision: main
                 files:
-                  - path: 'addons/external-secrets/config/{{metadata.labels.environment}}/values.yaml'
+                  - path: 'addons/external-secrets/config/{{metadata.labels.environment}}/config.yaml'
     # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
     ignoreApplicationDifferences:
       - jsonPointers:
@@ -325,7 +325,7 @@ applicationsets:
             ref: values
           - repoURL: https://squallium.github.io/kubernetes-at-home
             chart: external-secrets-config
-            targetRevision: 0.0.3
+            targetRevision: '{{chart.targetRevision}}'
             helm:
               valueFiles:
                 - $values/addons/external-secrets/config/values.yaml
@@ -380,7 +380,7 @@ applicationsets:
                 repoURL: https://github.com/Squallium/kubernetes-at-home.git
                 revision: main
                 files:
-                  - path: 'addons/cert-manager/config/{{metadata.labels.environment}}/values.yaml'
+                  - path: 'addons/cert-manager/config/{{metadata.labels.environment}}/config.yaml'
     # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
     ignoreApplicationDifferences:
       - jsonPointers:
@@ -416,7 +416,7 @@ applicationsets:
             ref: values
           - repoURL: https://squallium.github.io/kubernetes-at-home
             chart: cert-manager-config
-            targetRevision: 0.0.5
+            targetRevision: '{{chart.targetRevision}}'
             helm:
               valueFiles:
                 - $values/addons/cert-manager/config/values.yaml
@@ -471,7 +471,7 @@ applicationsets:
                 repoURL: https://github.com/Squallium/kubernetes-at-home.git
                 revision: main
                 files:
-                  - path: 'addons/coredns/config/{{metadata.labels.environment}}/values.yaml'
+                  - path: 'addons/coredns/config/{{metadata.labels.environment}}/config.yaml'
     # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
     ignoreApplicationDifferences:
       - jsonPointers:
@@ -507,7 +507,7 @@ applicationsets:
             ref: values
           - repoURL: https://squallium.github.io/kubernetes-at-home
             chart: coredns-config
-            targetRevision: 0.0.3
+            targetRevision: '{{chart.targetRevision}}'
             helm:
               valueFiles:
                 - $values/addons/coredns/config/values.yaml
