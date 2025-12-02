@@ -18,7 +18,6 @@ spec:
   - name: chartValuesPath
   - name: valuesPath
   - name: argocdApp
-
   steps:
   - uses: git-clone
     config:
@@ -61,4 +60,48 @@ spec:
     config:
       apps:
       - name: ${{`{{ vars.argocdApp }}`}}
-
+{{- if .Values.kargo.config.enabled }}
+apiVersion: kargo.akuity.io/v1alpha1
+kind: PromotionTask
+metadata:
+  name: promote-config
+  namespace: {{ .Values.kargo.project.name }}
+spec:
+  vars:
+    - name: chart
+      value: {{ .Values.kargo.config.warehouse.chart.repoURL }}
+    - name: repoURL
+      value: git@github.com:Squallium/kubernetes-at-home.git
+    - name: branch
+      value: main
+    - name: chartValuesPath
+    - name: valuesPath
+    - name: argocdApp
+  steps:
+    - uses: git-clone
+      config:
+        repoURL: ${{`{{ vars.repoURL }}`}}
+        checkout:
+          - branch: ${{`{{ vars.branch }}`}}
+            path: ./out
+    # update the chart version
+    - uses: yaml-update
+      as: update-chart
+      config:
+        path: ./out/${{`{{ vars.chartValuesPath }}`}}/config.yaml
+        updates:
+          - key: chart.targetRevision
+            value: {{ printf "${{ chartFrom( vars.chart, \"%s\", warehouse(\"%s-config\") ).Version }}" .Values.kargo.config.warehouse.chart.name .Values.kargo.project.name }}
+    - uses: git-commit
+      as: commit-chart
+      config:
+        path: ./out
+        message: ${{`{{ task.outputs['update-chart'].commitMessage }}`}}
+    - uses: git-push
+      config:
+        path: ./out
+    - uses: argocd-update
+      config:
+        apps:
+          - name: ${{`{{ vars.argocdApp }}`}}
+{{- end }}
