@@ -61,6 +61,7 @@ spec:
       apps:
       - name: ${{`{{ vars.argocdApp }}`}}
 {{- if .Values.kargo.config.enabled }}
+---
 apiVersion: kargo.akuity.io/v1alpha1
 kind: PromotionTask
 metadata:
