@@ -13,7 +13,12 @@ spec:
         kind: Warehouse
         name: {{ $.Values.kargo.project.name }}
       sources:
+        {{- if eq $name "dev" }}
         direct: true
+        {{- else }}
+        stages:
+          - dev
+        {{- end }}
   promotionTemplate:
     spec:
       steps:
