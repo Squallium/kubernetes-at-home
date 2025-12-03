@@ -653,6 +653,16 @@ entries:
     version: 0.0.1
   kargo-project:
   - apiVersion: v2
+    appVersion: 0.0.31
+    created: "2025-12-03T22:24:49.671266286Z"
+    description: A Helm chart for managing Kargo projects
+    digest: 4524b774977c36a704c558d78101272c7eee59120cd254f43a03e5f1f646c3d3
+    name: kargo-project
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/kargo-project-0.0.31/kargo-project-0.0.31.tgz
+    version: 0.0.31
+  - apiVersion: v2
     appVersion: 0.0.30
     created: "2025-12-03T22:04:34.064647878Z"
     description: A Helm chart for managing Kargo projects
@@ -1748,4 +1758,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/warracker-0.0.1/warracker-0.0.1.tgz
     version: 0.0.1
-generated: "2025-12-03T22:04:34.065127786Z"
+generated: "2025-12-03T22:24:49.671858447Z"
