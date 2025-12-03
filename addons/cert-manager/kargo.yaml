@@ -1,5 +1,5 @@
 chart:
-  targetRevision: 0.0.30
+  targetRevision: 0.0.31
 kargo:
   warehouse:
     image:
@@ -15,10 +15,7 @@ kargo:
       semverConstraint: ^1.0.0
   stages:
     core:
-      enabled: false
-      color: "#a62e98"
-      relPath: ""
-      argoCDAppSuffix: ""
+      enabled: true
   config:
     enabled: true
     warehouse:
