@@ -4,14 +4,14 @@ apiVersion: kargo.akuity.io/v1alpha1
 kind: Stage
 metadata:
   name: {{ $name }}
-  namespace: {{ .Values.kargo.project.name }}
+  namespace: {{ $.Values.kargo.project.name }}
   annotations:
     kargo.akuity.io/color: {{ $stage.color }}
 spec:
   requestedFreight:
     - origin:
         kind: Warehouse
-        name: {{ .Values.kargo.project.name }}
+        name: {{ $.Values.kargo.project.name }}
       sources:
         direct: true
   promotionTemplate:
@@ -21,11 +21,11 @@ spec:
             name: promote
           vars:
             - name: chartValuesPath
-              value: {{ .Values.kargo.type }}/{{ .Values.kargo.location }}{{ $stage.relPath }}
+              value: {{ $.Values.kargo.type }}/{{ $.Values.kargo.location }}{{ $stage.relPath }}
             - name: valuesPath
-              value: {{ .Values.kargo.type }}/{{ .Values.kargo.location }}{{ $stage.relPath }}
+              value: {{ $.Values.kargo.type }}/{{ $.Values.kargo.location }}{{ $stage.relPath }}
             - name: argocdApp
-              value: {{ .Values.kargo.name }}{{ $stage.argoCDAppSuffix }}
+              value: {{ $.Values.kargo.name }}{{ $stage.argoCDAppSuffix }}
 ---
 {{ end -}}
 {{- end }}
