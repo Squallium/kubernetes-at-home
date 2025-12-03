@@ -25,7 +25,7 @@ kargo:
       argoCDAppSuffix: -production
     core:
       enabled: false
-      color: '#a62e98'
+      color: "#a62e98"
       relPath: ""
       argoCDAppSuffix: ""
   config:

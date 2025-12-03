@@ -13,6 +13,12 @@ kargo:
       repoURL: https://charts.jetstack.io
       name: cert-manager
       semverConstraint: ^1.0.0
+  stages:
+    core:
+      enabled: false
+      color: "#a62e98"
+      relPath: ""
+      argoCDAppSuffix: ""
   config:
     enabled: true
     warehouse:
