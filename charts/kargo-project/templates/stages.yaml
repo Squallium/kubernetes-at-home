@@ -6,7 +6,7 @@ metadata:
   name: {{ $name }}
   namespace: {{ $.Values.kargo.project.name }}
   annotations:
-    kargo.akuity.io/color: {{ $stage.color }}
+    kargo.akuity.io/color: {{ $stage.color | quote }}
 spec:
   requestedFreight:
     - origin:
