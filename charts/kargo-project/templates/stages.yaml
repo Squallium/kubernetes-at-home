@@ -1,10 +1,12 @@
+{{- range $name, $stage := .Values.kargo.stages }}
+{{ if $stage.enabled -}}
 apiVersion: kargo.akuity.io/v1alpha1
 kind: Stage
 metadata:
-  name: dev
+  name: {{ $name }}
   namespace: {{ .Values.kargo.project.name }}
   annotations:
-    kargo.akuity.io/color: green
+    kargo.akuity.io/color: {{ $stage.color }}
 spec:
   requestedFreight:
     - origin:
@@ -19,41 +21,15 @@ spec:
             name: promote
           vars:
             - name: chartValuesPath
-              value: {{ .Values.kargo.type }}/{{ .Values.kargo.location }}/development
+              value: {{ .Values.kargo.type }}/{{ .Values.kargo.location }}{{ $stage.relPath }}
             - name: valuesPath
-              value: {{ .Values.kargo.type }}/{{ .Values.kargo.location }}/development
+              value: {{ .Values.kargo.type }}/{{ .Values.kargo.location }}{{ $stage.relPath }}
             - name: argocdApp
-              value: {{ .Values.kargo.name }}-development
+              value: {{ .Values.kargo.name }}{{ $stage.argoCDAppSuffix }}
 ---
-apiVersion: kargo.akuity.io/v1alpha1
-kind: Stage
-metadata:
-  name: pro
-  namespace: {{ .Values.kargo.project.name }}
-  annotations:
-    kargo.akuity.io/color: red
-spec:
-  requestedFreight:
-    - origin:
-        kind: Warehouse
-        name: {{ .Values.kargo.project.name }}
-      sources:
-        stages:
-          - dev
-  promotionTemplate:
-    spec:
-      steps:
-        - task:
-            name: promote
-          vars:
-            - name: chartValuesPath
-              value: {{ .Values.kargo.type }}/{{ .Values.kargo.location }}/production
-            - name: valuesPath
-              value: {{ .Values.kargo.type }}/{{ .Values.kargo.location }}/production
-            - name: argocdApp
-              value: {{ .Values.kargo.name }}-production
+{{ end -}}
+{{- end }}
 {{- if .Values.kargo.config.enabled }}
----
 apiVersion: kargo.akuity.io/v1alpha1
 kind: Stage
 metadata:
@@ -83,33 +59,3 @@ spec:
             - name: argocdApp
               value: {{ .Values.kargo.name }}-config-development
 {{- end }}
-{{ if .Values.kargo.stages.core.enabled -}}
----
-apiVersion: kargo.akuity.io/v1alpha1
-kind: Stage
-metadata:
-  name: core
-  namespace: {{ .Values.kargo.project.name }}
-  annotations:
-    kargo.akuity.io/color: '#a62e98'
-spec:
-  requestedFreight:
-    - origin:
-        kind: Warehouse
-        name: {{ .Values.kargo.project.name }}
-      sources:
-        stages:
-          - dev
-  promotionTemplate:
-    spec:
-      steps:
-        - task:
-            name: promote
-          vars:
-            - name: chartValuesPath
-              value: {{ .Values.kargo.type }}/{{ .Values.kargo.location }}
-            - name: valuesPath
-              value: {{ .Values.kargo.type }}/{{ .Values.kargo.location }}
-            - name: argocdApp
-              value: {{ .Values.kargo.name }}
-{{- end -}}
