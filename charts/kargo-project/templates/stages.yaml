@@ -32,19 +32,19 @@ spec:
             - name: argocdApp
               value: {{ $.Values.kargo.name }}{{ $stage.argoCDAppSuffix }}
 ---
-{{- if .Values.kargo.config.enabled }}
+{{- if $.Values.kargo.config.enabled }}
 apiVersion: kargo.akuity.io/v1alpha1
 kind: Stage
 metadata:
   name: {{ $name }}-config
-  namespace: {{ .Values.kargo.project.name }}
+  namespace: {{ $.Values.kargo.project.name }}
   annotations:
     kargo.akuity.io/color: {{ $stage.configColor | quote }}
 spec:
   requestedFreight:
     - origin:
         kind: Warehouse
-        name: {{ .Values.kargo.project.name }}-config
+        name: {{ $.Values.kargo.project.name }}-config
       sources:
         {{- if eq $name "dev" }}
         direct: true
@@ -59,13 +59,13 @@ spec:
             name: promote-config
           vars:
             - name: chart
-              value: {{ .Values.kargo.config.warehouse.chart.repoURL }}
+              value: {{ $.Values.kargo.config.warehouse.chart.repoURL }}
             - name: chartValuesPath
-              value: {{ .Values.kargo.type }}/{{ .Values.kargo.location }}/config{{ $stage.relPath }}
+              value: {{ $.Values.kargo.type }}/{{ $.Values.kargo.location }}/config{{ $stage.relPath }}
             - name: valuesPath
-              value: {{ .Values.kargo.type }}/{{ .Values.kargo.location }}/config{{ $stage.relPath }}
+              value: {{ $.Values.kargo.type }}/{{ $.Values.kargo.location }}/config{{ $stage.relPath }}
             - name: argocdApp
-              value: {{ .Values.kargo.name }}-config{{ $stage.argoCDAppSuffix }}
+              value: {{ $.Values.kargo.name }}-config{{ $stage.argoCDAppSuffix }}
 ---
 {{- end }}
 {{ end -}}
