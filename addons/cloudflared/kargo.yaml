@@ -26,7 +26,7 @@ extSecrets:
         remoteRef:
           key: secret/kargo/github
           property: ssh_private_key
-  - name: docker
+  - name: docker-credentials
     namespace: addon-cloudflared
     labels:
       kargo.akuity.io/cred-type: image
@@ -35,6 +35,10 @@ extSecrets:
         remoteRef:
           key: secret/kargo/docker
           property: repo_url
+      - secretKey: repoURLIsRegex
+        remoteRef:
+          key: secret/kargo/docker
+          property: repo_url_is_regex
       - secretKey: username
         remoteRef:
           key: secret/kargo/docker
