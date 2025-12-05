@@ -14,7 +14,7 @@ kargo:
       enabled: false
 extSecrets:
   - name: github-ssh
-    namespace: addon-cert-manager
+    namespace: addon-cloudflared
     labels:
       kargo.akuity.io/cred-type: git
     secrets:
@@ -27,7 +27,7 @@ extSecrets:
           key: secret/kargo/github
           property: ssh_private_key
   - name: docker
-    namespace: addon-cert-manager
+    namespace: addon-cloudflared
     labels:
       kargo.akuity.io/cred-type: image
     secrets:
