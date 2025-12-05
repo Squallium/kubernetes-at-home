@@ -29,7 +29,7 @@ extSecrets:
           key: secret/kargo/github
           property: ssh_private_key
   - name: docker
-    namespace: adguard-home
+    namespace: calibre-web
     labels:
       kargo.akuity.io/cred-type: image
     secrets:
