@@ -1,0 +1,28 @@
+chart:
+  targetRevision: 0.0.34
+kargo:
+  warehouse:
+    image:
+      repoURL: docker.io/cloudflare/cloudflared
+      semverConstraint: ''
+      allowTags: '^\d+\.\d+\.\d+$'
+    chart:
+      repoURL: https://squallium.github.io/kubernetes-at-home
+      name: cloudflared
+  stages:
+    dev:
+      enabled: false
+extSecrets:
+  - name: github-ssh
+    namespace: addon-cert-manager
+    labels:
+      kargo.akuity.io/cred-type: git
+    secrets:
+      - secretKey: repoURL
+        remoteRef:
+          key: secret/kargo/github
+          property: repo_url
+      - secretKey: sshPrivateKey
+        remoteRef:
+          key: secret/kargo/github
+          property: ssh_private_key

@@ -134,6 +134,9 @@ argocd-apps:
                     - addon: external-secrets
                       location: external-secrets
                       enableCoreStage: 'false'
+                    - addon: cloudflared
+                      location: cloudflared
+                      enableCoreStage: 'false'
               - git:
                   repoURL: https://github.com/Squallium/kubernetes-at-home.git
                   revision: main
