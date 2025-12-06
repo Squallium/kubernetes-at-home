@@ -9,6 +9,9 @@ kargo:
     chart:
       repoURL: https://squallium.github.io/kubernetes-at-home
       name: cloudflared
+  stages:
+    core:
+      enabled: false
 extSecrets:
   - name: github-ssh
     namespace: addon-cloudflared
