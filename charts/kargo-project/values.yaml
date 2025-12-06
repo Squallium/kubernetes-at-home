@@ -25,12 +25,12 @@ kargo:
       configColor: black
       relPath: /production
       argoCDAppSuffix: -production
-    core:
-      enabled: false
-      color: "#a62e98"
-      configColor: blue
-      relPath: ""
-      argoCDAppSuffix: ""
+#    core:
+#      enabled: false
+#      color: "#a62e98"
+#      configColor: blue
+#      relPath: ""
+#      argoCDAppSuffix: ""
   config:
     enabled: false
     warehouse:
