@@ -1,3 +1,5 @@
 image:
   repository: cloudflare/cloudflared
   tag: latest
+extSecretsKeys:
+  token: secret/cloudflared/development
