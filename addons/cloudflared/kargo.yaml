@@ -10,6 +10,8 @@ kargo:
       repoURL: https://squallium.github.io/kubernetes-at-home
       name: cloudflared
   stages:
+    pro:
+      enabled: false
     core:
       enabled: false
 extSecrets:
