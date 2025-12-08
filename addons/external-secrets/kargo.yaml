@@ -1,0 +1,31 @@
+chart:
+  targetRevision: 0.0.40
+kargo:
+  warehouse:
+    image:
+      repoURL: quay.io/jetstack/cert-manager-controller
+      semverConstraint: ''
+      allowTags: '^v\d+\.\d+\.\d+$'
+    chart:
+      repoURL: oci.external-secrets.io/external-secrets/external-secrets
+      name: external-secrets
+      semverConstraint: ^1.0.0
+  config:
+    enabled: true
+    warehouse:
+      chart:
+        name: external-secrets-config
+extSecrets:
+  - name: github-ssh
+    namespace: addon-external-secrets
+    labels:
+      kargo.akuity.io/cred-type: git
+    secrets:
+      - secretKey: repoURL
+        remoteRef:
+          key: secret/kargo/github
+          property: repo_url
+      - secretKey: sshPrivateKey
+        remoteRef:
+          key: secret/kargo/github
+          property: ssh_private_key
