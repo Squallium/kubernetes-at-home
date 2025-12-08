@@ -1,5 +1,5 @@
 {{- range $name, $stage := .Values.kargo.stages }}
-{{ if $stage.enabled -}}
+{{ if and $stage.enabled not $stage.onlyConfig -}}
 apiVersion: kargo.akuity.io/v1alpha1
 kind: Stage
 metadata:
@@ -32,6 +32,7 @@ spec:
             - name: argocdApp
               value: {{ $.Values.kargo.name }}{{ $stage.argoCDAppSuffix }}
 ---
+{{- end }}
 {{- if $.Values.kargo.config.enabled }}
 apiVersion: kargo.akuity.io/v1alpha1
 kind: Stage
@@ -67,6 +68,5 @@ spec:
             - name: argocdApp
               value: {{ $.Values.kargo.name }}-config{{ $stage.argoCDAppSuffix }}
 ---
-{{- end }}
 {{ end -}}
 {{- end }}

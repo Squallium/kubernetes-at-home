@@ -17,18 +17,21 @@ kargo:
       enabled: true
       color: green
       configColor: yellow
+      onlyConfig: false
       relPath: /development
       argoCDAppSuffix: -development
     pro:
       enabled: true
       color: red
       configColor: black
+      onlyConfig: false
       relPath: /production
       argoCDAppSuffix: -production
     core:
       enabled: false
       color: "#a62e98"
       configColor: blue
+      onlyConfig: false
       relPath: ""
       argoCDAppSuffix: ""
   config:
