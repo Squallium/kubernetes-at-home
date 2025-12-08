@@ -3,11 +3,11 @@ chart:
 kargo:
   warehouse:
     image:
-      repoURL: quay.io/jetstack/cert-manager-controller
+      repoURL: oci.external-secrets.io/external-secrets/external-secrets
       semverConstraint: ''
       allowTags: '^v\d+\.\d+\.\d+$'
     chart:
-      repoURL: oci.external-secrets.io/external-secrets/external-secrets
+      repoURL: https://charts.external-secrets.io
       name: external-secrets
       semverConstraint: ^1.0.0
   config:
