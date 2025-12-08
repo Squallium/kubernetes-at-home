@@ -89,6 +89,7 @@ default_context:
         chart_name: "coredns-config"
         chart_target_revision: "0.0.3"
         namespace: "kube-system"
+        enable_kargo: true
   services:
     list:
 #      - name: "homebox"

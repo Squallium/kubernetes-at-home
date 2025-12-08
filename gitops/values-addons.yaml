@@ -500,7 +500,8 @@ applicationsets:
         name: 'coredns-config-{{metadata.labels.environment}}'
         labels:
           type: 'addon-config'
-        annotations: {}
+        annotations:
+          kargo.akuity.io/authorized-stage: 'addon-coredns:{{metadata.labels.kargo-stage}}-config'
       spec:
         project: default
         sources:
