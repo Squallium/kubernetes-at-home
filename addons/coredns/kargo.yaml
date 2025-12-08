@@ -2,9 +2,12 @@ chart:
   targetRevision: 0.0.38
 kargo:
   warehouse:
-    chart:
-      repoURL: https://squallium.github.io/kubernetes-at-home
-      name: coredns
+    enabled: false
+  config:
+    enabled: true
+    warehouse:
+      chart:
+        name: coredns-config
 extSecrets:
   - name: github-ssh
     namespace: addon-coredns

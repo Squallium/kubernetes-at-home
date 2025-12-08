@@ -2,6 +2,7 @@ kargo:
   project:
     name: placeholder
   warehouse:
+    enabled: true
     image:
       repoURL: ''
       semverConstraint: ''
