@@ -1,0 +1,21 @@
+chart:
+  targetRevision: 0.0.37
+kargo:
+  warehouse:
+    chart:
+      repoURL: https://squallium.github.io/kubernetes-at-home
+      name: coredns
+extSecrets:
+  - name: github-ssh
+    namespace: addon-coredns
+    labels:
+      kargo.akuity.io/cred-type: git
+    secrets:
+      - secretKey: repoURL
+        remoteRef:
+          key: secret/kargo/github
+          property: repo_url
+      - secretKey: sshPrivateKey
+        remoteRef:
+          key: secret/kargo/github
+          property: ssh_private_key
