@@ -1,5 +1,5 @@
 {{- range $name, $stage := .Values.kargo.stages }}
-{{ if and $stage.enabled not $stage.onlyConfig -}}
+{{ if and $stage.enabled (not $stage.onlyConfig) -}}
 apiVersion: kargo.akuity.io/v1alpha1
 kind: Stage
 metadata:
