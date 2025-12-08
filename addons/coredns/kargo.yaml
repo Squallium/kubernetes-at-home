@@ -3,6 +3,11 @@ chart:
 kargo:
   warehouse:
     enabled: false
+  stages:
+    dev:
+      onlyConfig: true
+    pro:
+      onlyConfig: true
   config:
     enabled: true
     warehouse:
