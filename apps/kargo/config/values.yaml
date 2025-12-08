@@ -134,6 +134,8 @@ argocd-apps:
                       location: external-secrets
                     - addon: cloudflared
                       location: cloudflared
+                    - addon: coredns
+                      location: coredns
               - git:
                   repoURL: https://github.com/Squallium/kubernetes-at-home.git
                   revision: main
