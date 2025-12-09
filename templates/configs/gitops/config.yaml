@@ -67,6 +67,7 @@ default_context:
       - name: "external-secrets"
         chart_repo: "https://charts.external-secrets.io"
         chart_name: "external-secrets"
+        enable_kargo: true
       - name: "cert-manager"
         chart_repo: "https://charts.jetstack.io"
         chart_name: "cert-manager"

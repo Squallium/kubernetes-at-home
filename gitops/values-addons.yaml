@@ -42,7 +42,8 @@ applicationsets:
         name: 'external-secrets-{{metadata.labels.environment}}'
         labels:
           type: 'addon'
-        annotations: {}
+        annotations:
+          kargo.akuity.io/authorized-stage: 'addon-external-secrets:{{metadata.labels.kargo-stage}}'
       spec:
         project: default
         sources:
