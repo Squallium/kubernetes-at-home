@@ -82,6 +82,7 @@ default_context:
       - name: "external-secrets"
         chart_name: "external-secrets-config"
         chart_target_revision: "0.0.3"
+        enable_kargo: true
       - name: "cert-manager"
         chart_name: "cert-manager-config"
         chart_target_revision: "0.0.5"
