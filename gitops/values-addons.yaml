@@ -66,6 +66,7 @@ applicationsets:
 #              selfHeal: false
           syncOptions:
             - CreateNamespace=true
+            - ServerSideApply=true
         ignoreDifferences:
           - group: apps
             kind: Deployment
