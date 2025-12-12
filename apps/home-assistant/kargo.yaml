@@ -11,6 +11,11 @@ kargo:
     chart:
       repoURL: https://pajikos.github.io/home-assistant-helm-chart
       name: home-assistant
+  config:
+    enabled: true
+    warehouse:
+      chart:
+        name: home-assistant-config
 extSecrets:
   - name: github-ssh
     namespace: home-assistant
