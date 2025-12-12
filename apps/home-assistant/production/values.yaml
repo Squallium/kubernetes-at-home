@@ -1,5 +1,5 @@
 image:
-  tag: 2025.12.0
+  tag: 2025.12.1
 
 ingress:
   hosts:
