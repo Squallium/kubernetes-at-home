@@ -36,14 +36,20 @@ kargo:
       relPath: ""
       argoCDAppSuffix: ""
   config:
-    enabled: false
+    enabled: true
     warehouse:
       chart:
         repoURL: https://squallium.github.io/kubernetes-at-home
         name: placeholder
         discoveryLimit: 10
         semverConstraint: ''
-      images: {}
+      images:
+        mosquitto:
+          repoURL: docker.io/_/eclipse-mosquitto
+          discoveryLimit: 7
+          semverConstraint: ''
+          allowTags: ''
+          ignoreTags: [ ]
 extSecrets:
   - name: env
     namespace: kargo

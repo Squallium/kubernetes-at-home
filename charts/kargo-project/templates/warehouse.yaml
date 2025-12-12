@@ -40,12 +40,12 @@ spec:
   {{- range $name, $image := .Values.kargo.config.warehouse.images }}
   - image:
       repoURL: {{ $image.repoURL }}
-        imageSelectionStrategy: SemVer
-        strictSemvers: true
-        discoveryLimit: {{ $image.discoveryLimit | default 3 }}
-        semverConstraint: {{ $image.semverConstraint }}
-        allowTags: {{ $image.allowTags }}
-        ignoreTags:
-              {{- toYaml $image.ignoreTags | nindent 8 }}
+      imageSelectionStrategy: SemVer
+      strictSemvers: true
+      discoveryLimit: {{ $image.discoveryLimit | default 3 }}
+      semverConstraint: {{ $image.semverConstraint }}
+      allowTags: {{ $image.allowTags }}
+      ignoreTags:
+            {{- toYaml $image.ignoreTags | nindent 8 }}
   {{- end }}
 {{- end }}
