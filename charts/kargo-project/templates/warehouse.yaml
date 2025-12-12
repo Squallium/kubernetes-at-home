@@ -37,7 +37,7 @@ spec:
       name: {{ .Values.kargo.config.warehouse.chart.name }}
       discoveryLimit: {{ .Values.kargo.config.warehouse.chart.discoveryLimit | default 3 }}
       semverConstraint: {{ .Values.kargo.config.warehouse.chart.semverConstraint }}
-  {{- range $name, $image := .Values.kargo.stages }}
+  {{- range $name, $image := .Values.kargo.config.warehouse.images }}
   - image:
       repoURL: {{ $image.repoURL }}
         imageSelectionStrategy: SemVer

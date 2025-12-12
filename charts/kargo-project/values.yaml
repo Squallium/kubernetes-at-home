@@ -43,6 +43,7 @@ kargo:
         name: placeholder
         discoveryLimit: 10
         semverConstraint: ''
+      images: {}
 extSecrets:
   - name: env
     namespace: kargo
