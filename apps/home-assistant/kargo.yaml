@@ -18,7 +18,7 @@ kargo:
         name: home-assistant-config
       images:
         mosquitto:
-          repoURL: docker.io/_/eclipse-mosquitto
+          repoURL: docker.io/eclipse-mosquitto
           discoveryLimit: 7
           semverConstraint: ''
           allowTags: ''
