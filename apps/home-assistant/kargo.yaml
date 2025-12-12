@@ -1,5 +1,5 @@
 chart:
-  targetRevision: 0.0.40
+  targetRevision: 0.0.41
 kargo:
   warehouse:
     image:
@@ -16,6 +16,13 @@ kargo:
     warehouse:
       chart:
         name: home-assistant-config
+      images:
+        mosquitto:
+          repoURL: docker.io/_/eclipse-mosquitto
+          discoveryLimit: 7
+          semverConstraint: ''
+          allowTags: ''
+          ignoreTags: []
 extSecrets:
   - name: github-ssh
     namespace: home-assistant
