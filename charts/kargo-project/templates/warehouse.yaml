@@ -37,4 +37,15 @@ spec:
       name: {{ .Values.kargo.config.warehouse.chart.name }}
       discoveryLimit: {{ .Values.kargo.config.warehouse.chart.discoveryLimit | default 3 }}
       semverConstraint: {{ .Values.kargo.config.warehouse.chart.semverConstraint }}
+  {{- range $name, $image := .Values.kargo.stages }}
+  - image:
+      repoURL: {{ $image.repoURL }}
+        imageSelectionStrategy: SemVer
+        strictSemvers: true
+        discoveryLimit: {{ $image.discoveryLimit | default 3 }}
+        semverConstraint: {{ $image.semverConstraint }}
+        allowTags: {{ $image.allowTags }}
+        ignoreTags:
+              {{- toYaml $image.ignoreTags | nindent 8 }}
+  {{- end }}
 {{- end }}
