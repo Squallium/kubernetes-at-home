@@ -1,5 +1,5 @@
 chart:
-  targetRevision: 0.0.44
+  targetRevision: 0.0.45
 kargo:
   warehouse:
     image:
@@ -11,6 +11,9 @@ kargo:
     chart:
       repoURL: https://charts.goauthentik.io
       name: authentik
+  promotionTasks:
+    imageVersion:
+      tagKey: global.image.tag
 extSecrets:
   - name: github-ssh
     namespace: paperless-ngx
