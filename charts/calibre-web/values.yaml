@@ -23,4 +23,4 @@ ingress:
   tls: []
 
 volume:
-  path: /mnt/calibre-web
+  path: /mnt/services/calibre-web
