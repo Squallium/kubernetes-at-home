@@ -21,7 +21,7 @@ server:
       cpu: 400m
       memory: 512Mi
     limits:
-      cpu: 1000m
+      cpu: 800m
       memory: 1Gi
 
 worker:
@@ -34,5 +34,5 @@ worker:
       cpu: 400m
       memory: 512Mi
     limits:
-      cpu: 1000m
+      cpu: 800m
       memory: 1Gi
