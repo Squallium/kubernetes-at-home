@@ -1,6 +1,6 @@
 global:
   image:
-    tag: 2025.8.4
+    tag: 2025.10.0
 
 authentik:
   postgresql:
@@ -21,7 +21,7 @@ server:
       cpu: 400m
       memory: 512Mi
     limits:
-      cpu: 800m
+      cpu: 1000m
       memory: 1Gi
 
 worker:
@@ -34,5 +34,5 @@ worker:
       cpu: 400m
       memory: 512Mi
     limits:
-      cpu: 800m
+      cpu: 1000m
       memory: 1Gi
