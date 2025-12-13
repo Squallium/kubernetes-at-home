@@ -45,7 +45,7 @@ spec:
     config:
       path: ./out/${{`{{ vars.valuesPath }}`}}/values.yaml
       updates:
-      - key: image.tag
+      - key: {{ .Values.kargo.promotionTasks.imageVersion.tagKey }}
         value: {{ printf "${{ imageFrom( vars.image, warehouse(\"%s\") ).Tag }}" .Values.kargo.project.name }}
   - uses: git-commit
     as: commit-image

@@ -43,6 +43,9 @@ kargo:
         name: placeholder
         discoveryLimit: 10
         semverConstraint: ''
+  promotionTasks:
+    imageVersion:
+      tagKey: image.tag
 extSecrets:
   - name: env
     namespace: kargo
