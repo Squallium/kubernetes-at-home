@@ -127,6 +127,16 @@ entries:
   calibre-web:
   - apiVersion: v2
     appVersion: 0.6.24
+    created: "2025-12-13T22:24:33.618149267Z"
+    description: A Helm chart for deploying Calibre-Web.
+    digest: f4a9763c1c6defabf8af252433e90a46baef7ff356d12c1d829d57756bfa6b13
+    name: calibre-web
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/calibre-web-0.0.6/calibre-web-0.0.6.tgz
+    version: 0.0.6
+  - apiVersion: v2
+    appVersion: 0.6.24
     created: "2025-12-13T22:23:34.016643138Z"
     description: A Helm chart for deploying Calibre-Web.
     digest: 70fa182ed045164d0215014b3296498bdff84c35e7694473250484820760d5ce
@@ -1918,4 +1928,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/warracker-0.0.1/warracker-0.0.1.tgz
     version: 0.0.1
-generated: "2025-12-13T22:23:34.01691781Z"
+generated: "2025-12-13T22:24:33.61842367Z"
