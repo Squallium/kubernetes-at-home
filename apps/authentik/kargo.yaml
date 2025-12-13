@@ -16,7 +16,7 @@ kargo:
       tagKey: global.image.tag
 extSecrets:
   - name: github-ssh
-    namespace: paperless-ngx
+    namespace: authentik
     labels:
       kargo.akuity.io/cred-type: git
     secrets:
