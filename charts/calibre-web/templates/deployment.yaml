@@ -23,6 +23,8 @@ spec:
               mountPath: /config
             - name: calibre-books
               mountPath: /books
+          resources:
+            {{- toYaml .Values.deployment.resources | nindent 12 }}
       volumes:
         - name: calibre-config
           hostPath:
