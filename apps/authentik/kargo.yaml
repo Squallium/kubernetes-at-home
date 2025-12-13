@@ -3,20 +3,14 @@ chart:
 kargo:
   warehouse:
     image:
-      repoURL: docker.io/paperlessngx/paperless-ngx
-      semverConstraint: ^2.16.3
-      allowTags: '^\d+\.\d+\.\d+$'
-      ignoreTags:
-        - '.*-b\.\d+$'
-        - 'nightly.*$'
-        - 'latest'
-        - 'dev'
-        - 'version-.*$'
-        - 'amd64-.*$'
-      discoveryLimit: 15
+      repoURL: ghcr.io/goauthentik/server
+      discoveryLimit: 7
+      semverConstraint: ''
+      allowTags: ''
+      ignoreTags: []
     chart:
-      repoURL: https://squallium.github.io/kubernetes-at-home
-      name: paperless-ngx
+      repoURL: https://charts.goauthentik.io
+      name: authentik
 extSecrets:
   - name: github-ssh
     namespace: paperless-ngx
@@ -31,24 +25,3 @@ extSecrets:
         remoteRef:
           key: secret/kargo/github
           property: ssh_private_key
-  - name: docker-credentials
-    namespace: paperless-ngx
-    labels:
-      kargo.akuity.io/cred-type: image
-    secrets:
-      - secretKey: repoURL
-        remoteRef:
-          key: secret/kargo/docker
-          property: repo_url
-      - secretKey: repoURLIsRegex
-        remoteRef:
-          key: secret/kargo/docker
-          property: repo_url_is_regex
-      - secretKey: username
-        remoteRef:
-          key: secret/kargo/docker
-          property: username
-      - secretKey: password
-        remoteRef:
-          key: secret/kargo/docker
-          property: password
