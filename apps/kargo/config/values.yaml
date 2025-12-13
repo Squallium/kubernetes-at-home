@@ -30,6 +30,8 @@ argocd-apps:
                       location: home-assistant
                     - service: zigbee2mqtt
                       location: home-assistant-addons/zigbee2mqtt
+                    - service: authentik
+                      location: authentik
               - git:
                   repoURL: https://github.com/Squallium/kubernetes-at-home.git
                   revision: main
