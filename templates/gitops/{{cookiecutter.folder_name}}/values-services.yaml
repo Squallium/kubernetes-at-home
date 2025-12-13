@@ -179,7 +179,12 @@ applicationsets:
         name: '{{ service_config.name }}-config-{{'{{'}}metadata.labels.environment}}'
         labels:
           type: 'service-config'
+        {%- if service_config.get("enable_kargo", False) %}
+        annotations:
+          kargo.akuity.io/authorized-stage: '{{ service_config.name }}:{{'{{'}}metadata.labels.kargo-stage}}-config'
+        {%- else %}
         annotations: {}
+        {%- endif %}
       spec:
         project: default
         sources:

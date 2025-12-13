@@ -904,7 +904,8 @@ applicationsets:
         name: 'home-assistant-config-{{metadata.labels.environment}}'
         labels:
           type: 'service-config'
-        annotations: {}
+        annotations:
+          kargo.akuity.io/authorized-stage: 'home-assistant:{{metadata.labels.kargo-stage}}-config'
       spec:
         project: default
         sources:
