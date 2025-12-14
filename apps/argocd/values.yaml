@@ -15,7 +15,7 @@ server:
 repoServer:
   image:
     repository: ghcr.io/squallium/kubernetes-at-home/helm-secrets-argocd-repo-server
-    tag: v3.1.9-helm-secrets-4.6.11
+    tag: v3.2.1-helm-secrets-4.7.4
     imagePullPolicy: Always
   volumes:
     - configMap:
