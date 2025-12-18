@@ -115,5 +115,5 @@ helm upgrade argocd argo/argo-cd --namespace argocd --values apps/argocd/values.
 And for upgrade the config chart
 
 ```shell
-helm upgrade argocd-config .\apps\argocd\charts\argocd-config\ --namespace argocd --values .\apps\argocd\charts\argocd-config\values.yaml                     
+helm upgrade argocd-config .\charts\argocd-config\ --namespace argocd --values .\charts\argocd-config\values.yaml --version <version>    
 ```
