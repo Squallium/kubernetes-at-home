@@ -3,7 +3,7 @@ applications:
     namespace: argocd
     additionalLabels: {}
     additionalAnnotations:
-      kargo.akuity.io/authorized-stage: 'kube-prometheus-stack:{{metadata.labels.kargo-stage}}'
+      kargo.akuity.io/authorized-stage: 'kube-prometheus-stack:core'
     finalizers:
     - resources-finalizer.argocd.argoproj.io
     project: default

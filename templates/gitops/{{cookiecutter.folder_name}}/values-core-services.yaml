@@ -5,7 +5,7 @@ applications:
     additionalLabels: {}
     {%- if core_service.get("enable_kargo", False) %}
     additionalAnnotations:
-      kargo.akuity.io/authorized-stage: '{{ core_service.name }}:{{'{{'}}metadata.labels.kargo-stage}}'
+      kargo.akuity.io/authorized-stage: '{{ core_service.name }}:core'
     {%- else %}
     additionalAnnotations: {}
     {%- endif %}
