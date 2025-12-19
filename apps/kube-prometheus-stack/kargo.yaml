@@ -15,7 +15,7 @@ kargo:
       enabled: true
 extSecrets:
   - name: github-ssh
-    namespace: addon-coredns
+    namespace: kube-prometheus-stack
     labels:
       kargo.akuity.io/cred-type: git
     secrets:
