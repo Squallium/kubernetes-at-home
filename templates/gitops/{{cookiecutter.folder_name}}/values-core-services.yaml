@@ -3,7 +3,12 @@ applications:
   {{ core_service.name }}:
     namespace: argocd
     additionalLabels: {}
+    {%- if core_service.get("enable_kargo", False) %}
+    additionalAnnotations:
+      kargo.akuity.io/authorized-stage: '{{ core_service.name }}:{{'{{'}}metadata.labels.kargo-stage}}'
+    {%- else %}
     additionalAnnotations: {}
+    {%- endif %}
     finalizers:
     - resources-finalizer.argocd.argoproj.io
     project: default

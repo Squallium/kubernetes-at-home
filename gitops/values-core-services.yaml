@@ -2,7 +2,8 @@ applications:
   kube-prometheus-stack:
     namespace: argocd
     additionalLabels: {}
-    additionalAnnotations: {}
+    additionalAnnotations:
+      kargo.akuity.io/authorized-stage: 'kube-prometheus-stack:{{metadata.labels.kargo-stage}}'
     finalizers:
     - resources-finalizer.argocd.argoproj.io
     project: default
