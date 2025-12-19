@@ -13,7 +13,7 @@ spec:
         kind: Warehouse
         name: {{ $.Values.kargo.project.name }}
       sources:
-        {{- if eq $name "dev" }}
+        {{- if or (eq $name "dev") $stage.requestedFreightDirect }}
         direct: true
         {{- else }}
         stages:

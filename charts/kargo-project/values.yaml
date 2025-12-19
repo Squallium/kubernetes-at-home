@@ -35,6 +35,7 @@ kargo:
       onlyConfig: false
       relPath: ""
       argoCDAppSuffix: ""
+      requestedFreightDirect: false
   config:
     enabled: false
     warehouse:
