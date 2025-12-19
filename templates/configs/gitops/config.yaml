@@ -38,7 +38,7 @@ default_context:
         chart_target_revision: "75.4.0"
         server_side_apply: true
         enable_ssl: true
-        enable_kargo: true
+        enable_kargo: false
       - name: "loki"
         chart_repo: "https://grafana.github.io/helm-charts"
         chart_name: "loki"
