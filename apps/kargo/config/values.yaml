@@ -32,7 +32,7 @@ argocd-apps:
                       location: home-assistant-addons/zigbee2mqtt
                     - service: authentik
                       location: authentik
-                    - addon: kube-prometheus-stack
+                    - service: kube-prometheus-stack
                       location: kube-prometheus-stack
               - git:
                   repoURL: https://github.com/Squallium/kubernetes-at-home.git
