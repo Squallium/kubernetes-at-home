@@ -59,7 +59,7 @@ applicationsets:
             helm:
               valueFiles:
                 - '$values/apps/{{name}}/values.yaml'
-                - '$values/apps/{{name}}/values.yaml'
+                - '$values/apps/{{name}}/values-ssl.yaml'
                 - '$values/defaults/production/resources/values.yaml'
         destination:
           server: https://kubernetes.default.svc
