@@ -15,6 +15,7 @@ applicationsets:
                   - name: 'kube-prometheus-stack'
                   - name: 'loki'
                   - name: 'promtail'
+                  - name: 'kargo'
             - git:
                 repoURL: https://github.com/Squallium/kubernetes-at-home.git
                 revision: main

@@ -1,0 +1,5 @@
+chart:
+  repoUrl: ghcr.io/akuity/kargo-charts
+  name: kargo
+  targetRevision: 1.8.4
+
