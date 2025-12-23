@@ -14,6 +14,7 @@ applicationsets:
                 elements:
                   - name: 'kube-prometheus-stack'
                   - name: 'loki'
+                  - name: 'promtail'
             - git:
                 repoURL: https://github.com/Squallium/kubernetes-at-home.git
                 revision: main
@@ -226,41 +227,6 @@ applications:
     destination:
       server: https://kubernetes.default.svc
       namespace: kargo
-    syncPolicy:
-#      automated:
-#        prune: false
-#        selfHeal: false
-      syncOptions:
-      - CreateNamespace=true
-    revisionHistoryLimit: null
-    ignoreDifferences:
-    - group: apps
-      kind: Deployment
-      jsonPointers:
-      - /spec/replicas
-    info:
-    - name: url
-      value: https://argoproj.github.io/
-  argo-rollouts:
-    namespace: argocd
-    additionalLabels: {}
-    additionalAnnotations: {}
-    finalizers:
-    - resources-finalizer.argocd.argoproj.io
-    project: default
-    sources:
-    - repoURL: https://github.com/Squallium/kubernetes-at-home.git
-      targetRevision: main
-      ref: values
-    - repoURL: https://argoproj.github.io/argo-helm
-      chart: argo-rollouts
-      targetRevision: 2.40.2
-      helm:
-        valueFiles:
-          - $values/apps/argo-rollouts/values.yaml
-    destination:
-      server: https://kubernetes.default.svc
-      namespace: argo-rollouts
     syncPolicy:
 #      automated:
 #        prune: false

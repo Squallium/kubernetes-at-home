@@ -1,0 +1,5 @@
+chart:
+  repoUrl: https://grafana.github.io/helm-charts
+  name: promtail
+  targetRevision: 6.17.0
+
