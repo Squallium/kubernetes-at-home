@@ -1,0 +1,5 @@
+chart:
+  repoUrl: https://grafana.github.io/helm-charts
+  name: loki
+  targetRevision: 6.30.1
+
