@@ -60,7 +60,7 @@ applicationsets:
               valueFiles:
                 - '$values/apps/{{'{{'}}name}}/values.yaml'
                 - '$values/apps/{{'{{'}}name}}/values.yaml'
-                - '$values/defaults/{{'{{'}}metadata.labels.environment}}/resources/values.yaml'
+                - '$values/defaults/production/resources/values.yaml'
         destination:
           server: https://kubernetes.default.svc
           namespace: '{{'{{'}}name}}'
