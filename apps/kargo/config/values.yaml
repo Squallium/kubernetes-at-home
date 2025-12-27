@@ -72,7 +72,7 @@ argocd-apps:
                   - $values/apps/{{location}}/kargo.yaml
                 values: |
                   kargo:
-                    name: '{{service}}-core'
+                    name: '{{service}}'
                     type: apps
                     location: '{{location}}'
                     project:
