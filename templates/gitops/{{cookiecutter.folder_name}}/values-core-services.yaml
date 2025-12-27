@@ -1,5 +1,5 @@
 applicationsets:
-  new-idea:
+  core-services-setup:
     namespace: argocd
     additionalLabels: {}
     additionalAnnotations: {}
