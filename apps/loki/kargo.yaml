@@ -16,7 +16,7 @@ kargo:
       requestedFreightDirect: true
 extSecrets:
   - name: github-ssh
-    namespace: kube-prometheus-stack-core
+    namespace: loki-core
     labels:
       kargo.akuity.io/cred-type: git
     secrets:
