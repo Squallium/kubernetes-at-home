@@ -1,3 +1,5 @@
+chart:
+  targetRevision: 0.0.5
 extSecrets:
   - name: api
     secrets:
