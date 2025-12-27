@@ -1,0 +1,30 @@
+chart:
+  targetRevision: 0.0.46
+kargo:
+  warehouse:
+    chart:
+      repoURL: ghcr.io/akuity/kargo-charts
+      name: kargo
+      semverConstraint: ^1.8.4
+  stages:
+    dev:
+      enabled: false
+    pro:
+      enabled: false
+    core:
+      enabled: true
+      requestedFreightDirect: true
+extSecrets:
+  - name: github-ssh
+    namespace: kargo-core
+    labels:
+      kargo.akuity.io/cred-type: git
+    secrets:
+      - secretKey: repoURL
+        remoteRef:
+          key: secret/kargo/github
+          property: repo_url
+      - secretKey: sshPrivateKey
+        remoteRef:
+          key: secret/kargo/github
+          property: ssh_private_key
