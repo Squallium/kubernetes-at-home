@@ -1,0 +1,30 @@
+chart:
+  targetRevision: 0.0.46
+kargo:
+  warehouse:
+    chart:
+      repoURL: https://grafana.github.io/helm-charts
+      name: loki
+      semverConstraint: ^6.30.1
+  stages:
+    dev:
+      enabled: false
+    pro:
+      enabled: false
+    core:
+      enabled: true
+      requestedFreightDirect: true
+extSecrets:
+  - name: github-ssh
+    namespace: kube-prometheus-stack-core
+    labels:
+      kargo.akuity.io/cred-type: git
+    secrets:
+      - secretKey: repoURL
+        remoteRef:
+          key: secret/kargo/github
+          property: repo_url
+      - secretKey: sshPrivateKey
+        remoteRef:
+          key: secret/kargo/github
+          property: ssh_private_key
