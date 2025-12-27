@@ -48,7 +48,7 @@ applicationsets:
         labels:
           type: 'service'
         annotations:
-          kargo.akuity.io/authorized-stage: '{{'{{'}}name}}:core'
+          kargo.akuity.io/authorized-stage: '{{'{{'}}name}}-core:core'
       spec:
         project: default
         sources:
