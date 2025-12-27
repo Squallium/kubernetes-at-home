@@ -4,6 +4,7 @@ kargo:
   warehouse:
     chart:
       repoURL: oci://ghcr.io/akuity/kargo-charts
+      name: ''
       semverConstraint: ^1.8.4
   stages:
     dev:
