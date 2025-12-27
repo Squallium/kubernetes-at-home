@@ -100,60 +100,6 @@ applicationsets:
     #        {{'{{'}}- end }}
 
 applications:
-  {%- for core_service in cookiecutter.core_services.list %}
-  {{ core_service.name }}:
-    namespace: argocd
-    additionalLabels: {}
-    {%- if core_service.get("enable_kargo", False) %}
-    additionalAnnotations:
-      kargo.akuity.io/authorized-stage: '{{ core_service.name }}:core'
-    {%- else %}
-    additionalAnnotations: {}
-    {%- endif %}
-    finalizers:
-    - resources-finalizer.argocd.argoproj.io
-    project: default
-    sources:
-    - repoURL: https://github.com/Squallium/kubernetes-at-home.git
-      targetRevision: main
-      ref: values
-    {%- set chart_name = core_service.chart_name | default(cookiecutter.default_chart_name, true) | trim %}
-    {%- if chart_name != "" %}
-    - repoURL: {{ core_service.chart_repo | default(cookiecutter.default_chart_repo) }}
-      chart: {{ chart_name  }}
-    {%- else %}
-    - repoURL: {{ core_service.chart_repo_url | default(cookiecutter.default_chart_repo_url) }}
-      path: {{ core_service.chart_path | default("charts/" ~ core_service.name) }}
-    {%- endif %}
-      targetRevision: {{ core_service.chart_target_revision }}
-      helm:
-        valueFiles:
-          - $values/apps/{{ core_service.name }}/values.yaml
-          {%- if core_service.get("enable_ssl", False) %}
-          - $values/apps/{{ core_service.name }}/values-ssl.yaml
-          {%- endif %}
-    destination:
-      server: https://kubernetes.default.svc
-      namespace: {{ core_service.namespace | default(core_service.name) }}
-    syncPolicy:
-#      automated:
-#        prune: false
-#        selfHeal: false
-      syncOptions:
-      - CreateNamespace=true
-      {%- if core_service.get("server_side_apply", False) %}
-      - ServerSideApply=true
-      {%- endif %}
-    revisionHistoryLimit: null
-    ignoreDifferences:
-    - group: apps
-      kind: Deployment
-      jsonPointers:
-      - /spec/replicas
-    info:
-    - name: url
-      value: https://argoproj.github.io/
-  {%- endfor %}
   {%- for core_service_config in cookiecutter.core_services_config.list %}
   {{ core_service_config.name }}-config:
     namespace: argocd
