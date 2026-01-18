@@ -1,2 +1,4 @@
 chart:
+  repoURL: https://charts.external-secrets.io
+  name: external-secrets
   targetRevision: 1.1.0
