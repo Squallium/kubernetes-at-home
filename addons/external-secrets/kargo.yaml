@@ -10,6 +10,9 @@ kargo:
       repoURL: https://charts.external-secrets.io
       name: external-secrets
       semverConstraint: ^1.0.0
+  stages:
+    core:
+      enabled: true
   config:
     enabled: true
     warehouse:
