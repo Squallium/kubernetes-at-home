@@ -21,6 +21,12 @@ default_context:
         chart_name: "cert-manager"
         chart_target_revision: "1.18.2"
         enable_kargo: true
+      - name: "external-secrets"
+        chart_repo: "https://charts.external-secrets.io"
+        chart_name: "external-secrets"
+        chart_target_revision: "1.11.0"
+        server_side_apply: true
+        enable_kargo: true
   core_addons_config:
     list:
       - name: "cert-manager"

@@ -97,3 +97,102 @@ applicationsets:
   #            automated:
   #              prune: {{ .prune }}
   #        {{- end }}
+  external-secrets-core:
+    namespace: argocd
+    additionalLabels: {}
+    additionalAnnotations: {}
+    finalizers:
+      - resources-finalizer.argocd.argoproj.io
+    # See PR #10026 (ArgoCD v2.5 or later)
+    # goTemplate: false
+    generators:
+      - matrix:
+          generators:
+            - list:
+                elements:
+                  - name: 'external-secrets'
+                    relPath: 'external-secrets'
+                    kargoStage: 'core'
+                  - name: 'external-secrets-config'
+                    relPath: 'external-secrets/config'
+                    kargoStage: 'core-config'
+            - git:
+                repoURL: https://github.com/Squallium/kubernetes-at-home.git
+                revision: main
+                files:
+                  - path: 'addons/{{ relPath }}/config.yaml'
+    # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
+    ignoreApplicationDifferences:
+      - jsonPointers:
+          - /spec/syncPolicy
+    # Progressive Syncs is an experimental feature and it must be explicitly enabled
+    # Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Progressive-Syncs/#enabling-progressive-syncs
+    #      strategy:
+    #        type: RollingSync
+    #        rollingSync:
+    #          steps:
+    #          - matchExpressions:
+    #            - key: project
+    #              operator: In
+    #              values:
+    #              - guestbook
+    #          - matchExpressions:
+    #            - key: project
+    #              operator: In
+    #              values:
+    #              - kustomize-foo
+    #              - kustomize-bar
+    template:
+      metadata:
+        name: '{{ name }}'
+        labels:
+          type: 'addon'
+        annotations:
+          kargo.akuity.io/authorized-stage: 'addon-external-secrets:{{ kargoStage }}'
+      spec:
+        project: default
+        sources:
+          - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+            targetRevision: main
+            ref: values
+          - repoURL: '{{chart.repoURL}}'
+            chart: '{{chart.name}}'
+            targetRevision: '{{chart.targetRevision}}'
+            helm:
+              valueFiles:
+                - $values/addons/{{ relPath }}/values.yaml
+        destination:
+          server: https://kubernetes.default.svc
+          namespace: external-secrets
+        syncPolicy:
+#            automated:
+#              prune: false
+#              selfHeal: false
+          syncOptions:
+            - CreateNamespace=true
+            - ServerSideApply=true
+        ignoreDifferences:
+          - group: apps
+            kind: Deployment
+            jsonPointers:
+              - /spec/replicas
+        info:
+          - name: url
+            value: https://argoproj.github.io/
+    syncPolicy:
+      # Set Application finalizer
+      preserveResourcesOnDeletion: true
+    # Templating is only available on string type
+  #      templatePatch: |
+  #        spec:
+  #          source:
+  #            helm:
+  #              valueFiles:
+  #              {{- range $valueFile := .valueFiles }}
+  #                - {{ $valueFile }}
+  #              {{- end }}
+  #        {{- if .autoSync }}
+  #          syncPolicy:
+  #            automated:
+  #              prune: {{ .prune }}
+  #        {{- end }}
