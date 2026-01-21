@@ -18,13 +18,18 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: 8083
+          env:
+            - name: PUID
+              value: "1000"   # UID del usuario en Lima
+            - name: PGID
+              value: "1000"   # GID del usuario en Lima
+            - name: TZ
+              value: "Europe/Madrid"
           volumeMounts:
             - name: calibre-config
               mountPath: /config
             - name: calibre-books
-              mountPath: /calibre-library
-            - name: calibre-ingest
-              mountPath: /acw-book-ingest
+              mountPath: /books
           resources:
             {{- toYaml .Values.deployment.resources | nindent 12 }}
       volumes:
@@ -34,10 +39,5 @@ spec:
             type: Directory
         - name: calibre-books
           hostPath:
-            path: {{ .Values.volume.path }}/calibre-library
+            path: {{ .Values.volume.path }}/books
             type: Directory
-        - name: calibre-ingest
-          hostPath:
-            path: {{ .Values.volume.path }}/ingest
-            type: Directory
-
