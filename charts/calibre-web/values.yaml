@@ -1,6 +1,6 @@
 image:
-  repository: linuxserver/calibre-web
-  tag: 0.6.24
+  repository: gelbphoenix/autocaliweb
+  tag: 0.11.3
   pullPolicy: IfNotPresent
 
 deployment:

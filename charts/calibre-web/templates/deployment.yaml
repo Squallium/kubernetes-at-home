@@ -23,6 +23,8 @@ spec:
               mountPath: /config
             - name: calibre-books
               mountPath: /books
+            - name: calibre-ingest
+              mountPath: /acw-book-ingest
           resources:
             {{- toYaml .Values.deployment.resources | nindent 12 }}
       volumes:
@@ -34,3 +36,8 @@ spec:
           hostPath:
             path: {{ .Values.volume.path }}/books
             type: Directory
+        - name: calibre-ingest
+          hostPath:
+            path: {{ .Values.volume.path }}/ingest
+            type: Directory
+
