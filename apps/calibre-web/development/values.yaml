@@ -1,2 +1,4 @@
+image:
+  tag: v0.11.3
 ingress:
   hostname: calibre-dev.internal
