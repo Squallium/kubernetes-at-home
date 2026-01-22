@@ -1,16 +1,16 @@
 image:
-  repository: linuxserver/calibre-web
-  tag: 0.6.25
+  repository: gelbphoenix/autocaliweb
+  tag: 0.11.3
   pullPolicy: IfNotPresent
 
 deployment:
   resources:
     requests:
-      cpu: 100m
-      memory: 128Mi
+      cpu: 500m
+      memory: 256Mi
     limits:
-      cpu: 100m
-      memory: 128Mi
+      cpu: 500m
+      memory: 256Mi
 
 service:
   type: ClusterIP

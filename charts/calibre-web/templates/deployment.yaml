@@ -19,10 +19,6 @@ spec:
           ports:
             - containerPort: 8083
           env:
-            - name: PUID
-              value: "1000"   # UID del usuario en Lima
-            - name: PGID
-              value: "1000"   # GID del usuario en Lima
             - name: TZ
               value: "Europe/Madrid"
           volumeMounts:
@@ -30,6 +26,8 @@ spec:
               mountPath: /config
             - name: calibre-books
               mountPath: /books
+            - name: calibre-ingest
+              mountPath: /acw-book-ingest
           resources:
             {{- toYaml .Values.deployment.resources | nindent 12 }}
       volumes:
@@ -41,3 +39,8 @@ spec:
           hostPath:
             path: {{ .Values.volume.path }}/books
             type: Directory
+        - name: calibre-ingest
+          hostPath:
+            path: {{ .Values.volume.path }}/ingest
+            type: Directory
+
