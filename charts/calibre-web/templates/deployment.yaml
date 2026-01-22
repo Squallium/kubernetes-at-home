@@ -25,7 +25,7 @@ spec:
             - name: calibre-config
               mountPath: /config
             - name: calibre-books
-              mountPath: /books
+              mountPath: /calibre-library
             - name: calibre-ingest
               mountPath: /acw-book-ingest
           resources:
@@ -37,7 +37,7 @@ spec:
             type: Directory
         - name: calibre-books
           hostPath:
-            path: {{ .Values.volume.path }}/books
+            path: {{ .Values.volume.path }}/calibre-library
             type: Directory
         - name: calibre-ingest
           hostPath:
