@@ -52,6 +52,14 @@ module "k8s-at-home-common" {
       logout_uri_suffix = "/auth/logout/"
       client_id   = "JYJzXGZgXJH1bXG3fY2qQ1bF0h3v3Z8K5K5K5K5K5K5K5K5K5K"
     }
+    calibre-web = {
+      name        = "Calibre-Web"
+      group       = "Lectores eBooks"
+      domain_name = "https://calibre-web-dev.internal"
+      redirect_uri_suffix = "/login/generic/authorized"
+      logout_uri_suffix = "/auth/oidc/logout"
+      client_id   = "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6"
+    }
   }
 
   non_oidc_services = {
