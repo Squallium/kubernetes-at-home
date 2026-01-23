@@ -14,7 +14,7 @@ resource "authentik_provider_oauth2" "oidc_providers" {
     }
   ]
 
-  backchannel_logout_uri = "${each.value.domain_name}${each.value.logout_uri_suffix}"
+  logout_uri = "${each.value.domain_name}${each.value.logout_uri_suffix}"
   signing_key            = var.authentik_signing_key
   property_mappings       = var.authentik_property_mappings
 }

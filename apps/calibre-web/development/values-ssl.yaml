@@ -3,5 +3,5 @@ ingress:
     cert-manager.io/cluster-issuer: home-internal-ca-issuer
   tls:
     - hosts:
-        - calibre-dev.internal
-      secretName: calibre-dev-internal-tls
+        - calibre-web-dev.internal
+      secretName: calibre-web-dev-internal-tls
