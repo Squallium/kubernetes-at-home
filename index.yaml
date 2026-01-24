@@ -686,6 +686,17 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/homebox-0.0.3/homebox-0.0.3.tgz
     version: 0.0.3
+  jellyfin:
+  - apiVersion: v2
+    appVersion: 10.11.6
+    created: "2026-01-24T22:47:10.728390403Z"
+    description: A Helm chart for deploying Calibre-Web.
+    digest: f1026a8cbf1b6fdbfe9e5222a7fe1e54ad31b6a7aa698077a839d51064e20ba3
+    name: jellyfin
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/jellyfin-0.0.1/jellyfin-0.0.1.tgz
+    version: 0.0.1
   kargo-config:
   - apiVersion: v2
     appVersion: 0.0.5
@@ -2008,4 +2019,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/warracker-0.0.1/warracker-0.0.1.tgz
     version: 0.0.1
-generated: "2026-01-24T18:41:20.980973013Z"
+generated: "2026-01-24T22:47:10.728780031Z"
