@@ -12,5 +12,12 @@ deployment:
       hostPathPath: calibre-library
     - name: calibre-ingest
       hostPathPath: ingest
+  resources:
+    requests:
+      cpu: 750m
+      memory: 256Mi
+    limits:
+      cpu: 750m
+      memory: 256Mi
 ingress:
   hostname: calibre-web.internal
