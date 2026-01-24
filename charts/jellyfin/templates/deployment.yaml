@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jellyfin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jellyfin
+  template:
+    metadata:
+      labels:
+        app: jellyfin
+    spec:
+      containers:
+        - name: jellyfin
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.deployment.containerPort }}
+          env:
+            - name: TZ
+              value: "Europe/Madrid"
+            {{- with .Values.deployment.additionalEnv }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
+          volumeMounts:
+            - name: jellyfin-config
+              mountPath: /config
+            {{- if .Values.deployment.additionalVolumeMounts }}
+            {{- toYaml .Values.deployment.additionalVolumeMounts | nindent 12 }}
+            {{- end }}
+          resources:
+            {{- toYaml .Values.deployment.resources | nindent 12 }}
+      volumes:
+        - name: jellyfin-config
+          hostPath:
+            path: {{ .Values.volume.path }}/config
+            type: Directory
+        {{- range $val := .Values.deployment.additionalVolumes }}
+        - name: {{ $val.name }}
+          hostPath:
+            path: {{ $.Values.volume.path }}/{{ $val.hostPathPath }}
+            type: Directory
+        {{- end }}
+

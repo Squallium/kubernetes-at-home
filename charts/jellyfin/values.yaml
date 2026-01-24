@@ -1,0 +1,38 @@
+image:
+  repository: jellyfin/jellyfin
+  tag: 10.11.6
+  pullPolicy: IfNotPresent
+
+deployment:
+  containerPort: 8096
+  additionalEnv: []
+  additionalVolumeMounts:
+    - name: jellyfin-cache
+      mountPath: /cache
+    - name: jellyfin-media
+      mountPath: /media
+  additionalVolumes:
+    - name: jellyfin-cache
+      hostPathPath: calibre-library
+    - name: jellyfin-media
+      hostPathPath: media
+  resources:
+    requests:
+      cpu: 500m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 256Mi
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  className: public
+  hostname: placeholder.example.com
+  annotations: {}
+  tls: []
+
+volume:
+  path: /mnt/services/jellyfin
