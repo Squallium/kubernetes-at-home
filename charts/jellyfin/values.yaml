@@ -6,16 +6,8 @@ image:
 deployment:
   containerPort: 8096
   additionalEnv: []
-  additionalVolumeMounts:
-    - name: jellyfin-cache
-      mountPath: /cache
-    - name: jellyfin-media
-      mountPath: /media
-  additionalVolumes:
-    - name: jellyfin-cache
-      hostPathPath: calibre-library
-    - name: jellyfin-media
-      hostPathPath: media
+  additionalVolumeMounts: []
+  additionalVolumes: []
   resources:
     requests:
       cpu: 500m
