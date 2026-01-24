@@ -1,4 +1,16 @@
 image:
-  tag: v0.11.3
+  repository: ghcr.io/crocodilestick/calibre-web-automated
+  tag: V3.1.4
+deployment:
+  additionalVolumeMounts:
+    - name: calibre-books
+      mountPath: /calibre-library
+    - name: calibre-ingest
+      mountPath: /cwa-book-ingest
+  additionalVolumes:
+    - name: calibre-books
+      hostPathPath: calibre-library
+    - name: calibre-ingest
+      hostPathPath: ingest
 ingress:
   hostname: calibre-web.internal
