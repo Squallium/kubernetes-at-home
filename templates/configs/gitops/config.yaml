@@ -135,6 +135,9 @@ default_context:
         chart_target_revision: "0.0.4"
         enable_ssl: true
         enable_kargo: true
+      - name: "jellyfin"
+        chart_name: "jellyfin"
+        enable_ssl: true
       - name: "authentik"
         chart_repo: "https://charts.goauthentik.io"
         chart_name: "authentik"

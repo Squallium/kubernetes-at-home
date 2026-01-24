@@ -1,0 +1,4 @@
+image:
+  tag: 10.11.6
+ingress:
+  hostname: jellyfin-dev.internal
