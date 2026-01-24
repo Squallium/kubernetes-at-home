@@ -1,9 +1,20 @@
 image:
-  repository: gelbphoenix/autocaliweb
-  tag: 0.11.3
+  repository: linuxserver/calibre-web
+  tag: 0.6.25
   pullPolicy: IfNotPresent
 
 deployment:
+  additionalEnv: []
+  additionalVolumeMounts:
+    - name: calibre-books
+      mountPath: /calibre-library
+    - name: calibre-ingest
+      mountPath: /acw-book-ingest
+  additionalVolumes:
+    - name: calibre-books
+      hostPathPath: calibre-library
+    - name: calibre-ingest
+      hostPathPath: ingest
   resources:
     requests:
       cpu: 500m

@@ -1,4 +1,16 @@
 image:
+  repository: gelbphoenix/autocaliweb
   tag: v0.11.3
+deployment:
+  additionalVolumeMounts:
+    - name: calibre-books
+      mountPath: /calibre-library
+    - name: calibre-ingest
+      mountPath: /acw-book-ingest
+  additionalVolumes:
+    - name: calibre-books
+      hostPathPath: calibre-library
+    - name: calibre-ingest
+      hostPathPath: ingest
 ingress:
   hostname: calibre-web-dev.internal

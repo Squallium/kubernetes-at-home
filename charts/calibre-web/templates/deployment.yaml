@@ -21,13 +21,15 @@ spec:
           env:
             - name: TZ
               value: "Europe/Madrid"
+            {{- with .Values.deployment.additionalEnv }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
           volumeMounts:
             - name: calibre-config
               mountPath: /config
-            - name: calibre-books
-              mountPath: /calibre-library
-            - name: calibre-ingest
-              mountPath: /acw-book-ingest
+            {{- if .Values.deployment.additionalVolumeMounts }}
+            {{- toYaml .Values.deployment.additionalVolumeMounts | nindent 12 }}
+            {{- end }}
           resources:
             {{- toYaml .Values.deployment.resources | nindent 12 }}
       volumes:
@@ -35,12 +37,10 @@ spec:
           hostPath:
             path: {{ .Values.volume.path }}/config
             type: Directory
-        - name: calibre-books
+        {{- range $val := .Values.deployment.additionalVolumes }}
+        - name: {{ $val.name }}
           hostPath:
-            path: {{ .Values.volume.path }}/calibre-library
+            path: {{ $.Values.volume.path }}/{{ $val.hostPathPath }}
             type: Directory
-        - name: calibre-ingest
-          hostPath:
-            path: {{ .Values.volume.path }}/ingest
-            type: Directory
+        {{- end }}
 
