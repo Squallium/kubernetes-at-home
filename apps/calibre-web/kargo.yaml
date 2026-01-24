@@ -5,7 +5,7 @@ kargo:
     image:
       repoURL: ghcr.io/crocodilestick/calibre-web-automated
       semverConstraint: ''
-      allowTags: ''
+      allowTags: '^V\d+\.\d+\.\d+$'
       ignoreTags:
         - '.*-b\.\d+$'
         - 'nightly.*$'
