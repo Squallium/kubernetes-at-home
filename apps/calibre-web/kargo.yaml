@@ -1,8 +1,9 @@
 chart:
-  targetRevision: 0.0.46
+  targetRevision: 0.0.47
 kargo:
   warehouse:
     image:
+      imageSelectionStrategy: Lexical
       repoURL: ghcr.io/crocodilestick/calibre-web-automated
       semverConstraint: ''
       allowTags: '^V\d+\.\d+\.\d+$'
