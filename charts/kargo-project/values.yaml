@@ -4,6 +4,7 @@ kargo:
   warehouse:
     enabled: true
     image:
+      imageSelectionStrategy: SemVer
       repoURL: ''
       semverConstraint: ''
       allowTags: ''

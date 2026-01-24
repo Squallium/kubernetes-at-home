@@ -9,7 +9,7 @@ spec:
   {{- if .Values.kargo.warehouse.image.repoURL }}
   - image:
       repoURL: {{ .Values.kargo.warehouse.image.repoURL }}
-      imageSelectionStrategy: SemVer
+      imageSelectionStrategy: {{ .Values.kargo.warehouse.image.imageSelectionStrategy }}
       strictSemvers: true
       discoveryLimit: {{ .Values.kargo.warehouse.image.discoveryLimit | default 3 }}
       semverConstraint: {{ .Values.kargo.warehouse.image.semverConstraint }}
