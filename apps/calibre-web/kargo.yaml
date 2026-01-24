@@ -1,0 +1,33 @@
+chart:
+  targetRevision: 0.0.46
+kargo:
+  warehouse:
+    image:
+      repoURL: ghcr.io/crocodilestick/calibre-web-automated
+      semverConstraint: ^3.1.0
+      allowTags: 'V^\d+\.\d+\.\d+$'
+      ignoreTags:
+        - '.*-b\.\d+$'
+        - 'nightly.*$'
+        - 'latest'
+        - 'dev-.*'
+        - 'version-.*$'
+        - 'amd64-.*$'
+      discoveryLimit: 15
+    chart:
+      repoURL: https://squallium.github.io/kubernetes-at-home
+      name: calibre-web
+extSecrets:
+  - name: github-ssh
+    namespace: paperless-ngx
+    labels:
+      kargo.akuity.io/cred-type: git
+    secrets:
+      - secretKey: repoURL
+        remoteRef:
+          key: secret/kargo/github
+          property: repo_url
+      - secretKey: sshPrivateKey
+        remoteRef:
+          key: secret/kargo/github
+          property: ssh_private_key
