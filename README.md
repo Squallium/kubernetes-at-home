@@ -57,7 +57,7 @@ limactl start --name=microk8s-core ./core.yaml
 
 #### Configure dev cluster to test restoration of the shared folder in the machine
 
-1. Install all the needed addons [apps/lima/README.md](apps/lima/README.md)
+1. Install all the needed addons [apps/lima/README.md](apps/lima/README.md) or [apps/microk8s/README.md](apps/microk8s/README.md)
 2. Register the new cluster credentials in vault to add it into ArgoCD
 3. Starting with [coredns](addons/coredns/README.md) config to add additional configuration
 2. After that you need the [external-secrets](addons/external-secrets/README.md) remember that
