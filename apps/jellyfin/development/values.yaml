@@ -1,8 +1,10 @@
 image:
   tag: 10.11.6
 ingress:
-  hostname: jellyfin-dev.internal
-deployment:
-  additionalEnv:
-    - name: JELLYFIN_PublishedServerUrl
-      value: "https://jellyfin-dev.internal"
+  enabled: true
+  className: public
+  hosts:
+    - host: jellyfin-dev.internal
+      paths:
+        - path: /
+          pathType: ImplementationSpecific

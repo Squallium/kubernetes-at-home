@@ -136,6 +136,7 @@ default_context:
         enable_ssl: true
         enable_kargo: true
       - name: "jellyfin"
+        chart_repo: "https://jellyfin.github.io/jellyfin-helm"
         chart_name: "jellyfin"
         enable_ssl: true
       - name: "authentik"

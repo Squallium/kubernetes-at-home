@@ -341,7 +341,7 @@ applicationsets:
           - repoURL: https://github.com/Squallium/kubernetes-at-home.git
             targetRevision: main
             ref: values
-          - repoURL: https://squallium.github.io/kubernetes-at-home
+          - repoURL: https://jellyfin.github.io/jellyfin-helm
             chart: jellyfin
             targetRevision: '{{chart.targetRevision}}'
             helm:
