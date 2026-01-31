@@ -51,6 +51,11 @@ prometheus:
           - targets:
             - '192.168.1.146:9182' # IP de tu ROG en la LAN
             - '192.168.1.187:9182' # IP de tu ROG en la WiFi
+      - job_name: 'mini_pc'
+        scrape_interval: 15s
+        static_configs:
+          - targets:
+            -  '192.168.1.177:9182' # IP del Mini PC en la LAN
 
 
 alertmanager:
