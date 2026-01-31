@@ -1,0 +1,13 @@
+persistence:
+  config:
+    enabled: true
+    type: hostPath
+    hostPath: /mnt/services/jellyfin/config
+  media:
+    enabled: true
+    type: hostPath
+    hostPath: /mnt/services/jellyfin/media
+  cache:
+    enabled: true
+    type: hostPath
+    hostPath: /mnt/services/jellyfin/cache

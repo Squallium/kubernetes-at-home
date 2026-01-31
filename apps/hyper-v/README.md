@@ -54,3 +54,19 @@ After that, you can verify that swap is disabled by running the `swapon --show` 
 ```bash
 sudo reboot
 ```
+
+## Increase the size of the ubuntu partition to use the full disk space
+
+After rebooting, you need to increase the size of the ubuntu partition to use the full disk space. You can do this by running the following commands:
+
+First expand the logical volume
+
+```bash
+sudo lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
+```
+
+Then resize the filesystem
+
+```bash
+sudo resize2fs /dev/ubuntu-vg/ubuntu-lv
+```
