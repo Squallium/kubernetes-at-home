@@ -99,7 +99,7 @@ applicationsets:
     #              prune: {{'{{'}} .prune }}
     #        {{'{{'}}- end }}
   {%- endif %}
-  {%- if cookiecutter.core_services_config is defined and cookiecutter.core_services_config %}
+  {%- if cookiecutter.core_services_config.list is defined and cookiecutter.core_services_config.list %}
   core-services-configs:
     namespace: argocd
     additionalLabels: {}
