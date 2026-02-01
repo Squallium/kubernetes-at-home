@@ -13,7 +13,7 @@ applicationsets:
           generators:
             - clusters: {}
             - git:
-                repoURL: https://github.com/Squallium/kubernetes-at-home.git
+                repoURL: {{ cookiecutter.default_ref_values_repo_url }}
                 revision: main
                 files:
                   - path: 'apps/{{ service.name }}/{{'{{'}}metadata.labels.environment}}/config.yaml'
@@ -52,7 +52,7 @@ applicationsets:
       spec:
         project: default
         sources:
-          - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+          - repoURL: {{ cookiecutter.default_ref_values_repo_url }}
             targetRevision: main
             ref: values
           {%- set chart_name = service.chart_name | default(cookiecutter.default_chart_name, true) | trim %}
