@@ -628,7 +628,7 @@ applicationsets:
             targetRevision: main
             ref: values
           - repoURL: https://squallium.github.io/kubernetes-at-home
-            chart: prowlarr
+            chart: servarr
             targetRevision: '{{chart.targetRevision}}'
             helm:
               valueFiles:

@@ -1,0 +1,9 @@
+image:
+  tag: "2.3.0.5236"
+
+ingress:
+  hosts:
+    - host: prowlarr-dev.internal
+      paths:
+        - path: /
+          pathType: Prefix

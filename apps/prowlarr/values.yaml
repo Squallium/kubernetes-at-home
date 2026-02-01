@@ -1,0 +1,32 @@
+fullnameOverride: prowlarr
+
+image:
+  repository: ghcr.io/linuxserver/prowlarr
+
+containerPort: 9696
+
+env:
+  - name: PUID
+    value: "1000"   # UID del usuario en Lima
+  - name: PGID
+    value: "1000"   # GID del usuario en Lima
+  - name: TZ
+    value: "Europe/Madrid"
+
+volumeMounts:
+  - name: config
+    mountPath: /config
+
+volumes:
+  - name: config
+    hostPath:
+      path: /mnt/services/prowlarr/config
+      type: DirectoryOrCreate
+
+serviceAccount:
+  create: false
+
+ingress:
+  enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: "home-internal-ca-issuer"
