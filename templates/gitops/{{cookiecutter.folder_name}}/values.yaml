@@ -12,7 +12,7 @@ argocd-apps:
       - resources-finalizer.argocd.argoproj.io
       project: default
       sources:
-      - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+      - repoURL: {{ cookiecutter.default_ref_values_repo_url }}
         targetRevision: main
         ref: values
       - repoURL: https://argoproj.github.io/argo-helm

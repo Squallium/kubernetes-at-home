@@ -4,6 +4,7 @@
   "argocd_apps_version": "2.0.2",
   "default_chart_repo": "https://squallium.github.io/kubernetes-at-home",
   "default_chart_repo_url": "{{cookiecutter.default_chart_repo}}.git",
+  "default_ref_values_repo_url": "https://github.com/Squallium/kubernetes-at-home.git",
   "default_chart_name": "",
   "default_chart_target_revision": "main",
   "projects": {
