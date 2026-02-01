@@ -7,11 +7,17 @@ replicaCount: 1
 
 # This sets the container image more information can be found here: https://kubernetes.io/docs/concepts/containers/images/
 image:
-  repository: nginx
+  repository: servarr
   # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
+
+# This sets the container port more information can be found here: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-ports
+containerPort: 80
+
+# This is for setting environment variables more information can be found here: https://kubernetes.io/docs/tasks/inject-data-application/environment-variable-expose-pod-information/
+env: []
 
 # This is for the secrets for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 imagePullSecrets: []
