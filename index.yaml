@@ -1455,6 +1455,18 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/prowlarr-0.0.1/prowlarr-0.0.1.tgz
     version: 0.0.1
+  servarr:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2026-02-01T16:35:36.501306842Z"
+    description: A Helm chart for deploying Servarr applications (Sonarr, Radarr,
+      Lidarr, Readarr, etc.) on Kubernetes.
+    digest: 672ab19744a9920ed04cca3f8d511014ce3856e3bce29f04304120da0a46336b
+    name: servarr
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/servarr-0.0.1/servarr-0.0.1.tgz
+    version: 0.0.1
   vault-config:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -2029,4 +2041,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/warracker-0.0.1/warracker-0.0.1.tgz
     version: 0.0.1
-generated: "2026-01-24T23:12:26.705072887Z"
+generated: "2026-02-01T16:35:36.501697477Z"
