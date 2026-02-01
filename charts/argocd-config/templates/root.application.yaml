@@ -15,3 +15,21 @@ spec:
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: home-root-incubator
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Squallium/kubernetes-at-home-incubator.git
+    targetRevision: main
+    path: gitops
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
