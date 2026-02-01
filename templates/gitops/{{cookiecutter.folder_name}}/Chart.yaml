@@ -1,5 +1,5 @@
 apiVersion: v2
-name: home-root
+name: {{ cookiecutter.root_name }}
 description: A Helm chart for managing the Home GitOps
 
 # A chart can be either an 'application' or a 'library' chart.
@@ -23,5 +23,5 @@ appVersion: 0.0.1
 # Define the dependencies for this chart.
 dependencies:
   - name: argocd-apps
-    version: 2.0.2
+    version: {{ cookiecutter.argocd_apps_version }}
     repository: https://argoproj.github.io/argo-helm

@@ -17,7 +17,7 @@ argocd-apps:
         ref: values
       - repoURL: https://argoproj.github.io/argo-helm
         chart: argocd-apps
-        targetRevision: 2.0.2
+        targetRevision: {{ cookiecutter.argocd_apps_version }}
         helm:
           valueFiles:
             - $values/gitops/values-{{ app_of_apps.name }}.yaml

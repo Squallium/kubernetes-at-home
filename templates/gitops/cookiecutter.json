@@ -1,5 +1,7 @@
 {
   "folder_name": "gitops",
+  "root_name": "home-root",
+  "argocd_apps_version": "2.0.2",
   "default_chart_repo": "https://squallium.github.io/kubernetes-at-home",
   "default_chart_repo_url": "{{cookiecutter.default_chart_repo}}.git",
   "default_chart_name": "",
