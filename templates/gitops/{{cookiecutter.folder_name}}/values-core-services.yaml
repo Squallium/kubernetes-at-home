@@ -1,4 +1,5 @@
 applicationsets:
+  {%- if cookiecutter.core_services.list is defined and cookiecutter.core_services.list %}
   core-services-setup:
     namespace: argocd
     additionalLabels: {}
@@ -12,10 +13,9 @@ applicationsets:
           generators:
             - list:
                 elements:
-                  - name: 'kube-prometheus-stack'
-                  - name: 'loki'
-                  - name: 'promtail'
-                  - name: 'kargo'
+                  {%- for service in cookiecutter.core_services.list %}
+                  - name: '{{ service.name }}'
+                  {%- endfor %}
             - git:
                 repoURL: https://github.com/Squallium/kubernetes-at-home.git
                 revision: main
@@ -98,6 +98,8 @@ applicationsets:
     #            automated:
     #              prune: {{'{{'}} .prune }}
     #        {{'{{'}}- end }}
+  {%- endif %}
+  {%- if cookiecutter.core_services_config is defined and cookiecutter.core_services_config %}
   core-services-configs:
     namespace: argocd
     additionalLabels: {}
@@ -111,7 +113,9 @@ applicationsets:
           generators:
             - list:
                 elements:
-                  - name: 'kargo'
+                  {%- for service in cookiecutter.core_services_config.list %}
+                  - name: '{{ service.name }}'
+                  {%- endfor %}
             - git:
                 repoURL: https://github.com/Squallium/kubernetes-at-home.git
                 revision: main
@@ -192,3 +196,4 @@ applicationsets:
     #            automated:
     #              prune: {{'{{'}} .prune }}
     #        {{'{{'}}- end }}
+  {% endif %}

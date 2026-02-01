@@ -192,3 +192,4 @@ applicationsets:
     #            automated:
     #              prune: {{ .prune }}
     #        {{- end }}
+  
