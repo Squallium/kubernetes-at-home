@@ -1,7 +1,0 @@
-ingress:
-  annotations:
-    cert-manager.io/cluster-issuer: home-internal-ca-issuer
-  tls:
-    - hosts:
-        - prowlarr-dev.internal
-      secretName: prowlarr-dev-internal-tls
