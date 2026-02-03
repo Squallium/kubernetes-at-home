@@ -156,9 +156,6 @@ default_context:
         chart_repo: "https://argoproj.github.io/argo-helm"
         chart_name: "argo-rollouts"
         chart_target_revision: "2.40.2"
-      - name: "prowlarr"
-        chart_name: "servarr"
-        enable_ssl: true
       - name: "vikunja"
         chart_name: "vikunja"
         enable_ssl: true
