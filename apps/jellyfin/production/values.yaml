@@ -1,0 +1,10 @@
+image:
+  tag: 10.11.6
+ingress:
+  enabled: true
+  className: public
+  hosts:
+    - host: jellyfin.internal
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
