@@ -2,7 +2,7 @@ persistence:
   media:
     enabled: true
     type: hostPath
-    hostPath: /mnt/services/jellyfin/media
+    hostPath: /mnt/services/media
   cache:
     enabled: true
     type: hostPath
