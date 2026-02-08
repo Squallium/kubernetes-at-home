@@ -7,3 +7,11 @@ persistence:
     enabled: true
     type: hostPath
     hostPath: /mnt/services/jellyfin/cache
+
+resources:
+  requests:
+    cpu: "50m"
+    memory: "64Mi"
+  limits:
+    cpu: "1500m"
+    memory: "2Gi"
