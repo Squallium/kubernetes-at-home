@@ -28,6 +28,9 @@ grafana:
 
 prometheus:
   prometheusSpec:
+    externalLabels:
+      cluster: core
+
     serviceMonitorSelectorNilUsesHelmValues: false
     podMonitorSelectorNilUsesHelmValues: false
     retention: 7d
