@@ -35,7 +35,7 @@ prometheus:
           - sourceLabels: [ __name__ ]
             regex: (.*)
             targetLabel: cluster
-            replacement: my-cluster
+            replacement: core
             action: replace
 
     serviceMonitorSelectorNilUsesHelmValues: false
