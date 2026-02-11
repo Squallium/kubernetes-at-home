@@ -28,8 +28,15 @@ grafana:
 
 prometheus:
   prometheusSpec:
-    externalLabels:
-      cluster: core
+    scrapeClasses:
+      - default: true
+        name: cluster-relabeling
+        relabelings:
+          - sourceLabels: [ __name__ ]
+            regex: (.*)
+            targetLabel: cluster
+            replacement: my-cluster
+            action: replace
 
     serviceMonitorSelectorNilUsesHelmValues: false
     podMonitorSelectorNilUsesHelmValues: false
