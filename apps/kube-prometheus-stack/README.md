@@ -24,3 +24,21 @@ You can get the installer from the official GitHub repository: https://github.co
 
 After the installation you can check that is working by accessing to http://localhost:9182/metrics and outside the
 machine with http://<your-machine-ip>:9182/metrics
+
+## Bug fixing
+
+### Passing cluster name to all metrics
+
+Issue related https://github.com/prometheus-community/helm-charts/issues/4961 and solution in yaml
+
+```yaml
+scrapeClasses:
+  - default: true
+    name: cluster-relabeling
+    relabelings:
+      - sourceLabels: [ __name__ ]
+        regex: (.*)
+        targetLabel: cluster
+        replacement: core
+        action: replace
+```
