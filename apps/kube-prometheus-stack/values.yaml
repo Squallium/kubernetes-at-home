@@ -27,7 +27,18 @@ grafana:
 
 
 prometheus:
+  ingress:
+    enabled: true
+    ingressClassName: public
+    hosts:
+      - prometheus.internal
+    paths:
+      - /
+    pathType: Prefix
+
   prometheusSpec:
+    enableRemoteWriteReceiver: true
+
     scrapeClasses:
       - default: true
         name: cluster-relabeling
