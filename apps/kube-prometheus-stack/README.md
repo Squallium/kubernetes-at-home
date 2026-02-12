@@ -25,6 +25,20 @@ You can get the installer from the official GitHub repository: https://github.co
 After the installation you can check that is working by accessing to http://localhost:9182/metrics and outside the
 machine with http://<your-machine-ip>:9182/metrics
 
+## Test exposed prometheus remote write endpoint
+
+You can check the ingress with the following curl command:
+
+```bash
+curl http://prometheus.internal/api/v1/status/buildinfo
+```
+
+And the remote write endpoint with the following command:
+
+```bash
+curl -X POST http://prometheus.internal/api/v1/write
+```
+
 ## Bug fixing
 
 ### Passing cluster name to all metrics
