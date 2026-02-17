@@ -1,0 +1,6 @@
+image:
+  tag: 0.5.1
+
+ingress:
+  enabled: true
+  host: romm.internal

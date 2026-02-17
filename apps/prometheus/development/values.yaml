@@ -1,0 +1,42 @@
+alertmanager:
+  enabled: false
+
+prometheus-pushgateway:
+  enabled: false
+
+server:
+  retention: "6h"
+
+  global:
+    scrape_interval: 30s
+    evaluation_interval: 30s
+
+  resources:
+    requests:
+      cpu: 200m
+      memory: 512Mi
+    limits:
+      cpu: 500m
+      memory: 1Gi
+
+  persistentVolume:
+    enabled: true
+    size: 4Gi
+
+  remoteWrite:
+    - url: "http://prometheus.internal/api/v1/write"
+
+  extraFlags:
+    - web.enable-lifecycle
+
+  # 👇 ESTA PARTE ES CLAVE
+  serverFiles:
+    prometheus.yml:
+      global:
+        scrape_interval: 30s
+        evaluation_interval: 30s
+        external_labels:
+          cluster: dev
+      rule_files:
+        - /etc/config/recording_rules.yml
+        - /etc/config/alerting_rules.yml
