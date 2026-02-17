@@ -1,0 +1,95 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: romm-mariadb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: romm-mariadb
+  template:
+    metadata:
+      labels:
+        app: romm-mariadb
+    spec:
+      containers:
+        - name: mariadb
+          image: {{ .Values.mariadb.image }}
+          ports:
+            - containerPort: {{ .Values.mariadb.port }}
+          env:
+            - name: MARIADB_DATABASE
+              value: {{ .Values.mariadb.database | quote }}
+            - name: MARIADB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: romm-db
+                  key: DB_USER
+            - name: MARIADB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: romm-db
+                  key: DB_PASSWORD
+            - name: MARIADB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: romm-db
+                  key: DB_ROOT_PASSWORD
+          volumeMounts:
+            - name: mariadb-data
+              mountPath: /var/lib/mysql
+          {{- include "chart.resources" (dict "name" "mariadb" "Values" .Values) | nindent 10 }}
+      volumes:
+        - name: mariadb-data
+          persistentVolumeClaim:
+            claimName: romm-mariadb-pvc
+---
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: romm-mariadb-pv
+  labels:
+    app: romm
+    type: mariadb
+spec:
+  capacity:
+    storage: {{ .Values.mariadb.storage | default "5Gi" }}
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: manual
+  hostPath:
+    path: {{ .Values.mariadb.storagePath }}
+    type: DirectoryOrCreate
+---
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: romm-mariadb-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: manual
+  selector:
+    matchLabels:
+      app: romm
+      type: mariadb
+  resources:
+    requests:
+      storage: {{ .Values.mariadb.storage | default "5Gi" }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: romm-mariadb
+  labels:
+    app: romm-mariadb
+spec:
+  type: ClusterIP
+  ports:
+    - port: {{ .Values.mariadb.port }}
+      targetPort: {{ .Values.mariadb.port }}
+  selector:
+    app: romm-mariadb
