@@ -8,8 +8,8 @@ server:
   retention: "6h"
 
   global:
-    scrape_interval: 30s
-    evaluation_interval: 30s
+    scrape_interval: 60s
+    evaluation_interval: 60s
     external_labels:
       cluster: dev
 
