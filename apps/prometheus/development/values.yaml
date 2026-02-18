@@ -27,6 +27,14 @@ server:
 
   remoteWrite:
     - url: "http://prometheus.internal/api/v1/write"
+      write_relabel_configs:
+        - source_labels: [ namespace ]
+          regex: "home-assistant"
+          action: keep
+
+        - source_labels: [ __name__ ]
+          regex: "container_.*"
+          action: drop
 
   extraFlags:
     - web.enable-lifecycle
