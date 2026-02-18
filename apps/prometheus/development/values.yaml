@@ -10,6 +10,8 @@ server:
   global:
     scrape_interval: 30s
     evaluation_interval: 30s
+    external_labels:
+      cluster: dev
 
   resources:
     requests:
@@ -28,15 +30,3 @@ server:
 
   extraFlags:
     - web.enable-lifecycle
-
-  # 👇 ESTA PARTE ES CLAVE
-  serverFiles:
-    prometheus.yml:
-      global:
-        scrape_interval: 30s
-        evaluation_interval: 30s
-        external_labels:
-          cluster: dev
-      rule_files:
-        - /etc/config/recording_rules.yml
-        - /etc/config/alerting_rules.yml
