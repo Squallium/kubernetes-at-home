@@ -1,0 +1,36 @@
+alertmanager:
+  enabled: false
+
+prometheus-pushgateway:
+  enabled: false
+
+server:
+  retention: "6h"
+
+  global:
+    scrape_interval: 60s
+    evaluation_interval: 60s
+    external_labels:
+      cluster: dev
+
+  resources:
+    requests:
+      cpu: 200m
+      memory: 512Mi
+    limits:
+      cpu: 500m
+      memory: 1Gi
+
+  persistentVolume:
+    enabled: true
+    size: 4Gi
+
+  remoteWrite:
+    - url: "http://prometheus.internal/api/v1/write"
+      write_relabel_configs:
+        - source_labels: [ namespace ]
+          regex: "home-assistant"
+          action: keep
+
+  extraFlags:
+    - web.enable-lifecycle

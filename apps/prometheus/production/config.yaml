@@ -1,0 +1,5 @@
+chart:
+  repoUrl: https://prometheus-community.github.io/helm-charts
+  name: prometheus
+  targetRevision: 28.9.1
+
