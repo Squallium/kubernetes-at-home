@@ -107,10 +107,6 @@ default_context:
 #        chart_name: "homebox"
 #        chart_target_revision: "0.0.4"
 #        enable_ssl: true
-      - name: "prometheus"
-        chart_repo: "https://prometheus-community.github.io/helm-charts"
-        chart_name: "prometheus"
-        server_side_apply: true
       - name: "paperless-ngx"
         chart_name: "paperless-ngx"
         chart_target_revision: "0.0.8"
