@@ -18,7 +18,7 @@ prometheus:
 
   prometheusSpec:
 
-    # 🔥 Solo descubrir ServiceMonitor/PodMonitor en home-assistant
+    # Only look for ServiceMonitor/PodMonitor in specific namespaces
     serviceMonitorNamespaceSelector:
       matchNames:
         - home-assistant
@@ -27,11 +27,11 @@ prometheus:
       matchNames:
         - home-assistant
 
-    # Solo usar los ServiceMonitor que tú crees
+    # Only use the ServiceMonitor that we crate
     serviceMonitorSelectorNilUsesHelmValues: false
     podMonitorSelectorNilUsesHelmValues: false
 
-    # Muy poca retención local (no queremos almacenar)
+    # small local cluster retention time
     retention: 12h
 
     storageSpec:
@@ -46,12 +46,12 @@ prometheus:
     resources:
       requests:
         cpu: 100m
-        memory: 256Mi
+        memory: 128Mi
       limits:
-        cpu: 500m
-        memory: 512Mi
+        cpu: 200m
+        memory: 256Mi
 
-    # 🛰 Remote write hacia core
+    # Remote write to the core cluster Prometheus
     remoteWrite:
       - url: http://prometheus.internal/api/v1/write
         writeRelabelConfigs:
