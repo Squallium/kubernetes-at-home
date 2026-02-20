@@ -107,6 +107,13 @@ default_context:
 #        chart_name: "homebox"
 #        chart_target_revision: "0.0.4"
 #        enable_ssl: true
+      - name: "kube-prometheus-stack"
+        chart_repo: "https://prometheus-community.github.io/helm-charts"
+        chart_name: "kube-prometheus-stack"
+        chart_target_revision: "75.4.0"
+        server_side_apply: true
+        enable_ssl: true
+        enable_kargo: true
       - name: "paperless-ngx"
         chart_name: "paperless-ngx"
         chart_target_revision: "0.0.8"
