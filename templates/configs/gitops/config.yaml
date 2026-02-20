@@ -112,7 +112,6 @@ default_context:
         chart_name: "kube-prometheus-stack"
         chart_target_revision: "75.4.0"
         server_side_apply: true
-        enable_ssl: true
         enable_kargo: true
       - name: "paperless-ngx"
         chart_name: "paperless-ngx"
