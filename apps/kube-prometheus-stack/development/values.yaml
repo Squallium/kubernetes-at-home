@@ -37,6 +37,8 @@ prometheus:
               storage: 2Gi
           storageClassName: "microk8s-hostpath"
 
+    additionalScrapeConfigs: []
+
     serviceMonitorNamespaceSelector:
       matchLabels:
         monitoring: enabled
