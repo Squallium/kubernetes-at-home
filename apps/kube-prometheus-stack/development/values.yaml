@@ -12,6 +12,10 @@ nodeExporter:
 
 prometheusOperator:
   enabled: true
+  admissionWebhooks:
+    enabled: true
+    patch:
+      enabled: true
 
 prometheus:
   enabled: true
