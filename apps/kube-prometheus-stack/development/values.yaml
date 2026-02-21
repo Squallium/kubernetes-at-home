@@ -18,14 +18,13 @@ prometheus:
 
   prometheusSpec:
 
-    # Only look for ServiceMonitor/PodMonitor in specific namespaces
     serviceMonitorNamespaceSelector:
-      matchNames:
-        - home-assistant
+      matchLabels:
+        monitoring: enabled
 
     podMonitorNamespaceSelector:
-      matchNames:
-        - home-assistant
+      matchLabels:
+        monitoring: enabled
 
     # Only use the ServiceMonitor that we crate
     serviceMonitorSelectorNilUsesHelmValues: false
