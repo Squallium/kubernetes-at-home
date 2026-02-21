@@ -48,11 +48,11 @@ prometheus:
         memory: 256Mi
 
     # Remote write to the core cluster Prometheus
-    remoteWrite:
-      - url: http://prometheus.internal/api/v1/write
-        writeRelabelConfigs:
-          - sourceLabels: [__name__]
-            regex: (.*)
-            targetLabel: cluster
-            replacement: dev
-            action: replace
+#    remoteWrite:
+#      - url: http://prometheus.internal/api/v1/write
+#        writeRelabelConfigs:
+#          - sourceLabels: [__name__]
+#            regex: (.*)
+#            targetLabel: cluster
+#            replacement: dev
+#            action: replace
