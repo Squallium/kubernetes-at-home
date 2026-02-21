@@ -52,6 +52,7 @@ prometheus:
     serviceMonitorSelectorNilUsesHelmValues: false
     podMonitorSelectorNilUsesHelmValues: false
     retention: 7d
+
     storageSpec:
       volumeClaimTemplate:
         spec:
@@ -60,6 +61,7 @@ prometheus:
             requests:
               storage: 10Gi
           storageClassName: "microk8s-hostpath"  # usa el storageClass por defecto (hostPath en MicroK8s)
+
     additionalScrapeConfigs:
       - job_name: 'macmini'
         scrape_interval: 15s

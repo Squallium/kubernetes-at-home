@@ -1,24 +1,19 @@
 grafana:
   enabled: false
 
-alertmanager:
-  enabled: false
-
-kubeStateMetrics:
-  enabled: false
-
-nodeExporter:
-  enabled: false
-
-prometheusOperator:
-  enabled: true
-  admissionWebhooks:
-    enabled: true
-
 prometheus:
   enabled: true
 
   prometheusSpec:
+    scrapeClasses:
+      - default: true
+        name: cluster-relabeling
+        relabelings:
+          - sourceLabels: [ __name__ ]
+            regex: (.*)
+            targetLabel: cluster
+            replacement: dev
+            action: replace
 
     serviceMonitorNamespaceSelector:
       matchLabels:
