@@ -3,7 +3,13 @@ grafana:
 
 prometheus:
   ingress:
-    enabled: false
+    enabled: true
+    ingressClassName: public
+    hosts:
+      - prometheus-dev.internal
+    paths:
+      - /
+    pathType: Prefix
 
   prometheusSpec:
     enableRemoteWriteReceiver: false
