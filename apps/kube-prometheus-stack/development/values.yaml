@@ -13,7 +13,7 @@ nodeExporter:
 prometheusOperator:
   enabled: true
   admissionWebhooks:
-    enabled: false
+    enabled: true
 
 prometheus:
   enabled: true
