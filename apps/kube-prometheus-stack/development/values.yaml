@@ -39,6 +39,24 @@ prometheus:
       matchLabels:
         monitoring: enabled
 
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 200m
+        memory: 256Mi
+
+    # Remote write to the core cluster Prometheus
+    remoteWrite:
+      - url: http://prometheus.internal/api/v1/write
+        writeRelabelConfigs:
+          - sourceLabels: [__name__]
+            regex: (.*)
+            targetLabel: cluster
+            replacement: dev
+            action: replace
+
 prometheusOperator:
   admissionWebhooks:
     enabled: true
@@ -46,21 +64,3 @@ prometheusOperator:
       enabled: true
     patch:
       enabled: false
-
-#    resources:
-#      requests:
-#        cpu: 100m
-#        memory: 128Mi
-#      limits:
-#        cpu: 200m
-#        memory: 256Mi
-#
-#    # Remote write to the core cluster Prometheus
-#    remoteWrite:
-#      - url: http://prometheus.internal/api/v1/write
-#        writeRelabelConfigs:
-#          - sourceLabels: [__name__]
-#            regex: (.*)
-#            targetLabel: cluster
-#            replacement: dev
-#            action: replace
