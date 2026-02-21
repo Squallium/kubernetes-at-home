@@ -39,6 +39,14 @@ prometheus:
       matchLabels:
         monitoring: enabled
 
+prometheusOperator:
+  admissionWebhooks:
+    enabled: true
+    certManager:
+      enabled: true
+    patch:
+      enabled: false
+
 #    resources:
 #      requests:
 #        cpu: 100m
