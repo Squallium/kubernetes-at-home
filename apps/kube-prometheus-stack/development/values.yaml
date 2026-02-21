@@ -2,9 +2,12 @@ grafana:
   enabled: false
 
 prometheus:
-  enabled: true
+  ingress:
+    enabled: false
 
   prometheusSpec:
+    enableRemoteWriteReceiver: false
+
     scrapeClasses:
       - default: true
         name: cluster-relabeling
@@ -15,6 +18,19 @@ prometheus:
             replacement: dev
             action: replace
 
+    serviceMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelectorNilUsesHelmValues: false
+    retention: 12h
+
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          accessModes: [ "ReadWriteOnce" ]
+          resources:
+            requests:
+              storage: 2Gi
+          storageClassName: "microk8s-hostpath"
+
     serviceMonitorNamespaceSelector:
       matchLabels:
         monitoring: enabled
@@ -23,31 +39,15 @@ prometheus:
       matchLabels:
         monitoring: enabled
 
-    # Only use the ServiceMonitor that we crate
-    serviceMonitorSelectorNilUsesHelmValues: false
-    podMonitorSelectorNilUsesHelmValues: false
-
-    # small local cluster retention time
-    retention: 12h
-
-    storageSpec:
-      volumeClaimTemplate:
-        spec:
-          accessModes: ["ReadWriteOnce"]
-          storageClassName: microk8s-hostpath
-          resources:
-            requests:
-              storage: 2Gi
-
-    resources:
-      requests:
-        cpu: 100m
-        memory: 128Mi
-      limits:
-        cpu: 200m
-        memory: 256Mi
-
-    # Remote write to the core cluster Prometheus
+#    resources:
+#      requests:
+#        cpu: 100m
+#        memory: 128Mi
+#      limits:
+#        cpu: 200m
+#        memory: 256Mi
+#
+#    # Remote write to the core cluster Prometheus
 #    remoteWrite:
 #      - url: http://prometheus.internal/api/v1/write
 #        writeRelabelConfigs:
