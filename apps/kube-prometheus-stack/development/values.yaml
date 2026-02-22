@@ -55,24 +55,14 @@ prometheus:
     remoteWrite:
       - url: http://prometheus.internal/api/v1/write
         writeRelabelConfigs:
+          - sourceLabels: [ namespace ]
+            regex: home-assistant|paperless|authentik
+            action: keep
           - sourceLabels: [__name__]
             regex: (.*)
             targetLabel: cluster
             replacement: dev
             action: replace
-
-kubelet:
-  serviceMonitor:
-    metricRelabelings:
-      # ---- chart defaults ----
-      - action: drop
-        sourceLabels: [__name__, le]
-        regex: (csi_operations|storage_operation_duration)_seconds_bucket;(0.25|2.5|15|25|120|600)(\.0)?
-
-      # ---- namespaces filter ----
-      - sourceLabels: [namespace]
-        regex: home-assistant
-        action: keep
 
 prometheusOperator:
   admissionWebhooks:
