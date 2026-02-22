@@ -39,13 +39,13 @@ prometheus:
 
     additionalScrapeConfigs: []
 
-    serviceMonitorNamespaceSelector:
-      matchLabels:
-        monitoring: enabled
-
-    podMonitorNamespaceSelector:
-      matchLabels:
-        monitoring: enabled
+#    serviceMonitorNamespaceSelector:
+#      matchLabels:
+#        monitoring: enabled
+#
+#    podMonitorNamespaceSelector:
+#      matchLabels:
+#        monitoring: enabled
 
     resources:
       requests:
