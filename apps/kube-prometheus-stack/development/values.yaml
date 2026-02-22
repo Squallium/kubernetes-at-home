@@ -39,9 +39,8 @@ prometheus:
 
     additionalScrapeConfigs: []
 
-    serviceMonitorSelector:
-      matchLabels:
-        release: kube-prometheus-stack
+    serviceMonitorSelector: {}
+    podMonitorSelector: {}
 
     resources:
       requests:
