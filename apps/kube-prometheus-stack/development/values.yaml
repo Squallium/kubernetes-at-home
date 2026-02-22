@@ -55,7 +55,7 @@ prometheus:
       - url: http://prometheus.internal/api/v1/write
         writeRelabelConfigs:
           - sourceLabels: [ namespace ]
-            regex: authentik|calibre-web|home-assistant
+            regex: (argo-rollouts|authentik|calibre-web|cert-manager|cloudflared|external-secrets|home-assistant|jellyfin|kube-prometheus-stack|lidarr|paperless-ngx|pgbackweb|prowlarr|radarr|shoko|sonarr)
             action: keep
           - sourceLabels: [__name__]
             regex: (.*)
