@@ -55,8 +55,8 @@ prometheus:
     remoteWrite:
       - url: http://prometheus.internal/api/v1/write
         writeRelabelConfigs:
-          - sourceLabels: [ namespace ]
-            regex: home-assistant|paperless|authentik
+          - sourceLabels: [ __meta_kubernetes_namespace ]
+            regex: home-assistant
             action: keep
           - sourceLabels: [__name__]
             regex: (.*)
