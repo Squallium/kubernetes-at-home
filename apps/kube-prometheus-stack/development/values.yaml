@@ -54,7 +54,7 @@ prometheus:
     remoteWrite:
       - url: http://prometheus.internal/api/v1/write
         writeRelabelConfigs:
-          - sourceLabels: [ __meta_kubernetes_namespace ]
+          - sourceLabels: [ namespace ]
             regex: home-assistant
             action: keep
           - sourceLabels: [__name__]
