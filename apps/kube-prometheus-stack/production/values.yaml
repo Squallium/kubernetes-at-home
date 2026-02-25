@@ -1,0 +1,72 @@
+grafana:
+  enabled: false
+
+prometheus:
+  ingress:
+    enabled: true
+    ingressClassName: public
+    hosts:
+      - prometheus.internal
+    paths:
+      - /
+    pathType: Prefix
+
+  prometheusSpec:
+    enableRemoteWriteReceiver: false
+
+    scrapeClasses:
+      - default: true
+        name: cluster-relabeling
+        relabelings:
+          - sourceLabels: [ __name__ ]
+            regex: (.*)
+            targetLabel: cluster
+            replacement: pro
+            action: replace
+
+    serviceMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelectorNilUsesHelmValues: false
+    retention: 12h
+
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          accessModes: [ "ReadWriteOnce" ]
+          resources:
+            requests:
+              storage: 2Gi
+          storageClassName: "microk8s-hostpath"
+
+    additionalScrapeConfigs: []
+
+    serviceMonitorSelector: {}
+    podMonitorSelector: {}
+
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 200m
+        memory: 256Mi
+
+    # Remote write to the core cluster Prometheus
+    remoteWrite:
+      - url: http://prometheus.internal/api/v1/write
+        writeRelabelConfigs:
+          - sourceLabels: [ namespace ]
+            regex: authentik|calibre-web|home-assistant
+            action: keep
+          - sourceLabels: [__name__]
+            regex: (.*)
+            targetLabel: cluster
+            replacement: pro
+            action: replace
+
+prometheusOperator:
+  admissionWebhooks:
+    enabled: true
+    certManager:
+      enabled: true
+    patch:
+      enabled: false
