@@ -47,8 +47,8 @@ prometheus:
         cpu: 100m
         memory: 128Mi
       limits:
-        cpu: 200m
-        memory: 256Mi
+        cpu: 400m
+        memory: 512Mi
 
     # Remote write to the core cluster Prometheus
     remoteWrite:
