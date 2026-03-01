@@ -47,15 +47,15 @@ prometheus:
         cpu: 100m
         memory: 128Mi
       limits:
-        cpu: 400m
-        memory: 512Mi
+        cpu: 200m
+        memory: 256Mi
 
     # Remote write to the core cluster Prometheus
     remoteWrite:
       - url: http://prometheus.internal/api/v1/write
         writeRelabelConfigs:
           - sourceLabels: [ namespace ]
-            regex: authentik|calibre-web|cloudflared|home-assistant|jellyfin|kavita|lidarr|paperless-ngx|pgbackweb|prometheus|prowlarr|radarr|shoko|sonarr|vikunja|warracker
+            regex: authentik|calibre-web|home-assistant
             action: keep
           - sourceLabels: [__name__]
             regex: (.*)
