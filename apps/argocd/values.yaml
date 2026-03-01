@@ -70,8 +70,10 @@ repoServer:
 
 controller:
   extraArgs:
-    - --status-processors=5
-    - --operation-processors=3
+    - --status-processors=2
+    - --operation-processors=1
+    - --app-resync=300
+    - --cluster-cache-resync=300
   resources:
     limits:
       cpu: 1000m
