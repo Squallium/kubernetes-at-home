@@ -73,7 +73,7 @@ controller:
     - --status-processors=2
     - --operation-processors=1
     - --app-resync=300
-    - --cluster-cache-resync=300
+    - --kubectl-parallelism-limit=5
   resources:
     limits:
       cpu: 1000m

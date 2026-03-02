@@ -113,6 +113,19 @@ default_context:
         chart_target_revision: "75.4.0"
         server_side_apply: true
         enable_kargo: true
+        ignore_differences:
+          - group: monitoring.coreos.com
+            kind: Prometheus
+            jsonPointers:
+              - /status
+          - group: monitoring.coreos.com
+            kind: ServiceMonitor
+            jsonPointers:
+              - /status
+          - group: monitoring.coreos.com
+            kind: PodMonitor
+            jsonPointers:
+              - /status
       - name: "paperless-ngx"
         chart_name: "paperless-ngx"
         chart_target_revision: "0.0.8"

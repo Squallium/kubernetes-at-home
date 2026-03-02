@@ -106,7 +106,7 @@ applicationsets:
           {%- for ignore in service.ignore_differences | default([]) %}
           - group: {{ ignore.group }}
             kind: {{ ignore.kind }}
-            {%- if ignore.name %}
+            {%- if ignore.get("name", False) %}
             name: {{ ignore.name }}
             {%- endif %}
             jsonPointers:

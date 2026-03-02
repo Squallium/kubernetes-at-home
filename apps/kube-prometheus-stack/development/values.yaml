@@ -1,6 +1,36 @@
 grafana:
   enabled: false
 
+alertmanager:
+  enabled: false
+
+defaultRules:
+  create: false
+
+kubeEtcd:
+  enabled: false
+
+kubeControllerManager:
+  enabled: false
+
+kubeScheduler:
+  enabled: false
+
+kubeProxy:
+  enabled: false
+
+kubeApiServer:
+  enabled: false
+
+coreDns:
+  enabled: false
+
+kubeStateMetrics:
+  enabled: true
+
+nodeExporter:
+  enabled: true
+
 prometheus:
   ingress:
     enabled: true
@@ -12,9 +42,19 @@ prometheus:
     pathType: Prefix
 
   prometheusSpec:
+    replicas: 1
+
     enableRemoteWriteReceiver: false
-    scrapeInterval: 30s
-    evaluationInterval: 30s
+
+    scrapeInterval: 60s
+    evaluationInterval: 60s
+
+    retention: 12h
+
+    serviceMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelectorNilUsesHelmValues: false
+    serviceMonitorSelector: {}
+    podMonitorSelector: {}
 
     scrapeClasses:
       - default: true
@@ -25,10 +65,6 @@ prometheus:
             targetLabel: cluster
             replacement: dev
             action: replace
-
-    serviceMonitorSelectorNilUsesHelmValues: false
-    podMonitorSelectorNilUsesHelmValues: false
-    retention: 12h
 
     storageSpec:
       volumeClaimTemplate:
@@ -41,18 +77,14 @@ prometheus:
 
     additionalScrapeConfigs: []
 
-    serviceMonitorSelector: {}
-    podMonitorSelector: {}
-
     resources:
       requests:
-        cpu: 100m
+        cpu: 50m
         memory: 128Mi
       limits:
         cpu: 200m
         memory: 256Mi
 
-    # Remote write to the core cluster Prometheus
     remoteWrite:
       - url: http://prometheus.internal/api/v1/write
         writeRelabelConfigs:
@@ -67,15 +99,14 @@ prometheus:
 
 prometheusOperator:
   admissionWebhooks:
-    enabled: true
-    certManager:
-      enabled: true
-    patch:
-      enabled: false
+    enabled: false
+  tls:
+    enabled: false
+
   resources:
     requests:
-      cpu: 100m
-      memory: 128Mi
+      cpu: 50m
+      memory: 64Mi
     limits:
-      cpu: 400m
-      memory: 512Mi
+      cpu: 200m
+      memory: 256Mi

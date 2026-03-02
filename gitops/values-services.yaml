@@ -73,6 +73,18 @@ applicationsets:
             kind: Deployment
             jsonPointers:
               - /spec/replicas
+          - group: monitoring.coreos.com
+            kind: Prometheus
+            jsonPointers:
+              - /status
+          - group: monitoring.coreos.com
+            kind: ServiceMonitor
+            jsonPointers:
+              - /status
+          - group: monitoring.coreos.com
+            kind: PodMonitor
+            jsonPointers:
+              - /status
         info:
           - name: url
             value: https://argoproj.github.io/
