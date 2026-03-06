@@ -1,11 +1,11 @@
 chart:
-  targetRevision: 0.0.46
+  targetRevision: 0.0.48
 kargo:
   warehouse:
     chart:
       repoURL: https://grafana.github.io/helm-charts
       name: promtail
-      semverConstraint: ^6.17.0
+      constraint: ^6.17.0
   stages:
     dev:
       enabled: false

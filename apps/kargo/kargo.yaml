@@ -1,11 +1,11 @@
 chart:
-  targetRevision: 0.0.46
+  targetRevision: 0.0.48
 kargo:
   warehouse:
     chart:
       repoURL: oci://ghcr.io/akuity/kargo-charts/kargo
       name: ''
-      semverConstraint: ^1.8.4
+      constraint: ^1.8.4
   stages:
     dev:
       enabled: false

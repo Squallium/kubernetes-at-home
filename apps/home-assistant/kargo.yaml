@@ -1,11 +1,11 @@
 chart:
-  targetRevision: 0.0.44
+  targetRevision: 0.0.48
 kargo:
   warehouse:
     image:
       repoURL: ghcr.io/home-assistant/home-assistant
       discoveryLimit: 7
-      semverConstraint: ''
+      constraint: ''
       allowTags: ''
       ignoreTags: []
     chart:
@@ -20,7 +20,7 @@ kargo:
         mosquitto:
           repoURL: docker.io/eclipse-mosquitto
           discoveryLimit: 7
-          semverConstraint: ''
+          constraint: ''
           allowTags: ''
           ignoreTags: []
 extSecrets:

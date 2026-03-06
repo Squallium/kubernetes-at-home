@@ -70,13 +70,13 @@ repoServer:
 
 controller:
   extraArgs:
-    - --status-processors=2
-    - --operation-processors=1
-    - --app-resync=300
-    - --kubectl-parallelism-limit=5
+    - --status-processors=3
+    - --operation-processors=2
+    - --app-resync=150
+    - --kubectl-parallelism-limit=10
   resources:
     limits:
-      cpu: 1000m
+      cpu: 1500m
       memory: 1024Mi
     requests:
       cpu: 250m

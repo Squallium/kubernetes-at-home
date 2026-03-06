@@ -1,11 +1,11 @@
 chart:
-  targetRevision: 0.0.46
+  targetRevision: 0.0.48
 kargo:
   warehouse:
     chart:
       repoURL: https://prometheus-community.github.io/helm-charts
       name: kube-prometheus-stack
-      semverConstraint: ^75.0.0
+      constraint: ^75.0.0
   stages:
     dev:
       enabled: false
