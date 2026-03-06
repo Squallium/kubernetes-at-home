@@ -1,10 +1,10 @@
 chart:
-  targetRevision: 0.0.48
+  targetRevision: 0.0.44
 kargo:
   warehouse:
     image:
       repoURL: docker.io/paperlessngx/paperless-ngx
-      constraint: ^2.16.3
+      semverConstraint: ^2.16.3
       allowTags: '^\d+\.\d+\.\d+$'
       ignoreTags:
         - '.*-b\.\d+$'

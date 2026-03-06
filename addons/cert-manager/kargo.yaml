@@ -1,10 +1,10 @@
 chart:
-  targetRevision: 0.0.48
+  targetRevision: 0.0.38
 kargo:
   warehouse:
     image:
       repoURL: quay.io/jetstack/cert-manager-controller
-      constraint: ''
+      semverConstraint: ''
       allowTags: '^v\d+\.\d+\.\d+$'
       ignoreTags:
         - '.*-alpha\.\d+$'
@@ -12,7 +12,7 @@ kargo:
     chart:
       repoURL: https://charts.jetstack.io
       name: cert-manager
-      constraint: ^1.0.0
+      semverConstraint: ^1.0.0
   stages:
     core:
       enabled: true

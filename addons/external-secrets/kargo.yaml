@@ -1,15 +1,15 @@
 chart:
-  targetRevision: 0.0.48
+  targetRevision: 0.0.40
 kargo:
   warehouse:
     image:
       repoURL: oci.external-secrets.io/external-secrets/external-secrets
-      constraint: ''
+      semverConstraint: ''
       allowTags: '^v\d+\.\d+\.\d+$'
     chart:
       repoURL: https://charts.external-secrets.io
       name: external-secrets
-      constraint: ^1.0.0
+      semverConstraint: ^1.0.0
   stages:
     core:
       enabled: true

@@ -1,10 +1,10 @@
 chart:
-  targetRevision: 0.0.48
+  targetRevision: 0.0.38
 kargo:
   warehouse:
     image:
       repoURL: docker.io/cloudflare/cloudflared
-      constraint: ''
+      semverConstraint: ''
       allowTags: '^\d+\.\d+\.\d+$'
     chart:
       repoURL: https://squallium.github.io/kubernetes-at-home
