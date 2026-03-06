@@ -6,7 +6,7 @@ kargo:
     image:
       imageSelectionStrategy: SemVer
       repoURL: ''
-      semverConstraint: ''
+      constraint: ''
       allowTags: ''
       ignoreTags: []
     chart:

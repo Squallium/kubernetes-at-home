@@ -12,7 +12,7 @@ spec:
       imageSelectionStrategy: {{ .Values.kargo.warehouse.image.imageSelectionStrategy }}
       strictSemvers: true
       discoveryLimit: {{ .Values.kargo.warehouse.image.discoveryLimit | default 3 }}
-      semverConstraint: {{ .Values.kargo.warehouse.image.semverConstraint }}
+      constraint: {{ .Values.kargo.warehouse.image.constraint }}
       allowTags: {{ .Values.kargo.warehouse.image.allowTags }}
       ignoreTags:
         {{- toYaml .Values.kargo.warehouse.image.ignoreTags | nindent 8 }}
