@@ -12,7 +12,7 @@ spec:
       imageSelectionStrategy: {{ .Values.kargo.warehouse.image.imageSelectionStrategy }}
       strictSemvers: true
       discoveryLimit: {{ .Values.kargo.warehouse.image.discoveryLimit | default 3 }}
-      constraint: {{ .Values.kargo.warehouse.image.constraint }}
+      semverConstraint: {{ .Values.kargo.warehouse.image.semverConstraint }}
       allowTags: {{ .Values.kargo.warehouse.image.allowTags }}
       ignoreTags:
         {{- toYaml .Values.kargo.warehouse.image.ignoreTags | nindent 8 }}
@@ -21,7 +21,7 @@ spec:
       repoURL: {{ .Values.kargo.warehouse.chart.repoURL }}
       name: {{ .Values.kargo.warehouse.chart.name }}
       discoveryLimit: {{ .Values.kargo.warehouse.chart.discoveryLimit | default 3 }}
-      constraint: {{ .Values.kargo.warehouse.chart.constraint }}
+      semverConstraint: {{ .Values.kargo.warehouse.chart.semverConstraint }}
 {{- end }}
 {{- if .Values.kargo.config.enabled }}
 ---
@@ -36,5 +36,5 @@ spec:
       repoURL: {{ .Values.kargo.config.warehouse.chart.repoURL }}
       name: {{ .Values.kargo.config.warehouse.chart.name }}
       discoveryLimit: {{ .Values.kargo.config.warehouse.chart.discoveryLimit | default 3 }}
-      constraint: {{ .Values.kargo.config.warehouse.chart.constraint }}
+      semverConstraint: {{ .Values.kargo.config.warehouse.chart.semverConstraint }}
 {{- end }}
