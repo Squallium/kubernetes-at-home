@@ -6,14 +6,14 @@ kargo:
     image:
       imageSelectionStrategy: SemVer
       repoURL: ''
-      semverConstraint: ''
+      constraint: ''
       allowTags: ''
       ignoreTags: []
     chart:
       repoURL: placeholder
       name: placeholder
       discoveryLimit: 10
-      semverConstraint: ''
+      constraint: ''
   stages:
     dev:
       enabled: true
@@ -44,7 +44,7 @@ kargo:
         repoURL: https://squallium.github.io/kubernetes-at-home
         name: placeholder
         discoveryLimit: 10
-        semverConstraint: ''
+        constraint: ''
   promotionTasks:
     imageVersion:
       tagKey: image.tag
