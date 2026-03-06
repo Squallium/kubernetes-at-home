@@ -1,10 +1,10 @@
 chart:
-  targetRevision: 0.0.44
+  targetRevision: 0.0.49
 kargo:
   warehouse:
     image:
       repoURL: docker.io/adguard/adguardhome
-      semverConstraint: ''
+      constraint: ''
       allowTags: '^v\d+\.\d+\.\d+$'
       ignoreTags:
         - '.*-b\.\d+$'

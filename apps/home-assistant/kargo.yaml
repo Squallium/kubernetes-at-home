@@ -1,11 +1,11 @@
 chart:
-  targetRevision: 0.0.44
+  targetRevision: 0.0.49
 kargo:
   warehouse:
     image:
       repoURL: ghcr.io/home-assistant/home-assistant
       discoveryLimit: 7
-      semverConstraint: ''
+      constraint: ''
       allowTags: ''
       ignoreTags: []
     chart:
