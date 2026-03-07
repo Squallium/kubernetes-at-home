@@ -24,17 +24,17 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: romm-db
-                  key: DB_USER
+                  key: username
             - name: MARIADB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: romm-db
-                  key: DB_PASSWORD
+                  key: password
             - name: MARIADB_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: romm-db
-                  key: DB_ROOT_PASSWORD
+                  key: root_password
           volumeMounts:
             - name: mariadb-data
               mountPath: /var/lib/mysql
@@ -43,7 +43,6 @@ spec:
         - name: mariadb-data
           persistentVolumeClaim:
             claimName: romm-mariadb-pvc
----
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -62,7 +61,6 @@ spec:
   hostPath:
     path: {{ .Values.mariadb.storagePath }}
     type: DirectoryOrCreate
----
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
