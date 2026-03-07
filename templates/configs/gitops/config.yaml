@@ -190,6 +190,9 @@ default_context:
       - name: "pgbackweb"
         chart_name: "pgbackweb"
         enable_ssl: true
+      - name: "romm"
+        chart_name: "romm"
+        enable_ssl: true"
   services_config:
     list:
       - name: "home-assistant"

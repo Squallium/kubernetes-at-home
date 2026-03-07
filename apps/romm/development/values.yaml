@@ -3,4 +3,4 @@ image:
 
 ingress:
   enabled: true
-  host: romm.internal
+  host: romm-dev.internal
