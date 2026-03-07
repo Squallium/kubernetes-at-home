@@ -24,17 +24,17 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: romm-db
-                  key: username
+                  key: DB_USER
             - name: MARIADB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: romm-db
-                  key: password
+                  key: DB_PASSWD
             - name: MARIADB_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: romm-db
-                  key: root_password
+                  key: DB_ROOT_PASSWD
           volumeMounts:
             - name: mariadb-data
               mountPath: /var/lib/mysql
