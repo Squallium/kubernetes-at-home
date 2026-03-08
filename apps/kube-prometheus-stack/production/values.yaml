@@ -1,6 +1,40 @@
 grafana:
   enabled: false
 
+alertmanager:
+  enabled: false
+
+defaultRules:
+  create: false
+
+kubeScheduler:
+  enabled: false
+
+kubeProxy:
+  enabled: false
+
+# Desactivar exporters del cluster (gran ahorro de CPU)
+kubeStateMetrics:
+  enabled: false
+
+nodeExporter:
+  enabled: false
+
+kubeApiServer:
+  enabled: false
+
+kubeControllerManager:
+  enabled: false
+
+kubeScheduler:
+  enabled: false
+
+kubeEtcd:
+  enabled: false
+
+coreDns:
+  enabled: false
+
 prometheus:
   ingress:
     enabled: true
@@ -12,11 +46,21 @@ prometheus:
     pathType: Prefix
 
   prometheusSpec:
+    replicas: 1
+
     enableRemoteWriteReceiver: false
 
     scrapeInterval: 60s
     evaluationInterval: 60s
+
     walCompression: true
+
+    retention: 12h
+
+    serviceMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelectorNilUsesHelmValues: false
+    serviceMonitorSelector: {}
+    podMonitorSelector: {}
 
     scrapeClasses:
       - default: true
@@ -28,10 +72,6 @@ prometheus:
             replacement: pro
             action: replace
 
-    serviceMonitorSelectorNilUsesHelmValues: false
-    podMonitorSelectorNilUsesHelmValues: false
-    retention: 12h
-
     storageSpec:
       volumeClaimTemplate:
         spec:
@@ -42,9 +82,6 @@ prometheus:
           storageClassName: "microk8s-hostpath"
 
     additionalScrapeConfigs: []
-
-    serviceMonitorSelector: {}
-    podMonitorSelector: {}
 
     resources:
       requests:
@@ -69,11 +106,9 @@ prometheus:
 
 prometheusOperator:
   admissionWebhooks:
-    enabled: true
-    certManager:
-      enabled: true
-    patch:
-      enabled: false
+    enabled: false
+  tls:
+    enabled: false
 
   resources:
     requests:
@@ -82,25 +117,3 @@ prometheusOperator:
     limits:
       cpu: 200m
       memory: 256Mi
-
-# Desactivar exporters del cluster (gran ahorro de CPU)
-kubeStateMetrics:
-  enabled: false
-
-nodeExporter:
-  enabled: false
-
-kubeApiServer:
-  enabled: false
-
-kubeControllerManager:
-  enabled: false
-
-kubeScheduler:
-  enabled: false
-
-kubeEtcd:
-  enabled: false
-
-coreDns:
-  enabled: false

@@ -7,7 +7,20 @@ alertmanager:
 defaultRules:
   create: false
 
-kubeEtcd:
+kubeScheduler:
+  enabled: false
+
+kubeProxy:
+  enabled: false
+
+# Desactivar exporters del cluster (gran ahorro de CPU)
+kubeStateMetrics:
+  enabled: false
+
+nodeExporter:
+  enabled: false
+
+kubeApiServer:
   enabled: false
 
 kubeControllerManager:
@@ -16,20 +29,11 @@ kubeControllerManager:
 kubeScheduler:
   enabled: false
 
-kubeProxy:
-  enabled: false
-
-kubeApiServer:
+kubeEtcd:
   enabled: false
 
 coreDns:
   enabled: false
-
-kubeStateMetrics:
-  enabled: true
-
-nodeExporter:
-  enabled: true
 
 prometheus:
   ingress:
@@ -48,6 +52,8 @@ prometheus:
 
     scrapeInterval: 60s
     evaluationInterval: 60s
+
+    walCompression: true
 
     retention: 12h
 
