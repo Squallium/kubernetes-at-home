@@ -145,7 +145,7 @@ autoscaling:
 volumes:
   - name: resources
     hostPath:
-      path: /mnt/services/romm/resources
+      path: /mnt/services/media/romm/resources
       type: Directory
   - name: redis-data
     hostPath:
@@ -153,11 +153,11 @@ volumes:
       type: Directory
   - name: library
     hostPath:
-      path: /mnt/services/romm/library
+      path: /mnt/services/media/romm/library
       type: Directory
   - name: assets
     hostPath:
-      path: /mnt/services/romm/assets
+      path: /mnt/services/media/romm/assets
       type: Directory
   - name: config
     hostPath:
