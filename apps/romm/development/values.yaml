@@ -3,4 +3,8 @@ image:
 
 ingress:
   enabled: true
-  host: romm-dev.internal
+  hosts:
+    - host: romm-dev.internal
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
