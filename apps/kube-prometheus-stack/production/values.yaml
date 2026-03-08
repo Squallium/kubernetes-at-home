@@ -14,6 +14,10 @@ prometheus:
   prometheusSpec:
     enableRemoteWriteReceiver: false
 
+    scrapeInterval: 60s
+    evaluationInterval: 60s
+    walCompression: true
+
     scrapeClasses:
       - default: true
         name: cluster-relabeling
@@ -44,10 +48,10 @@ prometheus:
 
     resources:
       requests:
-        cpu: 100m
+        cpu: 50m
         memory: 128Mi
       limits:
-        cpu: 200m
+        cpu: 150m
         memory: 256Mi
 
     # Remote write to the core cluster Prometheus
@@ -70,6 +74,7 @@ prometheusOperator:
       enabled: true
     patch:
       enabled: false
+
   resources:
     requests:
       cpu: 50m
@@ -77,3 +82,25 @@ prometheusOperator:
     limits:
       cpu: 200m
       memory: 256Mi
+
+# Desactivar exporters del cluster (gran ahorro de CPU)
+kubeStateMetrics:
+  enabled: false
+
+nodeExporter:
+  enabled: false
+
+kubeApiServer:
+  enabled: false
+
+kubeControllerManager:
+  enabled: false
+
+kubeScheduler:
+  enabled: false
+
+kubeEtcd:
+  enabled: false
+
+coreDns:
+  enabled: false
