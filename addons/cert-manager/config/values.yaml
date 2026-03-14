@@ -3,14 +3,14 @@ certificates:
     namespace: vault
     duration: 8760h
     renewBefore: 720h
-  - name: argocd
-    namespace: argocd
-    duration: 8760h
-    renewBefore: 720h
-  - name: grafana
-    namespace: kube-prometheus-stack
-    duration: 8760h
-    renewBefore: 720h
+#  - name: argocd
+#    namespace: argocd
+#    duration: 8760h
+#    renewBefore: 720h
+#  - name: grafana
+#    namespace: kube-prometheus-stack
+#    duration: 8760h
+#    renewBefore: 720h
 #  - name: kargo-api
 #    namespace: kargo
 #    duration: 8760h
