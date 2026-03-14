@@ -31,6 +31,7 @@ helm repo update
 ```
 
 Then, you can install Vault using Helm. Make sure you have Helm installed and configured in your microk8s environment.
+You can check the latest version available in https://artifacthub.io/packages/helm/hashicorp/vault
 
 ```bash
 helm install vault hashicorp/vault -n vault --create-namespace --values apps/vault/values.yaml --version <version>
@@ -42,6 +43,13 @@ Now you should see the pod/vault-0 in ready 0/1 and in you run this command:
 kubectl exec -it vault-0 -n vault -- vault status
 ```
 
+Before the init and unseal process, you need to grant permissions to the external folder of the hostpath storage to the
+vault user
+
+```bash
+sudo chown -R 100:100 /mnt/vault
+```
+
 You should see the Vault status, which indicates that it is initialized but sealed. This is expected, as we need to
 initialize and unseal Vault before we can use it. For that you have to run the init this first time and make sure you
 save the unseal keys and the initial root token.
@@ -50,7 +58,7 @@ save the unseal keys and the initial root token.
 kubectl exec -it vault-0 -n vault -- vault operator init
 ```
 
-Now you can unseal the Vault by using the following command three times or by going directy into your browser and
+Now you can unseal the Vault by using the following command three times or by going directly into your browser and
 accessing the Vault UI http://vault.internal:
 
 ```bash

@@ -13,10 +13,10 @@ helm repo update
 Then we can install the External Secrets Helm chart into the `external-secrets` namespace:
 
 ```bash
-helm install external-secrets external-secrets/external-secrets --namespace external-secrets --create-namespace
+helm install external-secrets external-secrets/external-secrets -n external-secrets --create-namespace --values addons/external-secrets/values.yaml
 ```
 
-Now we can create a new policy in the Vault dashboard with the name sso-read with the following content:
+Now we can create a new policy in the Vault dashboard with the name eso-read with the following content:
 
 ```hcl
 path "secret/data/*" {
@@ -44,51 +44,6 @@ For windows in your PowerShell profile:
 $env:VAULT_ADDR = "https://vault.internal/"
 $env:VAULT_TOKEN = "s.xxxxxx"
 ```
-
-Then we can create the token:
-
-```bash
-vault token create -policy=eso-read -period=24h -renewable=true
-```
-
-We need to use the token to create a Kubernetes secret that the External Secrets controller can use to access the Vault by configuring a SecretStore:
-
-```bash
-kubectl create secret generic vault-token --from-literal=token=hvs.xxxxxx... -n default
-```
-
-Now we have to create a "ClusterSecretStore" resource in Kubernetes that defines how to access the Vault. Apply the vault-token.clustersecretstore.yaml file:
-
-```bash
-kubectl apply -f addons/external-secrets/vault-token.clustersecretstore.yaml
-```
-
-And finally, for testing purposes, we can create a test `ExternalSecret` resource that will be populated with the secret from Vault by applying the `vault.secret.yaml` file:
-
-```bash
-kubectl apply -f addons/external-secrets/test.externalsecret.yaml
-```
-
-You can check the decoded content of the secret created in Kubernetes by running:
-
-```bash
-kubectl get secret myapp-secret -o jsonpath="{.data.api_key}" | base64 --decode 
-kubectl get secret myapp-secret -o jsonpath="{.data.username}" | base64 --decode
-```
-
-### Troubleshooting:
-
-You can check the secret values with the following command:
-
-```bash
-vault kv get secret/myapp/api-key
-```
-
-You can check the token details and its policies with:
-
-```bash
-vault token lookup s.xxxxxx
-``` 
 
 ## Use AppRole instead of Token
 
@@ -140,7 +95,24 @@ Then patch the secret in Kubernetes:
 kubectl patch secret vault-approle-secret -p '{"data":{"secret-id":"xxxxxx"}}' -n default
 ```
 
-Finally we have to create a new "ClusterSecretStore" resource in Kubernetes that defines how to access the Vault using the AppRole authentication method. Apply the vault-approle.clustersecretstore.yaml file:
+## Connect to vault from other clusters using https
+
+You need to add as configmap the CA certificate of the Vault server to the cluster where you want to connect to Vault. Create a configmap with the CA certificate:
+
+```bash
+kubectl -n external-secrets create configmap home-internal-root-ca --from-file=ca.crt=/path/to/ca.crt
+```
+
+Finally we have to create a new "ClusterSecretStore" resource in Kubernetes that defines how to access the Vault using 
+the AppRole authentication method. We have two options:
+
+- Install the external-secrets-config helm chart
+
+```bash
+helm install external-secrets-config squallium/external-secrets-config -n external-secrets --values ./addons/external-secrets/config/values.yaml --version 0.0.3
+```
+
+- Apply the vault-approle.clustersecretstore.yaml file:
 
 ```bash
 kubectl apply -f addons/external-secrets/vault-approle.clustersecretstore.yaml
@@ -167,16 +139,57 @@ Finally, to force the External Secrets controller to refresh the secret, rollout
 kubectl rollout restart deployment external-secrets -n external-secrets
 ```
 
-## Connect to vault from other clusters using https
 
-You need to add as configmap the CA certificate of the Vault server to the cluster where you want to connect to Vault. Create a configmap with the CA certificate:
-
-```bash
-kubectl -n external-secrets create configmap home-internal-root-ca --from-file=ca.crt=/path/to/ca.crt
-```
 
 ## For upgrading the helm chart manually you need to specify the --version paramter with the desired version, for example:
 
 ```bash
 helm upgrade external-secrets external-secrets/external-secrets --namespace external-secrets --version 1.1.0
+```
+
+### Troubleshooting:
+
+You can check the secret values with the following command:
+
+```bash
+vault kv get secret/myapp/api-key
+```
+
+You can check the token details and its policies with:
+
+```bash
+vault token lookup s.xxxxxx
+``` 
+
+### Old method
+
+Then we can create the token:
+
+```bash
+vault token create -policy=eso-read -period=24h -renewable=true
+```
+
+We need to use the token to create a Kubernetes secret that the External Secrets controller can use to access the Vault by configuring a SecretStore:
+
+```bash
+kubectl create secret generic vault-token --from-literal=token=hvs.xxxxxx... -n default
+```
+
+Now we have to create a "ClusterSecretStore" resource in Kubernetes that defines how to access the Vault. Apply the vault-token.clustersecretstore.yaml file:
+
+```bash
+kubectl apply -f addons/external-secrets/vault-token.clustersecretstore.yaml
+```
+
+And finally, for testing purposes, we can create a test `ExternalSecret` resource that will be populated with the secret from Vault by applying the `vault.secret.yaml` file:
+
+```bash
+kubectl apply -f addons/external-secrets/test.externalsecret.yaml
+```
+
+You can check the decoded content of the secret created in Kubernetes by running:
+
+```bash
+kubectl get secret myapp-secret -o jsonpath="{.data.api_key}" | base64 --decode 
+kubectl get secret myapp-secret -o jsonpath="{.data.username}" | base64 --decode
 ```

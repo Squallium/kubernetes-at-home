@@ -8,3 +8,7 @@ ingress:
       paths:
         - path: /
           pathType: ImplementationSpecific
+
+envSecretKeys:
+  mariadb: secret/romm/production/mariadb
+  config: secret/romm/production/config

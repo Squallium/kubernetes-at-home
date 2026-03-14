@@ -2,7 +2,7 @@ vault:
   server: http://vault.vault.svc.cluster.local:8200
   auth:
     appRole:
-      roleId: 0370b1d1-46ce-5239-dfbd-66f738d95a7c
+      roleId: 4a8f946b-b7d8-e510-a7da-33e9eff33bfb
       secretRef:
         name: vault-approle-secret
         key: secret-id

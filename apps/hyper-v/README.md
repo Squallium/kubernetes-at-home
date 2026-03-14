@@ -46,7 +46,7 @@ swapon --show
 Then disable it, you can do this by running the following commands:
 ```bash
 sudo swapoff -a
-sudo sed -i '/ swap / s/^\(.*\)$/#\1/g'
+sudo sed -i '/\/swap\.img/ s/^/#/' /etc/fstab
 ```
 
 After that, you can verify that swap is disabled by running the `swapon --show` command again. And reboot the machine.
@@ -59,6 +59,12 @@ sudo reboot
 
 After rebooting, you need to increase the size of the ubuntu partition to use the full disk space. You can do this by running the following commands:
 
+Check the name of the logical volume by running the following command:
+
+```bash
+df -h 
+```
+
 First expand the logical volume
 
 ```bash
@@ -69,6 +75,20 @@ Then resize the filesystem
 
 ```bash
 sudo resize2fs /dev/ubuntu-vg/ubuntu-lv
+```
+
+## Install microk8s
+
+To install microk8s, you can run the following command:
+
+```bash
+sudo snap install microk8s --classic --channel=1.34/stable
+```
+
+To update microk8s to the latest version, you can run the following command:
+
+```bash
+sudo snap refresh microk8s --channel=1.34/stable
 ```
 
 ## Additional tools

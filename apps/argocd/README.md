@@ -14,7 +14,24 @@ We need to manually create the vault-approle-secret secret in the argocd namespa
 kubectl create secret generic vault-approle-secret --from-literal=secret-id=xxxxxx -n argocd
 ```
 
-Add the ArgoCD Helm repository and update it:
+Then we need to add some pre-requisites to the namespace, for that we have the argocd-addons chart that will create the 
+cmp-plugin configmap for avp and helm-secrets plugin configuration:
+
+First we need to install the repo:
+
+```shell
+helm repo add squallium https://squallium.github.io/kubernetes-at-home
+helm repo update
+```
+
+Now install the argocd-addons chart:
+
+```shell
+helm install argocd-addons squallium/argocd-addons --namespace argocd --version 0.0.2
+```
+
+Before installing ArgoCD you should also check if we can create new docker images for the following packages 
+https://github.com/Squallium?tab=packages&repo_name=kubernetes-at-home. Then Add the ArgoCD Helm repository and update it:
 
 ```shell
 helm repo add argo https://argoproj.github.io/argo-helm
@@ -24,7 +41,7 @@ helm repo update
 Install ArgoCD using our custom values file located at `apps/argocd/values.yaml`.
 
 ```shell
-helm install argocd argo/argo-cd --namespace argocd --values apps/argocd/values.yaml --version 9.0.5
+helm install argocd argo/argo-cd --namespace argocd --values apps/argocd/values.yaml --version 9.4.10
 ```
 
 These are the notes you will see after the installation:
@@ -58,22 +75,12 @@ We can get the initial admin password with the following command:
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
 
-Now that we have the Argo CRDs, we are ready to install the following custom charts:
- - argocd-addons with the cmp-plugin configmap for avp and helm-secrets plugin configuration
- - argocd-config which will set up the default root project based on environment names pointed to this repository in the gitops/envs/<environment> folder.
-
-First we need to install the repo:
+Now that we have the Argo CRDs, we are ready to install the following custom charts, argocd-config which will set up the
+default root project based on environment names pointed to this repository in the gitops/envs/<environment> folder.
+After that, restart argocd-repo-server before installing argocd-config:
 
 ```shell
-helm repo add squallium https://squallium.github.io/kubernetes-at-home
-helm repo update
-```
-
-Then install argocd-addons and restart argocd-repo-server before installing argocd-config:
-
-```shell
-helm install argocd-addons squallium/argocd-addons --namespace argocd --version 0.0.2
-helm install argocd-config squallium/argocd-config --namespace argocd --version 0.0.9
+helm install argocd-config squallium/argocd-config --namespace argocd --version 0.0.10
 ```
 
 If secrets are ok you should see the clusters availables in the ArgoCD UI.
