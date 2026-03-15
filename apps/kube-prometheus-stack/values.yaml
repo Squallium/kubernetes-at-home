@@ -74,11 +74,18 @@ prometheus:
           - targets:
             - '192.168.1.146:9182' # IP de tu ROG en la LAN
             - '192.168.1.187:9182' # IP de tu ROG en la WiFi
+            - '192.168.50.62:9182' # IP de tu ROG en la WiFi 2
       - job_name: 'mini_pc'
         scrape_interval: 15s
         static_configs:
           - targets:
-            -  '192.168.1.177:9182' # IP del Mini PC en la LAN
+            - '192.168.1.177:9182' # IP del Mini PC en la LAN
+      - job_name: 'k8s core'
+        scrape_interval: 15s
+        static_configs:
+          - targets:
+            - '192.168.1.166:9100' # IP del nodo k8s en la LAN
+
 
 
 alertmanager:
