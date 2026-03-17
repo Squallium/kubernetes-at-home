@@ -11,3 +11,10 @@ deployment:
   oidc:
     enabled: true
     logoutRedirectUrl: https://paperless-dev.internal/application/o/paperless/end-session/
+  resources:
+    requests:
+      cpu: 500m
+      memory: 1Gi
+    limits:
+      cpu: 1000m
+      memory: 2Gi
