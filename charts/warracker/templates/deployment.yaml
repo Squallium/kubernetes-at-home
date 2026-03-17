@@ -22,7 +22,7 @@ spec:
               apt-get update && apt-get install -y ca-certificates
               cp /tmp/root-ca.crt /usr/local/share/ca-certificates/root-ca.crt
               update-ca-certificates
-              cp -r /etc/ssl/certs/* /certs/
+              cp /etc/ssl/certs/ca-certificates.crt /certs/ca-certificates.crt
           volumeMounts:
             - name: trusted-ca
               mountPath: /tmp/root-ca.crt
@@ -64,7 +64,8 @@ spec:
             - mountPath: /data/uploads
               name: uploads-storage
             - name: ca-bundle
-              mountPath: /etc/ssl/certs
+              mountPath: /etc/ssl/certs/ca-certificates.crt
+              subPath: ca-certificates.crt
           resources:
             {{- toYaml .Values.deployment.resources | nindent 12 }}
           command:
