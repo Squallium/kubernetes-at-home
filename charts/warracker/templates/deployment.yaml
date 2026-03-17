@@ -13,18 +13,22 @@ spec:
         app: warracker
     spec:
       initContainers:
-        - name: copy-ca
-          image: alpine:3.18
+        - name: install-ca
+          image: debian:stable-slim
           command:
             - sh
             - -c
-            - cp /tmp/root-ca.crt /ca/root-ca.crt
+            - |
+              apt-get update && apt-get install -y ca-certificates
+              cp /tmp/root-ca.crt /usr/local/share/ca-certificates/root-ca.crt
+              update-ca-certificates
+              cp -r /etc/ssl/certs/* /certs/
           volumeMounts:
             - name: trusted-ca
               mountPath: /tmp/root-ca.crt
               subPath: tls.crt
-            - name: ca-dir
-              mountPath: /ca
+            - name: ca-bundle
+              mountPath: /certs
       containers:
         - name: warracker
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -52,10 +56,6 @@ spec:
             - name: OIDC_SCOPE
               value: "{{ .Values.deployment.oidc.scope }}"
             {{- end }}
-            - name: REQUESTS_CA_BUNDLE
-              value: /ca/root-ca.crt
-            - name: CURL_CA_BUNDLE
-              value: /ca/root-ca.crt
             {{- range $key, $value := .Values.deployment.additionalEnv }}
             - name: {{ $key }}
               value: "{{ $value }}"
@@ -63,11 +63,8 @@ spec:
           volumeMounts:
             - mountPath: /data/uploads
               name: uploads-storage
-            - name: trusted-ca
-              mountPath: /usr/local/share/ca-certificates/root-ca.crt
-              subPath: tls.crt
-            - name: ca-dir
-              mountPath: /ca
+            - name: ca-bundle
+              mountPath: /etc/ssl/certs
           resources:
             {{- toYaml .Values.deployment.resources | nindent 12 }}
           command:
@@ -83,5 +80,5 @@ spec:
         - name: trusted-ca
           secret:
             secretName: warracker-trusted-ca
-        - name: ca-dir
+        - name: ca-bundle
           emptyDir: {}
