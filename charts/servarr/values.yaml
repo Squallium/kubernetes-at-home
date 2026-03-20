@@ -165,3 +165,9 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+externalSecrets:
+  enabled: false
+  data: []
+
+applicationConfig: ""
