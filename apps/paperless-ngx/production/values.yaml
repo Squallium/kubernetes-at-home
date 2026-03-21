@@ -17,7 +17,7 @@ deployment:
     oidc: secret/paperless/production/authentik
   resources:
     requests:
-      cpu: 500m
+      cpu: 200m
       memory: 1Gi
     limits:
       cpu: 3000m

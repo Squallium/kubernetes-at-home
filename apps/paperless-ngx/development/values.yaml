@@ -13,7 +13,7 @@ deployment:
     logoutRedirectUrl: https://paperless-dev.internal/application/o/paperless/end-session/
   resources:
     requests:
-      cpu: 500m
+      cpu: 200m
       memory: 1Gi
     limits:
       cpu: 1000m
