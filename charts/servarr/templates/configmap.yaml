@@ -1,7 +1,9 @@
+{{- if .Values.config.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ include "servarr.fullname" . }}-config
 data:
   application.yml: |
-{{ .Values.applicationConfig | indent 4 }}
+{{ .Values.config.applicationConfig | indent 4 }}
+{{- end }}
