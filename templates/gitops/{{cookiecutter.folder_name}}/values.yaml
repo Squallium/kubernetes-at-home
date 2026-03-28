@@ -20,7 +20,11 @@ argocd-apps:
         targetRevision: {{ cookiecutter.argocd_apps_version }}
         helm:
           valueFiles:
+            {%- if app_of_apps.get("file_name", False) %}
+            - $values/gitops/{{ app_of_apps.file_name }}
+            {%- else %}
             - $values/gitops/values-{{ app_of_apps.name }}.yaml
+            {%- endif %}
       destination:
         server: https://kubernetes.default.svc
         namespace: argocd
