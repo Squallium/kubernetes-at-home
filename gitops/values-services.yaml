@@ -42,7 +42,7 @@ applicationsets:
         name: 'kube-prometheus-stack-{{metadata.labels.environment}}'
         labels:
           type: 'service'
-          kargo.akuity.io/managed: "true"
+          promotion: kargo
         annotations:
           kargo.akuity.io/authorized-stage: 'kube-prometheus-stack:{{metadata.labels.kargo-stage}}'
       spec:
@@ -149,7 +149,7 @@ applicationsets:
         name: 'paperless-ngx-{{metadata.labels.environment}}'
         labels:
           type: 'service'
-          kargo.akuity.io/managed: "true"
+          promotion: kargo
         annotations:
           kargo.akuity.io/authorized-stage: 'paperless-ngx:{{metadata.labels.kargo-stage}}'
       spec:
@@ -244,7 +244,7 @@ applicationsets:
         name: 'home-assistant-{{metadata.labels.environment}}'
         labels:
           type: 'service'
-          kargo.akuity.io/managed: "true"
+          promotion: kargo
         annotations:
           kargo.akuity.io/authorized-stage: 'home-assistant:{{metadata.labels.kargo-stage}}'
       spec:
@@ -349,7 +349,7 @@ applicationsets:
         name: 'calibre-web-{{metadata.labels.environment}}'
         labels:
           type: 'service'
-          kargo.akuity.io/managed: "true"
+          promotion: kargo
         annotations:
           kargo.akuity.io/authorized-stage: 'calibre-web:{{metadata.labels.kargo-stage}}'
       spec:
@@ -444,6 +444,7 @@ applicationsets:
         name: 'jellyfin-{{metadata.labels.environment}}'
         labels:
           type: 'service'
+          promotion: manual
         annotations: {}
       spec:
         project: default
@@ -537,7 +538,7 @@ applicationsets:
         name: 'authentik-{{metadata.labels.environment}}'
         labels:
           type: 'service'
-          kargo.akuity.io/managed: "true"
+          promotion: kargo
         annotations:
           kargo.akuity.io/authorized-stage: 'authentik:{{metadata.labels.kargo-stage}}'
       spec:
@@ -639,6 +640,7 @@ applicationsets:
         name: 'argo-rollouts-{{metadata.labels.environment}}'
         labels:
           type: 'service'
+          promotion: manual
         annotations: {}
       spec:
         project: default
@@ -731,6 +733,7 @@ applicationsets:
         name: 'vikunja-{{metadata.labels.environment}}'
         labels:
           type: 'service'
+          promotion: manual
         annotations: {}
       spec:
         project: default
@@ -829,6 +832,7 @@ applicationsets:
         name: 'warracker-{{metadata.labels.environment}}'
         labels:
           type: 'service'
+          promotion: manual
         annotations: {}
       spec:
         project: default
@@ -922,6 +926,7 @@ applicationsets:
         name: 'pgbackweb-{{metadata.labels.environment}}'
         labels:
           type: 'service'
+          promotion: manual
         annotations: {}
       spec:
         project: default
@@ -1015,6 +1020,7 @@ applicationsets:
         name: 'romm-{{metadata.labels.environment}}'
         labels:
           type: 'service'
+          promotion: manual
         annotations: {}
       spec:
         project: default
@@ -1108,7 +1114,7 @@ applicationsets:
         name: 'home-assistant-config-{{metadata.labels.environment}}'
         labels:
           type: 'service-config'
-          kargo.akuity.io/managed: "true"
+          promotion: kargo
         annotations:
           kargo.akuity.io/authorized-stage: 'home-assistant:{{metadata.labels.kargo-stage}}-config'
       spec:
@@ -1202,6 +1208,7 @@ applicationsets:
         name: 'authentik-config-{{metadata.labels.environment}}'
         labels:
           type: 'service-config'
+          promotion: manual
         annotations: {}
       spec:
         project: default

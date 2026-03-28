@@ -43,8 +43,8 @@ applicationsets:
         name: '{{ service.name }}-{{'{{'}}metadata.labels.environment}}'
         labels:
           type: 'service'
+          promotion: {{ "kargo" if service.get("enable_kargo", False) else "manual" }}
         {%- if service.get("enable_kargo", False) %}
-          kargo.akuity.io/managed: "true"
         annotations:
           kargo.akuity.io/authorized-stage: '{{ service.name }}:{{'{{'}}metadata.labels.kargo-stage}}'
         {%- else %}
@@ -180,8 +180,8 @@ applicationsets:
         name: '{{ service_config.name }}-config-{{'{{'}}metadata.labels.environment}}'
         labels:
           type: 'service-config'
+          promotion: {{ "kargo" if service_config.get("enable_kargo", False) else "manual" }}
         {%- if service_config.get("enable_kargo", False) %}
-          kargo.akuity.io/managed: "true"
         annotations:
           kargo.akuity.io/authorized-stage: '{{ service_config.name }}:{{'{{'}}metadata.labels.kargo-stage}}-config'
         {%- else %}

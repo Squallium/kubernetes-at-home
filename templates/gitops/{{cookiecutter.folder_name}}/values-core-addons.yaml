@@ -50,8 +50,8 @@ applicationsets:
         name: '{{'{{'}} name }}'
         labels:
           type: 'addon'
+          promotion: {{ "kargo" if core_addon.get("enable_kargo", False) else "manual" }}
         {%- if core_addon.get("enable_kargo", False) %}
-          kargo.akuity.io/managed: "true"
         annotations:
           kargo.akuity.io/authorized-stage: 'addon-{{ core_addon.name }}:{{'{{'}} kargoStage }}'
         {%- else %}

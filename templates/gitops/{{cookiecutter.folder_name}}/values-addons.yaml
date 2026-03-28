@@ -43,8 +43,8 @@ applicationsets:
         name: '{{ addon.name }}-{{'{{'}}metadata.labels.environment}}'
         labels:
           type: 'addon'
+          promotion: {{ "kargo" if addon.get("enable_kargo", False) else "manual" }}
         {%- if addon.get("enable_kargo", False) %}
-          kargo.akuity.io/managed: "true"
         annotations:
           kargo.akuity.io/authorized-stage: 'addon-{{ addon.name }}:{{'{{'}}metadata.labels.kargo-stage}}'
         {%- else %}
@@ -153,8 +153,8 @@ applicationsets:
         name: '{{ addon_config.name }}-config-{{'{{'}}metadata.labels.environment}}'
         labels:
           type: 'addon-config'
+          promotion: {{ "kargo" if addon_config.get("enable_kargo", False) else "manual" }}
         {%- if addon_config.get("enable_kargo", False) %}
-          kargo.akuity.io/managed: "true"
         annotations:
           kargo.akuity.io/authorized-stage: 'addon-{{ addon_config.name }}:{{'{{'}}metadata.labels.kargo-stage}}-config'
         {%- else %}
