@@ -42,6 +42,7 @@ applicationsets:
         name: 'external-secrets-{{metadata.labels.environment}}'
         labels:
           type: 'addon'
+          kargo.akuity.io/managed: "true"
         annotations:
           kargo.akuity.io/authorized-stage: 'addon-external-secrets:{{metadata.labels.kargo-stage}}'
       spec:
@@ -135,6 +136,7 @@ applicationsets:
         name: 'cert-manager-{{metadata.labels.environment}}'
         labels:
           type: 'addon'
+          kargo.akuity.io/managed: "true"
         annotations:
           kargo.akuity.io/authorized-stage: 'addon-cert-manager:{{metadata.labels.kargo-stage}}'
       spec:
@@ -227,6 +229,7 @@ applicationsets:
         name: 'cloudflared-{{metadata.labels.environment}}'
         labels:
           type: 'addon'
+          kargo.akuity.io/managed: "true"
         annotations:
           kargo.akuity.io/authorized-stage: 'addon-cloudflared:{{metadata.labels.kargo-stage}}'
       spec:
@@ -319,6 +322,7 @@ applicationsets:
         name: 'external-secrets-config-{{metadata.labels.environment}}'
         labels:
           type: 'addon-config'
+          kargo.akuity.io/managed: "true"
         annotations:
           kargo.akuity.io/authorized-stage: 'addon-external-secrets:{{metadata.labels.kargo-stage}}-config'
       spec:
@@ -411,6 +415,7 @@ applicationsets:
         name: 'cert-manager-config-{{metadata.labels.environment}}'
         labels:
           type: 'addon-config'
+          kargo.akuity.io/managed: "true"
         annotations:
           kargo.akuity.io/authorized-stage: 'addon-cert-manager:{{metadata.labels.kargo-stage}}-config'
       spec:
@@ -503,6 +508,7 @@ applicationsets:
         name: 'coredns-config-{{metadata.labels.environment}}'
         labels:
           type: 'addon-config'
+          kargo.akuity.io/managed: "true"
         annotations:
           kargo.akuity.io/authorized-stage: 'addon-coredns:{{metadata.labels.kargo-stage}}-config'
       spec:

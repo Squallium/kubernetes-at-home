@@ -42,6 +42,7 @@ applicationsets:
         name: 'kube-prometheus-stack-{{metadata.labels.environment}}'
         labels:
           type: 'service'
+          kargo.akuity.io/managed: "true"
         annotations:
           kargo.akuity.io/authorized-stage: 'kube-prometheus-stack:{{metadata.labels.kargo-stage}}'
       spec:
@@ -148,6 +149,7 @@ applicationsets:
         name: 'paperless-ngx-{{metadata.labels.environment}}'
         labels:
           type: 'service'
+          kargo.akuity.io/managed: "true"
         annotations:
           kargo.akuity.io/authorized-stage: 'paperless-ngx:{{metadata.labels.kargo-stage}}'
       spec:
@@ -242,6 +244,7 @@ applicationsets:
         name: 'home-assistant-{{metadata.labels.environment}}'
         labels:
           type: 'service'
+          kargo.akuity.io/managed: "true"
         annotations:
           kargo.akuity.io/authorized-stage: 'home-assistant:{{metadata.labels.kargo-stage}}'
       spec:
@@ -346,6 +349,7 @@ applicationsets:
         name: 'calibre-web-{{metadata.labels.environment}}'
         labels:
           type: 'service'
+          kargo.akuity.io/managed: "true"
         annotations:
           kargo.akuity.io/authorized-stage: 'calibre-web:{{metadata.labels.kargo-stage}}'
       spec:
@@ -533,6 +537,7 @@ applicationsets:
         name: 'authentik-{{metadata.labels.environment}}'
         labels:
           type: 'service'
+          kargo.akuity.io/managed: "true"
         annotations:
           kargo.akuity.io/authorized-stage: 'authentik:{{metadata.labels.kargo-stage}}'
       spec:
@@ -1103,6 +1108,7 @@ applicationsets:
         name: 'home-assistant-config-{{metadata.labels.environment}}'
         labels:
           type: 'service-config'
+          kargo.akuity.io/managed: "true"
         annotations:
           kargo.akuity.io/authorized-stage: 'home-assistant:{{metadata.labels.kargo-stage}}-config'
       spec:

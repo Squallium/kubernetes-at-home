@@ -44,6 +44,7 @@ applicationsets:
         labels:
           type: 'addon'
         {%- if addon.get("enable_kargo", False) %}
+          kargo.akuity.io/managed: "true"
         annotations:
           kargo.akuity.io/authorized-stage: 'addon-{{ addon.name }}:{{'{{'}}metadata.labels.kargo-stage}}'
         {%- else %}
@@ -153,6 +154,7 @@ applicationsets:
         labels:
           type: 'addon-config'
         {%- if addon_config.get("enable_kargo", False) %}
+          kargo.akuity.io/managed: "true"
         annotations:
           kargo.akuity.io/authorized-stage: 'addon-{{ addon_config.name }}:{{'{{'}}metadata.labels.kargo-stage}}-config'
         {%- else %}

@@ -49,6 +49,7 @@ applicationsets:
         name: '{{ name }}'
         labels:
           type: 'addon'
+          kargo.akuity.io/managed: "true"
         annotations:
           kargo.akuity.io/authorized-stage: 'addon-cert-manager:{{ kargoStage }}'
       spec:
@@ -147,6 +148,7 @@ applicationsets:
         name: '{{ name }}'
         labels:
           type: 'addon'
+          kargo.akuity.io/managed: "true"
         annotations:
           kargo.akuity.io/authorized-stage: 'addon-external-secrets:{{ kargoStage }}'
       spec:

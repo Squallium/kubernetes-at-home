@@ -44,6 +44,7 @@ applicationsets:
         labels:
           type: 'service'
         {%- if service.get("enable_kargo", False) %}
+          kargo.akuity.io/managed: "true"
         annotations:
           kargo.akuity.io/authorized-stage: '{{ service.name }}:{{'{{'}}metadata.labels.kargo-stage}}'
         {%- else %}
@@ -180,6 +181,7 @@ applicationsets:
         labels:
           type: 'service-config'
         {%- if service_config.get("enable_kargo", False) %}
+          kargo.akuity.io/managed: "true"
         annotations:
           kargo.akuity.io/authorized-stage: '{{ service_config.name }}:{{'{{'}}metadata.labels.kargo-stage}}-config'
         {%- else %}
