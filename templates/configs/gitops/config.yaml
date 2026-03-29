@@ -197,11 +197,10 @@ default_context:
     list:
       - name: "home-assistant"
         chart_name: "home-assistant-config"
-        chart_target_revision: "0.0.13"
         enable_kargo: true
       - name: "authentik"
         chart_name: "authentik-config"
-        chart_target_revision: "0.0.8"
+        enable_kargo: true
   services_addons:
     list:
       - name: "home-assistant-addons"

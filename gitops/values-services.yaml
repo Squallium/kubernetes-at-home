@@ -1208,8 +1208,9 @@ applicationsets:
         name: 'authentik-config-{{metadata.labels.environment}}'
         labels:
           type: 'service-config'
-          promotion: manual
-        annotations: {}
+          promotion: kargo
+        annotations:
+          kargo.akuity.io/authorized-stage: 'authentik:{{metadata.labels.kargo-stage}}-config'
       spec:
         project: default
         sources:
