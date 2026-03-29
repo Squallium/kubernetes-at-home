@@ -158,6 +158,7 @@ default_context:
         chart_repo: "https://jellyfin.github.io/jellyfin-helm"
         chart_name: "jellyfin"
         enable_ssl: true
+        enable_kargo: true
       - name: "authentik"
         chart_repo: "https://charts.goauthentik.io"
         chart_name: "authentik"

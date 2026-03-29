@@ -444,8 +444,9 @@ applicationsets:
         name: 'jellyfin-{{metadata.labels.environment}}'
         labels:
           type: 'service'
-          promotion: manual
-        annotations: {}
+          promotion: kargo
+        annotations:
+          kargo.akuity.io/authorized-stage: 'jellyfin:{{metadata.labels.kargo-stage}}'
       spec:
         project: default
         sources:
