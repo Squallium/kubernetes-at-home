@@ -140,6 +140,8 @@ argocd-apps:
                       location: home-assistant-addons/zigbee2mqtt
                     - service: authentik
                       location: authentik
+                    - service: jellyfin
+                      location: jellyfin
               - git:
                   repoURL: https://github.com/Squallium/kubernetes-at-home.git
                   revision: main
