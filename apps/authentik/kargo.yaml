@@ -12,6 +12,11 @@ kargo:
     chart:
       repoURL: https://charts.goauthentik.io
       name: authentik
+  config:
+    enabled: true
+    warehouse:
+      chart:
+        name: authentik-config
   promotionTasks:
     imageVersion:
       tagKey: global.image.tag
