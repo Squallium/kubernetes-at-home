@@ -171,10 +171,10 @@ default_context:
               key: postgres#/password
             - name: authentik.redis.password
               key: redis#/password
-      - name: "argo-rollouts"
-        chart_repo: "https://argoproj.github.io/argo-helm"
-        chart_name: "argo-rollouts"
-        chart_target_revision: "2.40.2"
+#      - name: "argo-rollouts"
+#        chart_repo: "https://argoproj.github.io/argo-helm"
+#        chart_name: "argo-rollouts"
+#        chart_target_revision: "2.40.2"
       - name: "vikunja"
         chart_name: "vikunja"
         enable_ssl: true
