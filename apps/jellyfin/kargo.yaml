@@ -13,7 +13,7 @@ kargo:
       name: jellyfin
 extSecrets:
   - name: github-ssh
-    namespace: adguard-home
+    namespace: jellyfin
     labels:
       kargo.akuity.io/cred-type: git
     secrets:
