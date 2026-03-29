@@ -1087,7 +1087,7 @@ applicationsets:
                 repoURL: https://github.com/Squallium/kubernetes-at-home.git
                 revision: main
                 files:
-                  - path: 'apps/home-assistant/config/{{metadata.labels.environment}}/values.yaml'
+                  - path: 'apps/home-assistant/config/{{metadata.labels.environment}}/config.yaml'
     # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
     ignoreApplicationDifferences:
       - jsonPointers:
@@ -1125,7 +1125,7 @@ applicationsets:
             ref: values
           - repoURL: https://squallium.github.io/kubernetes-at-home
             chart: home-assistant-config
-            targetRevision: 0.0.13
+            targetRevision: '{{chart.targetRevision}}'
             helm:
               valueFiles:
                 - $values/apps/home-assistant/config/values.yaml
@@ -1181,7 +1181,7 @@ applicationsets:
                 repoURL: https://github.com/Squallium/kubernetes-at-home.git
                 revision: main
                 files:
-                  - path: 'apps/authentik/config/{{metadata.labels.environment}}/values.yaml'
+                  - path: 'apps/authentik/config/{{metadata.labels.environment}}/config.yaml'
     # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
     ignoreApplicationDifferences:
       - jsonPointers:
@@ -1218,7 +1218,7 @@ applicationsets:
             ref: values
           - repoURL: https://squallium.github.io/kubernetes-at-home
             chart: authentik-config
-            targetRevision: 0.0.8
+            targetRevision: '{{chart.targetRevision}}'
             helm:
               valueFiles:
                 - $values/apps/authentik/config/values.yaml

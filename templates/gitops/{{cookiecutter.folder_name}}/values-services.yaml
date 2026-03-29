@@ -153,7 +153,7 @@ applicationsets:
                 repoURL: https://github.com/Squallium/kubernetes-at-home.git
                 revision: main
                 files:
-                  - path: 'apps/{{ service_config.name }}/config/{{'{{'}}metadata.labels.environment}}/values.yaml'
+                  - path: 'apps/{{ service_config.name }}/config/{{'{{'}}metadata.labels.environment}}/config.yaml'
     # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
     ignoreApplicationDifferences:
       - jsonPointers:
@@ -200,7 +200,7 @@ applicationsets:
           - repoURL: {{ service_config.chart_repo_url | default(cookiecutter.default_chart_repo_url) }}
             path: charts/{{ service_config.name }}
           {%- endif %}
-            targetRevision: {{ service_config.chart_target_revision | default(cookiecutter.default_chart_target_revision) }}
+            targetRevision: '{{'{{'}}chart.targetRevision}}'
             helm:
               valueFiles:
                 - $values/apps/{{ service_config.name }}/config/values.yaml
