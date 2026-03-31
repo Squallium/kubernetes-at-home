@@ -31,6 +31,6 @@ spec:
     name: letsencrypt-prod
     kind: ClusterIssuer
   dnsNames:
-    - "*.{{ .Values.letsEncrypt.domain }}
+    - "*.{{ .Values.letsEncrypt.domain }}"
     - "{{ .Values.letsEncrypt.domain }}"
 {{- end }}
