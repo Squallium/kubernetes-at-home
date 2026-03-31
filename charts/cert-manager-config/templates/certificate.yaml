@@ -23,10 +23,10 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: wildcard-{{ .Values.letsEncrypt.domain }}
+  name: letsencrypt-wildcard-cert
   namespace: default
 spec:
-  secretName: wildcard-{{ .Values.letsEncrypt.domain }}-tls
+  secretName: letsencrypt-wildcard-tls
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
