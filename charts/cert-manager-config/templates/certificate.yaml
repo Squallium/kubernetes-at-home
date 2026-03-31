@@ -19,3 +19,18 @@ spec:
     kind: ClusterIssuer
 ---
 {{- end }}
+{{- if .Values.letsEncrypt.enable }}
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wildcard-{{ .Values.letsEncrypt.domain }}
+  namespace: default
+spec:
+  secretName: wildcard-{{ .Values.letsEncrypt.domain }}-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  dnsNames:
+    - "*.{{ .Values.letsEncrypt.domain }}
+    - "{{ .Values.letsEncrypt.domain }}"
+{{- end }}

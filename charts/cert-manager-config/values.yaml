@@ -7,3 +7,8 @@ certificates:
     namespace: placeholder
     duration: 8760h # 1 year
     renewBefore: 720h # 30 days
+letsEncrypt:
+  enable: false
+  server: https://acme-staging-v02.api.letsencrypt.org/directory
+  email: example@gmail.com
+  domain: domain.com
