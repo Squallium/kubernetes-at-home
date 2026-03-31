@@ -3,3 +3,8 @@ certificates: []
 #    namespace: adguard-home
 #    duration: 8760h
 #    renewBefore: 720h
+letsEncrypt:
+  enable: true
+  server: https://acme-staging-v02.api.letsencrypt.org/directory
+  email: secrets+literal://vals!ref+vault://secret/cert-manager/cloudflare#/email
+  domain: secrets+literal://vals!ref+vault://secret/cert-manager/cloudflare#/domain
