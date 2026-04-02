@@ -19,6 +19,18 @@ spec:
                 name: calibre-web
                 port:
                   number: {{ .Values.service.port }}
+    {{- if .Values.externalAccess.enabled }}
+    - host: {{ .Values.externalAccess.hostname }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: calibre-web
+                port:
+                  number: {{ .Values.service.port }}
+    {{- end }}
   {{- if .Values.ingress.tls }}
   tls:
     {{- range .Values.ingress.tls }}
@@ -27,5 +39,10 @@ spec:
         - {{ . }}
         {{- end }}
       secretName: {{ .secretName }}
+    {{- end }}
+    {{- if .Values.externalAccess.enabled }}
+    - hosts:
+        - {{ .Values.externalAccess.hostname }}
+      secretName: {{ .Values.externalAccess.tlsSecretName }}
     {{- end }}
   {{- end }}

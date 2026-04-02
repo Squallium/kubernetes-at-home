@@ -14,3 +14,5 @@ deployment:
       hostPathPath: ingest
 ingress:
   hostname: calibre-web-dev.internal
+externalAccess:
+  enabled: false

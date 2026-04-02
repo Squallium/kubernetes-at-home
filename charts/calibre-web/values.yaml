@@ -33,5 +33,10 @@ ingress:
   annotations: {}
   tls: []
 
+externalAccess:
+  enabled: false
+  hostname: placeholder.example.com
+  tlsSecretName: letsencrypt-wildcard-cert
+
 volume:
   path: /mnt/services/calibre-web
