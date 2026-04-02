@@ -160,6 +160,10 @@ default_context:
         chart_target_revision: "0.0.4"
         enable_ssl: true
         enable_kargo: true
+        helm_secrets:
+          list:
+            - name: externalAccess.hostname
+              key: external-access#/hostname
       - name: "jellyfin"
         chart_repo: "https://jellyfin.github.io/jellyfin-helm"
         chart_name: "jellyfin"

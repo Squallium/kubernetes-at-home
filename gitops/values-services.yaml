@@ -367,6 +367,9 @@ applicationsets:
                 - $values/apps/calibre-web/{{metadata.labels.environment}}/values.yaml
                 - $values/apps/calibre-web/{{metadata.labels.environment}}/values-ssl.yaml
                 - $values/defaults/{{metadata.labels.environment}}/resources/values.yaml
+              fileParameters:
+                - name: externalAccess.hostname
+                  path: secrets+literal://vals!ref+vault://secret/calibre-web/{{metadata.labels.environment}}/external-access#/hostname
         destination:
           server: '{{server}}'
           namespace: calibre-web
