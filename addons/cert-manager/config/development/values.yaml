@@ -4,6 +4,6 @@ certificates: []
 #    duration: 8760h
 #    renewBefore: 720h
 letsEncrypt:
-  enable: false
+  enable: true
   issuerName: letsencrypt-production
   server: https://acme-v02.api.letsencrypt.org/directory
