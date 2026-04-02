@@ -9,6 +9,7 @@ certificates:
     renewBefore: 720h # 30 days
 letsEncrypt:
   enable: false
+  issuerName: letsencrypt-stagging
   server: https://acme-staging-v02.api.letsencrypt.org/directory
   email: example@gmail.com
   domain: domain.com

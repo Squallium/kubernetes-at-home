@@ -28,7 +28,7 @@ metadata:
 spec:
   secretName: letsencrypt-wildcard-tls
   issuerRef:
-    name: letsencrypt-prod
+    name: {{ .Values.letsEncrypt.issuerName }}
     kind: ClusterIssuer
   dnsNames:
     - "*.{{ .Values.letsEncrypt.domain }}"
