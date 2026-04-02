@@ -12,3 +12,5 @@ letsEncrypt:
   server: https://acme-staging-v02.api.letsencrypt.org/directory
   email: example@gmail.com
   domain: domain.com
+  cloudFlare:
+    apiTokenSecretPath: secret/cert-manager/development/cloudflare
