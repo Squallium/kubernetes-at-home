@@ -96,6 +96,12 @@ default_context:
         chart_name: "cert-manager-config"
         chart_target_revision: "0.0.5"
         enable_kargo: true
+        helm_secrets:
+          list:
+            - name: letsEncrypt.email
+              key: cert-manager/cloudflare#/email
+            - name: letsEncrypt.domain
+              key: cert-manager/cloudflare#/domain
       - name: "coredns"
         chart_name: "coredns-config"
         chart_target_revision: "0.0.3"

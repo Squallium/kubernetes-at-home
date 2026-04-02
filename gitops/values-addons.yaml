@@ -431,6 +431,11 @@ applicationsets:
               valueFiles:
                 - $values/addons/cert-manager/config/values.yaml
                 - $values/addons/cert-manager/config/{{metadata.labels.environment}}/values.yaml
+              fileParameters:
+                - name: letsEncrypt.email
+                  path: secrets+literal://vals!ref+vault://secret/cert-manager/{{metadata.labels.environment}}/cert-manager/cloudflare#/email
+                - name: letsEncrypt.domain
+                  path: secrets+literal://vals!ref+vault://secret/cert-manager/{{metadata.labels.environment}}/cert-manager/cloudflare#/domain
         destination:
           server: '{{server}}'
           namespace: cert-manager

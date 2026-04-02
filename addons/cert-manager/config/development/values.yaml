@@ -6,5 +6,3 @@ certificates: []
 letsEncrypt:
   enable: true
   server: https://acme-staging-v02.api.letsencrypt.org/directory
-  email: ref+vault://secret/cert-manager/cloudflare#/email
-  domain: ref+vault://secret/cert-manager/cloudflare#/domain

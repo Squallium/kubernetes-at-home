@@ -178,6 +178,13 @@ applicationsets:
               valueFiles:
                 - $values/addons/{{ addon_config.name }}/config/values.yaml
                 - $values/addons/{{ addon_config.name }}/config/{{'{{'}}metadata.labels.environment}}/values.yaml
+              {%- if addon_config.get("helm_secrets", False) %}
+              fileParameters:
+                {%- for helm_secret in addon_config.helm_secrets.list %}
+                - name: {{ helm_secret.name }}
+                  path: secrets+literal://vals!ref+vault://secret/{{ addon_config.name }}/{{'{{'}}metadata.labels.environment}}/{{ helm_secret.key }}
+                {%- endfor %}
+              {%- endif %}
         destination:
           server: '{{'{{'}}server}}'
           namespace: {{ addon_config.namespace | default(addon_config.name) }}

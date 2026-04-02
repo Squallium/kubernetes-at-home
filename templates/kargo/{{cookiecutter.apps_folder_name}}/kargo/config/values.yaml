@@ -24,19 +24,17 @@ argocd-apps:
             generators:
               - list:
                   elements:
-                    - service: kube-prometheus-stack
-                      location: kube-prometheus-stack
-                    - service: loki
-                      location: loki
-                    - service: promtail
-                      location: promtail
-                    - service: kargo
-                      location: kargo
+                    {%- if cookiecutter.core_services.list is defined and cookiecutter.core_services.list %}
+                    {%- for service in cookiecutter.core_services.list %}
+                    - service: {{ service.name }}
+                      location: {{ service.name }}
+                    {%- endfor %}
+                    {%- endif %}
               - git:
                   repoURL: https://github.com/Squallium/kubernetes-at-home.git
                   revision: main
                   files:
-                    - path: 'apps/{{location}}/kargo.yaml'
+                    - path: 'apps/{{'{{'}}location}}/kargo.yaml'
       # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
       ignoreApplicationDifferences:
         - jsonPointers:
@@ -60,7 +58,7 @@ argocd-apps:
       #              - kustomize-bar
       template:
         metadata:
-          name: 'kargo-{{service}}-core'
+          name: 'kargo-{{'{{'}}service}}-core'
           labels:
             type: 'kargo-project'
           annotations: { }
@@ -72,20 +70,20 @@ argocd-apps:
               ref: values
             - repoURL: https://squallium.github.io/kubernetes-at-home
               chart: kargo-project
-              targetRevision: '{{chart.targetRevision}}'
+              targetRevision: '{{'{{'}}chart.targetRevision}}'
               helm:
                 valueFiles:
-                  - $values/apps/{{location}}/kargo.yaml
+                  - $values/apps/{{'{{'}}location}}/kargo.yaml
                 values: |
                   kargo:
-                    name: '{{service}}'
+                    name: '{{'{{'}}service}}'
                     type: apps
-                    location: '{{location}}'
+                    location: '{{'{{'}}location}}'
                     project:
-                      name: '{{service}}-core'
+                      name: '{{'{{'}}service}}-core'
           destination:
             server: https://kubernetes.default.svc
-            namespace: '{{service}}'
+            namespace: '{{'{{'}}service}}'
           syncPolicy:
             #            automated:
             #              prune: false
@@ -109,14 +107,14 @@ argocd-apps:
     #          source:
     #            helm:
     #              valueFiles:
-    #              {{- range $valueFile := .valueFiles }}
-    #                - {{ $valueFile }}
-    #              {{- end }}
-    #        {{- if .autoSync }}
+    #              {{'{{'}}- range $valueFile := .valueFiles }}
+    #                - {{'{{'}} $valueFile }}
+    #              {{'{{'}}- end }}
+    #        {{'{{'}}- if .autoSync }}
     #          syncPolicy:
     #            automated:
-    #              prune: {{ .prune }}
-    #        {{- end }}
+    #              prune: {{'{{'}} .prune }}
+    #        {{'{{'}}- end }}
     kargo-projects:
       namespace: argocd
       additionalLabels: {}
@@ -146,7 +144,7 @@ argocd-apps:
                   repoURL: https://github.com/Squallium/kubernetes-at-home.git
                   revision: main
                   files:
-                    - path: 'apps/{{location}}/kargo.yaml'
+                    - path: 'apps/{{'{{'}}location}}/kargo.yaml'
       # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
       ignoreApplicationDifferences:
         - jsonPointers:
@@ -170,7 +168,7 @@ argocd-apps:
       #              - kustomize-bar
       template:
         metadata:
-          name: 'kargo-{{service}}'
+          name: 'kargo-{{'{{'}}service}}'
           labels:
             type: 'kargo-project'
           annotations: {}
@@ -182,20 +180,20 @@ argocd-apps:
               ref: values
             - repoURL: https://squallium.github.io/kubernetes-at-home
               chart: kargo-project
-              targetRevision: '{{chart.targetRevision}}'
+              targetRevision: '{{'{{'}}chart.targetRevision}}'
               helm:
                 valueFiles:
-                  - $values/apps/{{location}}/kargo.yaml
+                  - $values/apps/{{'{{'}}location}}/kargo.yaml
                 values: |
                   kargo:
-                    name: '{{service}}'
+                    name: '{{'{{'}}service}}'
                     type: apps
-                    location: '{{location}}'
+                    location: '{{'{{'}}location}}'
                     project:
-                      name: '{{service}}'
+                      name: '{{'{{'}}service}}'
           destination:
             server: https://kubernetes.default.svc
-            namespace: '{{service}}'
+            namespace: '{{'{{'}}service}}'
           syncPolicy:
             #            automated:
             #              prune: false
@@ -219,14 +217,14 @@ argocd-apps:
     #          source:
     #            helm:
     #              valueFiles:
-    #              {{- range $valueFile := .valueFiles }}
-    #                - {{ $valueFile }}
-    #              {{- end }}
-    #        {{- if .autoSync }}
+    #              {{'{{'}}- range $valueFile := .valueFiles }}
+    #                - {{'{{'}} $valueFile }}
+    #              {{'{{'}}- end }}
+    #        {{'{{'}}- if .autoSync }}
     #          syncPolicy:
     #            automated:
-    #              prune: {{ .prune }}
-    #        {{- end }}
+    #              prune: {{'{{'}} .prune }}
+    #        {{'{{'}}- end }}
     kargo-projects-addons:
       namespace: argocd
       additionalLabels: {}
@@ -252,7 +250,7 @@ argocd-apps:
                   repoURL: https://github.com/Squallium/kubernetes-at-home.git
                   revision: main
                   files:
-                    - path: 'addons/{{addon}}/kargo.yaml'
+                    - path: 'addons/{{'{{'}}addon}}/kargo.yaml'
       # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
       ignoreApplicationDifferences:
         - jsonPointers:
@@ -276,7 +274,7 @@ argocd-apps:
       #              - kustomize-bar
       template:
         metadata:
-          name: 'kargo-addon-{{addon}}'
+          name: 'kargo-addon-{{'{{'}}addon}}'
           labels:
             type: 'kargo-project'
           annotations: {}
@@ -288,20 +286,20 @@ argocd-apps:
               ref: values
             - repoURL: https://squallium.github.io/kubernetes-at-home
               chart: kargo-project
-              targetRevision: '{{chart.targetRevision}}'
+              targetRevision: '{{'{{'}}chart.targetRevision}}'
               helm:
                 valueFiles:
-                  - $values/addons/{{addon}}/kargo.yaml
+                  - $values/addons/{{'{{'}}addon}}/kargo.yaml
                 values: |
                   kargo:
-                    name: '{{addon}}'
+                    name: '{{'{{'}}addon}}'
                     type: addons
-                    location: '{{location}}'
+                    location: '{{'{{'}}location}}'
                     project:
-                      name: 'addon-{{addon}}'
+                      name: 'addon-{{'{{'}}addon}}'
           destination:
             server: https://kubernetes.default.svc
-            namespace: 'addon-{{addon}}'
+            namespace: 'addon-{{'{{'}}addon}}'
           syncPolicy:
             #            automated:
             #              prune: false
@@ -325,11 +323,11 @@ argocd-apps:
     #          source:
     #            helm:
     #              valueFiles:
-    #              {{- range $valueFile := .valueFiles }}
-    #                - {{ $valueFile }}
-    #              {{- end }}
-    #        {{- if .autoSync }}
+    #              {{'{{'}}- range $valueFile := .valueFiles }}
+    #                - {{'{{'}} $valueFile }}
+    #              {{'{{'}}- end }}
+    #        {{'{{'}}- if .autoSync }}
     #          syncPolicy:
     #            automated:
-    #              prune: {{ .prune }}
-    #        {{- end }}
+    #              prune: {{'{{'}} .prune }}
+    #        {{'{{'}}- end }}
