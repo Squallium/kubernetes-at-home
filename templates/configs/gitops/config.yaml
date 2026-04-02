@@ -99,9 +99,9 @@ default_context:
         helm_secrets:
           list:
             - name: letsEncrypt.email
-              key: cert-manager/cloudflare#/email
+              key: cloudflare#/email
             - name: letsEncrypt.domain
-              key: cert-manager/cloudflare#/domain
+              key: cloudflare#/domain
       - name: "coredns"
         chart_name: "coredns-config"
         chart_target_revision: "0.0.3"
