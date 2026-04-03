@@ -1,4 +1,5 @@
 {{- range $certificate := .Values.certificates }}
+{{- $domain := $certificate.domain | default "internal" }}
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
@@ -11,9 +12,9 @@ spec:
   subject:
     organizations:
       - HomeInternal
-  commonName: {{ $certificate.name }}.internal
+  commonName: {{ $certificate.name }}.{{ $domain }}
   dnsNames:
-    - {{ $certificate.name }}.internal
+    - {{ $certificate.name }}.{{ $domain }}
   issuerRef:
     name: {{ $.Values.certIssuer.name }}
     kind: ClusterIssuer
