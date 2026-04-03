@@ -20,17 +20,25 @@ spec:
 ---
 {{- end }}
 {{- if .Values.letsEncrypt.enable }}
+
+{{- $namespaces := .Values.letsEncrypt.namespaces | default list }}
+{{- $namespaces = append $namespaces "default" | uniq }}
+
+{{- range $ns := $namespaces }}
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: letsencrypt-wildcard-cert
-  namespace: default
+  namespace: {{ $ns }}
 spec:
   secretName: letsencrypt-wildcard-tls
   issuerRef:
-    name: {{ .Values.letsEncrypt.issuerName }}
+    name: {{ $.Values.letsEncrypt.issuerName }}
     kind: ClusterIssuer
   dnsNames:
-    - "*.{{ .Values.letsEncrypt.domain }}"
-    - "{{ .Values.letsEncrypt.domain }}"
+    - "*.{{ $.Values.letsEncrypt.domain }}"
+    - "{{ $.Values.letsEncrypt.domain }}"
+---
+{{- end }}
+
 {{- end }}
