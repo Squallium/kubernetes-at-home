@@ -1,1 +1,7 @@
 certificates: []
+letsEncrypt:
+  enable: true
+  issuerName: letsencrypt-production
+  server: https://acme-v02.api.letsencrypt.org/directory
+  namespaces:
+    - home-assistant
