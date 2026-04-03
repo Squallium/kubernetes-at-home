@@ -3,10 +3,11 @@ certificates:
     namespace: calibre-web
     duration: 8760h
     renewBefore: 720h
-#  - name: home-assistant-dev
-#    namespace: home-assistant
-#    duration: 8760h
-#    renewBefore: 720h
+  - name: home-assistant-dev
+    namespace: home-assistant
+    duration: 8760h
+    renewBefore: 720h
+    domain: internal.org
 letsEncrypt:
   enable: true
   issuerName: letsencrypt-production
