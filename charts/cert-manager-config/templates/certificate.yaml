@@ -28,7 +28,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: letsencrypt-wildcard-cert-{{ $ns }}
+  name: {{ if eq $ns "default" }}letsencrypt-wildcard-cert{{ else }}letsencrypt-wildcard-cert-{{ $ns }}{{ end }}
   namespace: {{ $ns }}
 spec:
   secretName: letsencrypt-wildcard-tls
