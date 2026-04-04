@@ -26,12 +26,6 @@ argocd-apps:
                   elements:
                     - service: kube-prometheus-stack
                       location: kube-prometheus-stack
-                    - service: loki
-                      location: loki
-                    - service: promtail
-                      location: promtail
-                    - service: kargo
-                      location: kargo
               - git:
                   repoURL: https://github.com/Squallium/kubernetes-at-home.git
                   revision: main
