@@ -13,8 +13,8 @@ argocd-apps:
   applicationsets:
     kargo-core-projects:
       namespace: argocd
-      additionalLabels: { }
-      additionalAnnotations: { }
+      additionalLabels: {}
+      additionalAnnotations: {}
       finalizers:
         - resources-finalizer.argocd.argoproj.io
       # See PR #10026 (ArgoCD v2.5 or later)
@@ -57,7 +57,7 @@ argocd-apps:
           name: 'kargo-{{service}}-core'
           labels:
             type: 'kargo-project'
-          annotations: { }
+          annotations: {}
         spec:
           project: default
           sources:
