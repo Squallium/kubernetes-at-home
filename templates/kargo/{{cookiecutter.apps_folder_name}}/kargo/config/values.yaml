@@ -11,10 +11,14 @@ extSecrets:
           key: secret/kargo/api
 argocd-apps:
   applicationsets:
-    {%- for group_name, suffix, services_list  in [
-      ("kargo-core-projects", "-core", cookiecutter.core_services.list | default([ ])),
-      ("kargo-projects", "", cookiecutter.services.list | default([ ]))
+    {%- set addon_names = (cookiecutter.addons.list | default([]) | map(attribute='name') | list) %}
+    {%- set merged_addons = (cookiecutter.addons.list | default([])) + (cookiecutter.addons_config.list | default([]) | rejectattr('name', 'in', addon_names) | list ) %}
+    {%- for group_name, type, folder, prefix, suffix, services_list  in [
+      ("kargo-core-projects", "service", "apps", "", "-core", cookiecutter.core_services.list | default([ ])),
+      ("kargo-projects", "service", "apps", "", "", cookiecutter.services.list | default([ ])),
+      ("kargo-projects-addons", "addon", "addons", "addon-", "", merged_addons | default([ ])),
     ] %}
+    {%- set argocd_app_name = group_name | replace('-', '_') %}
     {{ group_name }}:
       namespace: argocd
       additionalLabels: {}
@@ -29,10 +33,10 @@ argocd-apps:
               - list:
                   elements:
                     {%- for service in (services_list  | default([]) | selectattr('enable_kargo', 'defined') | selectattr('enable_kargo') ) %}
-                    - service: {{ service.name }}
+                    - {{ type }}: {{ service.name }}
                       location: {{ service.name }}
                     {%- for addon in (service.addons | default({})).list | default([]) %}
-                    - service: {{ addon.name }}
+                    - {{ type }}: {{ addon.name }}
                       location: {{ addon.location }}
                     {%- endfor %}
                     {%- endfor %}
@@ -40,7 +44,7 @@ argocd-apps:
                   repoURL: https://github.com/Squallium/kubernetes-at-home.git
                   revision: main
                   files:
-                    - path: 'apps/{{'{{'}}location}}/kargo.yaml'
+                    - path: '{{folder}}/{{'{{'}}location}}/kargo.yaml'
       # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
       ignoreApplicationDifferences:
         - jsonPointers:
@@ -64,7 +68,7 @@ argocd-apps:
       #              - kustomize-bar
       template:
         metadata:
-          name: 'kargo-{{'{{'}}service}}{{ suffix }}'
+          name: 'kargo-{{ prefix }}{{'{{'}}{{ type }}}}{{ suffix }}'
           labels:
             type: 'kargo-project'
           annotations: {}
@@ -79,17 +83,17 @@ argocd-apps:
               targetRevision: '{{'{{'}}chart.targetRevision}}'
               helm:
                 valueFiles:
-                  - $values/apps/{{'{{'}}location}}/kargo.yaml
+                  - $values/{{folder}}/{{'{{'}}location}}/kargo.yaml
                 values: |
                   kargo:
-                    name: '{{'{{'}}service}}'
-                    type: apps
+                    name: '{{'{{'}}{{ type }}}}'
+                    type: {{ folder }}
                     location: '{{'{{'}}location}}'
                     project:
-                      name: '{{'{{'}}service}}{{ suffix }}'
+                      name: '{{ prefix }}{{'{{'}}{{ type }}}}{{ suffix }}'
           destination:
             server: https://kubernetes.default.svc
-            namespace: '{{'{{'}}service}}'
+            namespace: '{{ prefix }}{{'{{'}}{{ type }}}}'
           syncPolicy:
             #            automated:
             #              prune: false
@@ -122,107 +126,3 @@ argocd-apps:
     #              prune: {{'{{'}} .prune }}
     #        {{'{{'}}- end }}
     {%- endfor %}
-    kargo-projects-addons:
-      namespace: argocd
-      additionalLabels: {}
-      additionalAnnotations: {}
-      finalizers:
-        - resources-finalizer.argocd.argoproj.io
-      # See PR #10026 (ArgoCD v2.5 or later)
-      # goTemplate: false
-      generators:
-        - matrix:
-            generators:
-              - list:
-                  elements:
-                    {%- set addon_names = (cookiecutter.addons.list | default([]) | map(attribute='name') | list) %}
-                    {%- set merged_addons = (cookiecutter.addons.list | default([])) + (cookiecutter.addons_config.list | default([]) | rejectattr('name', 'in', addon_names) | list ) %}
-                    {%- for addon in merged_addons %}
-                    - addon: {{ addon.name }}
-                      location: {{ addon.name }}
-                    {%- endfor %}
-              - git:
-                  repoURL: https://github.com/Squallium/kubernetes-at-home.git
-                  revision: main
-                  files:
-                    - path: 'addons/{{'{{'}}addon}}/kargo.yaml'
-      # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
-      ignoreApplicationDifferences:
-        - jsonPointers:
-            - /spec/syncPolicy
-      # Progressive Syncs is an experimental feature and it must be explicitly enabled
-      # Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Progressive-Syncs/#enabling-progressive-syncs
-      #      strategy:
-      #        type: RollingSync
-      #        rollingSync:
-      #          steps:
-      #          - matchExpressions:
-      #            - key: project
-      #              operator: In
-      #              values:
-      #              - guestbook
-      #          - matchExpressions:
-      #            - key: project
-      #              operator: In
-      #              values:
-      #              - kustomize-foo
-      #              - kustomize-bar
-      template:
-        metadata:
-          name: 'kargo-addon-{{'{{'}}addon}}'
-          labels:
-            type: 'kargo-project'
-          annotations: {}
-        spec:
-          project: default
-          sources:
-            - repoURL: https://github.com/Squallium/kubernetes-at-home.git
-              targetRevision: main
-              ref: values
-            - repoURL: https://squallium.github.io/kubernetes-at-home
-              chart: kargo-project
-              targetRevision: '{{'{{'}}chart.targetRevision}}'
-              helm:
-                valueFiles:
-                  - $values/addons/{{'{{'}}addon}}/kargo.yaml
-                values: |
-                  kargo:
-                    name: '{{'{{'}}addon}}'
-                    type: addons
-                    location: '{{'{{'}}location}}'
-                    project:
-                      name: 'addon-{{'{{'}}addon}}'
-          destination:
-            server: https://kubernetes.default.svc
-            namespace: 'addon-{{'{{'}}addon}}'
-          syncPolicy:
-            #            automated:
-            #              prune: false
-            #              selfHeal: false
-            syncOptions:
-              - CreateNamespace=false
-          ignoreDifferences:
-            - group: apps
-              kind: Deployment
-              jsonPointers:
-                - /spec/replicas
-          info:
-            - name: url
-              value: https://argoproj.github.io/
-      syncPolicy:
-        # Set Application finalizer
-        preserveResourcesOnDeletion: true
-      # Templating is only available on string type
-    #      templatePatch: |
-    #        spec:
-    #          source:
-    #            helm:
-    #              valueFiles:
-    #              {{'{{'}}- range $valueFile := .valueFiles }}
-    #                - {{'{{'}} $valueFile }}
-    #              {{'{{'}}- end }}
-    #        {{'{{'}}- if .autoSync }}
-    #          syncPolicy:
-    #            automated:
-    #              prune: {{'{{'}} .prune }}
-    #        {{'{{'}}- end }}

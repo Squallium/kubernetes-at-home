@@ -248,7 +248,7 @@ argocd-apps:
                   repoURL: https://github.com/Squallium/kubernetes-at-home.git
                   revision: main
                   files:
-                    - path: 'addons/{{addon}}/kargo.yaml'
+                    - path: 'addons/{{location}}/kargo.yaml'
       # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
       ignoreApplicationDifferences:
         - jsonPointers:
@@ -287,7 +287,7 @@ argocd-apps:
               targetRevision: '{{chart.targetRevision}}'
               helm:
                 valueFiles:
-                  - $values/addons/{{addon}}/kargo.yaml
+                  - $values/addons/{{location}}/kargo.yaml
                 values: |
                   kargo:
                     name: '{{addon}}'

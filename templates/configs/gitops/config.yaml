@@ -36,6 +36,7 @@ default_context:
       - name: "coredns"
         chart_name: "coredns-config"
         chart_target_revision: "0.0.1"
+        enable_kargo: true
       - name: "external-secrets"
         chart_name: "external-secrets-config"
         chart_target_revision: "0.0.3"
