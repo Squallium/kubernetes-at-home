@@ -128,18 +128,18 @@ argocd-apps:
             generators:
               - list:
                   elements:
-                    - service: calibre-web
-                      location: calibre-web
-                    - service: paperless-ngx
-                      location: paperless-ngx
-                    - service: home-assistant
-                      location: home-assistant
-                    - service: zigbee2mqtt
-                      location: home-assistant-addons/zigbee2mqtt
-                    - service: authentik
-                      location: authentik
-                    - service: jellyfin
-                      location: jellyfin
+                    {%- for service in (
+                      cookiecutter.services.list | default([])
+                      | selectattr('enable_kargo', 'defined')
+                      | selectattr('enable_kargo')
+                    ) %}
+                    - service: {{ service.name }}
+                      location: {{ service.name }}
+                    {%- for addon in (service.addons | default({})).list | default([]) %}
+                    - service: {{ addon.name }}
+                      location: {{ addon.location }}
+                    {%- endfor %}
+                    {%- endfor %}
               - git:
                   repoURL: https://github.com/Squallium/kubernetes-at-home.git
                   revision: main

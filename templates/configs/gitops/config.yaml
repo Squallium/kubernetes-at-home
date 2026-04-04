@@ -155,6 +155,10 @@ default_context:
             name: home-assistant-{{'{{'}}metadata.labels.environment}}
             jsonPointers:
               - /spec/template/metadata/annotations/checksum~1hass-configuration
+        addons:
+          list:
+            - name: "zigbee2mqtt"
+              location: "home-assistant-addons/zigbee2mqtt"
       - name: "calibre-web"
         chart_name: "calibre-web"
         chart_target_revision: "0.0.4"

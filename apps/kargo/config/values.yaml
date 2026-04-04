@@ -130,18 +130,20 @@ argocd-apps:
             generators:
               - list:
                   elements:
-                    - service: calibre-web
-                      location: calibre-web
+                    - service: kube-prometheus-stack
+                      location: kube-prometheus-stack
                     - service: paperless-ngx
                       location: paperless-ngx
                     - service: home-assistant
                       location: home-assistant
                     - service: zigbee2mqtt
                       location: home-assistant-addons/zigbee2mqtt
-                    - service: authentik
-                      location: authentik
+                    - service: calibre-web
+                      location: calibre-web
                     - service: jellyfin
                       location: jellyfin
+                    - service: authentik
+                      location: authentik
               - git:
                   repoURL: https://github.com/Squallium/kubernetes-at-home.git
                   revision: main
