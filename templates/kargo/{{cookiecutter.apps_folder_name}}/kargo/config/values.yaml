@@ -128,11 +128,7 @@ argocd-apps:
             generators:
               - list:
                   elements:
-                    {%- for service in (
-                      cookiecutter.services.list | default([])
-                      | selectattr('enable_kargo', 'defined')
-                      | selectattr('enable_kargo')
-                    ) %}
+                    {%- for service in (cookiecutter.services.list | default([]) | selectattr('enable_kargo', 'defined') | selectattr('enable_kargo') ) %}
                     - service: {{ service.name }}
                       location: {{ service.name }}
                     {%- for addon in (service.addons | default({})).list | default([]) %}
@@ -239,11 +235,7 @@ argocd-apps:
               - list:
                   elements:
                     {%- set addon_names = (cookiecutter.addons.list | default([]) | map(attribute='name') | list) %}
-                    {%- set merged_addons = (cookiecutter.addons.list | default([])) + (
-                      cookiecutter.addons_config.list | default([])
-                      | rejectattr('name', 'in', addon_names)
-                      | list
-                    ) %}
+                    {%- set merged_addons = (cookiecutter.addons.list | default([])) + (cookiecutter.addons_config.list | default([]) | rejectattr('name', 'in', addon_names) | list ) %}
                     {%- for addon in merged_addons %}
                     - addon: {{ addon.name }}
                       location: {{ addon.name }}
