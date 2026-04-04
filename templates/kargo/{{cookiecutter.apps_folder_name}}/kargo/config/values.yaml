@@ -13,12 +13,13 @@ argocd-apps:
   applicationsets:
     {%- set addon_names = (cookiecutter.addons.list | default([]) | map(attribute='name') | list) %}
     {%- set merged_addons = (cookiecutter.addons.list | default([])) + (cookiecutter.addons_config.list | default([]) | rejectattr('name', 'in', addon_names) | list ) %}
-    {%- for group_name, type, folder, prefix, suffix, services_list  in [
-      ("kargo-core-projects", "service", "apps", "", "-core", cookiecutter.core_services.list | default([ ])),
-      ("kargo-projects", "service", "apps", "", "", cookiecutter.services.list | default([ ])),
-      ("kargo-projects-addons", "addon", "addons", "addon-", "", merged_addons | default([ ])),
+    {%- set groups = [
+      ("kargo-core-projects", "service", "apps", "", "-core", cookiecutter.core_services.list | default([])),
+      ("kargo-projects", "service", "apps", "", "", cookiecutter.services.list | default([])),
+      ("kargo-projects-addons", "addon", "addons", "addon-", "", merged_addons | default([])),
     ] %}
-    {%- set argocd_app_name = group_name | replace('-', '_') %}
+    {%- for group_name, type, folder, prefix, suffix, services_list in groups
+     if services_list | length > 0 %}
     {{ group_name }}:
       namespace: argocd
       additionalLabels: {}
