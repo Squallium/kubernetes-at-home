@@ -238,14 +238,16 @@ argocd-apps:
             generators:
               - list:
                   elements:
-                    - addon: cert-manager
-                      location: cert-manager
-                    - addon: external-secrets
-                      location: external-secrets
-                    - addon: cloudflared
-                      location: cloudflared
-                    - addon: coredns
-                      location: coredns
+                    {%- set addon_names = (cookiecutter.addons.list | default([]) | map(attribute='name') | list) %}
+                    {%- set merged_addons = (cookiecutter.addons.list | default([])) + (
+                      cookiecutter.addons_config.list | default([])
+                      | rejectattr('name', 'in', addon_names)
+                      | list
+                    ) %}
+                    {%- for addon in merged_addons %}
+                    - addon: {{ addon.name }}
+                      location: {{ addon.name }}
+                    {%- endfor %}
               - git:
                   repoURL: https://github.com/Squallium/kubernetes-at-home.git
                   revision: main

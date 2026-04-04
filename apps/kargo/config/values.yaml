@@ -240,10 +240,10 @@ argocd-apps:
             generators:
               - list:
                   elements:
-                    - addon: cert-manager
-                      location: cert-manager
                     - addon: external-secrets
                       location: external-secrets
+                    - addon: cert-manager
+                      location: cert-manager
                     - addon: cloudflared
                       location: cloudflared
                     - addon: coredns
