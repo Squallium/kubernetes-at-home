@@ -456,6 +456,9 @@ applicationsets:
           - repoURL: https://github.com/Squallium/kubernetes-at-home.git
             targetRevision: main
             ref: values
+          - repoURL: https://github.com/Squallium/kubernetes-at-home-incubator.git
+            targetRevision: main
+            ref: values-incubator
           - repoURL: https://jellyfin.github.io/jellyfin-helm
             chart: jellyfin
             targetRevision: '{{chart.targetRevision}}'
@@ -463,7 +466,9 @@ applicationsets:
               valueFiles:
                 - $values/apps/jellyfin/values.yaml
                 - $values/apps/jellyfin/{{metadata.labels.environment}}/values.yaml
+                - $values-incubator/apps/jellyfin/{{metadata.labels.environment}}/values.yaml
                 - $values/apps/jellyfin/{{metadata.labels.environment}}/values-ssl.yaml
+                - $values-incubator/apps/jellyfin/{{metadata.labels.environment}}/values-ssl.yaml
                 - $values/defaults/{{metadata.labels.environment}}/resources/values.yaml
         destination:
           server: '{{server}}'
