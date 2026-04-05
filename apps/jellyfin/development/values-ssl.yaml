@@ -1,6 +1,4 @@
 ingress:
-  annotations:
-    cert-manager.io/cluster-issuer: home-internal-ca-issuer
   tls:
     - hosts:
         - jellyfin-dev.internal

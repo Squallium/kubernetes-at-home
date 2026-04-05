@@ -56,6 +56,11 @@ applicationsets:
           - repoURL: {{ cookiecutter.default_ref_values_repo_url }}
             targetRevision: main
             ref: values
+          {%- if service.get("enable_incubator", False) %}
+          - repoURL: {{ cookiecutter.default_ref_values_incubator_repo_url }}
+            targetRevision: main
+            ref: values-incubator
+          {%- endif %}
           {%- set chart_name = service.chart_name | default(cookiecutter.default_chart_name, true) | trim %}
           {%- if chart_name != "" %}
           - repoURL: {{ service.chart_repo | default(cookiecutter.default_chart_repo) }}
@@ -69,8 +74,14 @@ applicationsets:
               valueFiles:
                 - $values/apps/{{ service.name }}/values.yaml
                 - $values/apps/{{ service.name }}/{{'{{'}}metadata.labels.environment}}/values.yaml
+                {%- if service.get("enable_incubator", False) %}
+                - $values-incubator/apps/{{ service.name }}/{{'{{'}}metadata.labels.environment}}/values.yaml
+                {%- endif %}
                 {%- if service.get("enable_ssl", False) %}
                 - $values/apps/{{ service.name }}/{{'{{'}}metadata.labels.environment}}/values-ssl.yaml
+                {%- if service.get("enable_incubator", False) %}
+                - $values-incubator/apps/{{ service.name }}/{{'{{'}}metadata.labels.environment}}/values-ssl.yaml
+                {%- endif %}
                 {%- endif %}
                 - $values/defaults/{{'{{'}}metadata.labels.environment}}/resources/values.yaml
               {%- if service.get("enable_secrets", False) %}

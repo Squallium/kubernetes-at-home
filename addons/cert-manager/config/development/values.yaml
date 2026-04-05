@@ -8,6 +8,10 @@ certificates:
     duration: 8760h
     renewBefore: 720h
     domain: internal.org
+  - name: jellyfin-dev
+    namespace: jellyfin
+    duration: 8760h
+    renewBefore: 720h
 letsEncrypt:
   enable: true
   issuerName: letsencrypt-production
@@ -15,3 +19,4 @@ letsEncrypt:
   namespaces:
     - calibre-web
     - home-assistant
+    - jellyfin
