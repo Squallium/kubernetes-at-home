@@ -46,6 +46,7 @@ kargo:
         discoveryLimit: 10
         semverConstraint: ''
   promotionTasks:
+    repoURL: git@github.com:Squallium/kubernetes-at-home.git
     imageVersion:
       tagKey: image.tag
 extSecrets:

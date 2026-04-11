@@ -12,7 +12,7 @@ spec:
     value: {{ .Values.kargo.warehouse.image.repoURL }}
   {{- end }}
   - name: repoURL
-    value: git@github.com:Squallium/kubernetes-at-home.git
+    value: {{ .Values.kargo.promotionTasks.repoURL }}
   - name: branch
     value: main
   - name: chartValuesPath
@@ -72,7 +72,7 @@ spec:
     - name: chart
       value: {{ .Values.kargo.config.warehouse.chart.repoURL }}
     - name: repoURL
-      value: git@github.com:Squallium/kubernetes-at-home.git
+      value: {{ .Values.kargo.promotionTasks.repoURL }}
     - name: branch
       value: main
     - name: chartValuesPath
