@@ -9,6 +9,7 @@ kargo:
       allowTags: ''
       ignoreTags:
         - '.*rc-\d+$'
+        - '.*-rc\d+$'
     chart:
       repoURL: https://charts.goauthentik.io
       name: authentik
