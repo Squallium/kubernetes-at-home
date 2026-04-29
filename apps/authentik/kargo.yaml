@@ -6,10 +6,7 @@ kargo:
       repoURL: ghcr.io/goauthentik/server
       discoveryLimit: 7
       constraint: ''
-      allowTags: ''
-      ignoreTags:
-        - '.*rc-\d+$'
-        - '.*-rc[0-9]+'
+      allowTags: '^\d+\.\d+\.\d+$'
     chart:
       repoURL: https://charts.goauthentik.io
       name: authentik
