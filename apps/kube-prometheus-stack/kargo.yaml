@@ -1,5 +1,5 @@
 chart:
-  targetRevision: 0.0.53
+  targetRevision: 0.0.54
 kargo:
   project:
     global: true
