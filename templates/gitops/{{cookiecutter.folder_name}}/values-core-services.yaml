@@ -15,6 +15,7 @@ applicationsets:
                 elements:
                   {%- for service in cookiecutter.core_services.list %}
                   - name: '{{ service.name }}'
+                    kargo_project_name: '{{ "kargo-" if service.get("kargo_prefix", False) else "" }}{{ service.name }}-core'
                   {%- endfor %}
             - git:
                 repoURL: https://github.com/Squallium/kubernetes-at-home.git
@@ -48,7 +49,7 @@ applicationsets:
         labels:
           type: 'service'
         annotations:
-          kargo.akuity.io/authorized-stage: '{{'{{'}}name}}-core:core'
+          kargo.akuity.io/authorized-stage: '{{'{{'}}kargo_project_name}}:core'
       spec:
         project: default
         sources:
