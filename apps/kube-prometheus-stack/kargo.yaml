@@ -5,7 +5,7 @@ kargo:
     chart:
       repoURL: https://prometheus-community.github.io/helm-charts
       name: kube-prometheus-stack
-      semverConstraint: ">=80.0.0"
+      semverConstraint: ">=75.0.0,<85.0.0"
   stages:
     dev:
       enabled: false
