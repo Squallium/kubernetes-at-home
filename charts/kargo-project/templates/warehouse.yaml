@@ -3,7 +3,7 @@ apiVersion: kargo.akuity.io/v1alpha1
 kind: Warehouse
 metadata:
   name: {{ .Values.kargo.project.name }}
-  namespace: {{ .Values.kargo.project.name }}
+  namespace: {{ include "kargo-project.namespaceName" . }}
 spec:
   subscriptions:
   {{- if .Values.kargo.warehouse.image.repoURL }}
@@ -29,7 +29,7 @@ apiVersion: kargo.akuity.io/v1alpha1
 kind: Warehouse
 metadata:
   name: {{ .Values.kargo.project.name }}-config
-  namespace: {{ .Values.kargo.project.name }}
+  namespace: {{ include "kargo-project.namespaceName" . }}
 spec:
   subscriptions:
   - chart:

@@ -59,3 +59,4 @@ extSecrets:
         remoteRef:
           key: placeholder
           property: placeholder
+global_app: false
