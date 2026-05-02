@@ -24,8 +24,6 @@ argocd-apps:
             generators:
               - list:
                   elements:
-                    - service: kube-prometheus-stack
-                      location: kube-prometheus-stack
                     - service: kargo
                       location: kargo
               - git:
