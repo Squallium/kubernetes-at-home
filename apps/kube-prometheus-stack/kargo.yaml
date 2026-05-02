@@ -2,7 +2,7 @@ chart:
   targetRevision: 0.0.54
 kargo:
   project:
-    global: true
+    global: false
   warehouse:
     chart:
       repoURL: https://prometheus-community.github.io/helm-charts
