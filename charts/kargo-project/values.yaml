@@ -1,6 +1,7 @@
 kargo:
   project:
     name: placeholder
+    global: false
   warehouse:
     enabled: true
     image:
@@ -59,4 +60,3 @@ extSecrets:
         remoteRef:
           key: placeholder
           property: placeholder
-global_app: false
