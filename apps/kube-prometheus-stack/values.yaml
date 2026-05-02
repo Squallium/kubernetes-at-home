@@ -1,3 +1,6 @@
+nodeExporter:
+  enabled: false
+
 grafana:
   enabled: true
   ingress:
