@@ -33,7 +33,7 @@ argocd-apps:
             generators:
               - list:
                   elements:
-                    {%- for service in (services_list  | default([]) | selectattr('enable_kargo', 'defined') | selectattr('enable_kargo') ) %}
+                    {%- for service in (services_list  | default([]) | selectattr('kargo_project', 'defined') | selectattr('kargo_project') ) %}
                     - {{ type }}: {{ service.name }}
                       location: {{ service.name }}
                     {%- for addon in (service.addons | default({})).list | default([]) %}

@@ -46,7 +46,7 @@ applicationsets:
           promotion: {{ "kargo" if service.get("enable_kargo", False) else "manual" }}
         {%- if service.get("enable_kargo", False) %}
         annotations:
-          kargo.akuity.io/authorized-stage: '{{ service.name }}:{{'{{'}}metadata.labels.kargo-stage}}'
+          kargo.akuity.io/authorized-stage: '{{ "kargo-" if service.get("kargo_prefix", False) else "" }}{{ service.name }}:{{'{{'}}metadata.labels.kargo-stage}}'
         {%- else %}
         annotations: {}
         {%- endif %}

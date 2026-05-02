@@ -44,7 +44,7 @@ applicationsets:
           type: 'service'
           promotion: kargo
         annotations:
-          kargo.akuity.io/authorized-stage: 'kube-prometheus-stack:{{metadata.labels.kargo-stage}}'
+          kargo.akuity.io/authorized-stage: 'kargo-kube-prometheus-stack:{{metadata.labels.kargo-stage}}'
       spec:
         project: default
         sources:
