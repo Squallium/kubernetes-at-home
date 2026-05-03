@@ -15,7 +15,7 @@ applicationsets:
                 elements:
                   {%- for service in cookiecutter.core_services.list %}
                   - name: '{{ service.name }}'
-                    kargo_project_name: '{{ "kargo-" if service.get("kargo_prefix", False) else "" }}{{ service.name }}-core'
+                    kargo_project_name: '{{ "kargo-" if service.get("kargo_prefix", False) else "" }}{{ service.name }}'
                   {%- endfor %}
             - git:
                 repoURL: https://github.com/Squallium/kubernetes-at-home.git

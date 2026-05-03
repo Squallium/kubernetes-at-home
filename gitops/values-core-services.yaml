@@ -13,13 +13,13 @@ applicationsets:
             - list:
                 elements:
                   - name: 'kube-prometheus-stack'
-                    kargo_project_name: 'kargo-kube-prometheus-stack-core'
+                    kargo_project_name: 'kargo-kube-prometheus-stack'
                   - name: 'loki'
-                    kargo_project_name: 'loki-core'
+                    kargo_project_name: 'loki'
                   - name: 'promtail'
-                    kargo_project_name: 'promtail-core'
+                    kargo_project_name: 'promtail'
                   - name: 'kargo'
-                    kargo_project_name: 'kargo-core'
+                    kargo_project_name: 'kargo'
             - git:
                 repoURL: https://github.com/Squallium/kubernetes-at-home.git
                 revision: main
