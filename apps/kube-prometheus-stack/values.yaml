@@ -2,6 +2,8 @@ nodeExporter:
   enabled: false
 
 grafana:
+  sidecar:
+    skipTlsVerify: true
   enabled: true
   ingress:
     enabled: true
