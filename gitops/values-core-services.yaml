@@ -13,13 +13,9 @@ applicationsets:
             - list:
                 elements:
                   - name: 'kube-prometheus-stack'
-                    kargo_project_name: 'kargo-kube-prometheus-stack-core'
                   - name: 'loki'
-                    kargo_project_name: 'loki-core'
                   - name: 'promtail'
-                    kargo_project_name: 'promtail-core'
                   - name: 'kargo'
-                    kargo_project_name: 'kargo-core'
             - git:
                 repoURL: https://github.com/Squallium/kubernetes-at-home.git
                 revision: main
@@ -52,7 +48,7 @@ applicationsets:
         labels:
           type: 'service'
         annotations:
-          kargo.akuity.io/authorized-stage: '{{kargo_project_name}}:core'
+          kargo.akuity.io/authorized-stage: '{{name}}:core'
       spec:
         project: default
         sources:
