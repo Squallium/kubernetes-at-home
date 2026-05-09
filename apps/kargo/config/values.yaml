@@ -240,8 +240,6 @@ argocd-apps:
                       location: external-secrets
                     - addon: cert-manager
                       location: cert-manager
-                    - addon: cloudflared
-                      location: cloudflared
                     - addon: coredns
                       location: coredns
               - git:

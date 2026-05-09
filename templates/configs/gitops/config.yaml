@@ -92,12 +92,12 @@ default_context:
         chart_name: "cert-manager"
         enable_kargo: true
         kargo_project: true
-      - name: "cloudflared"
-        chart_repo: "https://squallium.github.io/kubernetes-at-home"
-        chart_name: "cloudflared"
-        chart_target_revision: "0.0.4"
-        enable_kargo: true
-        kargo_project: true
+#      - name: "cloudflared"
+#        chart_repo: "https://squallium.github.io/kubernetes-at-home"
+#        chart_name: "cloudflared"
+#        chart_target_revision: "0.0.4"
+#        enable_kargo: true
+#        kargo_project: true
   addons_config:
     list:
       - name: "external-secrets"
