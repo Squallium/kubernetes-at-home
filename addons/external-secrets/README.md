@@ -139,6 +139,11 @@ Finally, to force the External Secrets controller to refresh the secret, rollout
 kubectl rollout restart deployment external-secrets -n external-secrets
 ```
 
+You will have to restart ArgoCD Application Controller in case you have Vault configuration in ArgoCD:
+
+```bash
+kubectl rollout restart statefulset argocd-application-controller -n argocd  
+```
 
 
 ## For upgrading the helm chart manually you need to specify the --version paramter with the desired version, for example:
