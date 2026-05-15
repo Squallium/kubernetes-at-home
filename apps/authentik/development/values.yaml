@@ -1,6 +1,6 @@
 global:
   image:
-    tag: 2026.2.2
+    tag: 2026.2.3
 
 authentik:
   postgresql:
