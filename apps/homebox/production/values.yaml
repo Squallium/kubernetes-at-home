@@ -3,4 +3,4 @@ image:
 persistence:
   size: 2Gi
 ingress:
-  host: homebox-dev.internal
+  host: homebox.internal
