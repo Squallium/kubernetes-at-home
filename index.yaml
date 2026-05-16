@@ -818,6 +818,16 @@ entries:
   homebox:
   - apiVersion: v2
     appVersion: 0.25.0
+    created: "2026-05-16T14:25:22.62138613Z"
+    description: A Helm chart for deploying Homebox
+    digest: 19c3e6442563b0978b8805722fa7d06675460f7845aba85fed7d360b34e88fe8
+    name: homebox
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/homebox-0.0.6/homebox-0.0.6.tgz
+    version: 0.0.6
+  - apiVersion: v2
+    appVersion: 0.25.0
     created: "2026-05-16T13:57:02.302333465Z"
     description: A Helm chart for deploying Homebox
     digest: fbe2ddb8437dad10360b37f60bfc820881c7f685864aaa31954ff9abf5d4b5db
@@ -2406,4 +2416,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/warracker-0.0.1/warracker-0.0.1.tgz
     version: 0.0.1
-generated: "2026-05-16T13:57:02.303003933Z"
+generated: "2026-05-16T14:25:22.622023997Z"
