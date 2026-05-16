@@ -6,7 +6,7 @@ kargo:
       imageSelectionStrategy: Lexical
       repoURL: ghcr.io/crocodilestick/calibre-web-automated
       constraint: ''
-      allowTags: '^V\d+\.\d+\.\d+$'
+      allowTags: '^v\d+\.\d+\.\d+$'
       ignoreTags:
         - '.*-b\.\d+$'
         - 'nightly.*$'
