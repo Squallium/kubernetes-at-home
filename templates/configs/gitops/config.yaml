@@ -124,10 +124,9 @@ default_context:
         kargo_project: true
   services:
     list:
-#      - name: "homebox"
-#        chart_name: "homebox"
-#        chart_target_revision: "0.0.4"
-#        enable_ssl: true
+      - name: "homebox"
+        chart_name: "homebox"
+        enable_ssl: true
       - name: "kube-prometheus-stack"
         chart_repo: "https://prometheus-community.github.io/helm-charts"
         chart_name: "kube-prometheus-stack"
