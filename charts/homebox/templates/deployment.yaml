@@ -27,4 +27,4 @@ spec:
         - name: data
           hostPath:
             path: {{ .Values.storagePath.data }}
-            type: Directory
+            type: DirectoryOrCreate
