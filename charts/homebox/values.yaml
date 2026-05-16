@@ -19,6 +19,6 @@ ingress:
   tls: []
 
 storagePath:
-  data: /mnt/homebox/data
+  data: /mnt/services/homebox/data
 
 resources: {}
