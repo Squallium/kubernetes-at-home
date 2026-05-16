@@ -82,3 +82,39 @@ logs for any errors:
 limactl shell microk8s ip -br a
 ```
 
+### Increase disk size
+
+Install quemu image tools:
+
+```bash
+brew install qemu
+```
+
+Check installation with:
+
+```bash
+qemu-img --version
+```
+
+Then, you can increase the disk size of the microk8s instances by running the following command:
+
+```bash
+limactl stop microk8s-pro-iii
+qemu-img resize ~/.lima/microk8s-pro-iii/diffdisk 80G
+limactl start microk8s-pro-iii
+```
+
+Check the disk size with:
+
+```bash
+qemu-img info ~/.lima/microk8s-pro-iii/diffdisk
+```
+
+Update the lima yaml configuration file to reflect the new disk size:
+
+```yaml
+disk: "80GiB"
+```
+
+
+

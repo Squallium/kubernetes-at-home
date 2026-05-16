@@ -1,0 +1,6 @@
+image:
+  tag: 0.25.0
+persistence:
+  size: 2Gi
+ingress:
+  host: homebox-dev.internal

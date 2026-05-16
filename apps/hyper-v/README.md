@@ -106,3 +106,5 @@ And then mount the SMB share using the `mount -t cifs` command. For example:
 ```bash
 sudo mount -t cifs //<nas-ip>/<path-to-remote-dir> /mnt/services/jellyfin/media/<local-dir> -o username=sync,vers=3.1.1,uid=1000,gid=1000
 ```
+
+### Increase disk size
