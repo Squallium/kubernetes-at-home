@@ -46,6 +46,10 @@ extSecrets:
         remoteRef:
           key: secret/kargo/docker
           property: repo_url
+      - secretKey: repoURLIsRegex
+        remoteRef:
+          key: secret/kargo/docker
+          property: repo_url_is_regex
       - secretKey: username
         remoteRef:
           key: secret/kargo/docker
@@ -53,4 +57,25 @@ extSecrets:
       - secretKey: password
         remoteRef:
           key: secret/kargo/docker
+          property: password
+  - name: ghcr
+    namespace: home-assistant
+    labels:
+      kargo.akuity.io/cred-type: image
+    secrets:
+      - secretKey: repoURL
+        remoteRef:
+          key: secret/kargo/ghcr
+          property: repo_url
+      - secretKey: repoURLIsRegex
+        remoteRef:
+          key: secret/kargo/ghcr
+          property: repo_url_is_regex
+      - secretKey: username
+        remoteRef:
+          key: secret/kargo/ghcr
+          property: username
+      - secretKey: password
+        remoteRef:
+          key: secret/kargo/ghcr
           property: password

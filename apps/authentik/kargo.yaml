@@ -32,3 +32,24 @@ extSecrets:
         remoteRef:
           key: secret/kargo/github
           property: ssh_private_key
+  - name: ghcr
+    namespace: authentik
+    labels:
+      kargo.akuity.io/cred-type: image
+    secrets:
+      - secretKey: repoURL
+        remoteRef:
+          key: secret/kargo/ghcr
+          property: repo_url
+      - secretKey: repoURLIsRegex
+        remoteRef:
+          key: secret/kargo/ghcr
+          property: repo_url_is_regex
+      - secretKey: username
+        remoteRef:
+          key: secret/kargo/ghcr
+          property: username
+      - secretKey: password
+        remoteRef:
+          key: secret/kargo/ghcr
+          property: password
