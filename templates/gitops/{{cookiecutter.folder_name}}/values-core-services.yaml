@@ -18,7 +18,7 @@ applicationsets:
                     kargo_project_name: '{{ "kargo-" if service.get("kargo_prefix", False) else "" }}{{ service.name }}'
                   {%- endfor %}
             - git:
-                repoURL: https://github.com/Squallium/kubernetes-at-home.git
+                repoURL: https://github.com/Squallium/kubernetes-at-home{{ cookiecutter.kargo.suffix }}.git
                 revision: main
                 files:
                   - path: 'apps/{{'{{'}}name}}/config.yaml'
@@ -53,7 +53,7 @@ applicationsets:
       spec:
         project: default
         sources:
-          - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+          - repoURL: https://github.com/Squallium/kubernetes-at-home{{ cookiecutter.kargo.suffix }}.git
             targetRevision: main
             ref: values
           - repoURL: '{{'{{'}}chart.repoUrl}}'
@@ -101,7 +101,7 @@ applicationsets:
     #        {{'{{'}}- end }}
   {%- endif %}
   {%- if cookiecutter.core_services_config.list is defined and cookiecutter.core_services_config.list %}
-  core-services-configs:
+  core-services{{ cookiecutter.core_services_config.prefix }}-configs:
     namespace: argocd
     additionalLabels: {}
     additionalAnnotations: {}
@@ -118,7 +118,7 @@ applicationsets:
                   - name: '{{ service.name }}'
                   {%- endfor %}
             - git:
-                repoURL: https://github.com/Squallium/kubernetes-at-home.git
+                repoURL: https://github.com/Squallium/kubernetes-at-home{{ cookiecutter.kargo.suffix }}.git
                 revision: main
                 files:
                   - path: 'apps/{{'{{'}}name}}/config/values.yaml'
@@ -145,7 +145,7 @@ applicationsets:
     #              - kustomize-bar
     template:
       metadata:
-        name: '{{'{{'}}name}}-config'
+        name: '{{'{{'}}name}}{{ cookiecutter.core_services_config.prefix }}-config'
         labels:
           type: 'service'
         annotations:
@@ -153,7 +153,7 @@ applicationsets:
       spec:
         project: default
         sources:
-          - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+          - repoURL: https://github.com/Squallium/kubernetes-at-home{{ cookiecutter.kargo.suffix }}.git
             targetRevision: main
             ref: values
           - repoURL: https://squallium.github.io/kubernetes-at-home

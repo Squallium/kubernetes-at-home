@@ -9,6 +9,7 @@ extSecrets:
       - secretKey: ADMIN_ACCOUNT_TOKEN_SIGNING_KEY
         remoteRef:
           key: secret/kargo/api
+      
 argocd-apps:
   applicationsets:
     kargo-core-projects:

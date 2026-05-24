@@ -75,6 +75,7 @@ default_context:
 #        chart_name: "argo-rollouts"
 #        chart_target_revision: "2.40.2"
   core_services_config:
+    prefix: ""
     list:
       - name: "kargo"
         chart_name: "kargo-config"
@@ -243,3 +244,13 @@ default_context:
         chart_target_revision: "0.0.16"
         enable_kargo: true
         kargo_project: true
+  kargo:
+    ext_secrets:
+      - name: api
+        secrets:
+          - secretKey: ADMIN_ACCOUNT_PASSWORD_HASH
+            remoteRef:
+              key: secret/kargo/api
+          - secretKey: ADMIN_ACCOUNT_TOKEN_SIGNING_KEY
+            remoteRef:
+              key: secret/kargo/api

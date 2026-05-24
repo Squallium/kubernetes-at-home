@@ -45,6 +45,9 @@
   "services_addons_migration": {
     "list": []
   },
+  "kargo": {
+    "suffix": ""
+  },
   "_extensions": [
     "jinja2_strcase.StrcaseExtension"
   ]
