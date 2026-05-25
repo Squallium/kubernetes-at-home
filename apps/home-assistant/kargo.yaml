@@ -69,7 +69,7 @@ extSecrets:
           property: repo_url
       - secretKey: repoURLIsRegex
         remoteRef:
-          key: secret/kargo/ghcr
+          key: secret/kargo/ghcr/home-assistant
           property: repo_url_is_regex
       - secretKey: username
         remoteRef:
