@@ -64,9 +64,7 @@ extSecrets:
       kargo.akuity.io/cred-type: image
     secrets:
       - secretKey: repoURL
-        remoteRef:
-          key: secret/kargo/ghcr
-          property: repo_url
+        value: ghcr.io/home-assistant/home-assistant
       - secretKey: repoURLIsRegex
         remoteRef:
           key: secret/kargo/ghcr
