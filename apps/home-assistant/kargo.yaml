@@ -1,5 +1,5 @@
 chart:
-  targetRevision: 1.0.1
+  targetRevision: 1.0.2
 kargo:
   warehouse:
     image:
@@ -64,7 +64,9 @@ extSecrets:
       kargo.akuity.io/cred-type: image
     secrets:
       - secretKey: repoURL
-        value: ghcr.io/home-assistant/home-assistant
+        remoteRef:
+          key: secret/kargo/ghcr/home-assistant
+          property: repo_url
       - secretKey: repoURLIsRegex
         remoteRef:
           key: secret/kargo/ghcr
