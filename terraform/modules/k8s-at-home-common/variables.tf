@@ -1,18 +1,3 @@
-variable "authentik_invalidation_flow" {
-    description = "The invalidation flow ID for Authentik OAuth2 providers"
-    type        = string
-}
-
-variable "authentik_signing_key" {
-    description = "The signing key for Authentik OAuth2 providers"
-    type        = string
-}
-
-variable "authentik_property_mappings" {
-  description = "The property mappings for Authentik OAuth2 providers"
-  type        = list(string)
-}
-
 variable "standard_oidc_services" {
   description = "A map of standard OIDC services with their respective domain names and optional client IDs"
   type = map(object({
@@ -30,32 +15,11 @@ variable "standard_oidc_services" {
 variable "non_oidc_services" {
     description = "A map of non-OIDC services with their respective domain names"
     type = map(object({
-        name       = string
-        group      = optional(string, "Organización")
-        icon_theme = optional(string, "")
+        name        = string
+        group       = optional(string, "Organización")
+        description = optional(string, "")
+        icon_theme  = optional(string, "")
         domain_name = string
     }))
     default = {}
-}
-
-variable "vikunja_domain_name" {
-    description = "The domain name for Vikunja application in Authentik"
-    type        = string
-}
-
-variable "vikunja_client_id" {
-  description = "The client ID for Vikunja OAuth2 provider in Authentik"
-  type        = string
-  default     = null
-}
-
-variable "warracker_domain_name" {
-    description = "The domain name for Warracker application in Authentik"
-    type        = string
-}
-
-variable "warracker_client_id" {
-    description = "The client ID for Warracker OAuth2 provider in Authentik"
-    type        = string
-    default     = null
 }

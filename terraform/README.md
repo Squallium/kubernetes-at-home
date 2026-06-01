@@ -1,0 +1,2 @@
+$env:AUTHENTIK_URL = "https://auth.internal.org"                                                                            pwsh   79  13:34:27 
+$env:AUTHENTIK_TOKEN = "placeholder"
