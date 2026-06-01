@@ -1,6 +1,6 @@
 global:
   image:
-    tag: 2026.2.3
+    tag: 2026.5.0
 
 server:
   ingress:
