@@ -2,13 +2,84 @@ module "k8s-at-home-common" {
   source = "../../modules/k8s-at-home-common"
 
   standard_oidc_services = {
+    argo-cd = {
+      name        = "Argo CD"
+      group       = "Desarrollo"
+      domain_name = "https://argocd.internal"
+      redirect_uri_suffix = "/auth/openid/authentik"
+      logout_uri_suffix = "/auth/openid/authentik"
+    }
+    calibre-web = {
+      name        = "Calibre-Web"
+      group       = "Libros, manga y comics"
+      domain_name = "https://calibre-web.internal"
+      redirect_uri_suffix = "/login/generic/authorized"
+      logout_uri_suffix = "/auth/oidc/logout"
+    }
+    home-assistant = {
+      name        = "Home Assistant"
+      group       = "Domótica"
+      domain_name = "https://home-assistant.internal.org"
+      meta_launch_url = "https://home-assistant.internal.org/auth/oidc/welcome"
+      redirect_uri_suffix = "/auth/oidc/callback"
+      logout_uri_suffix = "/auth/logout/"
+    }
+    homebox = {
+      name        = "HomeBox"
+      group       = "Inventario"
+      domain_name = "https://homebox.internal"
+      redirect_uri_suffix = "/auth/openid/authentik"
+      logout_uri_suffix = "/auth/openid/authentik"
+    }
+    jellyfin = {
+      name        = "Jellyfin"
+      group       = "Multimedia"
+      domain_name = "https://jellyfin.internal"
+      redirect_uri_suffix = "/auth/openid/authentik"
+      logout_uri_suffix = "/auth/openid/authentik"
+    }
+    kargo = {
+      name        = "Kargo"
+      group       = "Desarrollo"
+      icon_url    = "https://docs.kargo.io/img/kargo.png"
+      domain_name = "https://kargo.internal"
+      redirect_uri_suffix = "/auth/openid/authentik"
+      logout_uri_suffix = "/auth/openid/authentik"
+    }
+    grafana = {
+      name        = "Grafana"
+      group       = "Desarrollo"
+      domain_name = "https://grafana.internal"
+      redirect_uri_suffix = "/auth/openid/authentik"
+      logout_uri_suffix = "/auth/openid/authentik"
+    }
+    prometheus = {
+      name        = "Prometheus"
+      group       = "Desarrollo"
+      domain_name = "https://prometheus.internal"
+      redirect_uri_suffix = "/auth/openid/authentik"
+      logout_uri_suffix = "/auth/openid/authentik"
+    }
+    paperless = {
+      name        = "Paperless"
+      group       = "Inventario"
+      domain_name = "https://paperless.internal"
+      redirect_uri_suffix = "/accounts/oidc/authentik/login/callback/"
+      logout_uri_suffix = "/application/o/paperless/end-session/"
+    }
+    romm = {
+      name        = "Romm"
+      group       = "Videojuegos"
+      domain_name = "https://romm.internal"
+      redirect_uri_suffix = "/auth/openid/authentik"
+      logout_uri_suffix = "/auth/openid/authentik"
+    }
     vikunja = {
       name        = "Vikunja"
-      group       = "Organización"
+      group       = "Inventario"
       domain_name = "https://vikunja.internal"
       redirect_uri_suffix = "/auth/openid/authentik"
       logout_uri_suffix = "/auth/openid/authentik"
-      client_id   = "4S14myjUOBF1gu1gB3XtxCMltNsg8rr0luexLdgM"
     }
     warracker = {
       name        = "Warracker"
@@ -16,7 +87,6 @@ module "k8s-at-home-common" {
       domain_name = "https://warracker.internal"
       redirect_uri_suffix = "/api/oidc/callback"
       logout_uri_suffix = ""
-      client_id   = "V9N1XYYt6ejMFCTkg28O4NKfY9Hewd9mp4ooOif1"
     }
     paperless = {
       name        = "Paperless"
@@ -38,9 +108,15 @@ module "k8s-at-home-common" {
   }
 
   non_oidc_services = {
+    adguard-home = {
+      name        = "AdGuard Home"
+      group       = "Desarrollo"
+      description = "DNS privado y bloqueador de anuncios"
+      domain_name = "http://192.168.1.157:3000"
+    }
     pgbackweb = {
       name        = "pgBackWeb"
-      group       = "Backup & DR"
+      group       = "Desarrollo"
       icon_theme = "-light"
       domain_name = "https://pgbackweb.internal"
     }
@@ -49,7 +125,11 @@ module "k8s-at-home-common" {
       group       = "Domótica"
       domain_name = "https://zigbee2mqtt.internal"
     }
+    vault = {
+      name        = "Vault"
+      group       = "Desarrollo"
+      domain_name = "https://vault.internal"
+    }
   }
-
 }
 
