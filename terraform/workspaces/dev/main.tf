@@ -1,38 +1,20 @@
 module "k8s-at-home-common" {
   source = "../../modules/k8s-at-home-common"
 
-  # vikunja
-  vikunja_domain_name = "https://vikunja-dev.internal"
-  vikunja_client_id = "oOJdgBUOw1jA2luNHhb2kZGCfjkRuGC44whmEhfv"
-
-  # warracker
-  warracker_domain_name = "https://warracker-dev.internal"
-  warracker_client_id = "mxvp0Bc2Kxu5EgdOuhp0MDdNpJmjeb5rsPm0xYoz"
-
   standard_oidc_services = {
-    vikunja = {
-      name        = "Vikunja"
-      group       = "Organización"
-      domain_name = "https://vikunja-dev.internal"
+    argo-cd = {
+      name        = "Argo CD"
+      group       = "Desarrollo"
+      domain_name = "https://argocd-dev.internal"
       redirect_uri_suffix = "/auth/openid/authentik"
       logout_uri_suffix = "/auth/openid/authentik"
-      client_id   = "oOJdgBUOw1jA2luNHhb2kZGCfjkRuGC44whmEhfv"
     }
-    warracker = {
-      name        = "Warracker"
-      group       = "Inventario"
-      domain_name = "https://warracker-dev.internal"
-      redirect_uri_suffix = "/api/oidc/callback"
-      logout_uri_suffix = ""
-      client_id   = "mxvp0Bc2Kxu5EgdOuhp0MDdNpJmjeb5rsPm0xYoz"
-    }
-    paperless = {
-      name        = "Paperless"
-      group       = "Inventario"
-      domain_name = "https://paperless-dev.internal"
-      redirect_uri_suffix = "/accounts/oidc/authentik/login/callback/"
-      logout_uri_suffix = "/application/o/paperless/end-session/"
-      client_id   = "W518HnjYJYoPmFpHpmpRV1BgDBgGXYFUaWyEalx9LFSCMXkD"
+    calibre-web = {
+      name        = "Calibre-Web"
+      group       = "Libros, manga y comics"
+      domain_name = "https://calibre-web-dev.internal"
+      redirect_uri_suffix = "/login/generic/authorized"
+      logout_uri_suffix = "/auth/oidc/logout"
     }
     home-assistant = {
       name        = "Home Assistant"
@@ -41,22 +23,83 @@ module "k8s-at-home-common" {
       meta_launch_url = "https://home-assistant-dev.internal.org/auth/oidc/welcome"
       redirect_uri_suffix = "/auth/oidc/callback"
       logout_uri_suffix = "/auth/logout/"
-      client_id   = "JYJzXGZgXJH1bXG3fY2qQ1bF0h3v3Z8K5K5K5K5K5K5K5K5K5K"
     }
-    calibre-web = {
-      name        = "Calibre-Web"
-      group       = "Lectores eBooks"
-      domain_name = "https://calibre-web-dev.internal"
-      redirect_uri_suffix = "/login/generic/authorized"
-      logout_uri_suffix = "/auth/oidc/logout"
-      client_id   = "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6"
+    homebox = {
+      name        = "HomeBox"
+      group       = "Inventario"
+      domain_name = "https://homebox-dev.internal"
+      redirect_uri_suffix = "/auth/openid/authentik"
+      logout_uri_suffix = "/auth/openid/authentik"
+    }
+    jellyfin = {
+      name        = "Jellyfin"
+      group       = "Multimedia"
+      domain_name = "https://jellyfin-dev.internal"
+      redirect_uri_suffix = "/auth/openid/authentik"
+      logout_uri_suffix = "/auth/openid/authentik"
+    }
+    kargo = {
+      name        = "Kargo"
+      group       = "Desarrollo"
+      icon_url    = "https://docs.kargo.io/img/kargo.png"
+      domain_name = "https://kargo.internal"
+      redirect_uri_suffix = "/auth/openid/authentik"
+      logout_uri_suffix = "/auth/openid/authentik"
+    }
+    grafana = {
+      name        = "Grafana"
+      group       = "Desarrollo"
+      domain_name = "https://grafana.internal"
+      redirect_uri_suffix = "/auth/openid/authentik"
+      logout_uri_suffix = "/auth/openid/authentik"
+    }
+    prometheus = {
+      name        = "Prometheus"
+      group       = "Desarrollo"
+      domain_name = "https://prometheus-dev.internal"
+      redirect_uri_suffix = "/auth/openid/authentik"
+      logout_uri_suffix = "/auth/openid/authentik"
+    }
+    paperless = {
+      name        = "Paperless"
+      group       = "Inventario"
+      domain_name = "https://paperless-dev.internal"
+      redirect_uri_suffix = "/accounts/oidc/authentik/login/callback/"
+      logout_uri_suffix = "/application/o/paperless/end-session/"
+    }
+    romm = {
+      name        = "Romm"
+      group       = "Videojuegos"
+      domain_name = "https://romm-dev.internal"
+      redirect_uri_suffix = "/auth/openid/authentik"
+      logout_uri_suffix = "/auth/openid/authentik"
+    }
+    vikunja = {
+      name        = "Vikunja"
+      group       = "Inventario"
+      domain_name = "https://vikunja-dev.internal"
+      redirect_uri_suffix = "/auth/openid/authentik"
+      logout_uri_suffix = "/auth/openid/authentik"
+    }
+    warracker = {
+      name        = "Warracker"
+      group       = "Inventario"
+      domain_name = "https://warracker-dev.internal"
+      redirect_uri_suffix = "/api/oidc/callback"
+      logout_uri_suffix = ""
     }
   }
 
   non_oidc_services = {
+    adguard-home = {
+      name        = "AdGuard Home"
+      group       = "Desarrollo"
+      description = "DNS privado y bloqueador de anuncios"
+      domain_name = "http://192.168.1.157:3000"
+    }
     pgbackweb = {
       name        = "pgBackWeb"
-      group       = "Backup & DR"
+      group       = "Desarrollo"
       icon_theme = "-light"
       domain_name = "https://pgbackweb-dev.internal"
     }
@@ -64,6 +107,11 @@ module "k8s-at-home-common" {
       name        = "Zigbee2MQTT"
       group       = "Domótica"
       domain_name = "https://zigbee2mqtt-dev.internal"
+    }
+    vault = {
+      name        = "Vault"
+      group       = "Desarrollo"
+      domain_name = "https://vault.internal"
     }
   }
 }
