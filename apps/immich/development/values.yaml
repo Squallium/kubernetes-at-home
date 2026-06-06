@@ -1,0 +1,6 @@
+ingress:
+  hosts:
+    - host: immich-dev.internal
+      paths:
+        - path: /
+          pathType: Prefix

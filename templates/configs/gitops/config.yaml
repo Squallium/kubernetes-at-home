@@ -227,6 +227,11 @@ default_context:
       - name: "romm"
         chart_name: "romm"
         enable_ssl: true
+      - name: "immich"
+        chart_repo: "oci://ghcr.io/helmforgedev/helm/immich"
+        chart_name: "immich"
+        enable_ssl: true
+        enable_kargo: true
   services_config:
     list:
       - name: "home-assistant"
