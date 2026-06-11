@@ -14,10 +14,6 @@ applicationsets:
                 elements:
                   - name: 'kube-prometheus-stack'
                     kargo_project_name: 'kargo-kube-prometheus-stack'
-                  - name: 'loki'
-                    kargo_project_name: 'loki'
-                  - name: 'promtail'
-                    kargo_project_name: 'promtail'
                   - name: 'kargo'
                     kargo_project_name: 'kargo'
             - git:
