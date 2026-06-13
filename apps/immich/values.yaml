@@ -3,4 +3,4 @@ server:
     enabled: true
     useExistingPersistentVolume: true
     storageClass: manual
-    hostPath: /mnt/services/immich
+    hostPath: /mnt/services/media/fotos
