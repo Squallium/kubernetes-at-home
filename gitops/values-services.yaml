@@ -1130,7 +1130,7 @@ applicationsets:
           - repoURL: https://github.com/Squallium/kubernetes-at-home.git
             targetRevision: main
             ref: values
-          - repoURL: oci://ghcr.io/helmforgedev/helm/immich
+          - repoURL: https://squallium.github.io/kubernetes-at-home
             chart: immich
             targetRevision: '{{chart.targetRevision}}'
             helm:
