@@ -4,3 +4,6 @@ server:
     useExistingPersistentVolume: true
     storageClass: manual
     hostPath: /mnt/services/media/fotos
+
+ingress:
+  enabled: true
