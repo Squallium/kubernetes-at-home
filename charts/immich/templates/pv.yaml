@@ -1,0 +1,16 @@
+{{- if .Values.server.persistence.useExistingPersistentVolume }}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ include "immich.fullname" . }}-uploads-pv
+spec:
+  capacity:
+    storage: {{ .Values.server.persistence.size | default "200Gi" }}
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: {{ .Values.server.persistence.storageClass | default "manual" }}
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: {{ .Values.server.persistence.hostPath }}
+    type: DirectoryOrCreate
+{{- end }}

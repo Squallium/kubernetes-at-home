@@ -1,3 +1,6 @@
 server:
   persistence:
-    enabled: false
+    enabled: true
+    useExistingPersistentVolume: true
+    storageClass: manual
+    hostPath: /mnt/services/immich

@@ -9,8 +9,11 @@ metadata:
 spec:
   accessModes:
     {{- toYaml .Values.server.persistence.accessModes | nindent 4 }}
-  {{- with .Values.server.persistence.storageClass }}
-  storageClassName: {{ . | quote }}
+  {{- if .Values.server.persistence.useExistingPersistentVolume }}
+  volumeName: {{ include "immich.fullname" . }}-uploads-pv
+  storageClassName: ""
+  {{- else }}
+  storageClassName: {{ .Values.server.persistence.storageClass }}
   {{- end }}
   resources:
     requests:
