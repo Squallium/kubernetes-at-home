@@ -1,8 +1,7 @@
 server:
   persistence:
     enabled: true
-    useExistingPersistentVolume: false
-    useExistingPersistentVolume: false
+    useExistingPersistentVolume: true
     storageClass: manual
     size: 50Gi
     hostPath: /mnt/services/media/fotos/uploads
