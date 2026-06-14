@@ -4,3 +4,10 @@ ingress:
       paths:
         - path: /
           pathType: Prefix
+
+postgresql:
+  auth:
+    existingSecret: immich-postgresql-auth
+valkey:
+  external:
+    existingSecret: immich-valkey-auth
