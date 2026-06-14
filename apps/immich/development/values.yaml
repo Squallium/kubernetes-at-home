@@ -8,6 +8,12 @@ ingress:
 postgresql:
   auth:
     existingSecret: immich-postgresql-auth
+
+externalSecrets:
+  enabled: true
+  secretStoreRef:
+    name: vault-store
+    kind: ClusterSecretStore
 valkey:
   external:
     existingSecret: immich-valkey-auth
