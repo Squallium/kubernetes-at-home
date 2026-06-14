@@ -3,7 +3,23 @@ server:
     enabled: true
     useExistingPersistentVolume: true
     storageClass: manual
-    hostPath: /mnt/services/media/fotos
+    size: 50Gi
+    hostPath: /mnt/services/media/fotos/uploads
+
+machineLearning:
+  persistence:
+    enabled: true
+    useExistingPersistentVolume: true
+    storageClass: manual
+    size: 50Gi
+    hostPath: /mnt/services/media/fotos/ml-cache
+  resources:
+    requests:
+      cpu: 100m
+      memory: 512Mi
+    limits:
+      cpu: 1
+      memory: 2Gi
 
 ingress:
   enabled: true
@@ -28,15 +44,6 @@ resources:
   limits:
     cpu: 2
     memory: 2Gi
-
-machineLearning:
-  resources:
-    requests:
-      cpu: 100m
-      memory: 512Mi
-    limits:
-      cpu: 1
-      memory: 2Gi
 
 postgresql:
   primary:
