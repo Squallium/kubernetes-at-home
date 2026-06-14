@@ -888,6 +888,74 @@ entries:
       helmforge.dev/signed: gpg+cosign
     apiVersion: v2
     appVersion: 2.7.5
+    created: "2026-06-14T22:22:59.618647893Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: oci://ghcr.io/helmforgedev/helm
+      version: 2.0.3
+    - alias: valkey
+      condition: valkey.internal.enabled
+      name: redis
+      repository: oci://ghcr.io/helmforgedev/helm
+      version: 1.6.17
+    description: Immich photo and video management with HelmForge PostgreSQL, Redis-compatible
+      cache, and machine learning
+    digest: 86208d8aa68adf5c85d5a96b9ecfa6d1e6b91fed8eae3e53caae97adb6039da4
+    home: https://helmforge.dev
+    icon: https://helmforge.dev/icons/charts/immich.png
+    keywords:
+    - immich
+    - photos
+    - videos
+    - backup
+    - machine-learning
+    - postgresql
+    - redis
+    - valkey
+    kubeVersion: '>=1.26.0-0'
+    maintainers:
+    - name: helmforgedev
+    - name: mberlofa
+    name: immich
+    sources:
+    - https://github.com/helmforgedev/charts/tree/main/charts/immich
+    - https://github.com/immich-app/immich
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/immich-1.2.3/immich-1.2.3.tgz
+    version: 1.2.3
+  - annotations:
+      artifacthub.io/category: skip-prediction
+      artifacthub.io/changes: |
+        - kind: added
+          description: "add server extra volumes (#468)"
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Official Website
+          url: https://immich.app
+        - name: Documentation
+          url: https://helmforge.dev/docs/charts/immich
+        - name: Source
+          url: https://github.com/immich-app/immich
+        - name: support
+          url: https://github.com/helmforgedev/charts/issues
+      artifacthub.io/maintainers: |
+        - name: HelmForge
+          email: berlofa@helmforge.dev
+        - name: Maicon Berlofa
+          email: maicon.berloffa@gmail.com
+      artifacthub.io/recommendations: |
+        - url: https://artifacthub.io/packages/helm/helmforge/postgresql
+        - url: https://artifacthub.io/packages/helm/helmforge/redis
+      artifacthub.io/signKey: |
+        fingerprint: 6748042FBAD8C2E11C65E564170D55148EB88A9D
+        url: https://repo.helmforge.dev/pgp-public-key.asc
+      helmforge.dev/maturity: stable
+      helmforge.dev/repository: https://repo.helmforge.dev
+      helmforge.dev/signed: gpg+cosign
+    apiVersion: v2
+    appVersion: 2.7.5
     created: "2026-06-14T22:10:57.911980943Z"
     dependencies:
     - condition: postgresql.enabled
@@ -2652,4 +2720,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/warracker-0.0.1/warracker-0.0.1.tgz
     version: 0.0.1
-generated: "2026-06-14T22:10:57.912248788Z"
+generated: "2026-06-14T22:22:59.618937638Z"
