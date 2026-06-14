@@ -15,6 +15,7 @@ spec:
     type: DirectoryOrCreate
 {{- end }}
 {{- if .Values.machineLearning.persistence.useExistingPersistentVolume }}
+---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
