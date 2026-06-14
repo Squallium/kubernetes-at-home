@@ -10,10 +10,10 @@ extSecrets:
         remoteRef:
           key: secret/immich/development/postgres-auth
           property: user-password
-#  - name: valkey-auth
-#    templateType: Opaque
-#    secrets:
-#      - secretKey: valkey-password
-#        remoteRef:
-#          key: secret/immich/development/valkey-auth
-#          property: password
+  - name: valkey-auth
+    templateType: Opaque
+    secrets:
+      - secretKey: valkey-password
+        remoteRef:
+          key: secret/immich/development/valkey-auth
+          property: password
