@@ -993,6 +993,17 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/immich-1.2.0/immich-1.2.0.tgz
     version: 1.2.0
+  immich-config:
+  - apiVersion: v2
+    appVersion: 2.7.5
+    created: "2026-06-14T18:15:57.361495964Z"
+    description: A Helm chart for managing immich configurations
+    digest: 9303f079f6c24b43a5fb97b0a562c7cbcf8846f5a3f3319bc711004d850236a0
+    name: immich-config
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/immich-config-0.0.1/immich-config-0.0.1.tgz
+    version: 0.0.1
   jellyfin:
   - apiVersion: v2
     appVersion: 10.11.6
@@ -2573,4 +2584,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/warracker-0.0.1/warracker-0.0.1.tgz
     version: 0.0.1
-generated: "2026-06-14T11:36:57.654291426Z"
+generated: "2026-06-14T18:15:57.362107378Z"
