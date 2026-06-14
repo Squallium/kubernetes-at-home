@@ -241,6 +241,10 @@ default_context:
         chart_name: "authentik-config"
         enable_kargo: true
         kargo_project: true
+      - name: "immich"
+        chart_name: "immich-config"
+        enable_kargo: true
+        kargo_project: true
   services_addons:
     list:
       - name: "home-assistant-addons"
