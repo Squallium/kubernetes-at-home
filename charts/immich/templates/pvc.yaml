@@ -11,7 +11,7 @@ spec:
     {{- toYaml .Values.server.persistence.accessModes | nindent 4 }}
   {{- if .Values.server.persistence.useExistingPersistentVolume }}
   volumeName: {{ include "immich.fullname" . }}-uploads-pv
-  storageClassName: ""
+  storageClassName: {{ .Values.server.persistence.storageClass | default "manual" }}
   {{- else }}
   storageClassName: {{ .Values.server.persistence.storageClass }}
   {{- end }}
