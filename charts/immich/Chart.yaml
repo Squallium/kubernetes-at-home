@@ -3,7 +3,7 @@ apiVersion: v2
 name: immich
 description: Immich photo and video management with HelmForge PostgreSQL, Redis-compatible cache, and machine learning
 type: application
-version: 1.2.1
+version: 1.2.2
 appVersion: "2.7.5"
 kubeVersion: ">=1.26.0-0"
 maintainers:

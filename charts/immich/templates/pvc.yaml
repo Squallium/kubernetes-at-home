@@ -30,6 +30,9 @@ metadata:
 spec:
   accessModes:
     {{- toYaml .Values.machineLearning.persistence.accessModes | nindent 4 }}
+  {{- if .Values.machineLearning.persistence.useExistingPersistentVolume }}
+  volumeName: {{ include "immich.fullname" . }}-ml-cache-pv
+  {{- end }}
   {{- with .Values.machineLearning.persistence.storageClass }}
   storageClassName: {{ . | quote }}
   {{- end }}

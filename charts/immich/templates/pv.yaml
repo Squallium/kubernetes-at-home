@@ -14,3 +14,19 @@ spec:
     path: {{ .Values.server.persistence.hostPath }}
     type: DirectoryOrCreate
 {{- end }}
+{{- if .Values.machineLearning.persistence.useExistingPersistentVolume }}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ include "immich.fullname" . }}-ml-cache-pv
+spec:
+  capacity:
+    storage: {{ .Values.machineLearning.persistence.size | default "200Gi" }}
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: {{ .Values.machineLearning.persistence.storageClass | default "manual" }}
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: {{ .Values.machineLearning.persistence.hostPath }}
+    type: DirectoryOrCreate
+{{- end }}
