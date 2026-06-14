@@ -15,5 +15,7 @@ externalSecrets:
     name: vault-store
     kind: ClusterSecretStore
 valkey:
+  auth:
+    existingSecret: immich-valkey-auth
   external:
     existingSecret: immich-valkey-auth
