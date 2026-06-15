@@ -1,0 +1,21 @@
+ingress:
+  hosts:
+    - host: immich.internal
+      paths:
+        - path: /
+          pathType: Prefix
+
+postgresql:
+  auth:
+    existingSecret: immich-postgresql-auth
+
+#externalSecrets:
+#  enabled: true
+#  secretStoreRef:
+#    name: vault-store
+#    kind: ClusterSecretStore
+valkey:
+  auth:
+    existingSecret: immich-valkey-auth
+#  external:
+#    existingSecret: immich-valkey-auth
