@@ -31,6 +31,13 @@ module "k8s-at-home-common" {
       redirect_uri_suffix = "/auth/openid/authentik"
       logout_uri_suffix = "/auth/openid/authentik"
     }
+    immich = {
+      name        = "Immich"
+      group       = "Multimedia"
+      domain_name = "https://immich-dev.internal"
+      redirect_uri_suffix = "/auth/openid/authentik"
+      logout_uri_suffix = "/auth/openid/authentik"
+    }
     jellyfin = {
       name        = "Jellyfin"
       group       = "Multimedia"
