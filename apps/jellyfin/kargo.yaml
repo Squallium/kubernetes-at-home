@@ -2,6 +2,12 @@ chart:
   targetRevision: 0.0.49
 kargo:
   warehouse:
+    image:
+      repoURL: docker.io/jellyfin/jellyfin
+      discoveryLimit: 7
+      constraint: ''
+      allowTags: '^\d+\.\d+\.\d+$'
+      ignoreTags: []
     chart:
       repoURL: https://jellyfin.github.io/jellyfin-helm
       name: jellyfin
