@@ -19,3 +19,18 @@ valkey:
     existingSecret: immich-valkey-auth
 #  external:
 #    existingSecret: immich-valkey-auth
+
+extraVolumes:
+  - name: trusted-ca
+    secret:
+      secretName: immich-trusted-ca
+
+extraVolumeMounts:
+  - name: trusted-ca
+    mountPath: /etc/trusted-ca
+    readOnly: true
+
+server:
+  env:
+    - name: NODE_EXTRA_CA_CERTS
+      value: /etc/trusted-ca/tls.crt
