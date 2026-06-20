@@ -31,6 +31,6 @@ extraVolumeMounts:
     readOnly: true
 
 server:
-  env:
+  extraEnv:
     - name: NODE_EXTRA_CA_CERTS
       value: /etc/trusted-ca/tls.crt
