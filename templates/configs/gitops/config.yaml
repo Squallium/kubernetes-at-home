@@ -17,15 +17,9 @@ default_context:
   core_addons:
     list:
       - name: "cert-manager"
-        chart_repo: "https://charts.jetstack.io"
-        chart_name: "cert-manager"
-        chart_target_revision: "1.18.2"
         enable_kargo: true
         kargo_project: true
       - name: "external-secrets"
-        chart_repo: "https://charts.external-secrets.io"
-        chart_name: "external-secrets"
-        chart_target_revision: "1.11.0"
         server_side_apply: true
         enable_kargo: true
         kargo_project: true
@@ -36,6 +30,12 @@ default_context:
         chart_target_revision: "0.0.5"
         enable_kargo: true
         kargo_project: true
+        helm_secrets:
+          list:
+            - name: letsEncrypt.email
+              key: cloudflare#/email
+            - name: letsEncrypt.domain
+              key: cloudflare#/domain
       - name: "coredns"
         chart_name: "coredns-config"
         chart_target_revision: "0.0.1"
@@ -108,7 +108,6 @@ default_context:
         kargo_project: true
       - name: "cert-manager"
         chart_name: "cert-manager-config"
-        chart_target_revision: "0.0.5"
         enable_kargo: true
         kargo_project: true
         helm_secrets:

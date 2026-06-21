@@ -1,6 +1,5 @@
 applicationsets:
-  {%- for core_addon in cookiecutter.core_addons.list %}
-  {{ core_addon.name }}-core:
+  core-addons-seetup:
     namespace: argocd
     additionalLabels: {}
     additionalAnnotations: {}
@@ -8,22 +7,24 @@ applicationsets:
       - resources-finalizer.argocd.argoproj.io
     # See PR #10026 (ArgoCD v2.5 or later)
     # goTemplate: false
+    goTemplate: true
+    goTemplateOptions: [ "missingkey=error" ]
     generators:
       - matrix:
           generators:
             - list:
                 elements:
+                  {%- for core_addon in cookiecutter.core_addons.list %}
                   - name: '{{ core_addon.name }}'
-                    relPath: '{{ core_addon.name }}'
+                    serverSideApply: {{ 'true' if core_addon.get("server_side_apply", False) else 'false' }}
+                    promotion: {{ "kargo" if core_addon.get("enable_kargo", False) else "manual" }}
                     kargoStage: 'core'
-                  - name: '{{ core_addon.name }}-config'
-                    relPath: '{{ core_addon.name }}/config'
-                    kargoStage: 'core-config'
+                  {%- endfor %}
             - git:
                 repoURL: https://github.com/Squallium/kubernetes-at-home.git
                 revision: main
                 files:
-                  - path: 'addons/{{'{{'}} relPath }}/config.yaml'
+                  - path: 'addons/{{'{{'}} .name }}/config.yaml'
     # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
     ignoreApplicationDifferences:
       - jsonPointers:
@@ -47,40 +48,34 @@ applicationsets:
     #              - kustomize-bar
     template:
       metadata:
-        name: '{{'{{'}} name }}'
+        name: '{{'{{'}} .name }}'
         labels:
           type: 'addon'
-          promotion: {{ "kargo" if core_addon.get("enable_kargo", False) else "manual" }}
-        {%- if core_addon.get("enable_kargo", False) %}
+          promotion: '{{'{{'}} .promotion }}'
         annotations:
-          kargo.akuity.io/authorized-stage: 'addon-{{ core_addon.name }}:{{'{{'}} kargoStage }}'
-        {%- else %}
-        annotations: {}
-        {%- endif %}
+          kargo.akuity.io/authorized-stage: 'addon-{{'{{'}} .name }}:{{'{{'}} .kargoStage }}'
       spec:
         project: default
         sources:
           - repoURL: https://github.com/Squallium/kubernetes-at-home.git
             targetRevision: main
             ref: values
-          - repoURL: '{{'{{'}}chart.repoURL}}'
-            chart: '{{'{{'}}chart.name}}'
-            targetRevision: '{{'{{'}}chart.targetRevision}}'
+          - repoURL: '{{'{{'}}.chart.repoURL}}'
+            chart: '{{'{{'}}.chart.name}}'
+            targetRevision: '{{'{{'}}.chart.targetRevision}}'
             helm:
               valueFiles:
-                - $values/addons/{{'{{'}} relPath }}/values.yaml
+                - '$values/addons/{{'{{'}} .name }}/values.yaml'
         destination:
           server: https://kubernetes.default.svc
-          namespace: {{ core_addon.name }}
+          namespace: '{{'{{'}} .name }}'
         syncPolicy:
 #            automated:
 #              prune: false
 #              selfHeal: false
           syncOptions:
             - CreateNamespace=true
-            {%- if core_addon.get("server_side_apply", False) %}
-            - ServerSideApply=true
-            {%- endif %}
+            - ServerSideApply={{'{{'}} .serverSideApply }}
         ignoreDifferences:
           - group: apps
             kind: Deployment
@@ -106,4 +101,3 @@ applicationsets:
   #            automated:
   #              prune: {{'{{'}} .prune }}
   #        {{'{{'}}- end }}
-  {%- endfor %}
