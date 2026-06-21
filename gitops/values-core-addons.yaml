@@ -172,6 +172,7 @@ applicationsets:
             helm:
               valueFiles:
                 - '$values/addons/{{ .name }}/config/values.yaml'
+                - 'secrets://$values/addons/{{ .name }}/config/secrets.yaml'
         destination:
           server: https://kubernetes.default.svc
           namespace: '{{ .name }}'
