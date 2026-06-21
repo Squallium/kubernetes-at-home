@@ -76,7 +76,7 @@ applicationsets:
 #              selfHeal: false
           syncOptions:
             - CreateNamespace=true
-            - ServerSideApply={{ serverSideApply }}
+            - ServerSideApply={{ .serverSideApply }}
         ignoreDifferences:
           - group: apps
             kind: Deployment
