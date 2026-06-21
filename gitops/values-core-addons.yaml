@@ -172,8 +172,11 @@ applicationsets:
             helm:
               valueFiles:
                 - '$values/addons/{{ .name }}/config/values.yaml'
-              fileParameters: |
-                {{ .fileParameters }}
+              fileParameters:
+                - name: letsEncrypt.email
+                  path: secrets+literal://vals!ref+vault://secret/cert-manager/production/cloudflare#/email
+                - name: letsEncrypt.domain
+                  path: secrets+literal://vals!ref+vault://secret/cert-manager/production/cloudflare#/domain
         destination:
           server: https://kubernetes.default.svc
           namespace: '{{ .name }}'
