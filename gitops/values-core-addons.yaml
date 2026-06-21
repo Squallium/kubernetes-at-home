@@ -103,3 +103,107 @@ applicationsets:
   #            automated:
   #              prune: {{ .prune }}
   #        {{- end }}
+  core-addons-config:
+    namespace: argocd
+    additionalLabels: {}
+    additionalAnnotations: {}
+    finalizers:
+      - resources-finalizer.argocd.argoproj.io
+    # See PR #10026 (ArgoCD v2.5 or later)
+    # goTemplate: false
+    goTemplate: true
+    goTemplateOptions: [ "missingkey=error" ]
+    generators:
+      - matrix:
+          generators:
+            - list:
+                elements:
+                  - name: 'cert-manager'
+                    serverSideApply: false
+                    promotion: kargo
+                    kargoStage: 'core'
+                  - name: 'external-secrets'
+                    serverSideApply: true
+                    promotion: kargo
+                    kargoStage: 'core'
+            - git:
+                repoURL: https://github.com/Squallium/kubernetes-at-home.git
+                revision: main
+                files:
+                  - path: 'addons/{{ .name }}/config/config.yaml'
+    # Ref https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Controlling-Resource-Modification/#allow-temporarily-toggling-auto-sync
+    ignoreApplicationDifferences:
+      - jsonPointers:
+          - /spec/syncPolicy
+    # Progressive Syncs is an experimental feature and it must be explicitly enabled
+    # Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Progressive-Syncs/#enabling-progressive-syncs
+    #      strategy:
+    #        type: RollingSync
+    #        rollingSync:
+    #          steps:
+    #          - matchExpressions:
+    #            - key: project
+    #              operator: In
+    #              values:
+    #              - guestbook
+    #          - matchExpressions:
+    #            - key: project
+    #              operator: In
+    #              values:
+    #              - kustomize-foo
+    #              - kustomize-bar
+    template:
+      metadata:
+        name: '{{ .name }}-config'
+        labels:
+          type: 'addon'
+          promotion: '{{ .promotion }}'
+        annotations:
+          kargo.akuity.io/authorized-stage: 'addon-{{ .name }}-config:{{ .kargoStage }}'
+      spec:
+        project: default
+        sources:
+          - repoURL: https://github.com/Squallium/kubernetes-at-home.git
+            targetRevision: main
+            ref: values
+          - repoURL: '{{.chart.repoURL}}'
+            chart: '{{.chart.name}}'
+            targetRevision: '{{.chart.targetRevision}}'
+            helm:
+              valueFiles:
+                - '$values/addons/{{ .name }}/config/values.yaml'
+        destination:
+          server: https://kubernetes.default.svc
+          namespace: '{{ .name }}'
+        syncPolicy:
+#            automated:
+#              prune: false
+#              selfHeal: false
+          syncOptions:
+            - CreateNamespace=true
+            - ServerSideApply={{ .serverSideApply }}
+        ignoreDifferences:
+          - group: apps
+            kind: Deployment
+            jsonPointers:
+              - /spec/replicas
+        info:
+          - name: url
+            value: https://argoproj.github.io/
+    syncPolicy:
+      # Set Application finalizer
+      preserveResourcesOnDeletion: true
+    # Templating is only available on string type
+  #      templatePatch: |
+  #        spec:
+  #          source:
+  #            helm:
+  #              valueFiles:
+  #              {{- range $valueFile := .valueFiles }}
+  #                - {{ $valueFile }}
+  #              {{- end }}
+  #        {{- if .autoSync }}
+  #          syncPolicy:
+  #            automated:
+  #              prune: {{ .prune }}
+  #        {{- end }}
