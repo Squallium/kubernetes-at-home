@@ -172,6 +172,8 @@ applicationsets:
             helm:
               valueFiles:
                 - '$values/addons/{{ .name }}/config/values.yaml'
+              fileParameters:
+              {{ .fileParameters | toYaml | indent(2) }}
         destination:
           server: https://kubernetes.default.svc
           namespace: '{{ .name }}'

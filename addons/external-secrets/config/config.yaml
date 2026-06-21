@@ -2,3 +2,8 @@ chart:
   repoURL: https://squallium.github.io/kubernetes-at-home
   name: external-secrets-config
   targetRevision: 0.0.3
+fileParameters:
+  - name: letsEncrypt.email
+    path: secrets+literal://vals!ref+vault://secret/cert-manager/production/cloudflare#/email
+  - name: letsEncrypt.domain
+    path: secrets+literal://vals!ref+vault://secret/cert-manager/production/cloudflare#/domain
