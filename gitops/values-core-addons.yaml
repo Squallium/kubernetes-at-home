@@ -49,12 +49,12 @@ applicationsets:
     #              - kustomize-bar
     template:
       metadata:
-        name: '{{ name }}'
+        name: '{{ .name }}'
         labels:
           type: 'addon'
           promotion: '{{ promotion }}'
         annotations:
-          kargo.akuity.io/authorized-stage: 'addon-{{ name }}:{{ kargoStage }}'
+          kargo.akuity.io/authorized-stage: 'addon-{{ .name }}:{{ .kargoStage }}'
       spec:
         project: default
         sources:
@@ -66,10 +66,10 @@ applicationsets:
             targetRevision: '{{config.chart.targetRevision}}'
             helm:
               valueFiles:
-                - '$values/addons/{{ name }}/values.yaml'
+                - '$values/addons/{{ .name }}/values.yaml'
         destination:
           server: https://kubernetes.default.svc
-          namespace: '{{ name }}'
+          namespace: '{{ .name }}'
         syncPolicy:
 #            automated:
 #              prune: false
