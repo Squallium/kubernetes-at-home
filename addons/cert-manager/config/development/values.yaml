@@ -20,3 +20,4 @@ letsEncrypt:
     - calibre-web
     - home-assistant
     - jellyfin
+    - immich
