@@ -231,6 +231,7 @@ default_context:
         chart_name: "immich"
         enable_ssl: true
         enable_kargo: true
+        enable_incubator: true
   services_config:
     list:
       - name: "home-assistant"
