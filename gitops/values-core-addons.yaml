@@ -61,9 +61,9 @@ applicationsets:
           - repoURL: https://github.com/Squallium/kubernetes-at-home.git
             targetRevision: main
             ref: values
-          - repoURL: {{config.chart.repoURL}}
-            chart: {{config.chart.name}}
-            targetRevision: {{config.chart.targetRevision}}
+          - repoURL: '{{config.chart.repoURL}}'
+            chart: '{{config.chart.name}}'
+            targetRevision: '{{config.chart.targetRevision}}'
             helm:
               valueFiles:
                 - $values/addons/{{ name }}/values.yaml
