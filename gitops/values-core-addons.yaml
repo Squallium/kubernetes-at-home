@@ -55,6 +55,8 @@ applicationsets:
         annotations:
           kargo.akuity.io/authorized-stage: 'addon-{{ .name }}:{{ .kargoStage }}'
       spec:
+        goTemplate: true
+        goTemplateOptions: [ "missingkey=error" ]
         project: default
         sources:
           - repoURL: https://github.com/Squallium/kubernetes-at-home.git
