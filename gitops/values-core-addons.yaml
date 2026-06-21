@@ -69,7 +69,7 @@ applicationsets:
                 - '$values/addons/{{ name }}/values.yaml'
         destination:
           server: https://kubernetes.default.svc
-          namespace: {{ name }}
+          namespace: '{{ name }}'
         syncPolicy:
 #            automated:
 #              prune: false
