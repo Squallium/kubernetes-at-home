@@ -89,6 +89,7 @@ For upgrading the helm chart and values, you can use the following command:
 
 ```bash
 helm upgrade vault hashicorp/vault -n vault --values apps/vault/values.yaml --values apps/vault/values-ssl.yaml --version <version>
+helm upgrade vault hashicorp/vault -n vault --values apps/vault/values.yaml --values ../kubernetes-at-home-incubator/apps/vault/values.yaml --values apps/vault/values-ssl.yaml  --values ../kubernetes-at-home-incubator/apps/vault/values-ssl.yaml --version 0.32.0                                                    
 ```
 
 ## Test connectivity from other cluster's pods

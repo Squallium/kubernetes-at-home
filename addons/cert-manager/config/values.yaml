@@ -13,3 +13,4 @@ letsEncrypt:
   namespaces:
     - argocd
     - kargo
+    - vault
