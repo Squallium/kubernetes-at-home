@@ -11,5 +11,3 @@ api:
       nginx.ingress.kubernetes.io/ssl-redirect: "443"
       nginx.ingress.kubernetes.io/ssl-passthrough: "true"
     ingressClassName: nginx
-    tls:
-      selfSignedCert: false

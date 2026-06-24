@@ -1,0 +1,5 @@
+api:
+  ingress:
+    tls:
+      enabled: true
+      selfSignedCert: false
