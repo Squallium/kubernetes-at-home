@@ -117,6 +117,7 @@ To upgrade ArgoCD, you can use the following command:
 
 ```shell
 helm upgrade argocd argo/argo-cd --namespace argocd --values apps/argocd/values.yaml --values apps/argocd/values-ssl.yaml --version <version>
+helm upgrade argocd argo/argo-cd --namespace argocd --values apps/argocd/values.yaml --values ../kubernetes-at-home-incubator/apps/argocd/values.yaml --values apps/argocd/values-ssl.yaml --values ../kubernetes-at-home-incubator/apps/argocd/values-ssl.yaml --version 9.5.11
 ```
 
 And for upgrade the config chart

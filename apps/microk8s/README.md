@@ -100,3 +100,38 @@ kubectl delete ingress demo-ingress
 kubectl delete service demo
 kubectl delete deployment demo
 ```
+
+# Upgrade microk8s and kubernetes versions
+
+First check the current version of microk8s and kubernetes:
+
+```bash
+microk8s version
+snap list microk8s
+snap info microk8s
+microk8s status --wait-ready
+microk8s kubectl get nodes
+microk8s kubectl get pods -A
+```
+
+Now install the next stable version of microk8s:
+
+```bash
+sudo snap refresh microk8s --channel=latest/stable
+```
+
+Now we can check the new version of microk8s and kubernetes:
+
+```bash
+microk8s kubectl get pods -A | grep -v Running
+microk8s kubectl get events -A --sort-by=.metadata.creationTimestamp | tail -40
+```
+
+No we stop and start again the microk8s instance to apply the new version:
+
+```bash
+microk8s stop
+microk8s start
+microk8s status --wait-ready
+```
+
