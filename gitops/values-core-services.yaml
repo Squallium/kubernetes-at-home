@@ -55,13 +55,18 @@ applicationsets:
           - repoURL: https://github.com/Squallium/kubernetes-at-home.git
             targetRevision: main
             ref: values
+          - repoURL: https://github.com/Squallium/kubernetes-at-home-incubator.git
+            targetRevision: main
+            ref: values-incubator
           - repoURL: '{{chart.repoUrl}}'
             chart: '{{chart.name}}'
             targetRevision: '{{chart.targetRevision}}'
             helm:
               valueFiles:
                 - '$values/apps/{{name}}/values.yaml'
+                - '$values-incubator/apps/{{name}}/values.yaml'
                 - '$values/apps/{{name}}/values-ssl.yaml'
+                - '$values-incubator/apps/{{name}}/values-ssl.yaml'
                 - '$values/defaults/production/resources/values.yaml'
         destination:
           server: https://kubernetes.default.svc

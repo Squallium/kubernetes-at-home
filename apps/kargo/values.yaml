@@ -9,7 +9,6 @@ api:
     annotations:
       nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
       nginx.ingress.kubernetes.io/ssl-redirect: "443"
-      cert-manager.io/cluster-issuer: home-internal-ca-issuer
       nginx.ingress.kubernetes.io/ssl-passthrough: "true"
     ingressClassName: nginx
     tls:

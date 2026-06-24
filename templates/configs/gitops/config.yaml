@@ -47,6 +47,7 @@ default_context:
         enable_kargo: true
         kargo_project: true
   core_services:
+    enable_incubator: true
     list:
       - name: "kube-prometheus-stack"
         chart_repo: "https://prometheus-community.github.io/helm-charts"

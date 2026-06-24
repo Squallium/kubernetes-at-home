@@ -56,13 +56,24 @@ applicationsets:
           - repoURL: https://github.com/Squallium/kubernetes-at-home{{ cookiecutter.kargo.suffix }}.git
             targetRevision: main
             ref: values
+          {%- if cookiecutter.core_services.get("enable_incubator", False) %}
+          - repoURL: {{ cookiecutter.default_ref_values_incubator_repo_url }}
+            targetRevision: main
+            ref: values-incubator
+          {%- endif %}
           - repoURL: '{{'{{'}}chart.repoUrl}}'
             chart: '{{'{{'}}chart.name}}'
             targetRevision: '{{'{{'}}chart.targetRevision}}'
             helm:
               valueFiles:
                 - '$values/apps/{{'{{'}}name}}/values.yaml'
+                {%- if cookiecutter.core_services.get("enable_incubator", False) %}
+                - '$values-incubator/apps/{{'{{'}}name}}/values.yaml'
+                {%- endif %}
                 - '$values/apps/{{'{{'}}name}}/values-ssl.yaml'
+                {%- if cookiecutter.core_services.get("enable_incubator", False) %}
+                - '$values-incubator/apps/{{'{{'}}name}}/values-ssl.yaml'
+                {%- endif %}
                 - '$values/defaults/production/resources/values.yaml'
         destination:
           server: https://kubernetes.default.svc
