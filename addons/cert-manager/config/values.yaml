@@ -12,3 +12,4 @@ letsEncrypt:
   server: https://acme-v02.api.letsencrypt.org/directory
   namespaces:
     - argocd
+    - kargo
