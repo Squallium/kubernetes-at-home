@@ -520,6 +520,16 @@ entries:
     version: 0.0.1
   external-secrets-config:
   - apiVersion: v2
+    appVersion: 0.0.4
+    created: "2026-06-25T23:03:19.185899781Z"
+    description: A Helm chart for managing External Secrets configurations
+    digest: 70e28bd2614c75840997d81208398b3f12257a34a27775122581a2aa383725dd
+    name: external-secrets-config
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/external-secrets-config-0.0.4/external-secrets-config-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
     appVersion: 0.0.3
     created: "2025-07-13T19:48:36.041018547Z"
     description: A Helm chart for managing External Secrets configurations
@@ -2856,4 +2866,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/warracker-0.0.1/warracker-0.0.1.tgz
     version: 0.0.1
-generated: "2026-06-20T18:29:21.903671998Z"
+generated: "2026-06-25T23:03:19.186481732Z"
