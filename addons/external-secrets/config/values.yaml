@@ -7,5 +7,3 @@ vault:
         name: vault-approle-secret
         key: secret-id
         namespace: default
-  caProvider:
-    name: home-internal-root-ca
