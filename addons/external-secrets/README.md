@@ -109,7 +109,7 @@ the AppRole authentication method. We have two options:
 - Install the external-secrets-config helm chart
 
 ```bash
-helm install external-secrets-config squallium/external-secrets-config -n external-secrets --values ./addons/external-secrets/config/values.yaml --version 0.0.3
+helm install external-secrets-config squallium/external-secrets-config -n external-secrets --values ./addons/external-secrets/config/values.yaml --version 0.0.4
 ```
 
 - Apply the vault-approle.clustersecretstore.yaml file:
