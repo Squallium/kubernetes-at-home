@@ -238,13 +238,18 @@ applicationsets:
           - repoURL: https://github.com/Squallium/kubernetes-at-home.git
             targetRevision: main
             ref: values
+          - repoURL: https://github.com/Squallium/kubernetes-at-home-incubator.git
+            targetRevision: main
+            ref: values-incubator
           - repoURL: https://squallium.github.io/kubernetes-at-home
             chart: external-secrets-config
             targetRevision: '{{chart.targetRevision}}'
             helm:
               valueFiles:
                 - $values/addons/external-secrets/config/values.yaml
+                - $values-incubator/addons/external-secrets/config/values.yaml
                 - $values/addons/external-secrets/config/{{metadata.labels.environment}}/values.yaml
+                - $values-incubator/addons/external-secrets/config/{{metadata.labels.environment}}/values.yaml
         destination:
           server: '{{server}}'
           namespace: external-secrets

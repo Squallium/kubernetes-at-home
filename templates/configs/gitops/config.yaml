@@ -107,6 +107,7 @@ default_context:
         chart_target_revision: "0.0.3"
         enable_kargo: true
         kargo_project: true
+        enable_incubator: true
       - name: "cert-manager"
         chart_name: "cert-manager-config"
         enable_kargo: true

@@ -166,6 +166,11 @@ applicationsets:
           - repoURL: https://github.com/Squallium/kubernetes-at-home.git
             targetRevision: main
             ref: values
+          {%- if addon_config.get("enable_incubator", False) %}
+          - repoURL: {{ cookiecutter.default_ref_values_incubator_repo_url }}
+            targetRevision: main
+            ref: values-incubator
+          {%- endif %}
           {%- if addon_config.chart_name | default(cookiecutter.default_chart_name) %}
           - repoURL: {{ addon_config.chart_repo | default(cookiecutter.default_chart_repo) }}
             chart: {{ addon_config.chart_name  }}
@@ -177,7 +182,13 @@ applicationsets:
             helm:
               valueFiles:
                 - $values/addons/{{ addon_config.name }}/config/values.yaml
+                {%- if addon_config.get("enable_incubator", False) %}
+                - $values-incubator/addons/{{ addon_config.name }}/config/values.yaml
+                {%- endif %}
                 - $values/addons/{{ addon_config.name }}/config/{{'{{'}}metadata.labels.environment}}/values.yaml
+                {%- if addon_config.get("enable_incubator", False) %}
+                - $values-incubator/addons/{{ addon_config.name }}/config/{{'{{'}}metadata.labels.environment}}/values.yaml
+                {%- endif %}
               {%- if addon_config.get("helm_secrets", False) %}
               fileParameters:
                 {%- for helm_secret in addon_config.helm_secrets.list %}
