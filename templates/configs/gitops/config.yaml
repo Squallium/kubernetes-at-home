@@ -199,6 +199,7 @@ default_context:
         enable_ssl: true
         enable_kargo: true
         kargo_project: true
+        enable_incubator: true
         helm_secrets:
           list:
             - name: authentik.postgresql.user
