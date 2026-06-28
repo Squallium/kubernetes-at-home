@@ -434,13 +434,18 @@ applicationsets:
           - repoURL: https://github.com/Squallium/kubernetes-at-home.git
             targetRevision: main
             ref: values
+          - repoURL: https://github.com/Squallium/kubernetes-at-home-incubator.git
+            targetRevision: main
+            ref: values-incubator
           - repoURL: https://squallium.github.io/kubernetes-at-home
             chart: coredns-config
             targetRevision: '{{chart.targetRevision}}'
             helm:
               valueFiles:
                 - $values/addons/coredns/config/values.yaml
+                - $values-incubator/addons/coredns/config/values.yaml
                 - $values/addons/coredns/config/{{metadata.labels.environment}}/values.yaml
+                - $values-incubator/addons/coredns/config/{{metadata.labels.environment}}/values.yaml
         destination:
           server: '{{server}}'
           namespace: kube-system
