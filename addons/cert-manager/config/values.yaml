@@ -14,3 +14,4 @@ letsEncrypt:
     - argocd
     - kargo
     - vault
+    - authentik
