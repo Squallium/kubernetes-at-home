@@ -17,7 +17,16 @@ letsEncrypt:
   issuerName: letsencrypt-production
   server: https://acme-v02.api.letsencrypt.org/directory
   namespaces:
+    - authentik
     - calibre-web
     - home-assistant
-    - jellyfin
+    - homebox
     - immich
+    - jellyfin
+    - kube-prometheus-stack
+    - paperless-ngx
+    - pgbackweb
+    - prometheus
+    - romm
+    - vikunja
+    - warracker
