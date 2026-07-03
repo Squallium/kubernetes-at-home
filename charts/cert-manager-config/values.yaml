@@ -15,3 +15,5 @@ letsEncrypt:
   domain: domain.com
   cloudFlare:
     apiTokenSecretPath: secret/cert-manager/development/cloudflare
+  reflector:
+    enable: false
