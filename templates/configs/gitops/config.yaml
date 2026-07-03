@@ -23,6 +23,7 @@ default_context:
         server_side_apply: true
         enable_kargo: true
         kargo_project: true
+      - name: reflector
   core_addons_config:
     list:
       - name: "cert-manager"

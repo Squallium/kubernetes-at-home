@@ -22,6 +22,10 @@ applicationsets:
                     serverSideApply: true
                     promotion: kargo
                     kargoStage: 'core'
+                  - name: 'reflector'
+                    serverSideApply: false
+                    promotion: manual
+                    kargoStage: 'core'
             - git:
                 repoURL: https://github.com/Squallium/kubernetes-at-home.git
                 revision: main

@@ -1,0 +1,4 @@
+chart:
+  repoURL: https://emberstack.github.io/helm-charts
+  name: reflector
+  targetRevision: 10.0.55
