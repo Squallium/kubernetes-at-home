@@ -10,6 +10,8 @@ letsEncrypt:
   enable: true
   issuerName: letsencrypt-production
   server: https://acme-v02.api.letsencrypt.org/directory
+  reflector:
+    enable: true
   namespaces:
     - argocd
     - kargo
