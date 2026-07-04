@@ -25,7 +25,7 @@ spec:
 {{- $namespaces := .Values.letsEncrypt.namespaces | default list }}
 {{- $namespaces = append $namespaces "default" | uniq }}
 
-{{- range $ns := $namespaces }}
+{{- range $index, $ns := $namespaces }}
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
