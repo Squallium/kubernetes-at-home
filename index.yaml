@@ -277,6 +277,16 @@ entries:
     version: 0.0.1
   cert-manager-config:
   - apiVersion: v2
+    appVersion: 0.0.23
+    created: "2026-07-04T17:50:14.057112194Z"
+    description: A Helm chart for managing Cert Manager configurations
+    digest: b93938bfd8e33bec4ee3d49dca6c837c9c7d7e947441322cd43eabbe6ec7da3f
+    name: cert-manager-config
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/cert-manager-config-0.0.23/cert-manager-config-0.0.23.tgz
+    version: 0.0.23
+  - apiVersion: v2
     appVersion: 0.0.22
     created: "2026-07-04T13:26:07.452599452Z"
     description: A Helm chart for managing Cert Manager configurations
@@ -2916,4 +2926,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/warracker-0.0.1/warracker-0.0.1.tgz
     version: 0.0.1
-generated: "2026-07-04T13:26:07.453051194Z"
+generated: "2026-07-04T17:50:14.057812941Z"
