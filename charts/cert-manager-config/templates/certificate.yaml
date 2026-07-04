@@ -33,12 +33,12 @@ metadata:
   namespace: {{ $ns }}
 spec:
   secretName: letsencrypt-wildcard-tls
-  {{- if $.Values.letsEncrypt.reflector.enable }}
+  {{- if and $.Values.letsEncrypt.reflector.enable (eq $index 0) }}
   secretTemplate:
     annotations:
       reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
       reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
-      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: ".*"
+      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "{{ join "," $namespaces }}"
   {{- end }}
   issuerRef:
     name: {{ $.Values.letsEncrypt.issuerName }}
