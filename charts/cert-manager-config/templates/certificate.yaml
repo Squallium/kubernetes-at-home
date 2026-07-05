@@ -25,6 +25,27 @@ spec:
 {{- $namespaces := .Values.letsEncrypt.namespaces | default list }}
 {{- $namespaces = append $namespaces "default" | uniq }}
 
+{{- if .Values.letsEncrypt.reflector.enable }}
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: letsencrypt-wildcard-cert
+  namespace: default
+spec:
+  secretName: letsencrypt-wildcard-tls
+  secretTemplate:
+    annotations:
+      reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
+      reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
+      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "{{ join "," $namespaces }}"
+  issuerRef:
+    name: {{ $.Values.letsEncrypt.issuerName }}
+    kind: ClusterIssuer
+  dnsNames:
+    - "*.{{ $.Values.letsEncrypt.domain }}"
+    - "{{ $.Values.letsEncrypt.domain }}"
+---
+{{- else }}
 {{- range $index, $ns := $namespaces }}
 apiVersion: cert-manager.io/v1
 kind: Certificate
@@ -33,13 +54,6 @@ metadata:
   namespace: {{ $ns }}
 spec:
   secretName: letsencrypt-wildcard-tls
-  {{- if and $.Values.letsEncrypt.reflector.enable (eq $ns "default") }}
-  secretTemplate:
-    annotations:
-      reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
-      reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
-      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "{{ join "," $namespaces }}"
-  {{- end }}
   issuerRef:
     name: {{ $.Values.letsEncrypt.issuerName }}
     kind: ClusterIssuer
@@ -47,6 +61,7 @@ spec:
     - "*.{{ $.Values.letsEncrypt.domain }}"
     - "{{ $.Values.letsEncrypt.domain }}"
 ---
+{{- end }}
 {{- end }}
 
 {{- end }}
