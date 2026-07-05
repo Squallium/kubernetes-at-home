@@ -237,8 +237,8 @@ applicationsets:
           - repoURL: https://github.com/Squallium/kubernetes-at-home.git
             targetRevision: main
             ref: values
-          - repoURL: https://squallium.github.io/kubernetes-at-home.git
-            path: charts/reflector
+          - repoURL: https://emberstack.github.io/helm-charts
+            chart: reflector
             targetRevision: '{{chart.targetRevision}}'
             helm:
               valueFiles:
