@@ -17,3 +17,4 @@ letsEncrypt:
     - kargo
     - vault
     - authentik
+    - kube-prometheus-stack
