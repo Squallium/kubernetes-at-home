@@ -142,6 +142,7 @@ default_context:
         enable_kargo: true
         kargo_project: true
         kargo_prefix: true
+        enable_incubator: true
         ignore_differences:
           - group: monitoring.coreos.com
             kind: Prometheus

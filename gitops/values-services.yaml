@@ -145,6 +145,9 @@ applicationsets:
           - repoURL: https://github.com/Squallium/kubernetes-at-home.git
             targetRevision: main
             ref: values
+          - repoURL: https://github.com/Squallium/kubernetes-at-home-incubator.git
+            targetRevision: main
+            ref: values-incubator
           - repoURL: https://prometheus-community.github.io/helm-charts
             chart: kube-prometheus-stack
             targetRevision: '{{chart.targetRevision}}'
@@ -152,6 +155,7 @@ applicationsets:
               valueFiles:
                 - $values/apps/kube-prometheus-stack/values.yaml
                 - $values/apps/kube-prometheus-stack/{{metadata.labels.environment}}/values.yaml
+                - $values-incubator/apps/kube-prometheus-stack/{{metadata.labels.environment}}/values.yaml
                 - $values/defaults/{{metadata.labels.environment}}/resources/values.yaml
         destination:
           server: '{{server}}'
