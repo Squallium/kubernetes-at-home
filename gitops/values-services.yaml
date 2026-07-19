@@ -458,6 +458,9 @@ applicationsets:
           - repoURL: https://github.com/Squallium/kubernetes-at-home.git
             targetRevision: main
             ref: values
+          - repoURL: https://github.com/Squallium/kubernetes-at-home-incubator.git
+            targetRevision: main
+            ref: values-incubator
           - repoURL: https://squallium.github.io/kubernetes-at-home
             chart: calibre-web
             targetRevision: '{{chart.targetRevision}}'
@@ -465,7 +468,9 @@ applicationsets:
               valueFiles:
                 - $values/apps/calibre-web/values.yaml
                 - $values/apps/calibre-web/{{metadata.labels.environment}}/values.yaml
+                - $values-incubator/apps/calibre-web/{{metadata.labels.environment}}/values.yaml
                 - $values/apps/calibre-web/{{metadata.labels.environment}}/values-ssl.yaml
+                - $values-incubator/apps/calibre-web/{{metadata.labels.environment}}/values-ssl.yaml
                 - $values/defaults/{{metadata.labels.environment}}/resources/values.yaml
         destination:
           server: '{{server}}'

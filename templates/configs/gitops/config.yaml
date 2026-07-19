@@ -192,6 +192,7 @@ default_context:
         enable_ssl: true
         enable_kargo: true
         kargo_project: true
+        enable_incubator: true
       - name: "jellyfin"
         chart_repo: "https://jellyfin.github.io/jellyfin-helm"
         chart_name: "jellyfin"
