@@ -28,24 +28,3 @@ extSecrets:
         remoteRef:
           key: secret/kargo/github-incubator
           property: ssh_private_key
-  - name: docker
-    namespace: immich
-    labels:
-      kargo.akuity.io/cred-type: image
-    secrets:
-      - secretKey: repoURL
-        remoteRef:
-          key: secret/kargo/docker
-          property: repo_url
-      - secretKey: repoURLIsRegex
-        remoteRef:
-          key: secret/kargo/docker
-          property: repo_url_is_regex
-      - secretKey: username
-        remoteRef:
-          key: secret/kargo/docker
-          property: username
-      - secretKey: password
-        remoteRef:
-          key: secret/kargo/docker
-          property: password
