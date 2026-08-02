@@ -7,7 +7,7 @@ kargo:
       discoveryLimit: 7
       constraint: ''
       allowTagsRegexes:
-        - '^\d+\.\d+\.\d+$'
+        - '^v\d+\.\d+\.\d+$'
       ignoreTagsRegexes: []
     chart:
       repoURL: https://squallium.github.io/kubernetes-at-home
