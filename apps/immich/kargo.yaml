@@ -1,2 +1,50 @@
 chart:
-  targetRevision: 0.0.49
+  targetRevision: 1.0.2
+kargo:
+  warehouse:
+    image:
+    repoURL: ghcr.io/immich-app/immich
+    discoveryLimit: 7
+    constraint: ''
+    allowTags: '^\d+\.\d+\.\d+$'
+    ignoreTags: []
+  chart:
+    repoURL: https://squallium.github.io/kubernetes-at-home
+    name: immich
+  promotionTasks:
+      repoURL: git@github.com:Squallium/kubernetes-at-home.git
+extSecrets:
+  - name: github-ssh
+    namespace: immich
+    labels:
+      kargo.akuity.io/cred-type: git
+    secrets:
+      - secretKey: repoURL
+        remoteRef:
+          key: secret/kargo/github-incubator
+          property: repo_url
+      - secretKey: sshPrivateKey
+        remoteRef:
+          key: secret/kargo/github-incubator
+          property: ssh_private_key
+  - name: docker
+    namespace: immich
+    labels:
+      kargo.akuity.io/cred-type: image
+    secrets:
+      - secretKey: repoURL
+        remoteRef:
+          key: secret/kargo/docker
+          property: repo_url
+      - secretKey: repoURLIsRegex
+        remoteRef:
+          key: secret/kargo/docker
+          property: repo_url_is_regex
+      - secretKey: username
+        remoteRef:
+          key: secret/kargo/docker
+          property: username
+      - secretKey: password
+        remoteRef:
+          key: secret/kargo/docker
+          property: password
