@@ -1,3 +1,6 @@
+image:
+  tag: "v2.7.5"
+
 ingress:
   hosts:
     - host: immich-dev.internal
