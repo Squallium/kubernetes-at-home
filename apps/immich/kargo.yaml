@@ -13,7 +13,7 @@ kargo:
       repoURL: https://squallium.github.io/kubernetes-at-home
       name: immich
   promotionTasks:
-      repoURL: git@github.com:Squallium/kubernetes-at-home.git
+    repoURL: git@github.com:Squallium/kubernetes-at-home.git
 extSecrets:
   - name: github-ssh
     namespace: immich
