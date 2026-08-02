@@ -6,8 +6,9 @@ kargo:
       repoURL: ghcr.io/immich-app/immich
       discoveryLimit: 7
       constraint: ''
-      allowTags: '^\d+\.\d+\.\d+$'
-      ignoreTags: []
+      allowTagsRegexes:
+        - '^\d+\.\d+\.\d+$'
+      ignoreTagsRegexes: []
     chart:
       repoURL: https://squallium.github.io/kubernetes-at-home
       name: immich
