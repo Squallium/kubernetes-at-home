@@ -139,6 +139,8 @@ argocd-apps:
                       location: jellyfin
                     - service: authentik
                       location: authentik
+                    - service: immich
+                      location: immich
               - git:
                   repoURL: https://github.com/Squallium/kubernetes-at-home.git
                   revision: main
