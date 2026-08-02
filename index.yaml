@@ -940,6 +940,74 @@ entries:
   - annotations:
       artifacthub.io/category: skip-prediction
       artifacthub.io/changes: |
+        - kind: fixed
+          description: "align template standards (#676)"
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Official Website
+          url: https://immich.app
+        - name: Documentation
+          url: https://helmforge.dev/docs/charts/immich
+        - name: Source
+          url: https://github.com/immich-app/immich
+        - name: support
+          url: https://github.com/helmforgedev/charts/issues
+      artifacthub.io/maintainers: |
+        - name: HelmForge
+          email: berlofa@helmforge.dev
+        - name: Maicon Berlofa
+          email: maicon.berloffa@gmail.com
+      artifacthub.io/recommendations: |
+        - url: https://artifacthub.io/packages/helm/helmforge/postgresql
+        - url: https://artifacthub.io/packages/helm/helmforge/redis
+      artifacthub.io/signKey: |
+        fingerprint: 6748042FBAD8C2E11C65E564170D55148EB88A9D
+        url: https://repo.helmforge.dev/pgp-public-key.asc
+      helmforge.dev/maturity: stable
+      helmforge.dev/repository: https://repo.helmforge.dev
+      helmforge.dev/signed: gpg+cosign
+    apiVersion: v2
+    appVersion: 2.7.5
+    created: "2026-08-02T14:32:12.250541043Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: oci://ghcr.io/helmforgedev/helm
+      version: 2.0.4
+    - alias: valkey
+      condition: valkey.internal.enabled
+      name: redis
+      repository: oci://ghcr.io/helmforgedev/helm
+      version: 1.6.19
+    description: Immich photo and video management with HelmForge PostgreSQL, Redis-compatible
+      cache, and machine learning
+    digest: 373e233031280ec457f191331ef828e73e428464c31d55b762e183c7be03c95a
+    home: https://helmforge.dev
+    icon: https://helmforge.dev/icons/charts/immich.png
+    keywords:
+    - immich
+    - photos
+    - videos
+    - backup
+    - machine-learning
+    - postgresql
+    - redis
+    - valkey
+    kubeVersion: '>=1.26.0-0'
+    maintainers:
+    - name: helmforgedev
+    - name: mberlofa
+    name: immich
+    sources:
+    - https://github.com/helmforgedev/charts/tree/main/charts/immich
+    - https://github.com/immich-app/immich
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/immich-1.2.6/immich-1.2.6.tgz
+    version: 1.2.6
+  - annotations:
+      artifacthub.io/category: skip-prediction
+      artifacthub.io/changes: |
         - kind: added
           description: "add server extra volumes (#468)"
       artifacthub.io/license: Apache-2.0
@@ -2936,4 +3004,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/warracker-0.0.1/warracker-0.0.1.tgz
     version: 0.0.1
-generated: "2026-07-05T20:45:26.350422765Z"
+generated: "2026-08-02T14:32:12.251300104Z"
