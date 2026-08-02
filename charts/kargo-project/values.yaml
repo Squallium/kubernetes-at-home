@@ -8,8 +8,9 @@ kargo:
       imageSelectionStrategy: SemVer
       repoURL: ''
       constraint: ''
-      allowTags: ''
-      ignoreTags: []
+      allowTagsRegexes: []
+      ignoreTagsRegexes: []
+      cacheByTag: true
     chart:
       repoURL: placeholder
       name: placeholder
