@@ -3,7 +3,7 @@ chart:
 kargo:
   warehouse:
     image:
-      repoURL: ghcr.io/immich-app/immich
+      repoURL: ghcr.io/immich-app/immich-server
       discoveryLimit: 7
       constraint: ''
       allowTagsRegexes:
