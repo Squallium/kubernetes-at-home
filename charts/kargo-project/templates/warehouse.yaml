@@ -14,9 +14,9 @@ spec:
       discoveryLimit: {{ .Values.kargo.warehouse.image.discoveryLimit | default 3 }}
       constraint: {{ .Values.kargo.warehouse.image.constraint }}
       allowTagsRegexes:
-        {{- toYaml .Values.kargo.warehouse.image.allowTags | nindent 8 }}
+        {{- toYaml .Values.kargo.warehouse.image.allowTagsRegexes | nindent 8 }}
       ignoreTagsRegexes:
-        {{- toYaml .Values.kargo.warehouse.image.ignoreTags | nindent 8 }}
+        {{- toYaml .Values.kargo.warehouse.image.ignoreTagsRegexes | nindent 8 }}
       cacheByTag: {{ .Values.kargo.warehouse.image.cacheByTag | default false }}
   {{- end }}
   - chart:
