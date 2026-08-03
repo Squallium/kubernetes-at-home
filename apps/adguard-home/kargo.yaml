@@ -5,7 +5,8 @@ kargo:
     image:
       repoURL: docker.io/adguard/adguardhome
       constraint: ''
-      allowTags: '^v\d+\.\d+\.\d+$'
+      allowTagsRegexes:
+        - '^v\d+\.\d+\.\d+$'
       ignoreTags:
         - '.*-b\.\d+$'
     chart:

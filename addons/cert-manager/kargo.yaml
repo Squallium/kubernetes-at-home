@@ -5,7 +5,8 @@ kargo:
     image:
       repoURL: quay.io/jetstack/cert-manager-controller
       constraint: ''
-      allowTags: '^v\d+\.\d+\.\d+$'
+      allowTagsRegexes:
+        - '^v\d+\.\d+\.\d+$'
       ignoreTags:
         - '.*-alpha\.\d+$'
         - '.*-beta\.\d+$'

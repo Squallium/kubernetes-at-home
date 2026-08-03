@@ -5,7 +5,8 @@ kargo:
     image:
       repoURL: docker.io/cloudflare/cloudflared
       constraint: ''
-      allowTags: '^\d+\.\d+\.\d+$'
+      allowTagsRegexes:
+        - '^\d+\.\d+\.\d+$'
     chart:
       repoURL: https://squallium.github.io/kubernetes-at-home
       name: cloudflared

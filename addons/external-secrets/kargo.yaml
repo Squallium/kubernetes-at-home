@@ -5,7 +5,8 @@ kargo:
     image:
       repoURL: oci.external-secrets.io/external-secrets/external-secrets
       constraint: ''
-      allowTags: '^v\d+\.\d+\.\d+$'
+      allowTagsRegexes:
+        - '^v\d+\.\d+\.\d+$'
     chart:
       repoURL: https://charts.external-secrets.io
       name: external-secrets

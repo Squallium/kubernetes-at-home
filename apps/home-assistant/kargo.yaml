@@ -6,7 +6,8 @@ kargo:
       repoURL: ghcr.io/home-assistant/home-assistant
       discoveryLimit: 7
       constraint: ''
-      allowTags: ''
+      allowTagsRegexes:
+        - ''
       ignoreTags: []
     chart:
       repoURL: https://pajikos.github.io/home-assistant-helm-chart
@@ -21,7 +22,8 @@ kargo:
           repoURL: docker.io/eclipse-mosquitto
           discoveryLimit: 7
           semverConstraint: ''
-          allowTags: ''
+          allowTagsRegexes:
+        - ''
           ignoreTags: []
 extSecrets:
   - name: github-ssh

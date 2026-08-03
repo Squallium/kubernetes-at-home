@@ -5,7 +5,8 @@ kargo:
     image:
       repoURL: docker.io/paperlessngx/paperless-ngx
       constraint: ^2.16.3
-      allowTags: '^\d+\.\d+\.\d+$'
+      allowTagsRegexes:
+        - '^\d+\.\d+\.\d+$'
       ignoreTags:
         - '.*-b\.\d+$'
         - 'nightly.*$'

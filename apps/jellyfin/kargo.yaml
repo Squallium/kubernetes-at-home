@@ -6,7 +6,8 @@ kargo:
       repoURL: docker.io/jellyfin/jellyfin
       discoveryLimit: 7
       constraint: ''
-      allowTags: '^\d+\.\d+\.\d+$'
+      allowTagsRegexes:
+        - '^\d+\.\d+\.\d+$'
       ignoreTags: []
     chart:
       repoURL: https://jellyfin.github.io/jellyfin-helm
