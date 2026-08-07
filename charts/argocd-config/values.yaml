@@ -5,3 +5,6 @@ clusters:
   - name: pro
     environment: production
     kargoStage: pro
+  - name: lelo
+    environment: lelo
+    kargoStage: lelo
