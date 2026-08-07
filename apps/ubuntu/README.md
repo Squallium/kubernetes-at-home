@@ -63,6 +63,12 @@ Y luego cerramos sessión yc omprobamos que funciona el version
 microk8s version
 ```
 
+Siguientes pasos:
+
+# registrar el cluster en argocd creand un secreto de cluster
+
+# necesitamos el external secrets para cargar secretos desde vault
+
 
 
 
