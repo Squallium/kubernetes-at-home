@@ -67,6 +67,8 @@ Siguientes pasos:
 
 # registrar el cluster en argocd creand un secreto de cluster
 
+# hay que configurar el dns para que sepa encontrar el vault
+
 # necesitamos el external secrets para cargar secretos desde vault
 
 
