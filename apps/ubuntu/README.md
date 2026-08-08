@@ -69,7 +69,14 @@ Siguientes pasos:
 
 # hay que configurar el dns para que sepa encontrar el vault
 
+# crear manualmente el approle de vault
+
 # necesitamos el external secrets para cargar secretos desde vault
+
+# a continuación el cert manager para los certificados
+
+# luego ya podemos emepzar a desplegar aplicaciones
+
 
 
 

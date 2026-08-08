@@ -1,0 +1,23 @@
+zigbee2mqtt:
+  serial:
+    port: "tcp://192.168.1.183:55000"
+    adapter: "zstack"
+ingress:
+  hosts:
+    - host: zigbee2mqtt.internal
+      paths:
+        - path: /
+          pathType: Prefix
+
+statefulset:
+  resources:
+    requests:
+      memory: 150Mi
+      cpu: 200m
+    limits:
+      memory: 300Mi
+      cpu: 200m
+
+#zigbee2mqtt:
+#  external_converters:
+#    - aqara-t2.js

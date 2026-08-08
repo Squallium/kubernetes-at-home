@@ -262,7 +262,7 @@ default_context:
     list:
       - name: "home-assistant-addons"
         chart_name: "home-assistant-addons"
-        chart_target_revision: "0.0.16"
+        chart_target_revision: "0.0.17"
         enable_kargo: true
         kargo_project: true
   kargo:
