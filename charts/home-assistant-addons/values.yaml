@@ -142,6 +142,9 @@ argocd-apps:
             - repoURL: https://github.com/Squallium/kubernetes-at-home.git
               targetRevision: main
               ref: values
+            - repoURL: https://github.com/Squallium/kubernetes-at-home-incubator.git
+              targetRevision: main
+              ref: values-incubator
             - repoURL: https://koenkk.github.io/zigbee2mqtt-chart
               chart: zigbee2mqtt
               targetRevision: '{{chart.targetRevision}}'
@@ -149,7 +152,9 @@ argocd-apps:
                 valueFiles:
                   - $values/apps/home-assistant-addons/zigbee2mqtt/values.yaml
                   - $values/apps/home-assistant-addons/zigbee2mqtt/{{metadata.labels.environment}}/values.yaml
+                  - $values-incubator/apps/home-assistant-addons/zigbee2mqtt/{{metadata.labels.environment}}/values.yaml
                   - $values/apps/home-assistant-addons/zigbee2mqtt/{{metadata.labels.environment}}/values-ssl.yaml
+                  - $values-incubator/apps/home-assistant-addons/zigbee2mqtt/{{metadata.labels.environment}}/values-ssl.yaml
           destination:
             server: '{{server}}'
             namespace: home-assistant
