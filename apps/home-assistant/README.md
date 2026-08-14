@@ -102,3 +102,11 @@ sudo systemctl status zigbee-socat
 ls -l /dev/ttyUSB0
 ```
 
+# Una vez arrancado home assistant y zigbe2mqtt tenemos que conectar ambos
+
+Para ello nos vamos a configuración > dispositivos y añadimos "MQTT" como integración. En el campo "Broker" añadimos
+el nombre interno de kubnernetes del servicio de mosquitto  mosquitto.home-assistant.svc.cluster.local, tras aceptar
+deberían aparecer los sensores de Zigbee2Mqtt como entiedades de home assistant
+
+Ahora vamos a añadir la entrada de menu en home assistant para poder acceder a la interfaz de zigbee2mqtt. Para ello nos 
+vamos a configuración > paneles y añadimos un nuevo panel con los siguientes datos:

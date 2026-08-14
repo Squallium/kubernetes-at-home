@@ -99,6 +99,11 @@ configs:
       secrets+age-import, secrets+age-import-kubernetes,
       secrets,secrets+literal,
       https
+    resource.customizations.health.networking.k8s.io_Ingress: |
+      hs = {}
+      hs.status = "Healthy"
+      hs.message = "Ingress managed by Traefik"
+      return hs
 
 dex:
   enabled: false  # Deactivate SSO/OAuth (we'll enable it later)
