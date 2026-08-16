@@ -105,4 +105,10 @@ spec:
       config:
         apps:
           - name: ${{`{{ vars.argocdApp }}`}}
+    - uses: argocd-wait
+      retry:
+        timeout: {{ .Values.kargo.promotionTasks.argocdWaitTimeout | quote }}
+      config:
+        apps:
+          - name: ${{`{{ vars.argocdApp }}`}}
 {{- end }}

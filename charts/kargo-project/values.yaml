@@ -48,6 +48,7 @@ kargo:
         discoveryLimit: 10
         semverConstraint: ''
   promotionTasks:
+    argocdWaitTimeout: 5m
     repoURL: git@github.com:Squallium/kubernetes-at-home.git
     imageVersion:
       tagKey: image.tag
