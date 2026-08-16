@@ -23,7 +23,7 @@ kargo:
           discoveryLimit: 7
           semverConstraint: ''
           allowTagsRegexes:
-        - ''
+            - ''
           ignoreTags: []
 extSecrets:
   - name: github-ssh
