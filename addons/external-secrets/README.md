@@ -129,7 +129,7 @@ vault write -f auth/approle/role/eso-role/secret-id
 Then encode the new secret ID in base64 and patch the Kubernetes secret:
 
 ```bash
-echo new-secret-id | base64
+printf '%s' new-secret-id | base64
 kubectl patch secret vault-approle-secret -p '{"data":{"secret-id":"new-base64-encoded-secret-id"}}' -n default
 ```
 

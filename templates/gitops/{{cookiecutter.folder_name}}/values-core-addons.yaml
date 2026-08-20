@@ -157,7 +157,7 @@ applicationsets:
           type: 'addon'
           promotion: '{{'{{'}} .promotion }}'
         annotations:
-          kargo.akuity.io/authorized-stage: 'addon-{{'{{'}} .name }}-config:{{'{{'}} .kargoStage }}'
+          kargo.akuity.io/authorized-stage: 'addon-{{'{{'}} .name }}-config:{{'{{'}} .kargoStage }}-config'
       spec:
         project: default
         sources:
