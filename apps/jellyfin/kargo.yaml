@@ -8,7 +8,7 @@ kargo:
       constraint: ''
       allowTagsRegexes:
         - '^\d+\.\d+\.\d+$'
-      ignoreTags: []
+      ignoreTagsRegexes: []
     chart:
       repoURL: https://jellyfin.github.io/jellyfin-helm
       name: jellyfin

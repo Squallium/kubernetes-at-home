@@ -8,7 +8,7 @@ kargo:
       constraint: ''
       allowTagsRegexes:
         - ''
-      ignoreTags: []
+      ignoreTagsRegexes: []
     chart:
       repoURL: https://pajikos.github.io/home-assistant-helm-chart
       name: home-assistant
@@ -24,7 +24,7 @@ kargo:
           semverConstraint: ''
           allowTagsRegexes:
             - ''
-          ignoreTags: []
+          ignoreTagsRegexes: []
 extSecrets:
   - name: github-ssh
     namespace: home-assistant

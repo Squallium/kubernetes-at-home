@@ -7,7 +7,7 @@ kargo:
       constraint: ''
       allowTagsRegexes:
         - '^v\d+\.\d+\.\d+$'
-      ignoreTags:
+      ignoreTagsRegexes:
         - '.*-alpha\.\d+$'
         - '.*-beta\.\d+$'
     chart:

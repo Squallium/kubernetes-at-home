@@ -8,7 +8,7 @@ kargo:
       constraint: ''
       allowTagsRegexes:
         - '^v\d+\.\d+\.\d+$'
-      ignoreTags:
+      ignoreTagsRegexes:
         - '.*-b\.\d+$'
         - 'nightly.*$'
         - 'latest'
