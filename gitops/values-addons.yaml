@@ -428,13 +428,18 @@ applicationsets:
           - repoURL: https://github.com/Squallium/kubernetes-at-home.git
             targetRevision: main
             ref: values
+          - repoURL: https://github.com/Squallium/kubernetes-at-home-incubator.git
+            targetRevision: main
+            ref: values-incubator
           - repoURL: https://squallium.github.io/kubernetes-at-home
             chart: cert-manager-config
             targetRevision: '{{chart.targetRevision}}'
             helm:
               valueFiles:
                 - $values/addons/cert-manager/config/values.yaml
+                - $values-incubator/addons/cert-manager/config/values.yaml
                 - $values/addons/cert-manager/config/{{metadata.labels.environment}}/values.yaml
+                - $values-incubator/addons/cert-manager/config/{{metadata.labels.environment}}/values.yaml
               fileParameters:
                 - name: letsEncrypt.email
                   path: secrets+literal://vals!ref+vault://secret/cert-manager/{{metadata.labels.environment}}/cloudflare#/email
