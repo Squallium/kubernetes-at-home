@@ -22,8 +22,8 @@ spec:
 {{- end }}
 {{- if .Values.letsEncrypt.enable }}
 
-{{- $namespaces := .Values.letsEncrypt.namespaces | default list }}
-{{- $namespaces = append $namespaces ( .Values.letsEncrypt.additionalNamespaces | default list ) }}
+{{- $namespaces := .Values.letsEncrypt.namespaces | default (list) }}
+{{- $namespaces = concat $namespaces ( .Values.letsEncrypt.additionalNamespaces | default (list) ) }}
 {{- $namespaces = append $namespaces "default" | uniq }}
 
 {{- if .Values.letsEncrypt.reflector.enable }}
