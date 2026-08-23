@@ -1,5 +1,5 @@
 image:
-  repository: docker.io/linuxserver/calibre-
+  repository: docker.io/linuxserver/calibre-web
 deployment:
   additionalEnv:
     - name: PUID
