@@ -7,7 +7,7 @@ kargo:
       repoURL: docker.io/linuxserver/calibre-web
       constraint: ''
       allowTagsRegexes:
-        - '^\d+\.\d+\.\d+$'
+        - '^0\.\d+\.\d+$'
       ignoreTagsRegexes:
         - '.*-b\.\d+$'
         - 'nightly.*$'
