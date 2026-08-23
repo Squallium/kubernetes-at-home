@@ -1,3 +1,5 @@
+image:
+  repository: docker.io/linuxserver/calibre-web
 deployment:
   resources:
     requests:

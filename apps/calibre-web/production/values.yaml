@@ -1,6 +1,5 @@
 image:
-  repository: ghcr.io/crocodilestick/calibre-web-automated
-  tag: v4.0.6
+  tag: 0.6.27
 deployment:
   additionalVolumeMounts:
     - name: calibre-books

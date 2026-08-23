@@ -1,5 +1,5 @@
 ingress:
   tls:
     - hosts:
-        - calibre-web-dev.internal
+        - calibre-web-dev.thejedisway.com
       secretName: calibre-web-dev-internal-tls

@@ -4,10 +4,10 @@ kargo:
   warehouse:
     image:
       imageSelectionStrategy: Lexical
-      repoURL: ghcr.io/crocodilestick/calibre-web-automated
+      repoURL: docker.io/linuxserver/calibre-web
       constraint: ''
       allowTagsRegexes:
-        - '^v\d+\.\d+\.\d+$'
+        - '^\d+\.\d+\.\d+$'
       ignoreTagsRegexes:
         - '.*-b\.\d+$'
         - 'nightly.*$'

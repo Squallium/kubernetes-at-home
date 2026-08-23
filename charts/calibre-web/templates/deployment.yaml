@@ -40,7 +40,7 @@ spec:
         {{- range $val := .Values.deployment.additionalVolumes }}
         - name: {{ $val.name }}
           hostPath:
-            path: {{ $.Values.volume.path }}/{{ $val.hostPathPath }}
+            path: {{ $val.hostPathPath }}
             type: Directory
         {{- end }}
 
