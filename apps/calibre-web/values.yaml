@@ -1,6 +1,11 @@
 image:
-  repository: docker.io/linuxserver/calibre-web
+  repository: docker.io/linuxserver/calibre-
 deployment:
+  additionalEnv:
+    - name: PUID
+      value: "1000"
+    - name: PGID
+      value: "1000"
   resources:
     requests:
       cpu: 100m
