@@ -2,14 +2,10 @@ image:
   tag: 0.6.27
 deployment:
   additionalVolumeMounts:
-    - name: calibre-books
-      mountPath: /calibre-library
-    - name: calibre-ingest
-      mountPath: /cwa-book-ingest
+    - name: books
+      mountPath: /books
   additionalVolumes:
-    - name: calibre-books
-      hostPathPath: calibre-library
-    - name: calibre-ingest
-      hostPathPath: ingest
+    - name: books
+      hostPathPath: /mnt/services/calibre-web/calibre-library
 ingress:
-  hostname: calibre-web.internal
+  hostname: calibre-web.thejedisway.com
