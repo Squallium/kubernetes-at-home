@@ -1,0 +1,5 @@
+ingress:
+  tls:
+    - hosts:
+        - immich-lelo.internal
+      secretName: immich-lelo-internal-tls
