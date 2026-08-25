@@ -1,0 +1,119 @@
+grafana:
+  enabled: false
+
+alertmanager:
+  enabled: false
+
+defaultRules:
+  create: false
+
+kubeScheduler:
+  enabled: false
+
+kubeProxy:
+  enabled: false
+
+# Desactivar exporters del cluster (gran ahorro de CPU)
+kubeStateMetrics:
+  enabled: false
+
+nodeExporter:
+  enabled: false
+
+kubeApiServer:
+  enabled: false
+
+kubeControllerManager:
+  enabled: false
+
+kubeScheduler:
+  enabled: false
+
+kubeEtcd:
+  enabled: false
+
+coreDns:
+  enabled: false
+
+prometheus:
+  ingress:
+    enabled: true
+    ingressClassName: public
+    hosts:
+      - prometheus-lelo.internal
+    paths:
+      - /
+    pathType: Prefix
+
+  prometheusSpec:
+    replicas: 1
+
+    enableRemoteWriteReceiver: false
+
+    scrapeInterval: 60s
+    evaluationInterval: 60s
+
+    walCompression: true
+
+    retention: 12h
+
+    serviceMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelectorNilUsesHelmValues: false
+    serviceMonitorSelector: {}
+    podMonitorSelector: {}
+
+    scrapeClasses:
+      - default: true
+        name: cluster-relabeling
+        relabelings:
+          - sourceLabels: [ __name__ ]
+            regex: (.*)
+            targetLabel: cluster
+            replacement: lelo
+            action: replace
+
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          accessModes: [ "ReadWriteOnce" ]
+          resources:
+            requests:
+              storage: 2Gi
+          storageClassName: "microk8s-hostpath"
+
+    additionalScrapeConfigs: []
+
+    resources:
+      requests:
+        cpu: 50m
+        memory: 128Mi
+      limits:
+        cpu: 150m
+        memory: 256Mi
+
+    # Remote write to the core cluster Prometheus
+    remoteWrite:
+      - url: http://prometheus.internal/api/v1/write
+        writeRelabelConfigs:
+          - sourceLabels: [ namespace ]
+            regex: home-assistant|immich|prometheus
+            action: keep
+          - sourceLabels: [__name__]
+            regex: (.*)
+            targetLabel: cluster
+            replacement: lelo
+            action: replace
+
+prometheusOperator:
+  admissionWebhooks:
+    enabled: false
+  tls:
+    enabled: false
+
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 200m
+      memory: 256Mi
