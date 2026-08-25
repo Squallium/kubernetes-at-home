@@ -1,3 +1,5 @@
+externalSecrets:
+  enabled: false
 mosquitto:
   image:
     repository: eclipse-mosquitto
