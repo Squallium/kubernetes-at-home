@@ -12,6 +12,29 @@ kargo:
     chart:
       repoURL: https://pajikos.github.io/home-assistant-helm-chart
       name: home-assistant
+  stages:
+    dev:
+      enabled: true
+      color: green
+      configColor: yellow
+      onlyConfig: false
+      relPath: /development
+      argoCDAppSuffix: -development
+    pro:
+      enabled: true
+      color: red
+      configColor: black
+      onlyConfig: false
+      relPath: /production
+      argoCDAppSuffix: -production
+    lelo:
+      enabled: true
+      color: "#2e66a6"
+      configColor: blue
+      onlyConfig: false
+      relPath: /lelo
+      argoCDAppSuffix: -lelo
+      requestedFreightDirect: false
   config:
     enabled: true
     warehouse:
