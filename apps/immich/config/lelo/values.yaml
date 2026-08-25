@@ -4,16 +4,16 @@ extSecrets:
     secrets:
       - secretKey: postgres-password
         remoteRef:
-          key: secret/immich/production/postgres-auth
+          key: secret/immich/lelo/postgres-auth
           property: password
       - secretKey: user-password
         remoteRef:
-          key: secret/immich/production/postgres-auth
+          key: secret/immich/lelo/postgres-auth
           property: user-password
   - name: valkey-auth
     templateType: Opaque
     secrets:
       - secretKey: valkey-password
         remoteRef:
-          key: secret/immich/production/valkey-auth
+          key: secret/immich/lelo/valkey-auth
           property: password
