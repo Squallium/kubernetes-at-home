@@ -1,5 +1,7 @@
 fullnameOverride: octoprint
 
+enableServiceLinks: false
+
 image:
   repository: docker.io/octoprint/octoprint
 
