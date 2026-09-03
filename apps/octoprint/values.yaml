@@ -1,0 +1,20 @@
+fullnameOverride: octoprint
+
+image:
+  repository: docker.io/octoprint/octoprint
+
+containerPort: 80
+
+serviceAccount:
+  create: false
+
+ingress:
+  enabled: true
+
+resources:
+  requests:
+    cpu: "50m"
+    memory: "64Mi"
+  limits:
+    cpu: "1000m"
+    memory: "1Gi"

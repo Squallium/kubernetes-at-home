@@ -1,0 +1,9 @@
+image:
+  tag: "1.11.8"
+
+ingress:
+  hosts:
+    - host: octoprint-dev.internal
+      paths:
+        - path: /
+          pathType: Prefix
