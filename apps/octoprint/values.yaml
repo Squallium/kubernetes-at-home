@@ -7,6 +7,17 @@ image:
 
 containerPort: 80
 
+volumeMounts:
+  - name: octoprint
+    mountPath: /octoprint
+
+
+volumes:
+  - name: octoprint
+    hostPath:
+      path: /mnt/services/octoprint
+      type: DirectoryOrCreate
+
 serviceAccount:
   create: false
 
