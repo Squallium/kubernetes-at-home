@@ -23,6 +23,8 @@ serviceAccount:
 
 ingress:
   enabled: true
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 500m
 
 resources:
   requests:
