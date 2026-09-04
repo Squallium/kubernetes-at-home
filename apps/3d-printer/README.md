@@ -186,6 +186,12 @@ Unit: `mm/min`
 - **Number of extruders:** 1
 - **Default extrusion length:** 5 mm
 
+
+# Octoprint configurations
+
+You need to install the following plugin for remote connecting to the printer https://github.com/mstarostik/OctoPrint-Remote_connection
+
+
 # Modify offset using Merlin
 
 ```bash

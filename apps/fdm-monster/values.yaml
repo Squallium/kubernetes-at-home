@@ -10,18 +10,18 @@ containerPort: 4000
 volumeMounts:
   - name: fdm-monster-media
     mountPath: /app/media
-  - name: fdm-monster-database
-    mountPath: /app/database
+#  - name: fdm-monster-database
+#    mountPath: /app/database
 
 volumes:
   - name: fdm-monster-media
     hostPath:
       path: /mnt/services/fdm-monster/media
       type: DirectoryOrCreate
-  - name: fdm-monster-database
-    hostPath:
-      path: /mnt/services/fdm-monster/database
-      type: DirectoryOrCreate
+#  - name: fdm-monster-database
+#    hostPath:
+#      path: /mnt/services/fdm-monster/database
+#      type: DirectoryOrCreate
 
 serviceAccount:
   create: false
