@@ -1,0 +1,13 @@
+image:
+  tag: "2.1.1"
+
+env:
+  - name: NODE_ENV
+    value: development
+
+ingress:
+  hosts:
+    - host: fdm-monster-dev.internal
+      paths:
+        - path: /
+          pathType: Prefix

@@ -1,0 +1,58 @@
+fullnameOverride: fdm-monster
+
+enableServiceLinks: false
+
+image:
+  repository: docker.io/fdmmonster/fdm-monster
+
+containerPort: 4000
+
+volumeMounts:
+  - name: fdm-monster-media
+    mountPath: /app/media
+  - name: fdm-monster-database
+    mountPath: /app/database
+
+volumes:
+  - name: fdm-monster-media
+    hostPath:
+      path: /mnt/services/fdm-monster/media
+      type: DirectoryOrCreate
+  - name: fdm-monster-database
+    hostPath:
+      path: /mnt/services/fdm-monster/database
+      type: DirectoryOrCreate
+
+serviceAccount:
+  create: false
+
+ingress:
+  enabled: true
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 500m
+
+resources:
+  requests:
+    cpu: "50m"
+    memory: "64Mi"
+  limits:
+    cpu: "1000m"
+    memory: "1Gi"
+
+readinessProbe:
+  httpGet:
+    path: /
+    port: http
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 6
+
+livenessProbe:
+  httpGet:
+    path: /
+    port: http
+  initialDelaySeconds: 60
+  periodSeconds: 20
+  timeoutSeconds: 5
+  failureThreshold: 3

@@ -249,6 +249,10 @@ default_context:
         chart_name: "servarr"
         enable_ssl: true
         enable_incubator: true
+      - name: "fdm-monster"
+        chart_name: "servarr"
+        enable_ssl: true
+        enable_incubator: true
   services_config:
     list:
       - name: "home-assistant"
