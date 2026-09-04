@@ -185,3 +185,67 @@ Unit: `mm/min`
 - **Nozzle diameter:** 0.4 mm
 - **Number of extruders:** 1
 - **Default extrusion length:** 5 mm
+
+# Modify offset using Merlin
+
+```bash
+M851 Z-1.50
+```
+
+Save the settings
+
+```bash
+M500
+```
+
+Homing the printer
+
+```bash
+G28 
+``` 
+
+Check the new offset
+
+```bash
+G1 Z10 F300
+G1 X20 Y20 F3000
+G1 Z0.20 F300
+```
+
+Check the current settings
+
+```bash
+M503
+``` 
+
+Check front left 
+
+```bash
+G1 Z1.5 F100
+G1 X20 Y20 F3000
+G1 Z0.2 F100
+```
+
+Check front right 
+
+```bash
+G1 Z1.5 F100
+G1 X200 Y20 F3000
+G1 Z0.2 F100
+```
+
+Check back left 
+
+```bash
+G1 Z1.5 F100
+G1 X20 Y200 F3000
+G1 Z0.2 F100
+```
+
+Check back right 
+
+```bash
+G1 Z1.5 F100
+G1 X200 Y200 F3000
+G1 Z0.2 F100
+```
