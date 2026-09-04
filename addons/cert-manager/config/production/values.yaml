@@ -22,3 +22,4 @@ letsEncrypt:
     - paperless-ngx
     - pgbackweb
     - vikunja
+    - octoprint
