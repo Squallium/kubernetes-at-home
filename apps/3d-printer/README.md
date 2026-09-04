@@ -143,3 +143,45 @@ Once you have confirmed that the service is running, enable it to start on boot
 sudo systemctl enable ustreamer
 systemctl is-enabled ustreamer
 ```
+
+# Anycubic Kobra Neo — OctoPrint
+
+## Printer Profile
+
+- **Name:** Anycubic Kobra Neo
+- **Identifier:** `_default`
+- **Model:** Anycubic Kobra Neo
+
+## Print Bed & Build Volume
+
+- **Form factor:** Rectangular
+- **Origin:** Lower Left
+- **Heated Bed:** ✅
+- **Heated Chamber:** ❌
+
+### Print Volume
+
+| Axis | Value |
+|---|---:|
+| X / Width | 220 mm |
+| Y / Depth | 220 mm |
+| Z / Height | 250 mm |
+
+- **Custom bounding box:** ❌
+
+## Axes
+
+Unit: `mm/min`
+
+| Axis | Maximum speed/feedrate | Invert control |
+|---|---:|:---:|
+| X | 500 | ❌ |
+| Y | 500 | ❌ |
+| Z | 10 | ❌ |
+| E | 25 | ❌ |
+
+## Hotend & Extruder
+
+- **Nozzle diameter:** 0.4 mm
+- **Number of extruders:** 1
+- **Default extrusion length:** 5 mm
