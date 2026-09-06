@@ -175,3 +175,4 @@ externalSecrets:
 config:
   enabled: false
   applicationConfig: ""
+  files: {}

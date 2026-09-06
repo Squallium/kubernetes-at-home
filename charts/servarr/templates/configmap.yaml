@@ -4,6 +4,13 @@ kind: ConfigMap
 metadata:
   name: {{ include "servarr.fullname" . }}-config
 data:
+  {{- if .Values.config.applicationConfig }}
   application.yml: |
-{{ .Values.config.applicationConfig | indent 4 }}
-{{- end }}
+  {{ .Values.config.applicationConfig | indent 4 }}
+  {{- end }}
+
+  {{- range $filename, $content := .Values.config.files }}
+  {{ $filename }}: |
+  {{ $content | indent 4 }}
+  {{- end }}
+  {{- end }}
