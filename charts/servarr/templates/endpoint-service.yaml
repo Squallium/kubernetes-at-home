@@ -1,0 +1,48 @@
+{{- if .Values.endpointService.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.endpointService.name }}
+spec:
+  ports:
+    - name: http
+      port: {{ .Values.endpointService.port }}
+      targetPort: {{ .Values.endpointService.port }}
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: {{ .Values.endpointService.name }}
+subsets:
+  - addresses:
+      - ip: {{ .Values.endpointService.address }}
+    ports:
+      - name: http
+        port: {{ .Values.endpointService.port }}
+{{- if .Values.endpointService.ingress.enabled }}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Values.endpointService.name }}
+spec:
+  ingressClassName: nginx
+  {{- if .Values.endpointService.ingress.tls.enabled }}
+  tls:
+    - hosts:
+        - {{ .Values.endpointService.ingress.host }}
+      secretName: {{ .Values.endpointService.ingress.tls.secretName }}
+  {{- end }}
+  rules:
+    - host: {{ .Values.endpointService.ingress.host }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.endpointService.name }}
+                port:
+                  number: {{ .Values.endpointService.port }}
+{{- end }}
+{{- end }}

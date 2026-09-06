@@ -270,6 +270,37 @@ G1 Z0.2 F100
 
 # follow these steps
 
+sudo systemctl stop ser2net
+sudo systemctl status ser2net
+
+node --version
+npm --version
+cat /etc/os-release
+
+apt-cache policy nodejs
+sudo apt update
+sudo apt install -y nodejs npm
+node --version
+npm --version
+htop
+
+ls -l /dev/serial/by-id/
+ls
+cd Software/
+ls
+clear
+
+git clone https://github.com/phm07/marlinraker.git
+cd marlinraker/
+ls
+cat package.json
+clear
+ls config
+cat config/marlinraker.toml
+npm ci
+npm run dev
+
+
 # run the server in dev mode
 
 ```bash
@@ -282,4 +313,64 @@ npm run dev
 curl http://localhost:7125/server/info
 ```
 
+
+# build the server for production
+
+```bash
+npm run build
+```
+
+# create a service for marlinraker
+
+First disable ser2net service
+
+```bash
+sudo systemctl disable ser2net
+```
+
+
+```bash
+sudo nano /etc/systemd/system/marlinraker.service
+```
+
+with the following content
+
+```ini
+[Unit]
+Description=MarlinRaker
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=kuber
+WorkingDirectory=/home/kuber/Software/marlinraker
+Environment=NODE_ENV=production
+Environment=MARLINRAKER_DIR=/home/kuber/Software/marlinraker/marlinraker_files
+ExecStart=/usr/bin/node /home/kuber/Software/marlinraker/dist/index.js
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Reload systemd config and check the new service
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable --now marlinraker
+```
+
+And check the status with
+
+```bash
+sudo systemctl status marlinraker --no-pager
+```
+
+Now you can check the connectivity with the following command
+
+```bash
+curl http://<your ip>:7125/server/info
+```
 

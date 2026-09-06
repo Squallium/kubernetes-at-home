@@ -176,3 +176,6 @@ config:
   enabled: false
   applicationConfig: ""
   files: {}
+
+endpointService:
+  enabled: false
