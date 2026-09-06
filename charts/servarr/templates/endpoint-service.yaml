@@ -9,18 +9,22 @@ spec:
       port: {{ .Values.endpointService.port }}
       targetPort: {{ .Values.endpointService.port }}
 ---
-apiVersion: v1
-kind: Endpoints
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
 metadata:
   name: {{ .Values.endpointService.name }}
-subsets:
+  labels:
+    kubernetes.io/service-name: {{ .Values.endpointService.name }}
+addressType: IPv4
+ports:
+  - name: http
+    protocol: TCP
+    port: {{ .Values.endpointService.port }}
+endpoints:
   - addresses:
-      - ip: {{ .Values.endpointService.address }}
-    ports:
-      - name: http
-        port: {{ .Values.endpointService.port }}
-{{- if .Values.endpointService.ingress.enabled }}
+      - {{ .Values.endpointService.address }}
 ---
+{{- if .Values.endpointService.ingress.enabled }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
