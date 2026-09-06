@@ -1,6 +1,18 @@
 image:
   tag: "v2.19.0"
 
+config:
+  enabled: true
+  files:
+    config.json: |
+      {
+        "defaultLocale": "es",
+        "instancesDB": "json",
+        "instances": [
+          { "hostname": "192.168.1.158", "port": 7125 },
+        ]
+      }
+
 ingress:
   hosts:
     - host: mainsail-dev.internal

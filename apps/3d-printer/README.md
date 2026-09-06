@@ -264,3 +264,22 @@ G1 Z1.5 F100
 G1 X200 Y200 F3000
 G1 Z0.2 F100
 ```
+
+# Connecting to the printer using marlinraker
+
+
+# follow these steps
+
+# run the server in dev mode
+
+```bash
+npm run dev
+```
+
+# check connectivity in other terminal
+
+```bash
+curl http://localhost:7125/server/info
+```
+
+
