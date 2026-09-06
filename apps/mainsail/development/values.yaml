@@ -9,7 +9,7 @@ config:
         "defaultLocale": "es",
         "instancesDB": "json",
         "instances": [
-          { "hostname": "192.168.1.158", "port": 7125 },
+          { "hostname": "192.168.1.158", "port": 7125 }
         ]
       }
 
