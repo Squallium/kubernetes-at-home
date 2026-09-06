@@ -8,4 +8,4 @@ deployment:
     - name: books
       hostPathPath: /mnt/services/calibre-web/calibre-library
 ingress:
-  hostname: calibre-web.thejedisway.com
+  hostname: calibre-web.internal

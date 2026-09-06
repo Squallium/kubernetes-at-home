@@ -24,3 +24,4 @@ letsEncrypt:
     - vikunja
     - octoprint
     - fdm-monster
+    - mainsail

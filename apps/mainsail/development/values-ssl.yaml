@@ -1,0 +1,5 @@
+ingress:
+  tls:
+    - hosts:
+        - mainsail-dev.internal
+      secretName: mainsail-dev-internal-tls

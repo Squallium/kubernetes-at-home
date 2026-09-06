@@ -23,3 +23,5 @@ letsEncrypt:
     - pgbackweb
     - vikunja
     - octoprint
+    - fdm-monster
+    - mainsail

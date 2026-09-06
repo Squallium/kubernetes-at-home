@@ -1,0 +1,66 @@
+fullnameOverride: mainsail
+
+enableServiceLinks: false
+
+image:
+  repository: ghcr.io/mainsail-crew/mainsail
+
+containerPort: 8080
+
+volumeMounts:
+  - name: mainsail-config
+    mountPath: /usr/share/nginx/html/config.json
+    subPath: config.json
+    readOnly: true
+
+volumes:
+  - name: mainsail-config
+    configMap:
+      name: mainsail-config
+      items:
+        - key: config.json
+          path: config.json
+
+config:
+  enabled: true
+  files:
+    config.json: |
+      {
+        "defaultLocale": "es",
+        "instancesDB": "json",
+        "instances": []
+      }
+
+serviceAccount:
+  create: false
+
+ingress:
+  enabled: true
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 500m
+
+resources:
+  requests:
+    cpu: "50m"
+    memory: "64Mi"
+  limits:
+    cpu: "1000m"
+    memory: "1Gi"
+
+readinessProbe:
+  httpGet:
+    path: /
+    port: http
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 6
+
+livenessProbe:
+  httpGet:
+    path: /
+    port: http
+  initialDelaySeconds: 60
+  periodSeconds: 20
+  timeoutSeconds: 5
+  failureThreshold: 3

@@ -224,6 +224,15 @@ Check the current settings
 M503
 ``` 
 
+Check the center of the bed
+
+```bash 
+G1 Z1.5 F100
+G1 X110 Y110 F3000
+G1 Z0.2 F100
+```
+
+
 Check front left 
 
 ```bash
