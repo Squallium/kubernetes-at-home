@@ -5,7 +5,7 @@ enableServiceLinks: false
 image:
   repository: ghcr.io/mainsail-crew/mainsail
 
-containerPort: 8080
+containerPort: 80
 
 volumeMounts:
   - name: mainsail-config
