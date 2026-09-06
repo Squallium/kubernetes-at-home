@@ -6,11 +6,10 @@ metadata:
 data:
   {{- if .Values.config.applicationConfig }}
   application.yml: |
-  {{ .Values.config.applicationConfig | indent 4 }}
+{{ .Values.config.applicationConfig | nindent 4 }}
   {{- end }}
-
   {{- range $filename, $content := .Values.config.files }}
   {{ $filename }}: |
-  {{ $content | indent 4 }}
+{{ $content | nindent 4 }}
   {{- end }}
-  {{- end }}
+{{- end }}
