@@ -148,6 +148,7 @@ applicationsets:
       metadata:
         name: '{{name}}-config'
         labels:
+          environment: 'core'
           type: 'service'
         annotations:
           kargo.akuity.io/authorized-stage: '{{name}}:core'

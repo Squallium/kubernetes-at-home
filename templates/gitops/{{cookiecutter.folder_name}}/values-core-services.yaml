@@ -159,6 +159,7 @@ applicationsets:
       metadata:
         name: '{{'{{'}}name}}{{ cookiecutter.core_services_config.prefix }}-config'
         labels:
+          environment: 'core'
           type: 'service'
         annotations:
           kargo.akuity.io/authorized-stage: '{{'{{'}}name}}:core'
