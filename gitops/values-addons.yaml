@@ -41,6 +41,7 @@ applicationsets:
       metadata:
         name: 'external-secrets-{{metadata.labels.environment}}'
         labels:
+          environment: '{{metadata.labels.environment}}'
           type: 'addon'
           promotion: kargo
         annotations:
@@ -135,6 +136,7 @@ applicationsets:
       metadata:
         name: 'cert-manager-{{metadata.labels.environment}}'
         labels:
+          environment: '{{metadata.labels.environment}}'
           type: 'addon'
           promotion: kargo
         annotations:
@@ -228,6 +230,7 @@ applicationsets:
       metadata:
         name: 'reflector-{{metadata.labels.environment}}'
         labels:
+          environment: '{{metadata.labels.environment}}'
           type: 'addon'
           promotion: manual
         annotations: {}
@@ -320,6 +323,7 @@ applicationsets:
       metadata:
         name: 'external-secrets-config-{{metadata.labels.environment}}'
         labels:
+          environment: '{{metadata.labels.environment}}'
           type: 'addon-config'
           promotion: kargo
         annotations:
@@ -418,6 +422,7 @@ applicationsets:
       metadata:
         name: 'cert-manager-config-{{metadata.labels.environment}}'
         labels:
+          environment: '{{metadata.labels.environment}}'
           type: 'addon-config'
           promotion: kargo
         annotations:
@@ -521,6 +526,7 @@ applicationsets:
       metadata:
         name: 'coredns-config-{{metadata.labels.environment}}'
         labels:
+          environment: '{{metadata.labels.environment}}'
           type: 'addon-config'
           promotion: kargo
         annotations:

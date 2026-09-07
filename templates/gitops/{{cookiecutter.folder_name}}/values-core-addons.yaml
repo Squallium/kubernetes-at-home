@@ -50,6 +50,7 @@ applicationsets:
       metadata:
         name: '{{'{{'}} .name }}'
         labels:
+          environment: 'core'
           type: 'addon'
           promotion: '{{'{{'}} .promotion }}'
         annotations:
@@ -154,6 +155,7 @@ applicationsets:
       metadata:
         name: '{{'{{'}} .name }}-config'
         labels:
+          environment: 'core'
           type: 'addon'
           promotion: '{{'{{'}} .promotion }}'
         annotations:

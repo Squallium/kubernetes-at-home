@@ -42,6 +42,7 @@ applicationsets:
       metadata:
         name: '{{ service.name }}-{{'{{'}}metadata.labels.environment}}'
         labels:
+          environment: '{{'{{'}}metadata.labels.environment}}'
           type: 'service'
           promotion: {{ "kargo" if service.get("enable_kargo", False) else "manual" }}
         {%- if service.get("enable_kargo", False) %}

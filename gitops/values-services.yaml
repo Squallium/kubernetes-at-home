@@ -41,6 +41,7 @@ applicationsets:
       metadata:
         name: 'homebox-{{metadata.labels.environment}}'
         labels:
+          environment: '{{metadata.labels.environment}}'
           type: 'service'
           promotion: manual
         annotations: {}
@@ -135,6 +136,7 @@ applicationsets:
       metadata:
         name: 'kube-prometheus-stack-{{metadata.labels.environment}}'
         labels:
+          environment: '{{metadata.labels.environment}}'
           type: 'service'
           promotion: kargo
         annotations:
@@ -248,6 +250,7 @@ applicationsets:
       metadata:
         name: 'paperless-ngx-{{metadata.labels.environment}}'
         labels:
+          environment: '{{metadata.labels.environment}}'
           type: 'service'
           promotion: kargo
         annotations:
@@ -343,6 +346,7 @@ applicationsets:
       metadata:
         name: 'home-assistant-{{metadata.labels.environment}}'
         labels:
+          environment: '{{metadata.labels.environment}}'
           type: 'service'
           promotion: kargo
         annotations:
@@ -453,6 +457,7 @@ applicationsets:
       metadata:
         name: 'calibre-web-{{metadata.labels.environment}}'
         labels:
+          environment: '{{metadata.labels.environment}}'
           type: 'service'
           promotion: kargo
         annotations:
@@ -553,6 +558,7 @@ applicationsets:
       metadata:
         name: 'jellyfin-{{metadata.labels.environment}}'
         labels:
+          environment: '{{metadata.labels.environment}}'
           type: 'service'
           promotion: kargo
         annotations:
@@ -653,6 +659,7 @@ applicationsets:
       metadata:
         name: 'authentik-{{metadata.labels.environment}}'
         labels:
+          environment: '{{metadata.labels.environment}}'
           type: 'service'
           promotion: kargo
         annotations:
@@ -760,6 +767,7 @@ applicationsets:
       metadata:
         name: 'vikunja-{{metadata.labels.environment}}'
         labels:
+          environment: '{{metadata.labels.environment}}'
           type: 'service'
           promotion: manual
         annotations: {}
@@ -859,6 +867,7 @@ applicationsets:
       metadata:
         name: 'warracker-{{metadata.labels.environment}}'
         labels:
+          environment: '{{metadata.labels.environment}}'
           type: 'service'
           promotion: manual
         annotations: {}
@@ -953,6 +962,7 @@ applicationsets:
       metadata:
         name: 'pgbackweb-{{metadata.labels.environment}}'
         labels:
+          environment: '{{metadata.labels.environment}}'
           type: 'service'
           promotion: manual
         annotations: {}
@@ -1047,6 +1057,7 @@ applicationsets:
       metadata:
         name: 'romm-{{metadata.labels.environment}}'
         labels:
+          environment: '{{metadata.labels.environment}}'
           type: 'service'
           promotion: manual
         annotations: {}
@@ -1141,6 +1152,7 @@ applicationsets:
       metadata:
         name: 'immich-{{metadata.labels.environment}}'
         labels:
+          environment: '{{metadata.labels.environment}}'
           type: 'service'
           promotion: kargo
         annotations:
@@ -1241,6 +1253,7 @@ applicationsets:
       metadata:
         name: 'octoprint-{{metadata.labels.environment}}'
         labels:
+          environment: '{{metadata.labels.environment}}'
           type: 'service'
           promotion: manual
         annotations: {}
@@ -1340,6 +1353,7 @@ applicationsets:
       metadata:
         name: 'fdm-monster-{{metadata.labels.environment}}'
         labels:
+          environment: '{{metadata.labels.environment}}'
           type: 'service'
           promotion: manual
         annotations: {}
@@ -1439,6 +1453,7 @@ applicationsets:
       metadata:
         name: 'mainsail-{{metadata.labels.environment}}'
         labels:
+          environment: '{{metadata.labels.environment}}'
           type: 'service'
           promotion: manual
         annotations: {}

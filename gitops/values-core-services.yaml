@@ -46,6 +46,7 @@ applicationsets:
       metadata:
         name: '{{name}}'
         labels:
+          environment: 'core'
           type: 'service'
         annotations:
           kargo.akuity.io/authorized-stage: '{{kargo_project_name}}:core'
