@@ -191,6 +191,7 @@ applicationsets:
       metadata:
         name: '{{ service_config.name }}-config-{{'{{'}}metadata.labels.environment}}'
         labels:
+          environment: '{{'{{'}}metadata.labels.environment}}'
           type: 'service-config'
           promotion: {{ "kargo" if service_config.get("enable_kargo", False) else "manual" }}
         {%- if service_config.get("enable_kargo", False) %}

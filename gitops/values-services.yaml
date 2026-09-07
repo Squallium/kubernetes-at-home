@@ -1553,6 +1553,7 @@ applicationsets:
       metadata:
         name: 'home-assistant-config-{{metadata.labels.environment}}'
         labels:
+          environment: '{{metadata.labels.environment}}'
           type: 'service-config'
           promotion: kargo
         annotations:
@@ -1647,6 +1648,7 @@ applicationsets:
       metadata:
         name: 'authentik-config-{{metadata.labels.environment}}'
         labels:
+          environment: '{{metadata.labels.environment}}'
           type: 'service-config'
           promotion: kargo
         annotations:
@@ -1741,6 +1743,7 @@ applicationsets:
       metadata:
         name: 'immich-config-{{metadata.labels.environment}}'
         labels:
+          environment: '{{metadata.labels.environment}}'
           type: 'service-config'
           promotion: kargo
         annotations:
