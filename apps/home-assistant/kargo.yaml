@@ -35,6 +35,8 @@ kargo:
       relPath: /lelo
       argoCDAppSuffix: -lelo
       requestedFreightDirect: false
+  promotionTasks:
+    argocdWaitTimeout: 10m
   config:
     enabled: true
     warehouse:
