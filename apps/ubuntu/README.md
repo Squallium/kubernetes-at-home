@@ -138,5 +138,11 @@ y evitamos probemas de cambio de puerto
 
 
 
+# Install node export for prometheus
+
+```bash
+sudo apt install prometheus-node-exporter
+```
+
 
 
