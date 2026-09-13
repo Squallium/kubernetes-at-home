@@ -13,7 +13,7 @@ spec:
   volumeName: {{ include "immich.fullname" . }}-uploads-pv
   storageClassName: {{ .Values.server.persistence.storageClass | default "manual" }}
   {{- else }}
-  storageClassName: {{ .Values.server.persistence.storageClass }}
+  storageClassName: {{ .Values.server.persistence.storageClass  | quote}}
   {{- end }}
   resources:
     requests:
