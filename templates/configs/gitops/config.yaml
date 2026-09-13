@@ -98,6 +98,11 @@ default_context:
       - name: "reflector"
         chart_repo: "https://emberstack.github.io/helm-charts"
         chart_name: "reflector"
+      - name: "openebs"
+        chart_repo: "https://openebs.github.io/openebs"
+        chart_name: "openebs"
+        enable_kargo: true
+        kargo_project: true
 #      - name: "cloudflared"
 #        chart_repo: "https://squallium.github.io/kubernetes-at-home"
 #        chart_name: "cloudflared"

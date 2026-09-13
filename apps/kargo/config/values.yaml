@@ -243,6 +243,8 @@ argocd-apps:
                       location: external-secrets
                     - addon: cert-manager
                       location: cert-manager
+                    - addon: openebs
+                      location: openebs
                     - addon: coredns
                       location: coredns
               - git:

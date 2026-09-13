@@ -1,0 +1,4 @@
+chart:
+  repoURL: https://openebs.github.io/openebs
+  name: openebs
+  targetRevision: 4.6.1
