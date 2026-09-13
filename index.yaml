@@ -34,6 +34,16 @@ entries:
     version: 0.0.1
   argocd-config:
   - apiVersion: v2
+    appVersion: 0.0.13
+    created: "2026-09-13T15:31:36.681099627Z"
+    description: A Helm chart for managing ArgoCD configuration
+    digest: c35f3ec626ddc438d126a223edefadc9388f56caee089ce9bede79103ae660db
+    name: argocd-config
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/argocd-config-0.0.13/argocd-config-0.0.13.tgz
+    version: 0.0.13
+  - apiVersion: v2
     appVersion: 0.0.12
     created: "2026-09-13T15:21:07.568057383Z"
     description: A Helm chart for managing ArgoCD configuration
@@ -3178,4 +3188,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/warracker-0.0.1/warracker-0.0.1.tgz
     version: 0.0.1
-generated: "2026-09-13T15:21:07.79163759Z"
+generated: "2026-09-13T15:31:36.682021068Z"
