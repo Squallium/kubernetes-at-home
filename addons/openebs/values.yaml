@@ -1,4 +1,8 @@
 # OpenEBS
+#
+# Solo usamos Local PV Hostpath.
+# El almacenamiento de los PVC se quedará en el SSD local del GEEKOM.
+
 localpv-provisioner:
   enabled: true
 
@@ -9,8 +13,28 @@ localpv-provisioner:
     reclaimPolicy: Delete
     basePath: /var/openebs/local
 
-# No necesitamos almacenamiento replicado de Mayastor
+# No queremos almacenamiento replicado Mayastor
 engines:
   replicated:
     mayastor:
       enabled: false
+
+  # No queremos provisioners LocalPV adicionales
+  local:
+    lvm:
+      enabled: false
+    zfs:
+      enabled: false
+    rawfile:
+      enabled: false
+
+# No queremos la infraestructura de observabilidad que
+# el umbrella chart instala en versiones recientes.
+loki:
+  enabled: false
+
+minio:
+  enabled: false
+
+alloy:
+  enabled: false
