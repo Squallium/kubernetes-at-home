@@ -9,5 +9,5 @@ clusters:
     environment: lelo
     kargoStage: lelo
   - name: pro-v2
-    environment: production
+    environment: pro-v2
     kargoStage: pro-v2
