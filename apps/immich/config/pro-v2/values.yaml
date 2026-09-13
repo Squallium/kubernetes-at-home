@@ -1,0 +1,19 @@
+extSecrets:
+  - name: postgresql-auth
+    templateType: Opaque
+    secrets:
+      - secretKey: postgres-password
+        remoteRef:
+          key: secret/immich/production/postgres-auth
+          property: password
+      - secretKey: user-password
+        remoteRef:
+          key: secret/immich/production/postgres-auth
+          property: user-password
+  - name: valkey-auth
+    templateType: Opaque
+    secrets:
+      - secretKey: valkey-password
+        remoteRef:
+          key: secret/immich/production/valkey-auth
+          property: password
