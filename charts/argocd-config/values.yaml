@@ -8,3 +8,6 @@ clusters:
   - name: lelo
     environment: lelo
     kargoStage: lelo
+  - name: pro-v2
+    environment: production
+    kargoStage: pro-v2

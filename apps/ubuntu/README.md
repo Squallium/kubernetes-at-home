@@ -94,8 +94,16 @@ microk8s config
 
 Y lo copiamos en el secreto del vault y en el kubeconfig
 
+Luego hay que añadir el nuevo clsuter a la lista mediante la chart de argocd-config
 
 
+
+
+# Install node export for prometheus
+
+```bash
+sudo apt install prometheus-node-exporter -y
+```
 
 # hay que configurar el dns para que sepa encontrar el vault
 
@@ -107,6 +115,8 @@ Y lo copiamos en el secreto del vault y en el kubeconfig
 
 # luego ya podemos emepzar a desplegar aplicaciones
 
+
+# Zigbee dongle from Sonoff
 
 - Despuesd enchufar la antena hemos ejecutado el comando
 
@@ -138,11 +148,7 @@ y evitamos probemas de cambio de puerto
 
 
 
-# Install node export for prometheus
 
-```bash
-sudo apt install prometheus-node-exporter
-```
 
 
 
