@@ -1,3 +1,4 @@
+certificates: []
 letsEncrypt:
   enable: true
   issuerName: letsencrypt-production

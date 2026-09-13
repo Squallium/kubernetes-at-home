@@ -111,6 +111,8 @@ sudo apt install prometheus-node-exporter -y
 
 # necesitamos el external secrets para cargar secretos desde vault
 
+# luego el reflector para replicar certificados de vault a kubernetes
+
 # a continuación el cert manager para los certificados
 
 # luego ya podemos emepzar a desplegar aplicaciones
