@@ -1,0 +1,42 @@
+configuration:
+  backupStorageLocation:
+    - name: default
+      provider: aws
+      bucket: velero
+      default: true
+      accessMode: ReadWrite
+      config:
+        region: us-east-1
+        s3Url: http://192.168.1.166:8333
+        s3ForcePathStyle: "true"
+        insecureSkipTLSVerify: "true"
+
+  volumeSnapshotLocation:
+    - name: default
+      provider: aws
+      config:
+        region: us-east-1
+
+credentials:
+  useSecret: true
+  existingSecret: velero-s3-credentials
+
+initContainers:
+  - name: velero-plugin-for-aws
+    image: velero/velero-plugin-for-aws:v1.13.1
+    imagePullPolicy: IfNotPresent
+    volumeMounts:
+      - name: plugins
+        mountPath: /target
+
+backupsEnabled: true
+
+# Necesario para File System Backup de volúmenes
+deployNodeAgent: true
+
+nodeAgent:
+  podVolumePath: /var/lib/kubelet/pods
+  pluginVolumePath: /var/lib/kubelet/plugins
+
+# No usamos snapshots CSI por ahora
+snapshotsEnabled: false
