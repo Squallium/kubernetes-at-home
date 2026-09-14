@@ -37,7 +37,7 @@ prometheus:
     enabled: true
     ingressClassName: public
     hosts:
-      - prometheus-dev.internal
+      - prometheus-pro-v2.internal
     paths:
       - /
     pathType: Prefix
@@ -66,7 +66,7 @@ prometheus:
           - sourceLabels: [ __name__ ]
             regex: (.*)
             targetLabel: cluster
-            replacement: dev
+            replacement: pro-v2
             action: replace
 
     storageSpec:
@@ -85,19 +85,20 @@ prometheus:
         cpu: 50m
         memory: 128Mi
       limits:
-        cpu: 200m
+        cpu: 150m
         memory: 256Mi
 
+    # Remote write to the core cluster Prometheus
     remoteWrite:
       - url: http://prometheus.internal/api/v1/write
         writeRelabelConfigs:
           - sourceLabels: [ namespace ]
-            regex: authentik|calibre-web|home-assistant|immich|jellyfin|paperless-ngx|pgbackweb|prometheus|romm|vikunja|bazarr|warracker|kavita|komf|komga|lidarr|prowlarr|radarr|seerr|shoko|sonarr|swagger-ui|octoprint|fdm-monster|mainsail
+            regex: home-assistant|immich|prometheus
             action: keep
           - sourceLabels: [__name__]
             regex: (.*)
             targetLabel: cluster
-            replacement: dev
+            replacement: pro-v2
             action: replace
 
 prometheusOperator:
