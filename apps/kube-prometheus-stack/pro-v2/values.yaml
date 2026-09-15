@@ -93,7 +93,7 @@ prometheus:
       - url: http://prometheus.internal/api/v1/write
         writeRelabelConfigs:
           - sourceLabels: [ namespace ]
-            regex: home-assistant|immich|prometheus
+            regex: home-assistant|immich|prometheus|velero|velero-ui
             action: keep
           - sourceLabels: [__name__]
             regex: (.*)
