@@ -267,6 +267,11 @@ default_context:
         chart_name: "velero"
         enable_ssl: true
         enable_incubator: true
+      - name: "velero-ui"
+        chart_repo: "https://seriohub.github.io/velero-helm/"
+        chart_name: "vui"
+        enable_ssl: true
+        enable_incubator: true
   services_config:
     list:
       - name: "home-assistant"

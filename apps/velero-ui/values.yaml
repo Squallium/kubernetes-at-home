@@ -1,0 +1,11 @@
+global:
+  veleroNamespace: velero
+  clusterName: pro-v2
+
+apiService:
+  secret:
+    defaultAdminUsername: admin
+    defaultAdminPassword: admin
+
+exposure:
+  mode: ingress
