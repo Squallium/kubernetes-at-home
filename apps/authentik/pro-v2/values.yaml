@@ -1,0 +1,33 @@
+global:
+  image:
+    tag: 2026.5.6
+
+server:
+  ingress:
+    hosts:
+      - auth.internal.org
+
+  envFrom:
+    - secretRef:
+        name: authentik-env
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 512Mi
+    limits:
+      cpu: 800m
+      memory: 1Gi
+
+worker:
+  envFrom:
+    - secretRef:
+        name: authentik-env
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 512Mi
+    limits:
+      cpu: 800m
+      memory: 1Gi

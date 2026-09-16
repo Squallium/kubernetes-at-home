@@ -1,0 +1,6 @@
+server:
+  ingress:
+    tls:
+      - secretName: auth-tls
+        hosts:
+          - auth.internal.org
