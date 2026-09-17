@@ -41,6 +41,7 @@ spec:
           persistentVolumeClaim:
             claimName: authentik-postgres-pvc
 ---
+{{- if eq (.Values.postgresql.storageType | default "hostPath") "hostPath" }}
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -56,6 +57,7 @@ spec:
     path: {{ .Values.postgresql.storagePath }}
     type: DirectoryOrCreate
 ---
+{{- end }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -63,7 +65,11 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  {{- if eq (.Values.postgresql.storageType | default "hostPath") "hostPath" }}
   storageClassName: manual
+  {{- else }}
+  storageClassName: openebs-hostpath
+  {{- end }}
   resources:
     requests:
       storage: {{ .Values.postgresql.storage | default "5Gi" }}

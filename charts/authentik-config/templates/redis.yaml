@@ -36,13 +36,14 @@ spec:
           persistentVolumeClaim:
             claimName: authentik-redis-pvc
 ---
+{{- if eq (.Values.redis.storageType | default "hostPath") "hostPath" }}
 apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: authentik-redis-pv
 spec:
   capacity:
-    storage: {{ .Values.redis.storage }}
+    storage: {{ .Values.redis.storage | default "512Mi" }}
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
@@ -51,6 +52,7 @@ spec:
     path: {{ .Values.redis.storagePath }}
     type: DirectoryOrCreate
 ---
+{{- end }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -58,10 +60,14 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  {{- if eq (.Values.redis.storageType | default "hostPath") "hostPath" }}
   storageClassName: manual
+  {{- else }}
+  storageClassName: openebs-hostpath
+  {{- end }}
   resources:
     requests:
-      storage: {{ .Values.redis.storage }}
+      storage: {{ .Values.redis.storage | default "512Mi" }}
 ---
 apiVersion: v1
 kind: Service
