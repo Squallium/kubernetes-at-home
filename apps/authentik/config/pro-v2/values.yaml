@@ -23,5 +23,9 @@ extSecrets:
           key: secret/authentik/production/redis
           property: password
 
+postgresql:
+  storageType: openebs
+
 redis:
+  storageType: openebs
   secretName: authentik-redis
