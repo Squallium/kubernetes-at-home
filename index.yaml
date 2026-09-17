@@ -85,6 +85,16 @@ entries:
     version: 0.0.9
   authentik-config:
   - apiVersion: v2
+    appVersion: 0.0.9
+    created: "2026-09-17T20:50:48.566361032Z"
+    description: A Helm chart for managing Authentik configurations
+    digest: fb1691f83860aa3153879dd92975276850379dd8ae875c16f18cf47add6d9d8b
+    name: authentik-config
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/authentik-config-0.0.9/authentik-config-0.0.9.tgz
+    version: 0.0.9
+  - apiVersion: v2
     appVersion: 0.0.8
     created: "2025-10-13T14:21:38.373097159Z"
     description: A Helm chart for managing Authentik configurations
@@ -3266,4 +3276,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/warracker-0.0.1/warracker-0.0.1.tgz
     version: 0.0.1
-generated: "2026-09-13T21:36:29.105332154Z"
+generated: "2026-09-17T20:50:48.567343735Z"
