@@ -82,11 +82,11 @@ prometheus:
 
     resources:
       requests:
-        cpu: 50m
-        memory: 128Mi
+        cpu: 100m
+        memory: 512Mi
       limits:
-        cpu: 150m
-        memory: 256Mi
+        cpu: 500m
+        memory: 1Gi
 
     # Remote write to the core cluster Prometheus
     remoteWrite:
