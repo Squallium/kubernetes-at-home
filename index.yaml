@@ -2572,6 +2572,16 @@ entries:
     version: 0.0.1
   servarr:
   - apiVersion: v2
+    created: "2026-09-23T23:05:19.564553926Z"
+    description: A Helm chart for deploying Servarr applications (Sonarr, Radarr,
+      Lidarr, Readarr, etc.) on Kubernetes.
+    digest: 3245bb332e55cf18c943681cc99105dca1a6d5925f684639a2f5a0101d0a4304
+    name: servarr
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/servarr-0.0.14/servarr-0.0.14.tgz
+    version: 0.0.14
+  - apiVersion: v2
     created: "2026-09-23T22:54:20.098615824Z"
     description: A Helm chart for deploying Servarr applications (Sonarr, Radarr,
       Lidarr, Readarr, etc.) on Kubernetes.
@@ -3296,4 +3306,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/warracker-0.0.1/warracker-0.0.1.tgz
     version: 0.0.1
-generated: "2026-09-23T22:54:20.099233052Z"
+generated: "2026-09-23T23:05:19.565283752Z"
