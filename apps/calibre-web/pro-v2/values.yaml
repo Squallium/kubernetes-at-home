@@ -21,5 +21,6 @@ ingress:
   hostname: calibre-web.internal
 
 storage:
+  enabled: true
   provisioner:
     enabled: true
