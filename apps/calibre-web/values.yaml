@@ -1,5 +1,8 @@
 image:
   repository: docker.io/linuxserver/calibre-web
+
+containerPort: 8083
+
 deployment:
   additionalEnv:
     - name: PUID
