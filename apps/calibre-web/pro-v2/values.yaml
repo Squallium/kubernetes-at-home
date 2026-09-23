@@ -1,0 +1,21 @@
+image:
+  tag: 0.6.27
+
+volumeMounts:
+  - name: config
+    mountPath: /config
+  - name: books
+    mountPath: /books
+
+volumes:
+  - name: config
+    persistentVolumeClaim:
+      claimName: calibre-web-config
+
+  - name: books
+    hostPath:
+      path: /mnt/services/calibre-web/calibre-library
+      type: Directory
+
+ingress:
+  hostname: calibre-web.internal

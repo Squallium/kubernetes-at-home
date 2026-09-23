@@ -1,0 +1,5 @@
+ingress:
+  tls:
+    - hosts:
+        - calibre-web.internal
+      secretName: calibre-web-internal-tls

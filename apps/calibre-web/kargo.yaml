@@ -18,7 +18,7 @@ kargo:
       discoveryLimit: 15
     chart:
       repoURL: https://squallium.github.io/kubernetes-at-home
-      name: calibre-web
+      name: servarr
 extSecrets:
   - name: github-ssh
     namespace: calibre-web
