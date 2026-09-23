@@ -184,3 +184,7 @@ storage:
   enabled: false
   provisioner:
     enabled: false
+
+  persistentVolumeClaims:
+    - name: pvc-name
+      size: 1Gi

@@ -24,3 +24,7 @@ storage:
   enabled: true
   provisioner:
     enabled: true
+
+  persistentVolumeClaims:
+    - name: calibre-web-config
+      size: 1Gi

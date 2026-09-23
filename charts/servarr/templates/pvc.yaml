@@ -1,0 +1,16 @@
+{{- if .Values.storage.enabled }}
+{{- range .Values.storage.persistentVolumeClaims }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .name }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: openebs-hostpath
+  resources:
+    requests:
+      storage: {{ .size }}
+---
+{{- end }}
+{{- end }}
