@@ -194,8 +194,7 @@ default_context:
             - name: "zigbee2mqtt"
               location: "home-assistant-addons/zigbee2mqtt"
       - name: "calibre-web"
-        chart_name: "calibre-web"
-        chart_target_revision: "0.0.4"
+        chart_name: "servarr"
         enable_ssl: true
         enable_kargo: true
         kargo_project: true

@@ -472,7 +472,7 @@ applicationsets:
             targetRevision: main
             ref: values-incubator
           - repoURL: https://squallium.github.io/kubernetes-at-home
-            chart: calibre-web
+            chart: servarr
             targetRevision: '{{chart.targetRevision}}'
             helm:
               valueFiles:
