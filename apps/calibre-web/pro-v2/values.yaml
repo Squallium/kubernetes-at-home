@@ -19,3 +19,7 @@ volumes:
 
 ingress:
   hostname: calibre-web.internal
+
+storage:
+  provisioner:
+    enabled: true
