@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "app.fullname" . }}-storage-provisioner
+  name: {{ include "servarr.fullname" . }}-storage-provisioner
   labels:
     {{- include "servarr.labels" . | nindent 4 }}
 spec:

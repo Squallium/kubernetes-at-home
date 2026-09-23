@@ -181,5 +181,6 @@ endpointService:
   enabled: false
 
 storage:
+  enabled: false
   provisioner:
     enabled: false
