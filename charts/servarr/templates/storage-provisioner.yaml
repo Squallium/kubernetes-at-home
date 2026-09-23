@@ -1,0 +1,44 @@
+{{- if and .Values.storage.enabled .Values.storage.provisioner.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "app.fullname" . }}-storage-provisioner
+  labels:
+    {{- include "servarr.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "servarr.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: storage-provisioner
+  template:
+    metadata:
+      labels:
+        {{- include "servarr.labels" . | nindent 8 }}
+        app.kubernetes.io/component: storage-provisioner
+        {{- with .Values.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      containers:
+        - name: provisioner
+          image: busybox:1.36
+          command:
+            - /bin/sh
+            - -c
+            - |
+              echo "Storage provisioner running..."
+              echo "PVCs mounted:"
+              ls -la /storage
+              sleep infinity
+
+          {{- with .Values.volumeMounts }}
+          volumeMounts:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+
+      {{- with .Values.volumes }}
+      volumes:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+  {{- end }}

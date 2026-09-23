@@ -179,3 +179,7 @@ config:
 
 endpointService:
   enabled: false
+
+storage:
+  provisioner:
+    enabled: false
