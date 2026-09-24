@@ -3,6 +3,9 @@ image:
 
 containerPort: 8083
 
+ingress:
+  enabled: true
+
 deployment:
   additionalEnv:
     - name: PUID
