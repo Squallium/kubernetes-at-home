@@ -8,3 +8,4 @@ letsEncrypt:
     - kube-prometheus-stack
     - velero
     - velero-ui
+    - calibre-web
