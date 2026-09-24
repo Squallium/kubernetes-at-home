@@ -1,21 +1,25 @@
+fullnameOverride: calibre-web
+
 image:
   repository: docker.io/linuxserver/calibre-web
 
 containerPort: 8083
 
+env:
+  - name: PUID
+    value: "1000"   # UID del usuario en Lima
+  - name: PGID
+    value: "1000"   # GID del usuario en Lima
+  - name: TZ
+    value: "Europe/Madrid"
+
 ingress:
   enabled: true
 
-deployment:
-  additionalEnv:
-    - name: PUID
-      value: "1000"
-    - name: PGID
-      value: "1000"
-  resources:
-    requests:
-      cpu: 100m
-      memory: 256Mi
-    limits:
-      cpu: 500m
-      memory: 256Mi
+resources:
+  requests:
+    cpu: "50m"
+    memory: "64Mi"
+  limits:
+    cpu: "1000m"
+    memory: "1Gi"
