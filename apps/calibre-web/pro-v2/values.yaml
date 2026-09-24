@@ -18,7 +18,11 @@ volumes:
       type: Directory
 
 ingress:
-  hostname: calibre-web.internal
+  hosts:
+    - host: calibre-web.internal
+      paths:
+        - path: /
+          pathType: Prefix
 
 storage:
   enabled: true
