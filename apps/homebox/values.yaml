@@ -1,0 +1,17 @@
+fullnameOverride: homebox
+
+image:
+  repository: sysadminsmedia/homebox
+
+containerPort: 7745
+
+ingress:
+  enabled: true
+
+resources:
+  requests:
+    cpu: "50m"
+    memory: "64Mi"
+  limits:
+    cpu: "1000m"
+    memory: "1Gi"

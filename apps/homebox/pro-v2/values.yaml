@@ -1,0 +1,27 @@
+image:
+  tag: 0.25.0
+
+volumeMounts:
+  - name: data
+    mountPath: /data
+
+volumes:
+  - name: data
+    persistentVolumeClaim:
+      claimName: homebox-data
+
+ingress:
+  hosts:
+    - host: homebox.internal
+      paths:
+        - path: /
+          pathType: Prefix
+
+storage:
+  enabled: true
+  provisioner:
+    enabled: true
+
+  persistentVolumeClaims:
+    - name: homebox-config
+      size: 1Gi

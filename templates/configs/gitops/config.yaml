@@ -138,8 +138,9 @@ default_context:
   services:
     list:
       - name: "homebox"
-        chart_name: "homebox"
+        chart_name: "servarr"
         enable_ssl: true
+        enable_incubator: true
       - name: "kube-prometheus-stack"
         chart_repo: "https://prometheus-community.github.io/helm-charts"
         chart_name: "kube-prometheus-stack"

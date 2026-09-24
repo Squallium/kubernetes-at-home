@@ -9,3 +9,4 @@ letsEncrypt:
     - velero
     - velero-ui
     - calibre-web
+    - homebox

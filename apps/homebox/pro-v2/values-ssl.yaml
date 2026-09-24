@@ -1,0 +1,5 @@
+ingress:
+  tls:
+    - hosts:
+        - homebox.internal
+      secretName: homebox-internal-tls
