@@ -23,5 +23,5 @@ storage:
     enabled: true
 
   persistentVolumeClaims:
-    - name: homebox-config
+    - name: homebox-data
       size: 1Gi
