@@ -23,7 +23,7 @@ ingress:
 storage:
   enabled: true
   provisioner:
-    enabled: true
+    enabled: false
 
   persistentVolumeClaims:
     - name: calibre-web-config
