@@ -141,6 +141,15 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
+storage:
+  enabled: true
+
+  persistentVolumeClaims:
+    - name: romm-redis-pvc
+      size: 2Gi
+    - name: romm-config-pvc
+      size: 2Gi
+
 # Additional volumes on the output Deployment definition.
 volumes:
   - name: resources

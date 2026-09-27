@@ -11,3 +11,4 @@ letsEncrypt:
     - calibre-web
     - homebox
     - paperless-ngx
+    - romm
