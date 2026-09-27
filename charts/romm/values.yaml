@@ -145,24 +145,22 @@ autoscaling:
 volumes:
   - name: resources
     hostPath:
-      path: /mnt/services/media/romm/resources
+      path: /mnt/services/romm/resources
       type: Directory
   - name: redis-data
-    hostPath:
-      path: /mnt/services/romm/redis
-      type: Directory
+    persistentVolumeClaim:
+      claimName: romm-redis-pvc
   - name: library
     hostPath:
-      path: /mnt/services/media/romm/library
+      path: /mnt/services/media/roms
       type: Directory
   - name: assets
     hostPath:
-      path: /mnt/services/media/romm/assets
+      path: /mnt/services/romm/assets
       type: Directory
   - name: config
-    hostPath:
-      path: /mnt/services/romm/config
-      type: Directory
+    persistentVolumeClaim:
+      claimName: romm-config-pvc
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:

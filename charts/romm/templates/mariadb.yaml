@@ -45,35 +45,13 @@ spec:
             claimName: romm-mariadb-pvc
 ---
 apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: romm-mariadb-pv
-  labels:
-    app: romm
-    type: mariadb
-spec:
-  capacity:
-    storage: {{ .Values.mariadb.storage | default "5Gi" }}
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: manual
-  hostPath:
-    path: {{ .Values.mariadb.storagePath }}
-    type: DirectoryOrCreate
----
-apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: romm-mariadb-pvc
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: manual
-  selector:
-    matchLabels:
-      app: romm
-      type: mariadb
+  storageClassName: openebs-hostpath
   resources:
     requests:
       storage: {{ .Values.mariadb.storage | default "5Gi" }}
