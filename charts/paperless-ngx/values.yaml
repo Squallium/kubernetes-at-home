@@ -27,6 +27,15 @@ ingress:
   annotations: {}
   tls: []
 
+storage:
+  enabled: true
+
+  persistentVolumeClaims:
+    - name: paperless-postgresql
+      size: 10Gi
+    - name: paperless-redis
+      size: 1Gi
+
 storagePath:
   data: /mnt/paperless-ngx/data
   media: /mnt/paperless-ngx/media

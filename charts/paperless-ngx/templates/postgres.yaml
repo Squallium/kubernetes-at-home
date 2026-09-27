@@ -35,9 +35,8 @@ spec:
           {{- include "chart.resources" (dict "name" "postgresql" "Values" .Values) | nindent 10 }}
       volumes:
         - name: pgdata
-          hostPath:
-            path: {{ .Values.postgresql.storagePath }}
-            type: Directory
+          persistentVolumeClaim:
+            claimName: paperless-postgresql
 ---
 apiVersion: v1
 kind: Service

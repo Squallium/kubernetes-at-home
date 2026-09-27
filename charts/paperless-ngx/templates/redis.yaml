@@ -22,9 +22,8 @@ spec:
           {{- include "chart.resources" (dict "name" "redis" "Values" .Values) | nindent 10 }}
       volumes:
         - name: redisdata
-          hostPath:
-            path: {{ .Values.redis.storagePath }}
-            type: Directory
+          persistentVolumeClaim:
+            claimName: paperless-redis
 ---
 apiVersion: v1
 kind: Service
