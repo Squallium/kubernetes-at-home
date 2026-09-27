@@ -15,9 +15,6 @@ mounts:
   - location: "/Users/kuber/shared/velero"
     mountPoint: "/mnt/velero"
     writable: true
-  - location: "/Users/kuber/shared/minio"
-    mountPoint: "/mnt/minio"
-    writable: true
 
 networks:
   - lima: bridged

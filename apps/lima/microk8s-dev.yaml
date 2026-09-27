@@ -24,9 +24,6 @@ mounts:
   - location: "/Users/kuber/shared/dev/velero"
     mountPoint: "/mnt/velero"
     writable: true
-  - location: "/Users/kuber/shared/dev/minio"
-    mountPoint: "/mnt/minio"
-    writable: true
   - location: "/Users/kuber/shared/dev/calibre-web"
     mountPoint: "/mnt/calibre-web"
     writable: true
