@@ -10,3 +10,4 @@ letsEncrypt:
     - velero-ui
     - calibre-web
     - homebox
+    - paperless-ngx

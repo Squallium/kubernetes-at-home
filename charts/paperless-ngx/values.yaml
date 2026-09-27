@@ -37,15 +37,13 @@ storage:
       size: 1Gi
 
 storagePath:
-  data: /mnt/paperless-ngx/data
-  media: /mnt/paperless-ngx/media
+  data: /mnt/services/paperless/data
+  media: /mnt/services/paperless/media
 
 redis:
   image: redis:7-alpine
-  storagePath: /mnt/paperless-ngx/redis
 
 postgresql:
   image: postgres:15-alpine
   database: paperlessdb
   port: 5432
-  storagePath: /mnt/paperless-ngx/postgres
