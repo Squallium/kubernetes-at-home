@@ -1,0 +1,24 @@
+image:
+  tag: 2.20.13
+
+ingress:
+  hostname: paperless.internal
+
+deployment:
+  additionalEnv:
+    PAPERLESS_URL: https://paperless.internal
+    PAPERLESS_CSRF_TRUSTED_ORIGINS: https://paperless.internal
+    PAPERLESS_ALLOWED_HOSTS: "paperless.internal,paperless-ngx,paperless-ngx.paperless-ngx.svc.cluster.local,localhost,127.0.0.1"
+  oidc:
+    enabled: true
+    logoutRedirectUrl: https://paperless.internal/application/o/paperless/end-session/
+  envSecretKeys:
+    postgres: secret/paperless/production/postgres
+    oidc: secret/paperless/production/authentik
+  resources:
+    requests:
+      cpu: 200m
+      memory: 1Gi
+    limits:
+      cpu: 3000m
+      memory: 3Gi

@@ -1,0 +1,5 @@
+ingress:
+  tls:
+    - hosts:
+        - paperless.internal
+      secretName: paperless-internal-tls
