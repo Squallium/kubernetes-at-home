@@ -2551,6 +2551,16 @@ entries:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/romm-0.1.0/romm-0.1.0.tgz
     version: 0.1.0
   - apiVersion: v2
+    appVersion: 5.3.1
+    created: "2026-09-28T21:35:11.409567628Z"
+    description: A Helm chart for Kubernetes
+    digest: 70b417814a9b3c7bb522c09279a1f09f64389aa4eaf7f38017393823d8c326af
+    name: romm
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/romm-0.0.7/romm-0.0.7.tgz
+    version: 0.0.7
+  - apiVersion: v2
     appVersion: 4.7.0
     created: "2026-09-27T22:13:32.310044021Z"
     description: A Helm chart for Kubernetes
@@ -3346,4 +3356,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/warracker-0.0.1/warracker-0.0.1.tgz
     version: 0.0.1
-generated: "2026-09-27T22:13:32.310457184Z"
+generated: "2026-09-28T21:35:11.411030063Z"
