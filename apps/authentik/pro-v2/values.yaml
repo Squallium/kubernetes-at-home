@@ -14,10 +14,10 @@ server:
   resources:
     requests:
       cpu: 100m
-      memory: 512Mi
+      memory: 256Mi
     limits:
       cpu: 800m
-      memory: 1Gi
+      memory: 512Mi
 
 worker:
   envFrom:
@@ -27,7 +27,7 @@ worker:
   resources:
     requests:
       cpu: 100m
-      memory: 512Mi
+      memory: 256Mi
     limits:
       cpu: 800m
-      memory: 1Gi
+      memory: 512Mi
