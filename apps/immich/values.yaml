@@ -45,7 +45,7 @@ resources:
     memory: 512Mi
   limits:
     cpu: 2
-    memory: 2Gi
+    memory: 1Gi
 
 postgresql:
   primary:
@@ -55,7 +55,7 @@ postgresql:
         memory: 256Mi
       limits:
         cpu: 1
-        memory: 1Gi
+        memory: 512Mi
 
 valkey:
   primary:
