@@ -48,7 +48,7 @@ resources:
     memory: 1Gi
 
 postgresql:
-  primary:
+  standalone:
     resources:
       requests:
         cpu: 100m
