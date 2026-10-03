@@ -791,7 +791,7 @@ applicationsets:
             targetRevision: main
             ref: values-incubator
           - repoURL: https://squallium.github.io/kubernetes-at-home
-            chart: servarr
+            chart: vikunja
             targetRevision: '{{chart.targetRevision}}'
             helm:
               valueFiles:
