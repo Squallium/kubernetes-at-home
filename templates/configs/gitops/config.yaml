@@ -228,8 +228,9 @@ default_context:
 #        chart_name: "argo-rollouts"
 #        chart_target_revision: "2.40.2"
       - name: "vikunja"
-        chart_name: "vikunja"
+        chart_name: "servarr"
         enable_ssl: true
+        enable_incubator: true
         helm_secrets:
           list:
             - name: auth.openid.client_id
