@@ -7,12 +7,9 @@ deployment:
     issuerUrl: https://auth.internal.org/application/o/warracker/
 
   additionalEnv:
-    WARRACKER_MEMORY_MODE: ultra-light
-    WARRACKER_NOTIFICATION_ENABLED: "false"
-    FLASK_ENV: "production"
+    WARRACKER_MEMORY_MODE: optimized
     FRONTEND_URL: "https://warracker.internal"
-    CURL_CA_BUNDLE: "/ca/root-ca.crt"
-    SSL_CERT_FILE: "/ca/root-ca.crt"
+    APP_BASE_URL: "https://warracker.internal"
 
   envSecretKeys:
     postgres: secret/warracker/production/postgres

@@ -240,6 +240,7 @@ default_context:
       - name: "warracker"
         chart_name: "warracker"
         enable_ssl: true
+        enable_incubator: true
       - name: "pgbackweb"
         chart_name: "pgbackweb"
         enable_ssl: true

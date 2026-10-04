@@ -40,35 +40,13 @@ spec:
             claimName: warracker-postgres-pvc
 ---
 apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: warracker-postgres-pv
-  labels:
-    app: warracker
-    type: postgres
-spec:
-  capacity:
-    storage: {{ .Values.postgresql.storage | default "5Gi" }}
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: manual
-  hostPath:
-    path: {{ .Values.postgresql.storagePath }}
-    type: DirectoryOrCreate
----
-apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: warracker-postgres-pvc
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: manual
-  selector:
-    matchLabels:
-      app: warracker
-      type: postgres
+  storageClassName: openebs-hostpath
   resources:
     requests:
       storage: {{ .Values.postgresql.storage | default "5Gi" }}

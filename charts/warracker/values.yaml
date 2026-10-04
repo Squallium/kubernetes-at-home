@@ -1,6 +1,6 @@
 image:
   repository: ghcr.io/sassanix/warracker/main
-  tag: 0.10.1.12
+  tag: 1.0.2
 
 deployment:
   replicas: 1
@@ -13,8 +13,8 @@ deployment:
     scope: openid email profile
 
   additionalEnv:
-    WARRACKER_MEMORY_MODE: ultra-light
-    WARRACKER_NOTIFICATION_ENABLED: "false"
+    WARRACKER_MEMORY_MODE: optimized
+    APPRISE_ENABLED: "false"
 
   resources:
     requests:

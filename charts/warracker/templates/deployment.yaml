@@ -12,23 +12,6 @@ spec:
       labels:
         app: warracker
     spec:
-      initContainers:
-        - name: install-ca
-          image: debian:stable-slim
-          command:
-            - sh
-            - -c
-            - |
-              apt-get update && apt-get install -y ca-certificates
-              cp /tmp/root-ca.crt /usr/local/share/ca-certificates/root-ca.crt
-              update-ca-certificates
-              cp /etc/ssl/certs/ca-certificates.crt /certs/ca-certificates.crt
-          volumeMounts:
-            - name: trusted-ca
-              mountPath: /tmp/root-ca.crt
-              subPath: tls.crt
-            - name: ca-bundle
-              mountPath: /certs
       containers:
         - name: warracker
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -40,6 +23,10 @@ spec:
             - secretRef:
                 name: warracker-oidc
           env:
+            - name: FRONTEND_URL
+              value: {{ .Values.deployment.frontendUrl | quote }}
+            - name: APP_BASE_URL
+              value: {{ .Values.deployment.appBaseUrl | quote }}
             - name: DB_HOST
               value: {{ .Values.postgresql.host | default "warracker-postgres" }}
             - name: DB_PORT
@@ -63,23 +50,9 @@ spec:
           volumeMounts:
             - mountPath: /data/uploads
               name: uploads-storage
-            - name: ca-bundle
-              mountPath: /etc/ssl/certs/ca-certificates.crt
-              subPath: ca-certificates.crt
           resources:
             {{- toYaml .Values.deployment.resources | nindent 12 }}
-          command:
-            - /app/entrypoint.sh
-          args:
-            - /usr/bin/supervisord
-            - -c
-            - /etc/supervisor/conf.d/supervisord.conf
       volumes:
         - name: uploads-storage
           persistentVolumeClaim:
             claimName: warracker-uploads-pvc
-        - name: trusted-ca
-          secret:
-            secretName: warracker-trusted-ca
-        - name: ca-bundle
-          emptyDir: {}
