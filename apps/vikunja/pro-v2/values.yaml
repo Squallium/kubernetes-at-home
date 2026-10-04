@@ -1,6 +1,6 @@
 auth:
   openid:
-    enabled: true
+    enabled: false
     providerName: authentik
     authurl: https://auth.internal.org/application/o/vikunja/
 
