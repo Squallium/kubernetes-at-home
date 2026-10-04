@@ -12,3 +12,4 @@ letsEncrypt:
     - homebox
     - paperless-ngx
     - romm
+    - vikunja
