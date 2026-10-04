@@ -14,19 +14,6 @@ spec:
       labels:
         app: vikunja
     spec:
-      initContainers:
-        - name: copy-ca
-          image: alpine:3.18
-          command:
-            - sh
-            - -c
-            - cp /tmp/root-ca.crt /ca/root-ca.crt
-          volumeMounts:
-            - name: trusted-ca
-              mountPath: /tmp/root-ca.crt
-              subPath: tls.crt
-            - name: ca-dir
-              mountPath: /ca
       containers:
         - name: vikunja
           image: {{ .Values.image }}
@@ -39,8 +26,6 @@ spec:
             - name: SSL_CERT_FILE
               value: /ca/root-ca.crt
           volumeMounts:
-            - name: ca-dir
-              mountPath: /ca
             - name: vikunja-files
               mountPath: /app/vikunja/files
             - name: vikunja-config-file
@@ -55,26 +40,8 @@ spec:
         - name: vikunja-config-file
           configMap:
             name: vikunja-config-file
-        - name: trusted-ca
-          secret:
-            secretName: vikunja-trusted-ca
         - name: ca-dir
           emptyDir: {}
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: vikunja-files-pv
-spec:
-  capacity:
-    storage: 5Gi
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: manual
-  hostPath:
-    path: /mnt/services/vikunja/files
-    type: DirectoryOrCreate
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -83,7 +50,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: openebs-hostpath
   resources:
     requests:
       storage: 5Gi
-  storageClassName: manual

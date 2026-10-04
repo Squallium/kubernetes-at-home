@@ -28,27 +28,12 @@ spec:
               value: {{ .Values.postgresql.database | quote }}
           volumeMounts:
             - name: postgres-data
-              mountPath: /var/lib/postgresql/data
+              mountPath: /var/lib/postgresql
           {{- include "chart.resources" (dict "name" "postgresql" "Values" .Values) | nindent 10 }}
       volumes:
         - name: postgres-data
           persistentVolumeClaim:
             claimName: vikunja-postgres-pvc
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: vikunja-postgres-pv
-spec:
-  capacity:
-    storage: {{ .Values.postgresql.storage | default "5Gi" }}
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: manual
-  hostPath:
-    path: {{ .Values.postgresql.storagePath }}
-    type: DirectoryOrCreate
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -57,7 +42,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: manual
+  storageClassName: openebs-hostpath
   resources:
     requests:
       storage: {{ .Values.postgresql.storage | default "5Gi" }}

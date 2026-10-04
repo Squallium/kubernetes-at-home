@@ -1,4 +1,4 @@
-image: vikunja/vikunja:0.24.6
+image: vikunja/vikunja:2.7.0
 jwtSecret: supersecreto # cámbialo luego en serio
 
 auth:
@@ -24,17 +24,9 @@ storagePath:
   files: /mnt/services/vikunja/files
 
 postgresql:
-  image: postgres:17.3-alpine
+  image: paradedb:0.26.0
   username: vikunja
   password: vikunja
   database: vikunja
   storage: 1Gi
   port: 5432
-  storagePath: /mnt/services/vikunja/postgres
-
-typesense:
-  image: typesense/typesense:27.1
-  apiKey: vikunja
-  storage: 1Gi
-  port: 8108
-  storagePath: /mnt/services/vikunja/typesense
