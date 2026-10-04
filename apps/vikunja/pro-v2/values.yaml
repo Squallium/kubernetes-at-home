@@ -8,4 +8,4 @@ ingress:
   host: vikunja.internal
 
 postgresql:
-  image: paradedb:v0.26.0
+  image: paradedb/paradedb:v0.26.0
