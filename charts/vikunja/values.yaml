@@ -1,5 +1,6 @@
 image: vikunja/vikunja:2.7.0
-jwtSecret: supersecreto # cámbialo luego en serio
+secret: supersecreto # cámbialo luego en serio
+publicUrl: https://vikunja.internal
 
 auth:
   openid:

@@ -3,12 +3,13 @@ kind: ConfigMap
 metadata:
   name: vikunja-config
 data:
+  VIKUNJA_SERVICE_PUBLICURL: {{ .Values.publicUrl | quote }}
   VIKUNJA_DATABASE_TYPE: postgres
   VIKUNJA_DATABASE_HOST: vikunja-postgres
   VIKUNJA_DATABASE_USER: vikunja
   VIKUNJA_DATABASE_PASSWORD: vikunja
   VIKUNJA_DATABASE_DATABASE: vikunja
-  VIKUNJA_SERVICE_JWTSECRET: {{ .Values.jwtSecret }}
+  VIKUNJA_SERVICE_SECRET: {{ .Values.secret }}
 ---
 apiVersion: v1
 kind: ConfigMap
