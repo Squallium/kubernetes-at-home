@@ -3,7 +3,7 @@ image:
 
 deployment:
   oidc:
-    enabled: false
+    enabled: true
     issuerUrl: https://auth.internal.org/application/o/warracker/
 
   additionalEnv:

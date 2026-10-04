@@ -13,3 +13,4 @@ letsEncrypt:
     - paperless-ngx
     - romm
     - vikunja
+    - warracker

@@ -1,0 +1,7 @@
+ingress:
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+  tls:
+    - hosts:
+        - warracker.internal
+      secretName: warracker-internal-tls
