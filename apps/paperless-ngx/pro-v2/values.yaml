@@ -21,4 +21,4 @@ deployment:
       memory: 256Mi
     limits:
       cpu: 3000m
-      memory: 512Mi
+      memory: 768Mi
