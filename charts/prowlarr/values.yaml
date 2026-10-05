@@ -1,7 +1,0 @@
-image:
-  repository: lscr.io/linuxserver/prowlarr
-  tag: version-1.37.0.5076
-
-ingress:
-  annotations: {}
-  tls: []
