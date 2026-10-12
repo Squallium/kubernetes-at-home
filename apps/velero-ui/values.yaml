@@ -6,11 +6,27 @@ apiService:
   secret:
     defaultAdminUsername: admin
     defaultAdminPassword: admin
+  resources:
+    requests:
+      cpu: 100m
+      memory: 64Mi
+    limits:
+      cpu: 100m
+      memory: 128Mi
 
 exposure:
   mode: ingress
 
 uiService:
+  resources:
+    requests:
+      cpu: 100m
+      memory: 64Mi
+    limits:
+      cpu: 100m
+      memory: 128Mi
+
+watchdogService:
   resources:
     requests:
       cpu: 100m
