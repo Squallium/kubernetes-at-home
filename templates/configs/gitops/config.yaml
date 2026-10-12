@@ -69,7 +69,6 @@ default_context:
       - name: "kargo"
         chart_repo: "ghcr.io/akuity/kargo-charts"
         chart_name: "kargo"
-        chart_target_revision: "1.8.4"
         enable_kargo: true
         kargo_project: true
 #      - name: "argo-rollouts"
