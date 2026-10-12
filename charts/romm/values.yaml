@@ -216,6 +216,8 @@ env:
   - name: PLAYMATCH_API_ENABLED
     value: "true"
 
+additionalEnv: []
+
 envFrom:
   - secretRef:
       name: romm-db
