@@ -1,4 +1,4 @@
-env:
+additionalEnv:
   - name: SCAN_WORKERS
     value: 1
   - name: WEB_SERVER_CONCURRENCY
