@@ -19,8 +19,6 @@ ingress:
 
 storage:
   enabled: true
-  provisioner:
-    enabled: true
 
   persistentVolumeClaims:
     - name: homebox-data
