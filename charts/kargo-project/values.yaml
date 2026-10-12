@@ -36,7 +36,7 @@ kargo:
       color: "#a42ea6"
       configColor: "#a42ea6"
       onlyConfig: false
-      relPath: /production
+      relPath: /pro-v2
       argoCDAppSuffix: -pro-v2
     core:
       enabled: false
