@@ -1,8 +1,8 @@
 additionalEnv:
   - name: SCAN_WORKERS
-    value: 1
+    value: "1"
   - name: WEB_SERVER_CONCURRENCY
-    value: 1
+    value: "1"
 
 resources:
   requests:
