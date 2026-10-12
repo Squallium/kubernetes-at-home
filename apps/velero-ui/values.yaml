@@ -26,7 +26,7 @@ uiService:
         memory: 64Mi
       limits:
         cpu: 100m
-        memory: 96Mi
+        memory: 128Mi
 
 watchdogService:
   deployment:
