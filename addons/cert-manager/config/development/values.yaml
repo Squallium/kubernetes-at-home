@@ -1,27 +1,16 @@
-certificates:
-  - name: home-assistant-dev
-    namespace: home-assistant
-    duration: 8760h
-    renewBefore: 720h
-    domain: internal.org
-  - name: jellyfin-dev
-    namespace: jellyfin
-    duration: 8760h
-    renewBefore: 720h
+certificates: []
 letsEncrypt:
   enable: true
   issuerName: letsencrypt-production
   server: https://acme-v02.api.letsencrypt.org/directory
   namespaces:
-    - authentik
-    - calibre-web
-    - home-assistant
     - immich
-    - jellyfin
     - kube-prometheus-stack
+    - velero
+    - velero-ui
+    - calibre-web
+    - homebox
     - paperless-ngx
-    - pgbackweb
+    - romm
     - vikunja
-    - octoprint
-    - fdm-monster
-    - mainsail
+    - warracker
