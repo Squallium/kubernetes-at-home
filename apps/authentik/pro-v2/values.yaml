@@ -17,7 +17,7 @@ server:
       memory: 256Mi
     limits:
       cpu: 800m
-      memory: 756Mi
+      memory: 384Mi
 
 worker:
   envFrom:
