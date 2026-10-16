@@ -1,5 +1,0 @@
-ingress:
-  tls:
-    - hosts:
-        - fdm-monster.internal
-      secretName: fdm-monster-internal-tls
