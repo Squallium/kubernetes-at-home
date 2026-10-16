@@ -1,5 +1,0 @@
-ingress:
-  tls:
-    - hosts:
-        - immich.internal
-      secretName: immich-internal-tls
