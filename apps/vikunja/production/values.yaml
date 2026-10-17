@@ -1,8 +1,0 @@
-auth:
-  openid:
-    enabled: true
-    providerName: authentik
-    authurl: https://auth.internal.org/application/o/vikunja/
-
-ingress:
-  host: vikunja.internal

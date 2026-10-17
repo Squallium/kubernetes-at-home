@@ -1,5 +1,0 @@
-ingress:
-  tls:
-    - hosts:
-        - vikunja.internal
-      secretName: vikunja-internal-tls
