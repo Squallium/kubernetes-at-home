@@ -1,9 +1,0 @@
-image:
-  tag: "v2.19.0"
-
-ingress:
-  hosts:
-    - host: mainsail.internal
-      paths:
-        - path: /
-          pathType: Prefix
