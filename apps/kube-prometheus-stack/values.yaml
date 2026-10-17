@@ -67,6 +67,14 @@ prometheus:
               storage: 10Gi
           storageClassName: "microk8s-hostpath"
 
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 1000m
+        memory: 256Mi
+
 alertmanager:
   alertmanagerSpec:
     storage:
