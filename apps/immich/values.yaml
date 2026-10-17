@@ -52,10 +52,10 @@ postgresql:
     resources:
       requests:
         cpu: 100m
-        memory: 256Mi
+        memory: 128Mi
       limits:
         cpu: 1
-        memory: 756Mi
+        memory: 256Mi
 
 valkey:
   standalone:
