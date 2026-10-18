@@ -4,13 +4,13 @@ letsEncrypt:
   issuerName: letsencrypt-production
   server: https://acme-v02.api.letsencrypt.org/directory
   namespaces:
-    - immich
-    - kube-prometheus-stack
-    - velero
-    - velero-ui
+    - authentik
     - calibre-web
     - homebox
+    - immich
+    - kube-prometheus-stack
     - paperless-ngx
     - romm
+    - velero-ui
     - vikunja
     - warracker
