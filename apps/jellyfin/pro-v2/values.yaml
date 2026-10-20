@@ -8,3 +8,13 @@ ingress:
       paths:
         - path: /
           pathType: ImplementationSpecific
+
+persistence:
+  config:
+    size: 10Gi
+  media:
+    enabled: true
+    type: hostPath
+    hostPath: /mnt/services/media
+  cache:
+    enabled: true
