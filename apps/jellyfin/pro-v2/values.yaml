@@ -18,3 +18,4 @@ persistence:
     hostPath: /mnt/services/media
   cache:
     enabled: true
+    type: pvc
