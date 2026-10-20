@@ -19,3 +19,4 @@ persistence:
   cache:
     enabled: true
     type: pvc
+    size: 10Gi
