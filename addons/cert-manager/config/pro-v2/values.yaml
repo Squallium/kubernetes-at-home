@@ -14,3 +14,4 @@ letsEncrypt:
     - velero-ui
     - vikunja
     - warracker
+    - jellyfin
