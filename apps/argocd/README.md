@@ -113,11 +113,14 @@ stern argocd-application-controller -n argocd
 
 ### Upgrading ArgoCD
 
+Run the github action for create a custom repo server image, then update the values with the image tag according to
+artifacthub website https://artifacthub.io/packages/helm/argo/argo-cd
+
 To upgrade ArgoCD, you can use the following command:
 
 ```shell
 helm upgrade argocd argo/argo-cd --namespace argocd --values apps/argocd/values.yaml --values apps/argocd/values-ssl.yaml --version <version>
-helm upgrade argocd argo/argo-cd --namespace argocd --values apps/argocd/values.yaml --values ../kubernetes-at-home-incubator/apps/argocd/values.yaml --values apps/argocd/values-ssl.yaml --values ../kubernetes-at-home-incubator/apps/argocd/values-ssl.yaml --version 9.5.11
+helm upgrade argocd argo/argo-cd --namespace argocd --values apps/argocd/values.yaml --values ../kubernetes-at-home-incubator/apps/argocd/values.yaml --values apps/argocd/values-ssl.yaml --values ../kubernetes-at-home-incubator/apps/argocd/values-ssl.yaml --version 10.10.5
 ```
 
 And for upgrade the config chart

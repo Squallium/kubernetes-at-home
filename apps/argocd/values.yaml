@@ -1,6 +1,6 @@
 global:
   image:
-    tag: v3.3.12
+    tag: v3.5.5
 
 server:
   ingress:
@@ -19,7 +19,7 @@ server:
 repoServer:
   image:
     repository: ghcr.io/squallium/kubernetes-at-home/helm-secrets-argocd-repo-server
-    tag: v3.3.12-helm-secrets-4.7.7
+    tag: v3.5.5-helm-secrets-4.7.9
     imagePullPolicy: Always
   volumes:
     - configMap:
