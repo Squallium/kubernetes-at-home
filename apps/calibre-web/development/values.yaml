@@ -1,11 +1,34 @@
 image:
   tag: 0.6.27
-deployment:
-  additionalVolumeMounts:
-    - name: books
-      mountPath: /books
-  additionalVolumes:
-    - name: books
-      hostPathPath: /mnt/services/media/books
+
+volumeMounts:
+  - name: config
+    mountPath: /config
+  - name: books
+    mountPath: /books
+
+volumes:
+  - name: config
+    persistentVolumeClaim:
+      claimName: calibre-web-config
+
+  - name: books
+    hostPath:
+      path: /mnt/services/media/books
+      type: Directory
+
 ingress:
-  hostname: calibre-web-dev.internal
+  hosts:
+    - host: calibre-web-dev.internal
+      paths:
+        - path: /
+          pathType: Prefix
+
+storage:
+  enabled: true
+  provisioner:
+    enabled: true
+
+  persistentVolumeClaims:
+    - name: calibre-web-config
+      size: 1Gi

@@ -142,6 +142,7 @@ kubectl rollout restart deployment external-secrets -n external-secrets
 You will have to restart ArgoCD Application Controller in case you have Vault configuration in ArgoCD:
 
 ```bash
+kubectl rollout restart deploy argocd-server argocd-repo-server argocd-applicationset-controller -n argocd
 kubectl rollout restart statefulset argocd-application-controller -n argocd  
 ```
 
