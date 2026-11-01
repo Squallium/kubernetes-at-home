@@ -1,5 +1,5 @@
 image:
-  tag: 10.11.11
+  tag: 12
 ingress:
   enabled: true
   className: public
