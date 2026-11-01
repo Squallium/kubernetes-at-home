@@ -10,6 +10,7 @@ kargo:
         - '^\d+\.\d+\.\d+$'
         - '^\d+\.\d+$'
       ignoreTagsRegexes: []
+      strictSemvers: true
     chart:
       repoURL: https://jellyfin.github.io/jellyfin-helm
       name: jellyfin

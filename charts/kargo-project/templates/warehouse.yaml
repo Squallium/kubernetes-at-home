@@ -10,7 +10,7 @@ spec:
   - image:
       repoURL: {{ .Values.kargo.warehouse.image.repoURL }}
       imageSelectionStrategy: {{ .Values.kargo.warehouse.image.imageSelectionStrategy }}
-      strictSemvers: true
+      strictSemvers: {{ .Values.kargo.warehouse.image.strictSemvers | default true }}
       discoveryLimit: {{ .Values.kargo.warehouse.image.discoveryLimit | default 3 }}
       constraint: {{ .Values.kargo.warehouse.image.constraint }}
       allowTagsRegexes:
