@@ -1,5 +1,5 @@
 image:
-  tag: v3.2.2
+  tag: v3.3.5
 
 ingress:
   hosts:
