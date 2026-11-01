@@ -1,5 +1,5 @@
 chart:
-  targetRevision: 1.0.6
+  targetRevision: 1.0.9
 kargo:
   warehouse:
     image:
@@ -8,6 +8,7 @@ kargo:
       constraint: ''
       allowTagsRegexes:
         - '^\d+\.\d+\.\d+$'
+        - '^\d+\.\d+$'
       ignoreTagsRegexes: []
     chart:
       repoURL: https://jellyfin.github.io/jellyfin-helm
