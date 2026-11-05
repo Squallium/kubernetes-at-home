@@ -6,3 +6,15 @@ backups:
   immich:
     schedule: "17 3 * * *"
     namespace: immich
+
+  paperless:
+    schedule: "37 3 * * *"
+    namespace: paperless
+
+  jellyfin:
+    schedule: "47 3 * * *"
+    namespace: jellyfin
+
+  homebox:
+    schedule: "57 3 * * *"
+    namespace: homebox
