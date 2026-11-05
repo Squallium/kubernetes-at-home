@@ -6,5 +6,6 @@ defaults:
   parallelFilesUpload: 10
   useOwnerReferencesInBackup: false
 
+infrastructureBackups: []
 backups: []
 additionalBackups: []

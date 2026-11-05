@@ -1,5 +1,9 @@
 {{- $defaults := .Values.defaults }}
-{{- $backups := mergeOverwrite (deepCopy (.Values.backups | default dict)) (.Values.additionalBackups | default dict) }}
+{{- $backups := mergeOverwrite
+    (deepCopy (.Values.backups | default dict))
+    (.Values.additionalBackups | default dict)
+    (.Values.infrastructureBackups | default dict)
+}}
 {{- range $name, $backup := $backups }}
 ---
 apiVersion: velero.io/v1
