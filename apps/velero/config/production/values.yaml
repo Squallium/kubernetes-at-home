@@ -1,0 +1,8 @@
+backups:
+  authentik:
+    schedule: "27 3 * * *"
+    namespace: authentik
+
+  immich:
+    schedule: "17 3 * * *"
+    namespace: immich

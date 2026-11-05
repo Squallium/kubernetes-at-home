@@ -1,0 +1,20 @@
+{{- range $name, $backup := .Values.backups }}
+---
+apiVersion: velero.io/v1
+kind: Schedule
+metadata:
+  name: {{ $name }}
+  namespace: {{ $.Release.Namespace }}
+spec:
+  paused: {{ $.Values.defaults.paused }}
+  schedule: {{ $backup.schedule | quote }}
+  useOwnerReferencesInBackup: {{ $.Values.defaults.useOwnerReferencesInBackup }}
+  template:
+    csiSnapshotTimeout: {{ $.Values.defaults.csiSnapshotTimeout }}
+    defaultVolumesToFsBackup: {{ $.Values.defaults.defaultVolumesToFsBackup }}
+    includedNamespaces:
+      - {{ $backup.namespace | quote }}
+    ttl: {{ $.Values.defaults.ttl | quote }}
+    uploaderConfig:
+      parallelFilesUpload: {{ $.Values.defaults.parallelFilesUpload }}
+  {{- end }}

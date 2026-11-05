@@ -289,6 +289,10 @@ default_context:
         chart_name: "immich-config"
         enable_kargo: true
         kargo_project: true
+      - name: "velero"
+        chart_name: "velero-config"
+        enable_kargo: true
+        kargo_project: true
   services_addons:
     list:
       - name: "home-assistant-addons"
