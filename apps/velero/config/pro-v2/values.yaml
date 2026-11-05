@@ -1,20 +1,36 @@
 backups:
   authentik:
-    schedule: "27 3 * * *"
+    schedule: "7 3 * * *"
     namespace: authentik
 
-  immich:
+  calibre-web:
     schedule: "17 3 * * *"
-    namespace: immich
-
-  paperless:
-    schedule: "37 3 * * *"
-    namespace: paperless
-
-  jellyfin:
-    schedule: "47 3 * * *"
-    namespace: jellyfin
+    namespace: calibre-web
 
   homebox:
-    schedule: "57 3 * * *"
+    schedule: "27 3 * * *"
     namespace: homebox
+
+  immich:
+    schedule: "37 3 * * *"
+    namespace: immich
+
+  jellyfin:
+    schedule: "7 4 * * *"
+    namespace: jellyfin
+
+  paperless:
+    schedule: "37 4 * * *"
+    namespace: paperless
+
+  romm:
+    schedule: "52 4 * * *"
+    namespace: romm
+
+  vikunja:
+    schedule: "7 5 * * *"
+    namespace: vikunja
+
+  warracker:
+    schedule: "17 5 * * *"
+    namespace: warracker
