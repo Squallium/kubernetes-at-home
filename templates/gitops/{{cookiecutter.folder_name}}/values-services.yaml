@@ -206,6 +206,11 @@ applicationsets:
           - repoURL: https://github.com/Squallium/kubernetes-at-home.git
             targetRevision: main
             ref: values
+          {%- if service_config.get("enable_incubator", False) %}
+          - repoURL: {{ cookiecutter.default_ref_values_incubator_repo_url }}
+            targetRevision: main
+            ref: values-incubator
+          {%- endif %}
           {%- if service_config.chart_name | default(cookiecutter.default_chart_name) %}
           - repoURL: {{ service_config.chart_repo | default(cookiecutter.default_chart_repo) }}
             chart: {{ service_config.chart_name  }}
@@ -217,7 +222,13 @@ applicationsets:
             helm:
               valueFiles:
                 - $values/apps/{{ service_config.name }}/config/values.yaml
+                {%- if service_config.get("enable_incubator", False) %}
+                - $values-incubator/apps/{{ service_config.name }}/config/values.yaml
+                {%- endif %}
                 - $values/apps/{{ service_config.name }}/config/{{'{{'}}metadata.labels.environment}}/values.yaml
+                {%- if service_config.get("enable_incubator", False) %}
+                - $values-incubator/apps/{{ service_config.name }}/config/{{'{{'}}metadata.labels.environment}}/values.yaml
+                {%- endif %}
                 - $values/defaults/{{'{{'}}metadata.labels.environment}}/resources/values.yaml
         destination:
           server: '{{'{{'}}server}}'

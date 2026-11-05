@@ -7,3 +7,4 @@ defaults:
   useOwnerReferencesInBackup: false
 
 backups: []
+additionalBackups: []

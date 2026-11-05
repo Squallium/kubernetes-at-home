@@ -1,4 +1,6 @@
-{{- range $name, $backup := .Values.backups }}
+{{- $defaults := .Values.defaults }}
+{{- $backups := mergeOverwrite (deepCopy (.Values.backups | default dict)) (.Values.additionalBackups | default dict) }}
+{{- range $name, $backup := $backups }}
 ---
 apiVersion: velero.io/v1
 kind: Schedule
@@ -6,15 +8,15 @@ metadata:
   name: {{ $name }}
   namespace: {{ $.Release.Namespace }}
 spec:
-  paused: {{ $.Values.defaults.paused }}
+  paused: {{ $backup.paused | default $defaults.paused }}
   schedule: {{ $backup.schedule | quote }}
-  useOwnerReferencesInBackup: {{ $.Values.defaults.useOwnerReferencesInBackup }}
+  useOwnerReferencesInBackup: {{ $defaults.useOwnerReferencesInBackup }}
   template:
-    csiSnapshotTimeout: {{ $.Values.defaults.csiSnapshotTimeout }}
-    defaultVolumesToFsBackup: {{ $.Values.defaults.defaultVolumesToFsBackup }}
+    csiSnapshotTimeout: {{ $defaults.csiSnapshotTimeout }}
+    defaultVolumesToFsBackup: {{ $defaults.defaultVolumesToFsBackup }}
     includedNamespaces:
       - {{ $backup.namespace | quote }}
-    ttl: {{ $.Values.defaults.ttl | quote }}
+    ttl: {{ $backup.ttl | default $defaults.ttl | quote }}
     uploaderConfig:
-      parallelFilesUpload: {{ $.Values.defaults.parallelFilesUpload }}
-  {{- end }}
+      parallelFilesUpload: {{ $defaults.parallelFilesUpload }}
+{{- end }}
