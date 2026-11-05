@@ -1,0 +1,13 @@
+configuration:
+  backupStorageLocation:
+    - name: default
+      provider: aws
+      bucket: velero
+      prefix: pro
+      default: true
+      accessMode: ReadWrite
+      config:
+        region: us-east-1
+        s3Url: http://192.168.1.166:8333
+        s3ForcePathStyle: "true"
+        insecureSkipTLSVerify: "true"
