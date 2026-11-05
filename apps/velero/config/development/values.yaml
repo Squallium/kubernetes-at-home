@@ -27,6 +27,14 @@ backups:
     schedule: "52 4 * * *"
     namespace: romm
 
+  velero:
+    schedule: "57 2 * * *"
+    namespace: velero
+
+  velero-ui:
+    schedule: "57 3 * * *"
+    namespace: velero-ui
+
   vikunja:
     schedule: "7 5 * * *"
     namespace: vikunja
