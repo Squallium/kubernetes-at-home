@@ -1,0 +1,24 @@
+infrastructureBackups:
+  cert-manager:
+    schedule: "..."
+    namespace: cert-manager
+
+  default:
+    schedule: "..."
+    namespace: default
+
+  external-secrets:
+    schedule: "..."
+    namespace: external-secrets
+
+  ingress:
+    schedule: "..."
+    namespace: ingress
+
+  kube-prometheus-stack:
+    schedule: "..."
+    namespace: kube-prometheus-stack
+
+  reflector:
+    schedule: "..."
+    namespace: reflector
