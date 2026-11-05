@@ -15,3 +15,17 @@ extSecrets:
         remoteRef:
           key: secret/authentik/development/postgres
           property: password
+  - name: redis
+    templateType: kubernetes.io/basic-auth
+    secrets:
+      - secretKey: password
+        remoteRef:
+          key: secret/authentik/development/redis
+          property: password
+
+postgresql:
+  storageType: openebs
+
+redis:
+  storageType: openebs
+  secretName: authentik-redis
