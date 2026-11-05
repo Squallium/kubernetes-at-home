@@ -19,9 +19,9 @@ backups:
     schedule: "7 4 * * *"
     namespace: jellyfin
 
-  paperless:
+  paperless-ngx:
     schedule: "37 4 * * *"
-    namespace: paperless
+    namespace: paperless-ngx
 
   romm:
     schedule: "52 4 * * *"
