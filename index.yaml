@@ -2904,6 +2904,16 @@ entries:
     version: 0.0.1
   velero-config:
   - apiVersion: v2
+    appVersion: 0.0.2
+    created: "2026-11-05T18:18:07.477177741Z"
+    description: A Helm chart for setting up Velero backups in a Kubernetes cluster.
+    digest: 18ecff01069e0180bf368ec1662bfb4b3feebcbf016e098a5906e5dfc3bc6a69
+    name: velero-config
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/velero-config-0.0.2/velero-config-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
     appVersion: 0.0.1
     created: "2026-11-05T17:23:05.141752767Z"
     description: A Helm chart for setting up Velero backups in a Kubernetes cluster.
@@ -3525,4 +3535,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/warracker-0.0.1/warracker-0.0.1.tgz
     version: 0.0.1
-generated: "2026-11-05T17:23:05.142207461Z"
+generated: "2026-11-05T18:18:07.477728518Z"
