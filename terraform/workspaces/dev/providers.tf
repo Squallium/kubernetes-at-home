@@ -8,3 +8,7 @@ provider "authentik" {
   #   X-my-header = "foo"
   # }
 }
+
+provider "vault" {
+
+}

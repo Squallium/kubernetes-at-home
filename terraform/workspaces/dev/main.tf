@@ -1,6 +1,8 @@
 module "k8s-at-home-common" {
   source = "../../modules/k8s-at-home-common"
 
+  environment = "development"
+
   standard_oidc_services = {
     argo-cd = {
       name        = "Argo CD"

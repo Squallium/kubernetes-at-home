@@ -1,3 +1,8 @@
+variable "environment" {
+  description = "Environment name"
+  type        = string
+}
+
 variable "standard_oidc_services" {
   description = "A map of standard OIDC services with their respective domain names and optional client IDs"
   type = map(object({

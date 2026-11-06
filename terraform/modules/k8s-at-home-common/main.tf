@@ -1,3 +1,33 @@
+resource "authentik_source_oauth" "google" {
+  name         = "Google"
+  slug         = "google"
+  provider_type = "google"
+
+  consumer_key = data.vault_kv_secret_v2.google_oauth.data["client_id"]
+  consumer_secret = data.vault_kv_secret_v2.google_oauth.data["client_secret"]
+
+  authentication_flow = data.authentik_flow.source_authentication.id
+  enrollment_flow     = data.authentik_flow.source_enrollment.id
+
+  user_matching_mode = "identifier"
+  enabled            = true
+}
+
+resource "authentik_stage_identification" "default" {
+  name = "default-authentication-identification"
+
+  case_insensitive_matching = true
+
+  sources = [
+    authentik_source_oauth.google.uuid
+  ]
+
+  user_fields = [
+    "email",
+    "username"
+  ]
+}
+
 resource "authentik_provider_oauth2" "oidc_providers" {
   for_each = var.standard_oidc_services
 
@@ -11,6 +41,7 @@ resource "authentik_provider_oauth2" "oidc_providers" {
     {
       matching_mode = "strict"
       url           = "${each.value.domain_name}${each.value.redirect_uri_suffix}"
+      redirect_uri_type = "authorization"
     }
   ]
 
