@@ -6,3 +6,6 @@ auth:
 
 ingress:
   host: vikunja-dev.internal
+
+postgresql:
+  image: paradedb:0.26.5
