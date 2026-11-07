@@ -26,7 +26,7 @@ spec:
             - name: vikunja-files
               mountPath: /app/vikunja/files
             - name: vikunja-config-file
-              mountPath: /app/vikunja/config.yml
+              mountPath: /etc/vikunja/config.yml
               subPath: config.yml
           resources:
             {{- toYaml .Values.deployment.resources | nindent 12 }}
