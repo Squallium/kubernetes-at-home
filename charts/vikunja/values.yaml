@@ -1,4 +1,4 @@
-image: vikunja/vikunja:2.7.0
+image: vikunja/vikunja:2.8.0
 secret: supersecreto # cámbialo luego en serio
 publicUrl: https://vikunja.internal
 
