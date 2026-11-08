@@ -25,8 +25,7 @@ spec:
             - containerPort: 9001 # WebSocket (opcional)
           volumeMounts:
             - name: config
-              mountPath: /mosquitto/config/mosquitto.conf
-              subPath: mosquitto.conf
+              mountPath: /mosquitto/config
               readOnly: true
             - name: data
               mountPath: /mosquitto/data
