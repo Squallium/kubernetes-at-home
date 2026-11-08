@@ -15,6 +15,11 @@ spec:
       containers:
         - name: mosquitto
           image: {{ .Values.mosquitto.image.repository }}:{{ .Values.mosquitto.image.tag }}
+          command:
+            - /usr/sbin/mosquitto
+          args:
+            - -c
+            - /mosquitto/config/mosquitto.conf
           ports:
             - containerPort: 1883 # MQTT
             - containerPort: 9001 # WebSocket (opcional)
