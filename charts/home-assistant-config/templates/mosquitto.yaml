@@ -15,6 +15,9 @@ spec:
       containers:
         - name: mosquitto
           image: {{ .Values.mosquitto.image.repository }}:{{ .Values.mosquitto.image.tag }}
+          securityContext:
+            runAsUser: 1883
+            runAsGroup: 1883
           ports:
             - containerPort: 1883 # MQTT
             - containerPort: 9001 # WebSocket (opcional)
