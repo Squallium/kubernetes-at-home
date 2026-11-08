@@ -7,43 +7,43 @@ module "k8s-at-home-common" {
     argo-cd = {
       name        = "Argo CD"
       group       = "Desarrollo"
-      domain_name = "https://argocd-dev.internal"
+      subdomain_name = "argocd-dev"
       redirect_uri_suffix = "/auth/openid/authentik"
       logout_uri_suffix = "/auth/openid/authentik"
     }
     calibre-web = {
       name        = "Calibre-Web"
       group       = "Libros, manga y comics"
-      domain_name = "https://calibre-web-dev.internal"
+      subdomain_name = "calibre-web-dev"
       redirect_uri_suffix = "/login/generic/authorized"
       logout_uri_suffix = "/auth/oidc/logout"
     }
     home-assistant = {
       name        = "Home Assistant"
       group       = "Domótica"
-      domain_name = "https://home-assistant-dev.internal.org"
-      meta_launch_url = "https://home-assistant-dev.internal.org/auth/oidc/welcome"
+      subdomain_name = "home-assistant-dev"
+      meta_launch_url = "home-assistant-dev.org/auth/oidc/welcome"
       redirect_uri_suffix = "/auth/oidc/callback"
       logout_uri_suffix = "/auth/logout/"
     }
     homebox = {
       name        = "HomeBox"
       group       = "Inventario"
-      domain_name = "https://homebox-dev.internal"
+      subdomain_name = "homebox-dev"
       redirect_uri_suffix = "/auth/openid/authentik"
       logout_uri_suffix = "/auth/openid/authentik"
     }
     immich = {
       name        = "Immich"
       group       = "Multimedia"
-      domain_name = "https://immich-dev.internal"
+      subdomain_name = "immich-dev"
       redirect_uri_suffix = "/auth/openid/authentik"
       logout_uri_suffix = "/auth/openid/authentik"
     }
     jellyfin = {
       name        = "Jellyfin"
       group       = "Multimedia"
-      domain_name = "https://jellyfin-dev.internal"
+      subdomain_name = "jellyfin-dev"
       redirect_uri_suffix = "/auth/openid/authentik"
       logout_uri_suffix = "/auth/openid/authentik"
     }
@@ -51,49 +51,49 @@ module "k8s-at-home-common" {
       name        = "Kargo"
       group       = "Desarrollo"
       icon_url    = "https://docs.kargo.io/img/kargo.png"
-      domain_name = "https://kargo.internal"
+      subdomain_name = "kargo"
       redirect_uri_suffix = "/auth/openid/authentik"
       logout_uri_suffix = "/auth/openid/authentik"
     }
     grafana = {
       name        = "Grafana"
       group       = "Desarrollo"
-      domain_name = "https://grafana.internal"
+      subdomain_name = "grafana"
       redirect_uri_suffix = "/auth/openid/authentik"
       logout_uri_suffix = "/auth/openid/authentik"
     }
     prometheus = {
       name        = "Prometheus"
       group       = "Desarrollo"
-      domain_name = "https://prometheus-dev.internal"
+      subdomain_name = "prometheus-dev"
       redirect_uri_suffix = "/auth/openid/authentik"
       logout_uri_suffix = "/auth/openid/authentik"
     }
     paperless = {
       name        = "Paperless"
       group       = "Inventario"
-      domain_name = "https://paperless-dev.internal"
+      subdomain_name = "paperless-dev"
       redirect_uri_suffix = "/accounts/oidc/authentik/login/callback/"
       logout_uri_suffix = "/application/o/paperless/end-session/"
     }
     romm = {
       name        = "Romm"
       group       = "Videojuegos"
-      domain_name = "https://romm-dev.internal"
+      subdomain_name = "romm-dev"
       redirect_uri_suffix = "/auth/openid/authentik"
       logout_uri_suffix = "/auth/openid/authentik"
     }
     vikunja = {
       name        = "Vikunja"
       group       = "Inventario"
-      domain_name = "https://vikunja-dev.internal"
+      subdomain_name = "vikunja-dev"
       redirect_uri_suffix = "/auth/openid/authentik"
       logout_uri_suffix = "/auth/openid/authentik"
     }
     warracker = {
       name        = "Warracker"
       group       = "Inventario"
-      domain_name = "https://warracker-dev.internal"
+      subdomain_name = "warracker-dev"
       redirect_uri_suffix = "/api/oidc/callback"
       logout_uri_suffix = ""
     }
@@ -104,23 +104,23 @@ module "k8s-at-home-common" {
       name        = "AdGuard Home"
       group       = "Desarrollo"
       description = "DNS privado y bloqueador de anuncios"
-      domain_name = "http://192.168.1.157:3000"
+      subdomain_name = "http://192.168.1.157:3000"
     }
     pgbackweb = {
       name        = "pgBackWeb"
       group       = "Desarrollo"
       icon_theme = "-light"
-      domain_name = "https://pgbackweb-dev.internal"
+      subdomain_name = "pgbackweb-dev"
     }
     zigbee2mqtt = {
       name        = "Zigbee2MQTT"
       group       = "Domótica"
-      domain_name = "https://zigbee2mqtt-dev.internal"
+      subdomain_name = "zigbee2mqtt-dev"
     }
     vault = {
       name        = "Vault"
       group       = "Desarrollo"
-      domain_name = "https://vault.internal"
+      subdomain_name = "vault"
     }
   }
 }

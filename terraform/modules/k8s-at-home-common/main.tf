@@ -40,12 +40,12 @@ resource "authentik_provider_oauth2" "oidc_providers" {
   allowed_redirect_uris = [
     {
       matching_mode = "strict"
-      url           = "${each.value.domain_name}${each.value.redirect_uri_suffix}"
+      url           = "https://${each.value.subdomain_name}.${each.value.domain_name}${each.value.redirect_uri_suffix}"
       redirect_uri_type = "authorization"
     }
   ]
 
-  logout_uri = "${each.value.domain_name}${each.value.logout_uri_suffix}"
+  logout_uri = "https://${each.value.subdomain_name}.${each.value.domain_name}${each.value.logout_uri_suffix}"
 }
 
 
@@ -57,7 +57,7 @@ resource "authentik_application" "oidc_apps" {
   group             = each.value.group
   meta_description = each.value.description
   meta_icon         = coalesce(each.value.icon_url, "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/${coalesce(each.value.icon_name, each.key)}.png")
-  meta_launch_url   = coalesce(each.value.meta_launch_url, "${each.value.domain_name}/")
+  meta_launch_url   = coalesce(each.value.meta_launch_url, "https://${each.value.subdomain_name}.${each.value.domain_name}/")
   open_in_new_tab   = true
   protocol_provider = authentik_provider_oauth2.oidc_providers[each.key].id
 }

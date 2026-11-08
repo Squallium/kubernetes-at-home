@@ -12,7 +12,8 @@ variable "standard_oidc_services" {
     icon_name   = optional(string)
     icon_theme  = optional(string, "")
     icon_url    = optional(string)
-    domain_name = string
+    domain_name = optional(string, "internal")
+    subdomain_name = string
     meta_launch_url = optional(string)
     redirect_uri_suffix = string
     logout_uri_suffix = string
@@ -30,7 +31,8 @@ variable "non_oidc_services" {
         icon_name   = optional(string)
         icon_theme  = optional(string, "")
         icon_url    = optional(string)
-        domain_name = string
+        domain_name = optional(string, "internal")
+        subdomain_name = string
     }))
     default = {}
 }
