@@ -1,4 +1,6 @@
 resource "authentik_source_oauth" "google" {
+  count = var.google_oauth_enabled ? 1 : 0
+
   name         = "Google"
   slug         = "google"
   provider_type = "google"
@@ -14,12 +16,13 @@ resource "authentik_source_oauth" "google" {
 }
 
 resource "authentik_stage_identification" "default" {
-  name = "default-authentication-identification"
+  count = var.google_oauth_enabled ? 1 : 0
 
+  name = "default-authentication-identification"
   case_insensitive_matching = true
 
   sources = [
-    authentik_source_oauth.google.uuid
+    authentik_source_oauth.google[0].uuid
   ]
 
   user_fields = [

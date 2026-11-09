@@ -3,6 +3,7 @@ module "k8s-at-home-common" {
 
   environment = "development"
   domain_name = var.domain_name
+  google_oauth_enabled = true
 
   standard_oidc_services = {
     argo-cd = {

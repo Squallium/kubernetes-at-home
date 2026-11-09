@@ -9,6 +9,12 @@ variable "domain_name" {
   default = "internal"
 }
 
+variable "google_oauth_enabled" {
+  description = "Enable Google OAuth source"
+  type        = bool
+  default     = false
+}
+
 variable "standard_oidc_services" {
   description = "A map of standard OIDC services with their respective domain names and optional client IDs"
   type = map(object({
