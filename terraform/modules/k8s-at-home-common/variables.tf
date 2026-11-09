@@ -3,6 +3,12 @@ variable "environment" {
   type        = string
 }
 
+variable "domain_name" {
+  description = "The domain name for the services"
+  type        = string
+  default = "internal"
+}
+
 variable "standard_oidc_services" {
   description = "A map of standard OIDC services with their respective domain names and optional client IDs"
   type = map(object({
@@ -12,12 +18,13 @@ variable "standard_oidc_services" {
     icon_name   = optional(string)
     icon_theme  = optional(string, "")
     icon_url    = optional(string)
-    domain_name = optional(string, "internal")
     subdomain_name = string
     meta_launch_url = optional(string)
     redirect_uri_suffix = string
     logout_uri_suffix = string
     client_id  = optional(string)
+    property_mappings = optional(list(string), [])
+    signing_key       = optional(string, "")
   }))
   default = {}
 }
@@ -31,8 +38,8 @@ variable "non_oidc_services" {
         icon_name   = optional(string)
         icon_theme  = optional(string, "")
         icon_url    = optional(string)
-        domain_name = optional(string, "internal")
         subdomain_name = string
+        meta_launch_url = optional(string)
     }))
     default = {}
 }

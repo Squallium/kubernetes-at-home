@@ -2,6 +2,7 @@ module "k8s-at-home-common" {
   source = "../../modules/k8s-at-home-common"
 
   environment = "development"
+  domain_name = var.domain_name
 
   standard_oidc_services = {
     argo-cd = {
@@ -22,7 +23,7 @@ module "k8s-at-home-common" {
       name        = "Home Assistant"
       group       = "Domótica"
       subdomain_name = "home-assistant-dev"
-      meta_launch_url = "home-assistant-dev.org/auth/oidc/welcome"
+      meta_launch_url = "https://home-assistant-dev.${var.domain_name}/auth/oidc/welcome"
       redirect_uri_suffix = "/auth/oidc/callback"
       logout_uri_suffix = "/auth/logout/"
     }
@@ -89,6 +90,12 @@ module "k8s-at-home-common" {
       subdomain_name = "vikunja-dev"
       redirect_uri_suffix = "/auth/openid/authentik"
       logout_uri_suffix = "/auth/openid/authentik"
+      property_mappings = [
+        data.authentik_property_mapping_provider_scope.openid.id,
+        data.authentik_property_mapping_provider_scope.email.id,
+        data.authentik_property_mapping_provider_scope.profile.id,
+      ]
+      signing_key = data.authentik_certificate_key_pair.default.id
     }
     warracker = {
       name        = "Warracker"
@@ -104,7 +111,8 @@ module "k8s-at-home-common" {
       name        = "AdGuard Home"
       group       = "Desarrollo"
       description = "DNS privado y bloqueador de anuncios"
-      subdomain_name = "http://192.168.1.157:3000"
+      subdomain_name = "adguard-home"
+      meta_launch_url = "http://storm.${var.domain_name}:3000/"
     }
     pgbackweb = {
       name        = "pgBackWeb"

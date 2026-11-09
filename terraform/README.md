@@ -2,6 +2,7 @@ $env:AUTHENTIK_URL = "https://auth.internal.org"                                
 $env:AUTHENTIK_TOKEN = "placeholder"
 $env:VAULT_ADDR = "https://vault.internal.org"
 $env:VAULT_TOKEN = "placeholder"
+$env:TF_VAR_domain_name = "internal"
 
 
 ## Extracting ids from authentik
