@@ -12,7 +12,7 @@ Authorization = "Bearer $env:AUTHENTIK_TOKEN"
 }
 
 $response = Invoke-RestMethod `
-    -Uri "https://auth.internal.org/api/v3/stages/identification/" `
+    -Uri "https://authentik.thejedisway.com/api/v3/stages/identification/" `
 -Headers $headers
 
 $response.results |

@@ -1,5 +1,5 @@
 provider "authentik" {
-  url   = "https://auth.internal.org"
+  # url   = "https://auth-dev.internal.org"
   # token = "foo-bar"
   # Optionally set insecure to ignore TLS Certificates
   # insecure = true
@@ -7,4 +7,8 @@ provider "authentik" {
   # headers {
   #   X-my-header = "foo"
   # }
+}
+
+provider "vault" {
+
 }

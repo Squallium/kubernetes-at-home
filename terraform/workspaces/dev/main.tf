@@ -9,7 +9,7 @@ module "k8s-at-home-common" {
     argo-cd = {
       name        = "Argo CD"
       group       = "Desarrollo"
-      subdomain_name = "argocd-dev"
+      subdomain_name = "argocd"
       redirect_uri_suffix = "/auth/openid/authentik"
       logout_uri_suffix = "/auth/openid/authentik"
     }

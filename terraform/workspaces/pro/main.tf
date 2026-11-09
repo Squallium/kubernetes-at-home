@@ -1,40 +1,51 @@
 module "k8s-at-home-common" {
   source = "../../modules/k8s-at-home-common"
 
+  environment = "pro-v2"
+  domain_name = var.domain_name
+  google_oauth_enabled = true
+
   standard_oidc_services = {
     argo-cd = {
       name        = "Argo CD"
       group       = "Desarrollo"
-      domain_name = "https://argocd.internal"
+      subdomain_name = "argocd"
       redirect_uri_suffix = "/auth/openid/authentik"
       logout_uri_suffix = "/auth/openid/authentik"
     }
     calibre-web = {
       name        = "Calibre-Web"
       group       = "Libros, manga y comics"
-      domain_name = "https://calibre-web.internal"
+      subdomain_name = "calibre-web"
       redirect_uri_suffix = "/login/generic/authorized"
       logout_uri_suffix = "/auth/oidc/logout"
     }
     home-assistant = {
       name        = "Home Assistant"
       group       = "Domótica"
-      domain_name = "https://home-assistant.internal.org"
-      meta_launch_url = "https://home-assistant.internal.org/auth/oidc/welcome"
+      subdomain_name = "home-assistant"
+      meta_launch_url = "https://home-assistant.${var.domain_name}/auth/oidc/welcome"
       redirect_uri_suffix = "/auth/oidc/callback"
       logout_uri_suffix = "/auth/logout/"
     }
     homebox = {
       name        = "HomeBox"
       group       = "Inventario"
-      domain_name = "https://homebox.internal"
+      subdomain_name = "homebox"
+      redirect_uri_suffix = "/auth/openid/authentik"
+      logout_uri_suffix = "/auth/openid/authentik"
+    }
+    immich = {
+      name        = "Immich"
+      group       = "Multimedia"
+      subdomain_name = "immich"
       redirect_uri_suffix = "/auth/openid/authentik"
       logout_uri_suffix = "/auth/openid/authentik"
     }
     jellyfin = {
       name        = "Jellyfin"
       group       = "Multimedia"
-      domain_name = "https://jellyfin.internal"
+      subdomain_name = "jellyfin"
       redirect_uri_suffix = "/auth/openid/authentik"
       logout_uri_suffix = "/auth/openid/authentik"
     }
@@ -42,68 +53,57 @@ module "k8s-at-home-common" {
       name        = "Kargo"
       group       = "Desarrollo"
       icon_url    = "https://docs.kargo.io/img/kargo.png"
-      domain_name = "https://kargo.internal"
+      subdomain_name = "kargo"
       redirect_uri_suffix = "/auth/openid/authentik"
       logout_uri_suffix = "/auth/openid/authentik"
     }
     grafana = {
       name        = "Grafana"
       group       = "Desarrollo"
-      domain_name = "https://grafana.internal"
+      subdomain_name = "grafana"
       redirect_uri_suffix = "/auth/openid/authentik"
       logout_uri_suffix = "/auth/openid/authentik"
     }
     prometheus = {
       name        = "Prometheus"
       group       = "Desarrollo"
-      domain_name = "https://prometheus.internal"
+      subdomain_name = "prometheus"
       redirect_uri_suffix = "/auth/openid/authentik"
       logout_uri_suffix = "/auth/openid/authentik"
     }
     paperless = {
       name        = "Paperless"
       group       = "Inventario"
-      domain_name = "https://paperless.internal"
+      subdomain_name = "paperless"
       redirect_uri_suffix = "/accounts/oidc/authentik/login/callback/"
       logout_uri_suffix = "/application/o/paperless/end-session/"
     }
     romm = {
       name        = "Romm"
       group       = "Videojuegos"
-      domain_name = "https://romm.internal"
+      subdomain_name = "romm"
       redirect_uri_suffix = "/auth/openid/authentik"
       logout_uri_suffix = "/auth/openid/authentik"
     }
     vikunja = {
       name        = "Vikunja"
       group       = "Inventario"
-      domain_name = "https://vikunja.internal"
+      subdomain_name = "vikunja"
       redirect_uri_suffix = "/auth/openid/authentik"
       logout_uri_suffix = "/auth/openid/authentik"
+      property_mappings = [
+        data.authentik_property_mapping_provider_scope.openid.id,
+        data.authentik_property_mapping_provider_scope.email.id,
+        data.authentik_property_mapping_provider_scope.profile.id,
+      ]
+      signing_key = data.authentik_certificate_key_pair.default.id
     }
     warracker = {
       name        = "Warracker"
       group       = "Inventario"
-      domain_name = "https://warracker.internal"
+      subdomain_name = "warracker"
       redirect_uri_suffix = "/api/oidc/callback"
       logout_uri_suffix = ""
-    }
-    paperless = {
-      name        = "Paperless"
-      group       = "Inventario"
-      domain_name = "https://paperless.internal"
-      redirect_uri_suffix = "/accounts/oidc/authentik/login/callback/"
-      logout_uri_suffix = "/application/o/paperless/end-session/"
-      client_id   = "W518HnjYJYoPmFpHpmpRV1BgDBgGXYFUaWyEalx9LFSCMXkD"
-    }
-    home-assistant = {
-      name        = "Home Assistant"
-      group       = "Domótica"
-      domain_name = "https://home-assistant.internal.org"
-      meta_launch_url = "https://home-assistant.internal.org/auth/oidc/welcome"
-      redirect_uri_suffix = "/auth/oidc/callback"
-      logout_uri_suffix = "/auth/logout/"
-      client_id   = "M1oz8Z1CyWUarzadq4EMhyrZJaBZy1G_F7cxzVXr7uI"
     }
   }
 
@@ -112,23 +112,24 @@ module "k8s-at-home-common" {
       name        = "AdGuard Home"
       group       = "Desarrollo"
       description = "DNS privado y bloqueador de anuncios"
-      domain_name = "http://192.168.1.157:3000"
+      subdomain_name = "adguard-home"
+      meta_launch_url = "http://storm.${var.domain_name}:3000/"
     }
     pgbackweb = {
       name        = "pgBackWeb"
       group       = "Desarrollo"
       icon_theme = "-light"
-      domain_name = "https://pgbackweb.internal"
+      subdomain_name = "pgbackweb"
     }
     zigbee2mqtt = {
       name        = "Zigbee2MQTT"
       group       = "Domótica"
-      domain_name = "https://zigbee2mqtt.internal"
+      subdomain_name = "zigbee2mqtt"
     }
     vault = {
       name        = "Vault"
       group       = "Desarrollo"
-      domain_name = "https://vault.internal"
+      subdomain_name = "vault"
     }
   }
 }
