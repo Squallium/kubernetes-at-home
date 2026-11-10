@@ -1,6 +1,6 @@
 auth:
   openid:
-    enabled: false
+    enabled: true
     providerName: authentik
     authurl: https://auth.internal.org/application/o/vikunja/
     logouturl: https://auth.internal.org/application/o/vikunja/end-session/
