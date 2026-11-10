@@ -3,6 +3,7 @@ auth:
     enabled: false
     providerName: authentik
     authurl: https://auth.internal.org/application/o/vikunja/
+    logouturl: https://auth.internal.org/application/o/vikunja/end-session/
 
 ingress:
   host: vikunja.internal
