@@ -22,3 +22,11 @@ valkey:
     existingSecret: immich-valkey-auth
 #  external:
 #    existingSecret: immich-valkey-auth
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 512Mi
+  limits:
+    cpu: 2
+    memory: 2Gi
