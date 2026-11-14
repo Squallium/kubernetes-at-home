@@ -1,5 +1,5 @@
 chart:
-  targetRevision: 1.0.6
+  targetRevision: 1.0.9
 kargo:
   warehouse:
     image:
@@ -20,13 +20,13 @@ kargo:
       onlyConfig: false
       relPath: /development
       argoCDAppSuffix: -development
-    pro:
+    pro-v2:
       enabled: true
       color: red
       configColor: black
       onlyConfig: false
-      relPath: /production
-      argoCDAppSuffix: -production
+      relPath: /pro-v2
+      argoCDAppSuffix: -pro-v2
     lelo:
       enabled: true
       color: "#2e66a6"
