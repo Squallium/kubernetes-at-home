@@ -86,7 +86,7 @@ prometheus:
         memory: 128Mi
       limits:
         cpu: 200m
-        memory: 256Mi
+        memory: 512Mi
 
     remoteWrite:
       - url: http://prometheus.internal/api/v1/write
