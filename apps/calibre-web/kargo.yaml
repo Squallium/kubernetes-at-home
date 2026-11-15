@@ -1,5 +1,5 @@
 chart:
-  targetRevision: 1.0.9
+  targetRevision: 1.0.11
 kargo:
   warehouse:
     image:
@@ -19,17 +19,3 @@ kargo:
     chart:
       repoURL: https://squallium.github.io/kubernetes-at-home
       name: servarr
-extSecrets:
-  - name: github-ssh
-    namespace: calibre-web
-    labels:
-      kargo.akuity.io/cred-type: git
-    secrets:
-      - secretKey: repoURL
-        remoteRef:
-          key: secret/kargo/github
-          property: repo_url
-      - secretKey: sshPrivateKey
-        remoteRef:
-          key: secret/kargo/github
-          property: ssh_private_key
