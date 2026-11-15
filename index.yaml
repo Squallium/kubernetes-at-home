@@ -1727,6 +1727,20 @@ entries:
     version: 0.0.1
   kargo-config:
   - apiVersion: v2
+    appVersion: 0.0.8
+    created: "2026-11-15T18:46:27.717744177Z"
+    dependencies:
+    - name: argocd-apps
+      repository: https://argoproj.github.io/argo-helm
+      version: 2.0.2
+    description: A Helm chart for managing Kargo configurations
+    digest: d364bd42cc9eb663fe4d43861e239a3254ffc50d64e260661eba3e62584a127c
+    name: kargo-config
+    type: application
+    urls:
+    - https://github.com/Squallium/kubernetes-at-home/releases/download/kargo-config-0.0.8/kargo-config-0.0.8.tgz
+    version: 0.0.8
+  - apiVersion: v2
     appVersion: 0.0.7
     created: "2026-03-15T09:14:00.240511401Z"
     dependencies:
@@ -3635,4 +3649,4 @@ entries:
     urls:
     - https://github.com/Squallium/kubernetes-at-home/releases/download/warracker-0.0.1/warracker-0.0.1.tgz
     version: 0.0.1
-generated: "2026-11-08T17:05:40.175985511Z"
+generated: "2026-11-15T18:46:27.718224311Z"
