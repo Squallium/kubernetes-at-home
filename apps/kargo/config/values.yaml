@@ -1,5 +1,5 @@
 chart:
-  targetRevision: 0.0.7
+  targetRevision: 0.0.8
 extSecrets:
   - name: api
     secrets:
@@ -9,7 +9,22 @@ extSecrets:
       - secretKey: ADMIN_ACCOUNT_TOKEN_SIGNING_KEY
         remoteRef:
           key: secret/kargo/api
-      
+
+sharedSecrets:
+  - name: github-k8s-at-home
+    namespace: authentik
+    labels:
+      kargo.akuity.io/cred-type: git
+    secrets:
+      - secretKey: repoURL
+        remoteRef:
+          key: secret/kargo/github
+          property: repo_url
+      - secretKey: sshPrivateKey
+        remoteRef:
+          key: secret/kargo/github
+          property: ssh_private_key
+
 argocd-apps:
   applicationsets:
     kargo-core-projects:
