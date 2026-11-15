@@ -52,13 +52,4 @@ kargo:
     repoURL: git@github.com:Squallium/kubernetes-at-home.git
     imageVersion:
       tagKey: image.tag
-extSecrets:
-  - name: env
-    namespace: kargo
-    labels: {}
-    templateType: Opaque
-    secrets:
-      - secretKey: secret-key
-        remoteRef:
-          key: placeholder
-          property: placeholder
+extSecrets: []
