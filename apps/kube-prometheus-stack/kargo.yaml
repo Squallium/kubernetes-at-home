@@ -17,6 +17,13 @@ kargo:
       onlyConfig: false
       relPath: /production
       argoCDAppSuffix: -production
+    lelo:
+      enabled: true
+      color: orange
+      configColor: "#a42ea6"
+      onlyConfig: false
+      relPath: /lelo
+      argoCDAppSuffix: -lelo
     core:
       enabled: true
     pro-v2:
