@@ -14,3 +14,9 @@ kargo:
       enabled: true
     core:
       enabled: true
+    pro-v2:
+      enabled: true
+      color: "#74a5f2"
+      onlyConfig: false
+      relPath: /pro-v2
+      argoCDAppSuffix: -pro-v2
