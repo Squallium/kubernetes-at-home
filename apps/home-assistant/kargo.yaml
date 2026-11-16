@@ -1,5 +1,5 @@
 chart:
-  targetRevision: 1.0.6
+  targetRevision: 1.0.11
 kargo:
   warehouse:
     image:
@@ -50,17 +50,3 @@ kargo:
           allowTagsRegexes:
             - ''
           ignoreTagsRegexes: []
-extSecrets:
-  - name: github-ssh
-    namespace: home-assistant
-    labels:
-      kargo.akuity.io/cred-type: git
-    secrets:
-      - secretKey: repoURL
-        remoteRef:
-          key: secret/kargo/github
-          property: repo_url
-      - secretKey: sshPrivateKey
-        remoteRef:
-          key: secret/kargo/github
-          property: ssh_private_key

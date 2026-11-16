@@ -1,5 +1,5 @@
 chart:
-  targetRevision: 1.0.10
+  targetRevision: 1.0.11
 kargo:
   warehouse:
     image:
@@ -14,38 +14,3 @@ kargo:
     chart:
       repoURL: https://jellyfin.github.io/jellyfin-helm
       name: jellyfin
-extSecrets:
-  - name: github-ssh
-    namespace: jellyfin
-    labels:
-      kargo.akuity.io/cred-type: git
-    secrets:
-      - secretKey: repoURL
-        remoteRef:
-          key: secret/kargo/github
-          property: repo_url
-      - secretKey: sshPrivateKey
-        remoteRef:
-          key: secret/kargo/github
-          property: ssh_private_key
-  - name: docker
-    namespace: jellyfin
-    labels:
-      kargo.akuity.io/cred-type: image
-    secrets:
-      - secretKey: repoURL
-        remoteRef:
-          key: secret/kargo/docker
-          property: repo_url
-      - secretKey: repoURLIsRegex
-        remoteRef:
-          key: secret/kargo/docker
-          property: repo_url_is_regex
-      - secretKey: username
-        remoteRef:
-          key: secret/kargo/docker
-          property: username
-      - secretKey: password
-        remoteRef:
-          key: secret/kargo/docker
-          property: password
