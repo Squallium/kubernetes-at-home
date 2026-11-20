@@ -1,0 +1,4 @@
+chart:
+  repoUrl: https://grafana.github.io/helm-charts
+  name: alloy
+  targetRevision: 1.16.0

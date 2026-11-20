@@ -66,6 +66,10 @@ default_context:
 #        chart_repo: "https://grafana.github.io/helm-charts"
 #        chart_name: "promtail"
 #        chart_target_revision: "6.17.0"
+      - name: "alloy"
+        chart_repo: "https://grafana.github.io/helm-charts"
+        chart_name: "alloy"
+        chart_target_revision: "1.16.0"
       - name: "kargo"
         chart_repo: "ghcr.io/akuity/kargo-charts"
         chart_name: "kargo"
@@ -136,6 +140,10 @@ default_context:
         enable_incubator: true
   services:
     list:
+      - name: "alloy"
+        chart_repo: "https://grafana.github.io/helm-charts"
+        chart_name: "alloy"
+        chart_target_revision: "1.16.0"
       - name: "homebox"
         chart_name: "servarr"
         enable_ssl: true
