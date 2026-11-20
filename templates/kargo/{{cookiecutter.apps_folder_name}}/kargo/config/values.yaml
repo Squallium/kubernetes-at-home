@@ -1,5 +1,5 @@
 chart:
-  targetRevision: 0.0.7
+  targetRevision: 0.0.9
 {% if cookiecutter.kargo.ext_secrets -%}
 extSecrets:
   {% for item in cookiecutter.kargo.ext_secrets -%}
@@ -14,6 +14,25 @@ extSecrets:
 {% else -%}
 extSecrets: []
 {% endif %}
+{% if cookiecutter.kargo.sharedSecrets -%}
+sharedSecrets:
+  {%- for item in cookiecutter.kargo.sharedSecrets %}
+  - name: {{ item.name }}
+    labels:
+      {% for label in item.labels -%}
+      {{ label.name }}: {{ label.value }}
+      {%- endfor %}
+    secrets:
+      {% for secret in item.secrets -%}
+      - secretKey: {{ secret.secretKey }}
+        remoteRef:
+          key: {{ secret.remoteRef.key }}
+          property: {{ secret.remoteRef.property }}
+      {% endfor -%}
+  {%- endfor -%}
+{%- else -%}
+sharedSecrets: []
+{%- endif %}
 argocd-apps:
   applicationsets:
     {%- set addon_names = (cookiecutter.addons.list | default([]) | map(attribute='name') | list) %}

@@ -9,10 +9,9 @@ extSecrets:
       - secretKey: ADMIN_ACCOUNT_TOKEN_SIGNING_KEY
         remoteRef:
           key: secret/kargo/api
-
+      
 sharedSecrets:
   - name: github-k8s-at-home
-    namespace: authentik
     labels:
       kargo.akuity.io/cred-type: git
     secrets:
@@ -24,6 +23,7 @@ sharedSecrets:
         remoteRef:
           key: secret/kargo/github
           property: ssh_private_key
+      
   - name: docker-pat
     labels:
       kargo.akuity.io/cred-type: image
@@ -44,7 +44,7 @@ sharedSecrets:
         remoteRef:
           key: secret/kargo/docker
           property: password
-
+      
 argocd-apps:
   applicationsets:
     kargo-core-projects:
